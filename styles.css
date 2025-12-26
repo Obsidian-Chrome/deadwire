@@ -1119,7 +1119,7 @@ img{max-width:100%; display:block}
   content: "";
   position: absolute;
   inset: 0;
-  background: url('../media/map.png') center/cover no-repeat;
+  background: url('media/map.png') center/cover no-repeat;
   z-index: 0;
   filter: grayscale(0.85) contrast(1.2) brightness(0.75);
   opacity: 0.75;

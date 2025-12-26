@@ -116,38 +116,4 @@
     });
   }
 
-  // Contact form (client-side only)
-  const form = document.querySelector('[data-contact-form]');
-  const statusEl = document.querySelector('[data-form-status]');
-
-  if (form && statusEl) {
-    const setStatus = (msg, type) => {
-      statusEl.textContent = msg;
-      statusEl.classList.toggle('is-error', type === 'error');
-      statusEl.classList.toggle('is-ok', type === 'ok');
-    };
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const fd = new FormData(form);
-      const name = String(fd.get('name') || '').trim();
-      const email = String(fd.get('email') || '').trim();
-      const subject = String(fd.get('subject') || '').trim();
-      const message = String(fd.get('message') || '').trim();
-
-      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-      if (name.length < 2) return setStatus('Nom trop court.', 'error');
-      if (!emailOk) return setStatus('Email invalide.', 'error');
-      if (!subject) return setStatus('Choisis un sujet.', 'error');
-      if (message.length < 10) return setStatus('Message trop court (min 10 caractères).', 'error');
-
-      // No backend: simulate
-      setStatus('Transmission…', 'ok');
-      setTimeout(() => {
-        setStatus('Message envoyé (simulation). Pour un envoi réel, branche un backend ou un service email.', 'ok');
-        form.reset();
-      }, 450);
-    });
-  }
 })();

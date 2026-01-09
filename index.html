@@ -57,19 +57,36 @@
           </div>
         </div>
 
-        <div class="cover__gallery">
-          <a class="gallery__item" href="#" data-lightbox aria-label="Ouvrir l'image 01">
-            <img src="media/placeholder1.jpg" alt="Image 01" />
-          </a>
-          <a class="gallery__item" href="#" data-lightbox aria-label="Ouvrir l'image 02">
-            <img src="media/placeholder2.jpg" alt="Image 02" />
-          </a>
-          <a class="gallery__item" href="#" data-lightbox aria-label="Ouvrir l'image 03">
-            <img src="media/placeholder3.jpg" alt="Image 03" />
-          </a>
-          <a class="gallery__item" href="#" data-lightbox aria-label="Ouvrir l'image 04">
-            <img src="media/placeholder4.jpg" alt="Image 04" />
-          </a>
+        <div class="carousel" data-carousel>
+          <div class="carousel__track" data-carousel-track>
+            <div class="carousel__slide">
+              <a href="#" data-lightbox aria-label="Ouvrir l'image 01">
+                <img src="media/placeholder1.jpg" alt="Image 01" />
+              </a>
+            </div>
+            <div class="carousel__slide">
+              <a href="#" data-lightbox aria-label="Ouvrir l'image 02">
+                <img src="media/placeholder2.jpg" alt="Image 02" />
+              </a>
+            </div>
+            <div class="carousel__slide">
+              <a href="#" data-lightbox aria-label="Ouvrir l'image 03">
+                <img src="media/placeholder3.jpg" alt="Image 03" />
+              </a>
+            </div>
+            <div class="carousel__slide">
+              <a href="#" data-lightbox aria-label="Ouvrir l'image 04">
+                <img src="media/placeholder4.jpg" alt="Image 04" />
+              </a>
+            </div>
+          </div>
+          <button class="carousel__btn carousel__btn--prev" data-carousel-prev aria-label="Image précédente">
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+          </button>
+          <button class="carousel__btn carousel__btn--next" data-carousel-next aria-label="Image suivante">
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+          </button>
+          <div class="carousel__dots" data-carousel-dots></div>
         </div>
       </div>
     </section>

@@ -293,36 +293,37 @@ img{max-width:100%; display:block}
   flex-wrap: wrap;
 }
 
-.cover__gallery{
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  max-width: 1000px;
+.carousel{
+  position: relative;
+  max-width: 900px;
   margin: 0 auto;
+  overflow: hidden;
+  border-radius: 18px;
 }
 
-.gallery__item{
+.carousel__track{
+  display: flex;
+  transition: transform .5s ease;
+}
+
+.carousel__slide{
+  min-width: 100%;
   position: relative;
+  aspect-ratio: 16 / 10;
+}
+
+.carousel__slide a{
   display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
   border-radius: 18px;
   overflow: hidden;
-  aspect-ratio: 16 / 10;
   cursor: zoom-in;
   transition: all .35s ease;
-  animation: galleryFloat 6s ease-in-out infinite;
 }
 
-.gallery__item:nth-child(1) { animation-delay: 0s; }
-.gallery__item:nth-child(2) { animation-delay: 1.5s; }
-.gallery__item:nth-child(3) { animation-delay: 3s; }
-.gallery__item:nth-child(4) { animation-delay: 4.5s; }
-
-@keyframes galleryFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-.gallery__item::before{
+.carousel__slide a::before{
   content: "";
   position: absolute;
   inset: -2px;
@@ -345,7 +346,7 @@ img{max-width:100%; display:block}
   50% { opacity: 0.9; }
 }
 
-.gallery__item::after{
+.carousel__slide a::after{
   content: "";
   position: absolute;
   inset: 0;
@@ -359,27 +360,92 @@ img{max-width:100%; display:block}
   z-index: 2;
 }
 
-.gallery__item:hover::before{
+.carousel__slide a:hover::before{
   opacity: 1;
   animation: none;
 }
 
-.gallery__item:hover::after{
+.carousel__slide a:hover::after{
   opacity: 1;
 }
 
-.gallery__item:hover{
-  transform: translateY(-6px) scale(1.03);
-  filter: drop-shadow(0 10px 30px rgba(255,42,61,.45)) drop-shadow(0 20px 60px rgba(255,0,56,.35)) drop-shadow(0 0 80px rgba(255,42,61,.25));
-  animation: none;
+.carousel__slide a:hover{
+  transform: scale(1.02);
+  filter: drop-shadow(0 10px 30px rgba(255,42,61,.45)) drop-shadow(0 20px 60px rgba(255,0,56,.35));
 }
 
-.gallery__item img{
+.carousel__slide img{
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
+}
+
+.carousel__btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(10,0,12,.85);
+  border: 1px solid rgba(255,42,61,.4);
+  color: rgba(247,233,239,.9);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all .3s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.5);
+}
+
+.carousel__btn:hover{
+  background: rgba(255,42,61,.2);
+  border-color: rgba(255,42,61,.8);
+  box-shadow: 0 0 20px rgba(255,42,61,.5);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel__btn--prev{
+  left: 20px;
+}
+
+.carousel__btn--next{
+  right: 20px;
+}
+
+.carousel__dots{
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.carousel__dot{
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(247,233,239,.3);
+  border: 1px solid rgba(255,42,61,.3);
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.carousel__dot:hover{
+  background: rgba(255,42,61,.5);
+  border-color: rgba(255,42,61,.6);
+}
+
+.carousel__dot.is-active{
+  background: rgba(255,42,61,.8);
+  border-color: rgba(255,42,61,.9);
+  box-shadow: 0 0 10px rgba(255,42,61,.6);
 }
 
 .gallery__placeholder{
@@ -668,13 +734,19 @@ img{max-width:100%; display:block}
   .cover__logo{width: min(560px, 92%);}
   .cover__tagline{font-size: clamp(15px, 3vw, 18px);}
   .cover__actions{margin-bottom: 44px;}
-  .cover__gallery{gap: 16px;}
+  .carousel{max-width: 95%;}
+  .carousel__btn{width: 45px; height: 45px; font-size: 16px;}
 }
 
 @media (max-width: 640px){
   .cover__inner{padding: 50px 14px 36px;}
   .cover__logo{width: 95%;}
-  .cover__gallery{grid-template-columns: 1fr; gap: 14px;}
+  .carousel{max-width: 100%; border-radius: 12px;}
+  .carousel__btn{width: 40px; height: 40px; font-size: 14px;}
+  .carousel__btn--prev{left: 10px;}
+  .carousel__btn--next{right: 10px;}
+  .carousel__dots{bottom: 15px;}
+  .carousel__dot{width: 10px; height: 10px;}
 }
 
 .ctaRow{display:flex; gap:12px; margin-top:20px; flex-wrap:wrap}

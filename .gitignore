@@ -1,6 +1,3 @@
-# Configuration sensible - NE PAS COMMITER
-config.php
-
 # Fichiers système
 .DS_Store
 Thumbs.db

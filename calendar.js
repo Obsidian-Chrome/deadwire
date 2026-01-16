@@ -1,4 +1,11 @@
-// Récupère les événements de la semaine en cours via le proxy PHP
+// Configuration Google Calendar API
+const CALENDAR_CONFIG = {
+  apiKey: 'AIzaSyCtxOjsUfFxtxKpwdh2eJz4CS1x3eshS-w',
+  calendarId: 'deadwire01@gmail.com',
+  maxResults: 50
+};
+
+// Récupère les événements de la semaine en cours
 async function fetchWeekEvents() {
   const now = new Date();
   const startOfWeek = getStartOfWeek(now);
@@ -8,8 +15,7 @@ async function fetchWeekEvents() {
   const timeMin = startOfWeek.toISOString();
   const timeMax = endOfWeek.toISOString();
 
-  // Appel au proxy PHP qui cache les identifiants
-  const url = `/api.php?timeMin=${encodeURIComponent(timeMin)}&timeMax=${encodeURIComponent(timeMax)}`;
+  const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_CONFIG.calendarId)}/events?key=${CALENDAR_CONFIG.apiKey}&timeMin=${timeMin}&timeMax=${timeMax}&maxResults=${CALENDAR_CONFIG.maxResults}&singleEvents=true&orderBy=startTime`;
 
   try {
     const response = await fetch(url);

@@ -1,11 +1,13 @@
 (() => {
   const nav = document.querySelector('[data-nav]');
   const toggle = document.querySelector('[data-nav-toggle]');
+  const topbar = document.querySelector('[data-topbar]');
 
   if (toggle && nav) {
     const setExpanded = (expanded) => {
       toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
       nav.classList.toggle('is-open', expanded);
+      topbar?.classList.toggle('menu-open', expanded);
     };
 
     toggle.addEventListener('click', () => {

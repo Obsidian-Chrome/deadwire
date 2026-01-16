@@ -1,0 +1,17 @@
+{
+  "tracks": [
+    {
+      "file": "media/music/Montee-CyberReality.mp3",
+      "title": "Cyber Reality",
+      "artist": "Montee",
+      "duration": 170
+    },
+    {
+      "file": "media/music/Nyhxia-SiLvErExe.mp3",
+      "title": "SiLvEr.Exe",
+      "artist": "HeX",
+      "duration": 287
+    }
+  ],
+  "loop": true
+}

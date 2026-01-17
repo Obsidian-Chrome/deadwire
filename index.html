@@ -53,23 +53,49 @@
       <div class="cover__bg" aria-hidden="true"></div>
       <div class="container cover__inner">
         <img class="cover__logo" src="media/Deadwire_Txt.png" alt="Le Deadwire" />
-        <p class="cover__tagline">Bar - Concert</p>
+        <p class="cover__tagline">Bar - Concerts</p>
 
         <div class="cover__actions">
           <a class="btn btn--primary" href="/carte">Voir la carte</a>
           <a class="btn btn--ghost" href="/programme">Programme</a>
         </div>
 
-        <div class="panel" style="max-width: 800px; margin: 40px auto;" data-reveal>
-          <div class="infoList">
-            <div class="infoRow"><div class="infoRow__k"><i class="fa-regular fa-clock" aria-hidden="true"></i> Horaires</div><div class="infoRow__v">Mardi & Samedi - de 21h00 à 00h00</div></div>
-            <div class="infoRow"><div class="infoRow__k"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Adresse</div><div class="infoRow__v">La Coupe X - XX [Ragnarok]</div></div>
+        <div class="locationBlock" data-reveal>
+          <div class="locationBlock__map">
+            <div class="locationBlock__mapInner"></div>
+            <div class="locationBlock__grid"></div>
+            <div class="locationBlock__pin"></div>
+            <div class="locationBlock__beacon"></div>
           </div>
+          
+          <div class="locationBlock__content">
+            <div class="locationCard">
+              <div class="locationCard__icon">
+                <i class="fa-regular fa-clock" aria-hidden="true"></i>
+              </div>
+              <div class="locationCard__body">
+                <div class="locationCard__label">Horaires</div>
+                <div class="locationCard__value">Mardi - 21h00 à 00h00</div>
+                <div class="locationCard__value">Samedi - 21h00 à 00h00</div>
+              </div>
+            </div>
 
-          <div class="miniMap" aria-hidden="true">
-            <div class="miniMap__grid"></div>
-            <div class="miniMap__pin"></div>
-            <div class="miniMap__label">DEADWIRE</div>
+            <div class="locationCard">
+              <div class="locationCard__icon">
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              </div>
+              <div class="locationCard__body">
+                <div class="locationCard__label">Adresse</div>
+                <div class="locationCard__address">
+                  <span class="locationCard__badge locationCard__badge--hrp">HRP</span>
+                  <span>La Coupe 26 - 15 [Ragnarok]</span>
+                </div>
+                <div class="locationCard__address">
+                  <span class="locationCard__badge locationCard__badge--rp">RP</span>
+                  <span>S9 - Zone Récréative</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

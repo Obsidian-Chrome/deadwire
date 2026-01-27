@@ -14,3 +14,6 @@ Thumbs.db
 
 # Fichiers Photoshop
 *.psd
+
+# Dossier media/intra
+media/intra/

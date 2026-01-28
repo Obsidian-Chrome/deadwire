@@ -82,6 +82,29 @@
     const open = ({ src, alt }) => {
       img.src = src;
       img.alt = alt || '';
+      
+      img.onload = () => {
+        const imgRatio = img.naturalWidth / img.naturalHeight;
+        const viewportWidth = window.innerWidth * 0.9;
+        const viewportHeight = window.innerHeight * 0.9;
+        
+        let dialogWidth = img.naturalWidth;
+        let dialogHeight = img.naturalHeight;
+        
+        if (dialogWidth > viewportWidth) {
+          dialogWidth = viewportWidth;
+          dialogHeight = dialogWidth / imgRatio;
+        }
+        
+        if (dialogHeight > viewportHeight) {
+          dialogHeight = viewportHeight;
+          dialogWidth = dialogHeight * imgRatio;
+        }
+        
+        dialog.style.width = `${dialogWidth}px`;
+        dialog.style.height = `${dialogHeight}px`;
+      };
+      
       root.classList.add('is-open');
       document.body.style.overflow = 'hidden';
       closeBtn.focus();

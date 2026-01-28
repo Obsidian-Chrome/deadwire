@@ -1,13 +1,73 @@
 {
   "tracks": [
     {
-      "file": "media/music/Montee-CyberReality.mp3",
+      "file": "media/music/Crypto Zero - Cybercop.mp3",
+      "title": "Cybercop",
+      "artist": "Crypto Zero",
+      "duration": 266
+    },
+    {
+      "file": "media/music/Mister 404 - You Are Doomed.mp3",
+      "title": "You Are Doomed",
+      "artist": "Mister 404",
+      "duration": 253
+    },
+    {
+      "file": "media/music/Miss 505 - Show ID.mp3",
+      "title": "Show ID",
+      "artist": "Miss 505",
+      "duration": 251
+    },
+    {
+      "file": "media/music/Cyber Zero - Error.mp3",
+      "title": "Error",
+      "artist": "Cyber Zero",
+      "duration": 274
+    },
+    {
+      "file": "media/music/Cyber Nation - Mantalism.mp3",
+      "title": "Mentalism",
+      "artist": "Cyber Nation",
+      "duration": 208
+    },
+    {
+      "file": "media/music/Crypto Zero - Game Over.mp3",
+      "title": "Game Over",
+      "artist": "Crypto Zero",
+      "duration": 230
+    },
+    {
+      "file": "media/music/Mister 404 - Blow That Smoke.mp3",
+      "title": "Blow That Smoke",
+      "artist": "Mister 404",
+      "duration": 237
+    },
+    {
+      "file": "media/music/Miss 505 - Electrical.mp3",
+      "title": "Electrical",
+      "artist": "Miss 505",
+      "duration": 250
+    },
+    {
+      "file": "media/music/Cyber Zero - Robotics.mp3",
+      "title": "Robotics",
+      "artist": "Cyber Zero",
+      "duration": 250
+    },
+    {
+      "file": "media/music/Cyber Phonk - Burn Out.mp3",
+      "title": "Burn Out",
+      "artist": "Cyber Phonk",
+      "duration": 206
+    },
+    {
+      "file": "media/music/Montee - CyberReality.mp3",
       "title": "Cyber Reality",
       "artist": "Montee",
       "duration": 170
     },
     {
-      "file": "media/music/Nyhxia-SiLvErExe.mp3",
+      "file": "media/music/Nyhxia - SiLvErExe.mp3",
       "title": "SiLvEr.Exe",
       "artist": "HeX",
       "duration": 287

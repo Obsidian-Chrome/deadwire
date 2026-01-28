@@ -129,6 +129,12 @@
         audio.currentTime = offset;
         console.log(`Resync: ${drift.toFixed(1)}s drift`);
       }
+      
+      if (audio && audio.paused) {
+        audio.play().catch(err => {
+          console.warn('Lecture automatique bloquée:', err);
+        });
+      }
     }
   };
 

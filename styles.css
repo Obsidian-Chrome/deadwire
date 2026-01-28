@@ -1084,6 +1084,25 @@ img{max-width:100%; display:block}
 .event[data-bg]::before{
   opacity: 0.35;
 }
+
+.event--today{
+  border-color: rgba(255,42,61,.55);
+  box-shadow: 0 0 20px rgba(255,42,61,.25), 0 4px 12px rgba(0,0,0,.4);
+  transform: scale(1.02);
+  background: linear-gradient(180deg, rgba(10,0,12,.65), rgba(10,0,12,.35));
+}
+
+.event--today .event__when{
+  background: rgba(255,42,61,.15);
+  border-color: rgba(255,42,61,.45);
+  box-shadow: 0 0 12px rgba(255,42,61,.2);
+}
+
+.event--today .event__day{
+  color: #ff4556;
+  text-shadow: 0 0 8px rgba(255,42,61,.4);
+}
+
 .event__when{
   position: relative;
   z-index: 1;

@@ -83,6 +83,9 @@ function populateEvents(events) {
   const eventCards = document.querySelectorAll('.event');
   const startOfWeek = getStartOfWeek(new Date());
 
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
   eventCards.forEach((card, index) => {
     const currentDate = new Date(startOfWeek);
     
@@ -95,6 +98,13 @@ function populateEvents(events) {
     const hoursElement = card.querySelector('.event__hours');
     const titleElement = card.querySelector('.event__title');
     const textElement = card.querySelector('.event__text');
+
+    // Vérifie si c'est le jour actuel
+    if (currentDate.getTime() === today.getTime()) {
+      card.classList.add('event--today');
+    } else {
+      card.classList.remove('event--today');
+    }
 
     // Affiche toujours la date
     dateElement.textContent = formatDate(currentDate);
@@ -112,8 +122,10 @@ function populateEvents(events) {
       titleElement.textContent = event.title;
       
       if (event.description && event.description.includes('+++')) {
+        textElement.style.display = 'none';
         textElement.textContent = '';
       } else {
+        textElement.style.display = '';
         textElement.textContent = event.description || 'Aucune description disponible';
         
         if (dayEvents.length > 1) {

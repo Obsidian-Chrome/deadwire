@@ -110,11 +110,15 @@ function populateEvents(events) {
       }
       
       titleElement.textContent = event.title;
-      textElement.textContent = event.description || 'Aucune description disponible';
       
-      // Affiche un indicateur si plusieurs événements
-      if (dayEvents.length > 1) {
-        textElement.textContent += ` (+${dayEvents.length - 1} autre${dayEvents.length > 2 ? 's' : ''} événement${dayEvents.length > 2 ? 's' : ''})`;
+      if (event.description && event.description.includes('+++')) {
+        textElement.textContent = '';
+      } else {
+        textElement.textContent = event.description || 'Aucune description disponible';
+        
+        if (dayEvents.length > 1) {
+          textElement.textContent += ` (+${dayEvents.length - 1} autre${dayEvents.length > 2 ? 's' : ''} événement${dayEvents.length > 2 ? 's' : ''})`;
+        }
       }
 
       card.classList.add('event--active');

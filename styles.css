@@ -1196,6 +1196,45 @@ img{max-width:100%; display:block}
   }
 }
 
+[data-hitomi]{
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+[data-hitomi]:hover{
+  background: linear-gradient(
+    90deg,
+    #4a9eff 0%,
+    #1e90ff 20%,
+    #87ceeb 40%,
+    #4a9eff 60%,
+    #1e90ff 80%,
+    #4a9eff 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-position: 0% 50%;
+  animation: blueSparkle 1.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(74, 158, 255, 0.6))
+          drop-shadow(0 0 16px rgba(74, 158, 255, 0.4));
+}
+
+@keyframes blueSparkle{
+  0%, 100%{
+    background-position: 0% 50%;
+    filter: drop-shadow(0 0 8px rgba(74, 158, 255, 0.6))
+            drop-shadow(0 0 16px rgba(74, 158, 255, 0.4));
+  }
+  50%{
+    background-position: 200% 50%;
+    filter: drop-shadow(0 0 12px rgba(74, 158, 255, 0.8))
+            drop-shadow(0 0 24px rgba(74, 158, 255, 0.6))
+            drop-shadow(0 0 36px rgba(30, 144, 255, 0.4));
+  }
+}
+
 .pageHead{
   position: relative;
   padding: 38px 0 14px;

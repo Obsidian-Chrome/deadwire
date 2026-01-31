@@ -1819,7 +1819,7 @@ img{max-width:100%; display:block}
   border-top: 1px solid rgba(255,42,61,.18);
   background: rgba(5,0,6,.45);
 }
-.footer__inner{display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap}
+.footer__inner{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap}
 .footer__brand{display:flex; align-items:center; gap:12px}
 .footer__logo{width:34px; height:34px; object-fit:contain; filter: drop-shadow(0 0 10px rgba(255,42,61,.30));}
 .footer__txt{color:rgba(247,233,239,.88); font-weight:600; letter-spacing:0.02em}

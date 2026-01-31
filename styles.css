@@ -1274,6 +1274,31 @@ img{max-width:100%; display:block}
   }
 }
 
+[data-eltia]{
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+[data-eltia]:hover{
+  background: linear-gradient(
+    90deg,
+    #ff2a3d 0%,
+    #ff0000 20%,
+    #ff6b6b 40%,
+    #ff2a3d 60%,
+    #ff0000 80%,
+    #ff2a3d 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-position: 0% 50%;
+  animation: redSparkle 1.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 42, 61, 0.6))
+          drop-shadow(0 0 16px rgba(255, 42, 61, 0.4));
+}
+
 .pageHead{
   position: relative;
   padding: 38px 0 14px;

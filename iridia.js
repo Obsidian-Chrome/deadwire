@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (isPlaying) return;
     
+    if (!window.easterEggLock.acquire('Iridia')) {
+      return;
+    }
+    
     isPlaying = true;
     
     const audio = new Audio('../media/neonveins.mp3');
@@ -132,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         video.pause();
         videoOverlay.remove();
         isPlaying = false;
+        window.easterEggLock.release();
       }, 500);
     };
     

@@ -5,12 +5,12 @@ const CALENDAR_CONFIG = {
   maxResults: 50
 };
 
-// Récupère les événements de la semaine en cours
+// Récupère les événements des 2 prochaines semaines
 async function fetchWeekEvents() {
   const now = new Date();
   const startOfWeek = getStartOfWeek(now);
   const endOfWeek = new Date(startOfWeek);
-  endOfWeek.setDate(startOfWeek.getDate() + 7);
+  endOfWeek.setDate(startOfWeek.getDate() + 14);
 
   const timeMin = startOfWeek.toISOString();
   const timeMax = endOfWeek.toISOString();
@@ -88,10 +88,10 @@ function populateEvents(events) {
 
   eventCards.forEach((card, index) => {
     const currentDate = new Date(startOfWeek);
+    currentDate.setDate(startOfWeek.getDate() + index);
     
     // Ajuste l'index pour commencer à lundi (1) au lieu de dimanche (0)
-    const dayIndex = index === 6 ? 0 : index + 1;
-    currentDate.setDate(startOfWeek.getDate() + index);
+    const dayIndex = currentDate.getDay();
 
     const dayEvents = eventsByDay[dayIndex];
     const dateElement = card.querySelector('.event__date');
@@ -143,9 +143,43 @@ function populateEvents(events) {
   });
 }
 
+// Formate une plage de dates
+function formatDateRange(startDate, endDate) {
+  const start = startDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' });
+  const end = endDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' });
+  return `${start} au ${end}`;
+}
+
+// Met à jour les titres de semaine avec les plages de dates
+function updateWeekTitles() {
+  const startOfWeek = getStartOfWeek(new Date());
+  
+  // Semaine 1
+  const week1Start = new Date(startOfWeek);
+  const week1End = new Date(startOfWeek);
+  week1End.setDate(week1Start.getDate() + 6);
+  
+  const week1Title = document.querySelector('[data-week="1"]');
+  if (week1Title) {
+    week1Title.textContent = formatDateRange(week1Start, week1End);
+  }
+  
+  // Semaine 2
+  const week2Start = new Date(startOfWeek);
+  week2Start.setDate(startOfWeek.getDate() + 7);
+  const week2End = new Date(week2Start);
+  week2End.setDate(week2Start.getDate() + 6);
+  
+  const week2Title = document.querySelector('[data-week="2"]');
+  if (week2Title) {
+    week2Title.textContent = formatDateRange(week2Start, week2End);
+  }
+}
+
 // Initialise le calendrier
 async function initCalendar() {
   console.log('Chargement des événements Google Calendar...');
+  updateWeekTitles();
   const events = await fetchWeekEvents();
   console.log(`${events.length} événement(s) trouvé(s)`);
   populateEvents(events);

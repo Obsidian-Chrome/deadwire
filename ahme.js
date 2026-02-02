@@ -14,6 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
   ahmeName.addEventListener('click', (e) => {
     e.preventDefault();
     
+    if (!window.easterEggLock.acquire('Ahme')) {
+      return;
+    }
+    
     const videoOverlay = document.createElement('div');
     videoOverlay.style.cssText = `
       position: fixed;
@@ -47,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       setTimeout(() => {
         videoOverlay.remove();
+        window.easterEggLock.release();
       }, 500);
     };
     

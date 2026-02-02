@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (isPlaying) return;
     
+    if (!window.easterEggLock.acquire('Selim')) {
+      return;
+    }
+    
     isPlaying = true;
     
     const videoOverlay = document.createElement('div');
@@ -57,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       audio.addEventListener('ended', () => {
         isPlaying = false;
+        window.easterEggLock.release();
       });
     }, 1500);
     

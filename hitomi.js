@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (isPlaying) return;
     
+    if (!window.easterEggLock.acquire('Hitomi')) {
+      return;
+    }
+    
     isPlaying = true;
     
     const audio = new Audio('../media/hitomi.mp3');
@@ -205,6 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         emojiOverlay.remove();
         isPlaying = false;
+        window.easterEggLock.release();
       }, 500);
     };
     

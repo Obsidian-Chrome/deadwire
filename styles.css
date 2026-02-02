@@ -1357,15 +1357,35 @@ img{max-width:100%; display:block}
 .notice__title{font-weight:700}
 .notice__text{margin-top:8px; color:rgba(247,233,239,.76); line-height:1.55}
 
-.timeline{display:grid; gap:12px}
+.timeline{display:flex; flex-direction:column; gap:48px}
+.timeline__week{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.timeline__weekTitle{
+  font-size:24px;
+  font-weight:700;
+  color:rgba(255,42,61,.95);
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  padding-bottom:12px;
+  border-bottom:2px solid rgba(255,42,61,.35);
+  text-shadow: 0 0 20px rgba(255,42,61,.4);
+}
+.timeline__weekGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+  gap:16px;
+}
 .event{
   position: relative;
   display:grid;
-  grid-template-columns: 140px 1fr;
-  gap:24px;
-  align-items:center;
+  grid-template-columns: 100px 1fr;
+  gap:16px;
+  align-items:start;
   border-radius: var(--radius2);
-  padding: 20px;
+  padding: 16px;
   border: 1px solid rgba(255,42,61,.22);
   background: linear-gradient(180deg, rgba(10,0,12,.55), rgba(10,0,12,.22));
   overflow: hidden;

@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (isPlaying) return;
     
+    if (!window.easterEggLock.acquire('Eltia')) {
+      return;
+    }
+    
     isPlaying = true;
     
     const beerOverlay = document.createElement('div');
@@ -91,8 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           beerOverlay.remove();
           isPlaying = false;
+          window.easterEggLock.release();
         }, 1000);
       }, 2000);
-    }, 1300);
+    }, 800);
   });
 });

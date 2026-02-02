@@ -6,6 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
   bunbunName.addEventListener('click', (e) => {
     e.preventDefault();
     
+    if (!window.easterEggLock.acquire('Bunbun')) {
+      return;
+    }
+    
     const audio = new Audio('../media/bunbun.mp3');
     audio.volume = 0.5;
     audio.play().catch(err => console.log('Audio playback failed:', err));
@@ -89,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       setTimeout(() => {
         overlay.remove();
+        window.easterEggLock.release();
       }, 500);
     }, 3500);
   });

@@ -50,22 +50,20 @@ function formatTime(date) {
   return date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
 }
 
-// Groupe les événements par jour de la semaine
+// Groupe les événements par date absolue
 function groupEventsByDay(events) {
-  const daysMap = {
-    1: [], // Lundi
-    2: [], // Mardi
-    3: [], // Mercredi
-    4: [], // Jeudi
-    5: [], // Vendredi
-    6: [], // Samedi
-    0: []  // Dimanche
-  };
+  const daysMap = {};
 
   events.forEach(event => {
     const start = event.start.dateTime ? new Date(event.start.dateTime) : new Date(event.start.date);
-    const dayOfWeek = start.getDay();
-    daysMap[dayOfWeek].push({
+    // Crée une clé basée sur la date absolue (YYYY-MM-DD)
+    const dateKey = `${start.getFullYear()}-${String(start.getMonth() + 1).padStart(2, '0')}-${String(start.getDate()).padStart(2, '0')}`;
+    
+    if (!daysMap[dateKey]) {
+      daysMap[dateKey] = [];
+    }
+    
+    daysMap[dateKey].push({
       title: event.summary || 'Sans titre',
       description: event.description || '',
       start: start,
@@ -90,10 +88,10 @@ function populateEvents(events) {
     const currentDate = new Date(startOfWeek);
     currentDate.setDate(startOfWeek.getDate() + index);
     
-    // Ajuste l'index pour commencer à lundi (1) au lieu de dimanche (0)
-    const dayIndex = currentDate.getDay();
+    // Crée la clé de date pour rechercher les événements
+    const dateKey = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(currentDate.getDate()).padStart(2, '0')}`;
 
-    const dayEvents = eventsByDay[dayIndex];
+    const dayEvents = eventsByDay[dateKey];
     const dateElement = card.querySelector('.event__date');
     const hoursElement = card.querySelector('.event__hours');
     const titleElement = card.querySelector('.event__title');

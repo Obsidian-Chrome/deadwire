@@ -1329,6 +1329,31 @@ img{max-width:100%; display:block}
   50% { background-position: 100% 50%; }
 }
 
+[data-sosyn]{
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+[data-sosyn]:hover{
+  background: linear-gradient(
+    90deg,
+    #a855f7 0%,
+    #8b5cf6 20%,
+    #c084fc 40%,
+    #a855f7 60%,
+    #8b5cf6 80%,
+    #a855f7 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-position: 0% 50%;
+  animation: purpleSparkle 1.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.6))
+          drop-shadow(0 0 16px rgba(168, 85, 247, 0.4));
+}
+
 .pageHead{
   position: relative;
   padding: 38px 0 14px;

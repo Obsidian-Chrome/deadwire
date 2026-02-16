@@ -2148,7 +2148,7 @@ img{max-width:100%; display:block}
   box-shadow: 0 0 10px rgba(255,42,61,.7);
 }
 
-@media (max-width: 1600px){
+@media (max-width: 1024px){
   .radioBar__info{
     display: none !important;
     opacity: 0 !important;

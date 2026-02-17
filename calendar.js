@@ -50,6 +50,14 @@ function formatTime(date) {
   return date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
 }
 
+// Extrait l'URL du cover depuis la description
+function extractCover(description) {
+  if (!description) return null;
+  
+  const coverMatch = description.match(/cover="([^"]+)"/i);
+  return coverMatch ? coverMatch[1] : null;
+}
+
 // Groupe les événements par date absolue
 function groupEventsByDay(events) {
   const daysMap = {};
@@ -68,7 +76,8 @@ function groupEventsByDay(events) {
       description: event.description || '',
       start: start,
       end: event.end.dateTime ? new Date(event.end.dateTime) : new Date(event.end.date),
-      isAllDay: !event.start.dateTime
+      isAllDay: !event.start.dateTime,
+      coverUrl: extractCover(event.description)
     });
   });
 
@@ -119,15 +128,42 @@ function populateEvents(events) {
       
       titleElement.textContent = event.title;
       
-      if (event.description && event.description.includes('+++')) {
+      // Stocke l'URL du cover dans la carte pour un accès facile
+      if (event.coverUrl) {
+        card.dataset.coverUrl = event.coverUrl;
+      } else {
+        delete card.dataset.coverUrl;
+      }
+      
+      if (event.coverUrl) {
+        // Affiche un lien pour voir l'image
+        textElement.style.display = '';
+        textElement.innerHTML = '<a href="#" class="cover-link" style="color: rgba(255, 42, 61, 0.9); text-decoration: underline; cursor: pointer; font-weight: 500;">Voir l\'image</a>';
+        
+        // Ajoute un event listener sur le lien
+        const coverLink = textElement.querySelector('.cover-link');
+        if (coverLink) {
+          coverLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            showCoverModal(event.coverUrl);
+          });
+        }
+      } else if (event.description && event.description.includes('+++')) {
         textElement.style.display = 'none';
         textElement.textContent = '';
       } else {
-        textElement.style.display = '';
-        textElement.textContent = event.description || 'Aucune description disponible';
-        
-        if (dayEvents.length > 1) {
-          textElement.textContent += ` (+${dayEvents.length - 1} autre${dayEvents.length > 2 ? 's' : ''} événement${dayEvents.length > 2 ? 's' : ''})`;
+        if (event.description) {
+          textElement.style.display = '';
+          textElement.textContent = event.description;
+          
+          if (dayEvents.length > 1) {
+            textElement.textContent += ` (+${dayEvents.length - 1} autre${dayEvents.length > 2 ? 's' : ''} événement${dayEvents.length > 2 ? 's' : ''})`;
+          }
+        } else {
+          // Pas de description : masque l'élément
+          textElement.style.display = 'none';
+          textElement.textContent = '';
         }
       }
 
@@ -174,6 +210,135 @@ function updateWeekTitles() {
   }
 }
 
+// Crée et affiche la modal de l'image cover
+function showCoverModal(imageUrl) {
+  // Retire toute modal existante
+  const existingModal = document.querySelector('.cover-modal');
+  if (existingModal) {
+    existingModal.remove();
+  }
+  
+  // Crée la modal
+  const modal = document.createElement('div');
+  modal.className = 'cover-modal';
+  modal.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+  `;
+  
+  // Bouton de fermeture
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'cover-modal__close';
+  closeBtn.setAttribute('type', 'button');
+  closeBtn.setAttribute('aria-label', 'Fermer');
+  closeBtn.innerHTML = '<i class="fa-solid fa-xmark" aria-hidden="true"></i>';
+  closeBtn.style.cssText = `
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 100001;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 42, 61, 0.3);
+    background: rgba(10, 0, 12, 0.7);
+    color: rgba(247, 233, 239, 0.9);
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  `;
+  
+  const img = document.createElement('img');
+  img.src = imageUrl;
+  img.style.cssText = `
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    box-shadow: 0 10px 50px rgba(255, 42, 61, 0.3);
+    border-radius: 8px;
+    animation: scaleIn 0.3s ease;
+    cursor: default;
+  `;
+  
+  // Ajoute les keyframes pour les animations
+  if (!document.querySelector('#cover-modal-styles')) {
+    const style = document.createElement('style');
+    style.id = 'cover-modal-styles';
+    style.textContent = `
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes scaleIn {
+        from { transform: scale(0.9); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+      }
+      .cover-modal__close:hover {
+        border-color: rgba(255, 42, 61, 0.6);
+        background: rgba(10, 0, 12, 0.9);
+        box-shadow: 0 4px 14px rgba(255, 42, 61, 0.4);
+        transform: scale(1.05);
+      }
+    `;
+    document.head.appendChild(style);
+  }
+  
+  modal.appendChild(closeBtn);
+  modal.appendChild(img);
+  document.body.appendChild(modal);
+  
+  // Fonction de fermeture
+  const close = () => {
+    modal.style.animation = 'fadeIn 0.2s ease reverse';
+    setTimeout(() => modal.remove(), 200);
+  };
+  
+  // Ferme au clic sur le bouton
+  closeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    close();
+  });
+  
+  // Ferme au clic sur le fond (mais pas sur l'image)
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      close();
+    }
+  });
+  
+  // Empêche la fermeture au clic sur l'image
+  img.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+  
+  // Ferme avec Escape
+  const handleEscape = (e) => {
+    if (e.key === 'Escape') {
+      close();
+      document.removeEventListener('keydown', handleEscape);
+    }
+  };
+  document.addEventListener('keydown', handleEscape);
+}
+
+// Fonction supprimée - les listeners sont maintenant directement sur les liens "Voir l'image"
+function setupCoverListeners() {
+  // Cette fonction n'est plus nécessaire car les event listeners
+  // sont ajoutés directement dans populateEvents()
+}
+
 // Initialise le calendrier
 async function initCalendar() {
   console.log('Chargement des événements Google Calendar...');
@@ -181,6 +346,7 @@ async function initCalendar() {
   const events = await fetchWeekEvents();
   console.log(`${events.length} événement(s) trouvé(s)`);
   populateEvents(events);
+  setupCoverListeners();
 }
 
 // Lance l'initialisation au chargement de la page

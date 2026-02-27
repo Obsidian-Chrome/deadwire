@@ -1654,8 +1654,8 @@ img{max-width:100%; display:block}
 
 .locationBlock__pin{
   position:absolute;
-  left:calc(50% - 14px);
-  top:50%;
+  left:calc(45.5% - 14px);
+  top:43.5%;
   transform:translate(-50%, -50%);
   width:12px;
   height:12px;
@@ -1676,8 +1676,8 @@ img{max-width:100%; display:block}
 
 .locationBlock__beacon{
   position:absolute;
-  left:calc(50% - 14px);
-  top:50%;
+  left:calc(45.5% - 14px);
+  top:43.5%;
   transform:translate(-50%, -50%);
   width:80px;
   height:80px;

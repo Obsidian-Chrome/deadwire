@@ -54,8 +54,25 @@ function formatTime(date) {
 function extractCover(description) {
   if (!description) return null;
   
-  const coverMatch = description.match(/cover="([^"]+)"/i);
-  return coverMatch ? coverMatch[1] : null;
+  // Décode les entités HTML (Google Calendar encode parfois le contenu)
+  const decodedDesc = description
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, '&');
+  
+  // Accepte les guillemets droits ("), courbes (" "), et français (« »)
+  const coverMatch = decodedDesc.match(/cover=[""\"\«]([^"""\»]+)[""\"\»]/i);
+  if (coverMatch) {
+    // Nettoie l'URL extraite de tout balisage HTML résiduel
+    let url = coverMatch[1].trim();
+    // Si l'URL contient des balises HTML, tente d'extraire juste l'URL
+    const urlMatch = url.match(/https?:\/\/[^\s<>"]+/i);
+    return urlMatch ? urlMatch[0] : url;
+  }
+  
+  return null;
 }
 
 // Groupe les événements par date absolue

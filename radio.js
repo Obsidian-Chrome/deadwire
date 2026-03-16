@@ -105,14 +105,21 @@
       
       audio = new Audio(track.file);
       audio.volume = volume;
-      audio.currentTime = offset;
       audio.loop = shouldLoop && playlist.length === 1;
       
       updateTrackDisplay(track);
       
+      // Démarre la lecture immédiatement, puis ajuste le temps une fois que c'est possible
       audio.play().catch(err => {
         console.warn('Lecture automatique bloquée:', err);
       });
+
+      // Ajuste le currentTime dès que possible sans bloquer
+      audio.addEventListener('canplay', () => {
+        if (Math.abs(audio.currentTime - offset) > 1) {
+          audio.currentTime = offset;
+        }
+      }, { once: true });
 
       audio.addEventListener('ended', () => {
         if (shouldLoop) {
@@ -208,7 +215,8 @@
       return { track: playlist[index], offset };
     },
     getPlaylist: () => playlist,
-    sync: syncPlayback
+    sync: syncPlayback,
+    getAudio: () => audio
   };
 
 })();

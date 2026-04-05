@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Deadwire TV | Le Deadwire</title>
+  <title>TV | Le Deadwire</title>
   <link rel="icon" href="../media/Deadwire_Logo_Neon.png" type="image/png" />
   <link rel="stylesheet" href="../styles.css" />
   <style>
@@ -39,7 +39,7 @@
       playsinline
       data-tv-video
     >
-      <source src="../media/visualizer/pubs.webm" type="video/webm">
+      <source src="../media/visualizer/pubs.mp4" type="video/mp4">
       Votre navigateur ne supporte pas la lecture vidéo.
     </video>
   </div>
@@ -48,15 +48,14 @@
     const video = document.querySelector('[data-tv-video]');
     
     if (video) {
-      // Attend que les métadonnées soient chargées pour connaître la durée
       video.addEventListener('loadedmetadata', () => {
         synchronizeVideo();
       });
 
       // Fonction de synchronisation basée sur l'heure UTC
       function synchronizeVideo() {
-        const now = Date.now(); // Timestamp UTC en millisecondes
-        const videoDuration = video.duration; // Durée de la vidéo en secondes
+        const now = Date.now();
+        const videoDuration = video.duration;
         
         if (!videoDuration || videoDuration === 0) {
           console.warn('Durée vidéo non disponible, réessai...');
@@ -64,42 +63,33 @@
           return;
         }
 
-        // Calcule la position dans la vidéo basée sur l'heure UTC
-        // On utilise le timestamp en secondes modulo la durée de la vidéo
         const currentTimeInSeconds = (now / 1000) % videoDuration;
         
-        // Positionne la vidéo à la bonne position
         video.currentTime = currentTimeInSeconds;
         
-        console.log(`🎬 TV synchronisée: ${currentTimeInSeconds.toFixed(2)}s / ${videoDuration.toFixed(2)}s`);
+        console.log(`TV synchronisée: ${currentTimeInSeconds.toFixed(2)}s / ${videoDuration.toFixed(2)}s`);
       }
 
-      // Re-synchronise périodiquement pour corriger la dérive
       setInterval(() => {
         if (video.duration) {
           const now = Date.now();
           const expectedTime = (now / 1000) % video.duration;
           const drift = Math.abs(video.currentTime - expectedTime);
           
-          // Si la dérive est supérieure à 1 seconde, re-synchronise
           if (drift > 1.0) {
-            console.log(`⏱️ Correction de dérive: ${drift.toFixed(2)}s`);
+            console.log(`Correction de dérive: ${drift.toFixed(2)}s`);
             video.currentTime = expectedTime;
           }
         }
-      }, 10000); // Vérifie toutes les 10 secondes
-
-      // Tente de jouer dès que possible
+      }, 10000);
       video.play().catch(err => {
         console.log('Autoplay bloqué, tentative au premier clic');
         
-        // Fallback : joue au premier clic si autoplay bloqué
         document.addEventListener('click', () => {
           video.play();
         }, { once: true });
       });
 
-      // Assure que la vidéo reste en lecture
       video.addEventListener('pause', () => {
         video.play();
       });

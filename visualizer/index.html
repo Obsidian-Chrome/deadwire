@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visualizer | Le Deadwire</title>
+  <link rel="icon" href="../media/Deadwire_Logo_Neon.png" type="image/png" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1a0a1f 0%, #0a000c 50%, #1a0a1f 100%);
+    }
+
+    .visualizerPage {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .visualizerPage__video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="visualizerPage">
+    <video 
+      class="visualizerPage__video" 
+      autoplay 
+      loop 
+      muted
+      playsinline
+      data-visualizer-video
+    >
+      <source data-video-source type="video/webm">
+      Votre navigateur ne supporte pas la lecture vidéo.
+    </video>
+  </div>
+
+  <script>
+    // Changement du nom du fichier ici.
+    const VISUALIZER_SOURCE = 'visualizer_deadwire.webm';
+
+    const video = document.querySelector('[data-visualizer-video]');
+    const source = document.querySelector('[data-video-source]');
+    
+    if (video && source) {
+      source.src = `../media/visualizer/${VISUALIZER_SOURCE}`;
+      
+      video.load();
+      
+      video.play().catch(err => {
+        console.log('Autoplay bloqué, tentative au premier clic');
+        
+        document.addEventListener('click', () => {
+          video.play();
+        }, { once: true });
+      });
+
+      video.addEventListener('pause', () => {
+        video.play();
+      });
+    }
+  </script>
+</body>
+</html>

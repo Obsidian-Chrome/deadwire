@@ -20,29 +20,14 @@
       height: 100vh;
       display: flex;
       flex-direction: column;
-      padding: 30px 50px;
+      padding: 25px 45px;
       box-sizing: border-box;
-    }
-
-    .tvMenu__header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .tvMenu__title {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #FF2A3D;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin: 0;
-      text-shadow: 0 0 30px rgba(255, 42, 61, 0.6);
     }
 
     .tvMenu__grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      gap: 35px;
       flex: 1;
       overflow: hidden;
     }
@@ -53,13 +38,13 @@
     }
 
     .tvMenu__categoryTitle {
-      font-size: 1.5rem;
+      font-size: 1.65rem;
       font-weight: 700;
       color: #FF2A3D;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin: 0 0 15px 0;
-      padding-bottom: 8px;
+      margin: 0 0 12px 0;
+      padding-bottom: 7px;
       border-bottom: 2px solid rgba(255, 42, 61, 0.3);
       text-shadow: 0 0 20px rgba(255, 42, 61, 0.5);
     }
@@ -67,31 +52,31 @@
     .tvMenu__items {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 7px;
     }
 
     .tvMenuItem {
       background: rgba(255, 42, 61, 0.03);
       border-left: 3px solid rgba(255, 42, 61, 0.4);
-      padding: 10px 14px;
+      padding: 9px 13px;
     }
 
     .tvMenuItem__row {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .tvMenuItem__name {
-      font-size: 1rem;
+      font-size: 1.6rem;
       font-weight: 600;
       color: rgba(255, 255, 255, 0.95);
       letter-spacing: 0.02em;
     }
 
     .tvMenuItem__signature {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       color: #FF2A3D;
       margin-left: 6px;
       opacity: 0.8;
@@ -101,32 +86,28 @@
       display: flex;
       align-items: center;
       gap: 5px;
-      font-size: 1.1rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: #FFD700;
     }
 
     .tvMenuItem__price img {
-      height: 16px;
+      height: 17px;
       width: auto;
       filter: brightness(1.2);
     }
 
     .tvMenuItem__desc {
-      font-size: 0.8rem;
+      font-size: 0.95rem;
       color: rgba(255, 255, 255, 0.65);
-      line-height: 1.3;
+      line-height: 1.25;
       font-style: italic;
-      margin-top: 4px;
+      margin-top: 3px;
     }
   </style>
 </head>
 <body>
   <div class="tvMenu">
-    <div class="tvMenu__header">
-      <h1 class="tvMenu__title">Cocktails & Mocktails</h1>
-    </div>
-
     <div class="tvMenu__grid">
       <div class="tvMenu__column">
         <h2 class="tvMenu__categoryTitle">Cocktails</h2>

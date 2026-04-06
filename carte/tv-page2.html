@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Le Deadwire | Carte TV - Page 2</title>
+  <link rel="icon" href="../media/Deadwire_Logo_Neon.png" type="image/png" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1a0a1f 0%, #0a000c 50%, #1a0a1f 100%);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .tvMenu {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 30px 50px;
+      box-sizing: border-box;
+    }
+
+    .tvMenu__header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .tvMenu__title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #FF2A3D;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin: 0;
+      text-shadow: 0 0 30px rgba(255, 42, 61, 0.6);
+    }
+
+    .tvMenu__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .tvMenu__column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tvMenu__categoryTitle {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #FF2A3D;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 0 0 15px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid rgba(255, 42, 61, 0.3);
+      text-shadow: 0 0 20px rgba(255, 42, 61, 0.5);
+    }
+
+    .tvMenu__items {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tvMenuItem {
+      background: rgba(255, 42, 61, 0.03);
+      border-left: 3px solid rgba(255, 42, 61, 0.4);
+      padding: 12px 16px;
+    }
+
+    .tvMenuItem__row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tvMenuItem__name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.95);
+      letter-spacing: 0.02em;
+    }
+
+    .tvMenuItem__price {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #FFD700;
+    }
+
+    .tvMenuItem__price img {
+      height: 17px;
+      width: auto;
+      filter: brightness(1.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="tvMenu">
+    <div class="tvMenu__header">
+      <h1 class="tvMenu__title">Alcools & Sans Alcools</h1>
+    </div>
+
+    <div class="tvMenu__grid">
+      <div class="tvMenu__column">
+        <h2 class="tvMenu__categoryTitle">Alcools</h2>
+        <div class="tvMenu__items">
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Bière</span>
+              <span class="tvMenuItem__price">8<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Gin</span>
+              <span class="tvMenuItem__price">9<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Vodka</span>
+              <span class="tvMenuItem__price">9<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Tequila</span>
+              <span class="tvMenuItem__price">9<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Rhum</span>
+              <span class="tvMenuItem__price">12<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Cognac</span>
+              <span class="tvMenuItem__price">18<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Eau-de-vie</span>
+              <span class="tvMenuItem__price">11<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Whisky</span>
+              <span class="tvMenuItem__price">16<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Absinthe</span>
+              <span class="tvMenuItem__price">14<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tvMenu__column">
+        <h2 class="tvMenu__categoryTitle">Sans Alcools</h2>
+        <div class="tvMenu__items">
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Eau</span>
+              <span class="tvMenuItem__price">3<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Eau gazeuse</span>
+              <span class="tvMenuItem__price">3<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Sirop</span>
+              <span class="tvMenuItem__price">4<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Limonade</span>
+              <span class="tvMenuItem__price">5<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Jus de fruits</span>
+              <span class="tvMenuItem__price">6<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Café</span>
+              <span class="tvMenuItem__price">5<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Cold brew</span>
+              <span class="tvMenuItem__price">6<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Thé glacé</span>
+              <span class="tvMenuItem__price">5<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">Bubble tea</span>
+              <span class="tvMenuItem__price">8<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

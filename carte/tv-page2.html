@@ -95,140 +95,51 @@
     <div class="tvMenu__grid">
       <div class="tvMenu__column">
         <h2 class="tvMenu__categoryTitle">Alcools</h2>
-        <div class="tvMenu__items">
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Bière</span>
-              <span class="tvMenuItem__price">8<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Gin</span>
-              <span class="tvMenuItem__price">9<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Vodka</span>
-              <span class="tvMenuItem__price">9<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Tequila</span>
-              <span class="tvMenuItem__price">9<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Rhum</span>
-              <span class="tvMenuItem__price">12<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Cognac</span>
-              <span class="tvMenuItem__price">18<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Eau-de-vie</span>
-              <span class="tvMenuItem__price">11<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Whisky</span>
-              <span class="tvMenuItem__price">16<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Absinthe</span>
-              <span class="tvMenuItem__price">14<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-        </div>
+        <div class="tvMenu__items" data-category="alcools"></div>
       </div>
 
       <div class="tvMenu__column">
         <h2 class="tvMenu__categoryTitle">Sans Alcools</h2>
-        <div class="tvMenu__items">
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Eau</span>
-              <span class="tvMenuItem__price">3<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Eau gazeuse</span>
-              <span class="tvMenuItem__price">3<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Sirop</span>
-              <span class="tvMenuItem__price">4<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Limonade</span>
-              <span class="tvMenuItem__price">5<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Jus de fruits</span>
-              <span class="tvMenuItem__price">6<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Café</span>
-              <span class="tvMenuItem__price">5<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Cold brew</span>
-              <span class="tvMenuItem__price">6<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Thé glacé</span>
-              <span class="tvMenuItem__price">5<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-
-          <div class="tvMenuItem">
-            <div class="tvMenuItem__row">
-              <span class="tvMenuItem__name">Bubble tea</span>
-              <span class="tvMenuItem__price">8<img src="../media/gil.webp" alt="Gil" /></span>
-            </div>
-          </div>
-        </div>
+        <div class="tvMenu__items" data-category="sansAlcools"></div>
       </div>
     </div>
   </div>
+
+  <script>
+    // Charge menu.json et génère le contenu dynamiquement
+    async function loadMenu() {
+      try {
+        const response = await fetch('menu.json');
+        const data = await response.json();
+        
+        // Remplir Alcools
+        const alcoholsContainer = document.querySelector('[data-category="alcools"]');
+        alcoholsContainer.innerHTML = data.alcools.map(item => `
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">${item.name}</span>
+              <span class="tvMenuItem__price">${item.price}<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+        `).join('');
+        
+        // Remplir Sans Alcools
+        const sansAlcoolsContainer = document.querySelector('[data-category="sansAlcools"]');
+        sansAlcoolsContainer.innerHTML = data.sansAlcools.map(item => `
+          <div class="tvMenuItem">
+            <div class="tvMenuItem__row">
+              <span class="tvMenuItem__name">${item.name}</span>
+              <span class="tvMenuItem__price">${item.price}<img src="../media/gil.webp" alt="Gil" /></span>
+            </div>
+          </div>
+        `).join('');
+        
+      } catch (error) {
+        console.error('Erreur chargement menu:', error);
+      }
+    }
+    
+    loadMenu();
+  </script>
 </body>
 </html>

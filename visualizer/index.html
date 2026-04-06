@@ -105,20 +105,92 @@
   <script type="module">
     import * as THREE from 'three';
 
-    // ═══════════════════════════════════════════════════════════════
-    const VISUALIZER_SOURCE = 'visualizer_kaia.webm'; // Laisser vide pour afficher le logo + visualizer
-    
-    // Filtre couleur (format: '#FF0000' pour rouge, ou '' pour aucun filtre)
-    const COLOR_FILTER = '';
-    // ═══════════════════════════════════════════════════════════════
-
     const video = document.querySelector('[data-visualizer-video]');
     const source = document.querySelector('[data-video-source]');
     const container = document.querySelector('.visualizerPage');
     const canvas = document.querySelector('[data-visualizer-canvas]');
     const logo = document.querySelector('[data-visualizer-logo]');
 
-    const useVideoMode = VISUALIZER_SOURCE && VISUALIZER_SOURCE.trim() !== '';
+    // ═══════════════════════════════════════════════════════════════
+    // Chargement du planning depuis schedule.json
+    // ═══════════════════════════════════════════════════════════════
+    async function loadSchedule() {
+      try {
+        const response = await fetch('schedule.json');
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        console.error('Erreur chargement schedule.json:', error);
+        return { schedule: [], default: { visualizer: '', colorFilter: '' } };
+      }
+    }
+
+    // Vérifie si l'heure actuelle correspond à une plage horaire
+    function isInTimeRange(startTime, endTime) {
+      const now = new Date();
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
+      
+      const [startHour, startMin] = startTime.split(':').map(Number);
+      const [endHour, endMin] = endTime.split(':').map(Number);
+      
+      const startMinutes = startHour * 60 + startMin;
+      const endMinutes = endHour * 60 + endMin;
+      
+      return currentMinutes >= startMinutes && currentMinutes < endMinutes;
+    }
+
+    // Trouve le visualizer actif selon le planning
+    function getCurrentVisualizer(scheduleData) {
+      const now = new Date();
+      const currentDate = now.toISOString().split('T')[0]; // Format YYYY-MM-DD
+      
+      // Cherche une session active pour aujourd'hui
+      for (const session of scheduleData.schedule) {
+        if (session.date === currentDate && isInTimeRange(session.startTime, session.endTime)) {
+          console.log(`📅 Session active: ${session.name} (${session.date})`);
+          return {
+            visualizer: session.visualizer || '',
+            colorFilter: session.colorFilter || ''
+          };
+        }
+      }
+      
+      // Aucune session active, retourne le défaut
+      console.log(`📅 Aucune session planifiée pour ${currentDate}, affichage par défaut`);
+      return scheduleData.default;
+    }
+
+    // Variable pour tracker le visualizer actuel
+    let currentActiveVisualizer = null;
+
+    // Vérifie si le visualizer a changé et recharge si nécessaire
+    async function checkForChanges() {
+      const scheduleData = await loadSchedule();
+      const config = getCurrentVisualizer(scheduleData);
+      const newVisualizer = config.visualizer || 'default';
+      
+      if (currentActiveVisualizer !== null && currentActiveVisualizer !== newVisualizer) {
+        console.log(`🔄 Changement détecté: ${currentActiveVisualizer} → ${newVisualizer}`);
+        console.log('🔄 Rechargement de la page...');
+        location.reload();
+      }
+    }
+
+    // Initialise la page avec le planning
+    async function init() {
+      const scheduleData = await loadSchedule();
+      const config = getCurrentVisualizer(scheduleData);
+      
+      const VISUALIZER_SOURCE = config.visualizer;
+      const COLOR_FILTER = config.colorFilter;
+      
+      // Stocke le visualizer actuel
+      currentActiveVisualizer = VISUALIZER_SOURCE || 'default';
+      
+      // Vérifie toutes les 30 secondes si le planning a changé
+      setInterval(checkForChanges, 30000);
+      
+      const useVideoMode = VISUALIZER_SOURCE && VISUALIZER_SOURCE.trim() !== '';
     
     if (useVideoMode) {
       // Mode vidéo
@@ -259,6 +331,10 @@
 
       animate();
     }
+    }
+
+    // Démarre l'application
+    init();
   </script>
 </body>
 </html>

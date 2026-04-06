@@ -116,6 +116,7 @@
     { "name": "Gin", "price": 9 },
     { "name": "Vodka", "price": 9 },
     { "name": "Tequila", "price": 9 },
+    { "name": "Saké", "price": 10},
     { "name": "Rhum", "price": 12 },
     { "name": "Cognac", "price": 18 },
     { "name": "Eau-de-vie", "price": 11 },

@@ -9,11 +9,19 @@
       "colorFilter": ""
     },
     {
+      "name": "Test Ghostline",
+      "date": "2026-04-10",
+      "startTime": "05:00",
+      "endTime": "06:00",
+      "visualizer": "visualizer_ghostline.webm",
+      "colorFilter": ""
+    },
+    {
       "name": "Concert Ghotsline",
       "date": "2026-04-20",
       "startTime": "18:00",
       "endTime": "23:59",
-      "visualizer": "visualizer_deadwire.webm",
+      "visualizer": "visualizer_ghostline.webm",
       "colorFilter": ""
     }
   ],

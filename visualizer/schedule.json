@@ -9,11 +9,11 @@
       "colorFilter": ""
     },
     {
-      "name": "Test Ghostline",
-      "date": "2026-04-10",
-      "startTime": "05:00",
-      "endTime": "06:00",
-      "visualizer": "visualizer_ghostline.webm",
+      "name": "Concert HeX",
+      "date": "2026-04-13",
+      "startTime": "18:00",
+      "endTime": "23:59",
+      "visualizer": "visualizer_hex.webm",
       "colorFilter": ""
     },
     {
@@ -22,6 +22,14 @@
       "startTime": "18:00",
       "endTime": "23:59",
       "visualizer": "visualizer_ghostline.webm",
+      "colorFilter": ""
+    },
+    {
+      "name": "Concert HeX",
+      "date": "2026-05-18",
+      "startTime": "18:00",
+      "endTime": "23:59",
+      "visualizer": "visualizer_hex.webm",
       "colorFilter": ""
     }
   ],

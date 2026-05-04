@@ -109,6 +109,12 @@
       "signature": "Sosyn",
       "price": 13,
       "description": "Jus de pomme, jus de citron, sirop de sucre, eau pétillante."
+    },
+    {
+      "name": "Placebo",
+      "signature": "HeX",
+      "price": 15,
+      "description": "Thé noir corsé, jus de citron, sirop d'érable, extrait de vanille, pincée de canelle, zeste d'orange."
     }
   ],
   "alcools": [

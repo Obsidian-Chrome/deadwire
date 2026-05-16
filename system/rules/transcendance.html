@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Transcendance | Deadwire RPG</title>
+<link rel="icon" href="../../media/Deadwire_Logo_Neon.png" type="image/png"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="../../styles.css"/>
+<link rel="stylesheet" href="../system.css"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="../../app.js"></script>
+<script defer src="../../radio.js"></script>
+<script defer src="../auth.js"></script>
+<script defer src="../supabase-config.js"></script>
+</head>
+<body>
+<header class="topbar" data-topbar>
+<a class="brand" href="/"><img class="brand__logo" src="../../media/Deadwire_Logo_Neon.png" alt="Logo"/><img class="brand__txt" src="../../media/Deadwire_Txt.png" alt="Le Deadwire"/></a>
+<button class="navToggle" type="button" data-nav-toggle><span class="navToggle__bar"></span><span class="navToggle__bar"></span><span class="navToggle__bar"></span></button>
+<nav class="nav" data-nav>
+<a class="nav__link" href="/" data-nav-link><i class="fa-solid fa-house"></i> Accueil</a>
+<a class="nav__link" href="/carte" data-nav-link><i class="fa-solid fa-martini-glass-citrus"></i> Carte</a>
+<a class="nav__link" href="/programme" data-nav-link><i class="fa-solid fa-calendar-days"></i> Programme</a>
+<a class="nav__link" href="/equipe" data-nav-link><i class="fa-solid fa-users"></i> L'équipe</a>
+<a class="nav__link" href="https://w2g.tv/?r=0a6deu9ljpivxv10fp" target="_blank" data-nav-link><img src="../../media/w2g_logo.png" alt="W2G" style="height:0.95em;vertical-align:middle;margin-right:8px;filter:brightness(0) invert(1) opacity(0.7);"/> Watch2Gether</a>
+<a class="nav__link" href="https://discord.gg/QC6CEGcpgq" target="_blank" data-nav-link><i class="fa-brands fa-discord"></i> Discord</a>
+</nav>
+<div class="userInfo" data-user-info style="display:none;">
+<img class="userInfo__avatar" data-user-avatar alt="Avatar"/>
+<span class="userInfo__name" data-user-name></span>
+<button class="userInfo__logout" data-logout>Déconnexion</button>
+</div>
+<div class="radioBar" data-radio-bar>
+<button class="radioBar__toggle" data-radio-toggle><i class="fa-solid fa-chevron-left"></i></button>
+<button class="radioBar__play" data-radio-play><i class="fa-solid fa-play"></i></button>
+<div class="radioBar__info"><span class="radioBar__track" data-radio-title">Radio Deadwire</span></div>
+<div class="radioBar__volume"><input type="range" min="0" max="1" step="0.01" value="0.2" data-radio-volume/></div>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="hero__bg"></div>
+<div class="hero__content">
+<div class="authGate" data-auth-gate>
+<div class="authGate__content">
+<i class="fa-solid fa-dice-d20" style="font-size:4em;margin-bottom:24px;color:rgba(255,42,61,0.8);"></i>
+<h1 class="title title--sm">Système de jeu Deadwire</h1>
+<p class="lead" style="max-width:600px;margin:24px auto;">Connectez-vous avec Discord pour accéder à la documentation.</p>
+<button class="btn btn--primary" data-discord-login><i class="fa-brands fa-discord"></i> Se connecter avec Discord</button>
+</div>
+</div>
+<div class="systemContent" data-system-content style="display:none;">
+<section class="pageHero">
+<div class="container">
+<p class="kicker">Documentation</p>
+<h1 class="title title--sm">Transcendance</h1>
+<div style="margin-top:24px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+<a href="../rules.html" class="btn btn--sm btn--secondary"><i class="fa-solid fa-home"></i> Accueil</a>
+<a href="systeme.html" class="btn btn--sm btn--secondary">Système D10</a>
+<a href="creation.html" class="btn btn--sm btn--secondary">Création</a>
+<a href="xp.html" class="btn btn--sm btn--secondary">XP & Niveaux</a>
+<a href="talents.html" class="btn btn--sm btn--secondary">Talents</a>
+<a href="classes.html" class="btn btn--sm btn--secondary">Classes</a>
+<a href="equipement.html" class="btn btn--sm btn--secondary">Équipement</a>
+<a href="transcendance.html" class="btn btn--sm btn--primary">Transcendance</a>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="container" style="max-width:1200px;">
+
+<div class="docSection">
+<h3 class="docSection__title">Transcendance</h3>
+<div class="docSection__content">
+<p>La transcendance est une mécanique similaire à celle de FFXIV où le personnage peut dépasser ses limites avec un contrecoup derrière.</p>
+
+<p>Un PJ peut avoir jusqu'à <strong>3 techniques</strong>. Toutes les trois sont régies par la barre de transcendance et l'utilisation de ces techniques videra celle-ci.</p>
+<p>Plus la technique est puissante, plus il faudra que la jauge soit pleine.</p>
+
+<h4>Remplir la jauge</h4>
+<p>Remplir la jauge nécessite de :</p>
+<ul>
+<li>Toucher un ennemi</li>
+<li>Soigner / supporter un allié</li>
+<li>Prendre des dégâts</li>
+</ul>
+<p>À chaque fois qu'une action de ce type est faite / subie, cliquez sur le + à côté de la jauge.</p>
+
+<h4>Malus de Transcendance</h4>
+<p>Quand un PJ consomme sa transcendance, il aura un <strong>malus à tous ses jets</strong> pour le restant de la scène :</p>
+
+<div style="background:rgba(255,42,61,0.08);padding:16px;border-radius:8px;margin:16px 0;">
+<ul>
+<li><strong>Transcendance 1</strong> : -1 partout</li>
+<li><strong>Transcendance 2</strong> : -3 partout</li>
+<li><strong>Transcendance 3</strong> : -5 partout</li>
+</ul>
+</div>
+
+<h4>Déblocage</h4>
+<p>Les trois paliers de transcendance se débloquent au <strong>niveau 3, 6 et 9</strong>.</p>
+</div>
+</div>
+
+</div>
+</section>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container"><p>&copy; 2025 Le Deadwire. Tous droits réservés.</p></div>
+</footer>
+<script src="../system.js"></script>
+</body>
+</html>

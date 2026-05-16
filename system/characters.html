@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mes Personnages | Deadwire RPG</title>
+  <link rel="icon" href="../media/Deadwire_Logo_Neon.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="system.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="../app.js"></script>
+  <script defer src="../radio.js"></script>
+  <script defer src="auth.js"></script>
+  <script defer src="supabase-config.js"></script>
+</head>
+<body>
+  <header class="topbar" data-topbar>
+    <a class="brand" href="/" aria-label="Aller à l'accueil">
+      <img class="brand__logo" src="../media/Deadwire_Logo_Neon.png" alt="Logo néon du Deadwire" />
+      <img class="brand__txt" src="../media/Deadwire_Txt.png" alt="Le Deadwire" />
+    </a>
+
+    <button class="navToggle" type="button" data-nav-toggle aria-label="Ouvrir le menu" aria-expanded="false">
+      <span class="navToggle__bar"></span>
+      <span class="navToggle__bar"></span>
+      <span class="navToggle__bar"></span>
+    </button>
+
+    <nav class="nav" data-nav>
+      <a class="nav__link" href="/" data-nav-link><i class="fa-solid fa-house" aria-hidden="true"></i> Accueil</a>
+      <a class="nav__link" href="/carte" data-nav-link><i class="fa-solid fa-martini-glass-citrus" aria-hidden="true"></i> Carte</a>
+      <a class="nav__link" href="/programme" data-nav-link><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Programme</a>
+      <a class="nav__link" href="/equipe" data-nav-link><i class="fa-solid fa-users" aria-hidden="true"></i> L'équipe</a>
+      <a class="nav__link" href="https://w2g.tv/?r=0a6deu9ljpivxv10fp" target="_blank" rel="noopener noreferrer" data-nav-link><img src="../media/w2g_logo.png" alt="Watch2Gether" style="height: 0.95em; vertical-align: middle; margin-right: 8px; filter: brightness(0) invert(1) opacity(0.7);" /> Watch2Gether</a>
+      <a class="nav__link" href="https://discord.gg/QC6CEGcpgq" target="_blank" rel="noopener noreferrer" data-nav-link><i class="fa-brands fa-discord" aria-hidden="true"></i> Discord</a>
+    </nav>
+
+    <div class="userInfo" data-user-info style="display: none;">
+      <img class="userInfo__avatar" data-user-avatar alt="Avatar" />
+      <span class="userInfo__name" data-user-name></span>
+      <button class="userInfo__logout" data-logout>Déconnexion</button>
+    </div>
+
+    <div class="radioBar" data-radio-bar>
+      <button class="radioBar__toggle" data-radio-toggle aria-label="Ouvrir/Fermer la radio">
+        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <button class="radioBar__play" data-radio-play aria-label="Lecture">
+        <i class="fa-solid fa-play" aria-hidden="true"></i>
+      </button>
+      <div class="radioBar__info">
+        <span class="radioBar__track" data-radio-title>Radio Deadwire</span>
+      </div>
+      <div class="radioBar__volume">
+        <input type="range" min="0" max="1" step="0.01" value="0.2" data-radio-volume aria-label="Volume" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__content">
+        
+        <div class="authGate" data-auth-gate>
+          <div class="authGate__content">
+            <i class="fa-solid fa-dice-d20" style="font-size: 4em; margin-bottom: 24px; color: rgba(255, 42, 61, 0.8);"></i>
+            <h1 class="title title--sm">Système de jeu Deadwire</h1>
+            <p class="lead" style="max-width: 600px; margin: 24px auto;">
+              Connectez-vous avec Discord pour accéder à vos fiches personnages.
+            </p>
+            <button class="btn btn--primary" data-discord-login>
+              <i class="fa-brands fa-discord"></i> Se connecter avec Discord
+            </button>
+          </div>
+        </div>
+
+        <div class="systemContent" data-system-content style="display: none;">
+          
+          <section class="pageHero">
+            <div class="container">
+              <p class="kicker">Système de jeu</p>
+              <h1 class="title title--sm">Mes fiches personnages</h1>
+              <p class="lead">Gérez vos personnages du jeu de rôle Deadwire</p>
+              
+              <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: center;">
+                <a href="rules.html" class="btn btn--secondary">
+                  <i class="fa-solid fa-book"></i> Règles
+                </a>
+                <a href="characters.html" class="btn btn--primary">
+                  <i class="fa-solid fa-id-card"></i> Mes personnages
+                </a>
+                <a href="gm.html" class="btn btn--secondary" data-gm-only style="display: none;">
+                  <i class="fa-solid fa-crown"></i> Vue MJ
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <div style="max-width: 2600px; margin: 0 auto; padding: 0 300px;">
+              
+              <div class="characterListView" data-character-list-view>
+                <div style="margin-bottom: 24px;">
+                  <button class="btn btn--primary" data-new-character>
+                    <i class="fa-solid fa-plus"></i> Nouveau personnage
+                  </button>
+                </div>
+
+                <div class="characterList" data-character-list>
+                  <div class="emptyState">
+                    <i class="fa-solid fa-user-plus" style="font-size: 3em; opacity: 0.3; margin-bottom: 16px;"></i>
+                    <p>Chargement de vos personnages...</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="characterSheetView" data-character-sheet style="display: none;">
+                <div class="characterSheet__header">
+                  <div>
+                    <button class="btn btn--secondary btn--sm" data-back-to-list>
+                      <i class="fa-solid fa-arrow-left"></i> Retour à la liste
+                    </button>
+                  </div>
+                  <h2 class="characterSheet__title">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span data-sheet-title>Nouvelle fiche</span>
+                  </h2>
+                  <div></div>
+                </div>
+
+                <div class="characterSheet__body">
+                  
+                  <div class="characterSheet__left">
+                    <div class="characterStats">
+                      <div class="formGroup">
+                        <label>Avatar (URL image)</label>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                          <input type="url" class="formInput" data-char-avatar-url placeholder="https://..." style="flex: 1;" />
+                          <button class="btn btn--sm btn--secondary" data-preview-avatar style="padding: 8px 12px;">
+                            <i class="fa-solid fa-eye"></i>
+                          </button>
+                        </div>
+                        <div class="avatarPreview" data-avatar-preview>
+                          <img data-avatar-img alt="Avatar preview" style="display: none;" />
+                          <i class="fa-solid fa-user avatarPreview__placeholder" data-avatar-placeholder></i>
+                        </div>
+                      </div>
+
+                      <div class="formGroup">
+                        <label>Nom du personnage</label>
+                        <input type="text" class="formInput" data-char-name placeholder="Entrez le nom..." />
+                      </div>
+
+                      <div class="formGroup">
+                        <label>Classe</label>
+                        <select class="formInput" data-char-class>
+                          <option value="">Sélectionner...</option>
+                          <option value="astromancien">Astromancien</option>
+                          <option value="barde">Barde</option>
+                          <option value="chevalier_dragon">Chevalier Dragon</option>
+                          <option value="chevalier_noir">Chevalier Noir</option>
+                          <option value="danseur">Danseur</option>
+                          <option value="erudit">Érudit</option>
+                          <option value="faucheur">Faucheur</option>
+                          <option value="guerrier">Guerrier</option>
+                          <option value="invocateur">Invocateur</option>
+                          <option value="machiniste">Machiniste</option>
+                          <option value="mage_blanc">Mage Blanc</option>
+                          <option value="mage_bleu">Mage Bleu</option>
+                          <option value="mage_noir">Mage Noir</option>
+                          <option value="mage_rouge">Mage Rouge</option>
+                          <option value="moine">Moine</option>
+                          <option value="ninja">Ninja</option>
+                          <option value="paladin">Paladin</option>
+                          <option value="pictomancien">Pictomancien</option>
+                          <option value="pistosabreur">Pistosabreur</option>
+                          <option value="rodeur_vipere">Rôdeur Vipère</option>
+                          <option value="samourai">Samouraï</option>
+                        </select>
+                      </div>
+
+                      <div class="formGroup" style="text-align: center;">
+                        <div style="display: flex; align-items: center; gap: 12px; justify-content: center;">
+                          <label style="margin: 0;">Niveau</label>
+                          <input type="number" class="formInput" data-char-level min="1" max="10" value="1" style="width: 60px; text-align: center;" />
+                        </div>
+                      </div>
+
+                      <div class="statBlock">
+                        <div class="formGroup" style="text-align: center;">
+                        <label style="display: block; margin-bottom: 8px;">PV</label>
+                        <div style="display: flex; gap: 8px; align-items: center; justify-content: center;">
+                          <input type="number" class="formInput" data-hp-current min="0" style="width: 60px; text-align: center;" />
+                          <span style="color: rgba(255, 255, 255, 0.5);">/</span>
+                          <span style="color: rgba(255, 255, 255, 0.9); font-weight: 700; font-size: 1em; min-width: 30px;" data-hp-max>0</span>
+                        </div>
+                        <div class="hpControls" style="justify-content: center;">
+                          <button class="hpControls__btn" data-hp-decrease>−</button>
+                          <input type="number" class="hpControls__input" data-hp-delta value="1" min="1" style="width: 50px;" />
+                          <button class="hpControls__btn" data-hp-increase>+</button>
+                        </div>
+                        <div class="woundStatus" data-wound-status style="display: none; margin-top: 8px; justify-content: center;">
+                          <span class="woundStatus__text" data-wound-text></span>
+                          <div class="woundStatus__info">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <div class="woundStatus__tooltip" data-wound-tooltip></div>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+
+                      <div class="statBlock">
+                        <div class="statLine">
+                          <label>Armure</label>
+                          <span class="statLine__value" data-char-armor>0</span>
+                          <input type="number" class="statLine__bonus" data-char-armor-bonus value="0" min="-10" max="10" placeholder="+0" />
+                        </div>
+
+                        <div class="statLine">
+                          <label>Parade</label>
+                          <span class="statLine__value" data-char-parry>0</span>
+                          <input type="number" class="statLine__bonus" data-char-parry-bonus value="0" min="-10" max="10" placeholder="+0" />
+                        </div>
+
+                        <div class="statLine">
+                          <label>Volonté</label>
+                          <span class="statLine__value" data-char-will>0</span>
+                          <input type="number" class="statLine__bonus" data-char-will-bonus value="0" min="-10" max="10" placeholder="+0" />
+                        </div>
+
+                        <div class="statLine">
+                          <label>Initiative</label>
+                          <span class="statLine__value" data-char-initiative>0</span>
+                          <input type="number" class="statLine__bonus" data-char-initiative-bonus value="0" min="-10" max="10" placeholder="+0" />
+                        </div>
+
+                        <div class="statLine">
+                          <label>Esquive</label>
+                          <span class="statLine__value" data-char-dodge>0</span>
+                          <input type="number" class="statLine__bonus" data-char-dodge-bonus value="0" min="-10" max="10" placeholder="+0" />
+                        </div>
+
+                        <div class="statLine">
+                          <label>Course</label>
+                          <span class="statLine__value" data-char-run>0</span>
+                          <input type="number" class="statLine__bonus" data-char-run-bonus value="0" min="-10" max="10" placeholder="+0" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="characterSheet__right">
+                    <div class="characterTabs">
+                      <div class="characterTabs__nav">
+                        <button class="characterTabs__tab characterTabs__tab--active" data-tab="general">Général</button>
+                        <button class="characterTabs__tab" data-tab="spells">Sorts</button>
+                        <button class="characterTabs__tab" data-tab="talents">Talents</button>
+                        <button class="characterTabs__tab" data-tab="implants">Implants</button>
+                        <button class="characterTabs__tab" data-tab="equipment">Équipement</button>
+                        <button class="characterTabs__tab" data-tab="info">Infos</button>
+                      </div>
+
+                      <div class="characterTabs__content">
+                        <div class="characterTabs__panel characterTabs__panel--active" data-panel="general">
+                          
+                          <div class="generalSection">
+                            <h3 class="generalSection__title">Attributs</h3>
+                            
+                            <div class="attributesGrid">
+                              
+                              <!-- Physique -->
+                              <div class="attributeCategory">
+                                <h4 class="attributeCategory__title">Physique</h4>
+                                
+                                <div class="attribute">
+                                  <div class="attribute__header">
+                                    <label class="attribute__mastery">
+                                      <input type="checkbox" data-attr-mastery="force" />
+                                      <span>Force</span>
+                                    </label>
+                                  </div>
+                                  <div class="attribute__values">
+                                    <div class="attribute__line">
+                                      <span class="attribute__result" data-attr-result="force">1</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr="force" value="1" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-bonus="force" value="0" min="-10" max="10" />
+                                    </div>
+                                    <div class="attribute__line attribute__line--epic">
+                                      <span class="attribute__result" data-attr-epic-result="force">0</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr-epic="force" value="0" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-epic-bonus="force" value="0" min="-10" max="10" />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="attribute">
+                                  <div class="attribute__header">
+                                    <label class="attribute__mastery">
+                                      <input type="checkbox" data-attr-mastery="dexterite" />
+                                      <span>Dextérité</span>
+                                    </label>
+                                  </div>
+                                  <div class="attribute__values">
+                                    <div class="attribute__line">
+                                      <span class="attribute__result" data-attr-result="dexterite">1</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr="dexterite" value="1" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-bonus="dexterite" value="0" min="-10" max="10" />
+                                    </div>
+                                    <div class="attribute__line attribute__line--epic">
+                                      <span class="attribute__result" data-attr-epic-result="dexterite">0</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr-epic="dexterite" value="0" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-epic-bonus="dexterite" value="0" min="-10" max="10" />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="attribute">
+                                  <div class="attribute__header">
+                                    <label class="attribute__mastery">
+                                      <input type="checkbox" data-attr-mastery="vigueur" />
+                                      <span>Vigueur</span>
+                                    </label>
+                                  </div>
+                                  <div class="attribute__values">
+                                    <div class="attribute__line">
+                                      <span class="attribute__result" data-attr-result="vigueur">1</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr="vigueur" value="1" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-bonus="vigueur" value="0" min="-10" max="10" />
+                                    </div>
+                                    <div class="attribute__line attribute__line--epic">
+                                      <span class="attribute__result" data-attr-epic-result="vigueur">0</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr-epic="vigueur" value="0" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-epic-bonus="vigueur" value="0" min="-10" max="10" />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- Social -->
+                              <div class="attributeCategory">
+                                <h4 class="attributeCategory__title">Social</h4>
+                                
+                                <div class="attribute">
+                                  <div class="attribute__header">
+                                    <label class="attribute__mastery">
+                                      <input type="checkbox" data-attr-mastery="charisme" />
+                                      <span>Charisme</span>
+                                    </label>
+                                  </div>
+                                  <div class="attribute__values">
+                                    <div class="attribute__line">
+                                      <span class="attribute__result" data-attr-result="charisme">1</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr="charisme" value="1" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-bonus="charisme" value="0" min="-10" max="10" />
+                                    </div>
+                                    <div class="attribute__line attribute__line--epic">
+                                      <span class="attribute__result" data-attr-epic-result="charisme">0</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr-epic="charisme" value="0" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-epic-bonus="charisme" value="0" min="-10" max="10" />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="attribute">
+                                  <div class="attribute__header">
+                                    <label class="attribute__mastery">
+                                      <input type="checkbox" data-attr-mastery="manipulation" />
+                                      <span>Manipulation</span>
+                                    </label>
+                                  </div>
+                                  <div class="attribute__values">
+                                    <div class="attribute__line">
+                                      <span class="attribute__result" data-attr-result="manipulation">1</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr="manipulation" value="1" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-bonus="manipulation" value="0" min="-10" max="10" />
+                                    </div>
+                                    <div class="attribute__line attribute__line--epic">
+                                      <span class="attribute__result" data-attr-epic-result="manipulation">0</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr-epic="manipulation" value="0" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-epic-bonus="manipulation" value="0" min="-10" max="10" />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="attribute">
+                                  <div class="attribute__header">
+                                    <label class="attribute__mastery">
+                                      <input type="checkbox" data-attr-mastery="apparence" />
+                                      <span>Apparence</span>
+                                    </label>
+                                  </div>
+                                  <div class="attribute__values">
+                                    <div class="attribute__line">
+                                      <span class="attribute__result" data-attr-result="apparence">1</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr="apparence" value="1" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-bonus="apparence" value="0" min="-10" max="10" />
+                                    </div>
+                                    <div class="attribute__line attribute__line--epic">
+                                      <span class="attribute__result" data-attr-epic-result="apparence">0</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr-epic="apparence" value="0" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-epic-bonus="apparence" value="0" min="-10" max="10" />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- Mental -->
+                              <div class="attributeCategory">
+                                <h4 class="attributeCategory__title">Mental</h4>
+                                
+                                <div class="attribute">
+                                  <div class="attribute__header">
+                                    <label class="attribute__mastery">
+                                      <input type="checkbox" data-attr-mastery="perception" />
+                                      <span>Perception</span>
+                                    </label>
+                                  </div>
+                                  <div class="attribute__values">
+                                    <div class="attribute__line">
+                                      <span class="attribute__result" data-attr-result="perception">1</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr="perception" value="1" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-bonus="perception" value="0" min="-10" max="10" />
+                                    </div>
+                                    <div class="attribute__line attribute__line--epic">
+                                      <span class="attribute__result" data-attr-epic-result="perception">0</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr-epic="perception" value="0" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-epic-bonus="perception" value="0" min="-10" max="10" />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="attribute">
+                                  <div class="attribute__header">
+                                    <label class="attribute__mastery">
+                                      <input type="checkbox" data-attr-mastery="intelligence" />
+                                      <span>Intelligence</span>
+                                    </label>
+                                  </div>
+                                  <div class="attribute__values">
+                                    <div class="attribute__line">
+                                      <span class="attribute__result" data-attr-result="intelligence">1</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr="intelligence" value="1" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-bonus="intelligence" value="0" min="-10" max="10" />
+                                    </div>
+                                    <div class="attribute__line attribute__line--epic">
+                                      <span class="attribute__result" data-attr-epic-result="intelligence">0</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr-epic="intelligence" value="0" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-epic-bonus="intelligence" value="0" min="-10" max="10" />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="attribute">
+                                  <div class="attribute__header">
+                                    <label class="attribute__mastery">
+                                      <input type="checkbox" data-attr-mastery="astuce" />
+                                      <span>Astuce</span>
+                                    </label>
+                                  </div>
+                                  <div class="attribute__values">
+                                    <div class="attribute__line">
+                                      <span class="attribute__result" data-attr-result="astuce">1</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr="astuce" value="1" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-bonus="astuce" value="0" min="-10" max="10" />
+                                    </div>
+                                    <div class="attribute__line attribute__line--epic">
+                                      <span class="attribute__result" data-attr-epic-result="astuce">0</span>
+                                      <span>=</span>
+                                      <input type="number" class="attribute__input" data-attr-epic="astuce" value="0" min="0" max="10" />
+                                      <span>+</span>
+                                      <input type="number" class="attribute__bonus" data-attr-epic-bonus="astuce" value="0" min="-10" max="10" />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+
+                          <div class="generalSection">
+                            <h3 class="generalSection__title">Compétences</h3>
+                            
+                            <div class="skillsGrid">
+                              
+                              <!-- Column 1 -->
+                              <div class="skillsColumn">
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="animaux" />
+                                    <span>Animaux</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="animaux">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="animaux" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="animaux" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="artisanat" />
+                                    <span>Artisanat</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="artisanat">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="artisanat" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="artisanat" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="athletisme" />
+                                    <span>Athlétisme</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="athletisme">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="athletisme" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="athletisme" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="conscience" />
+                                    <span>Conscience</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="conscience">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="conscience" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="conscience" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="culture" />
+                                    <span>Culture</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="culture">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="culture" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="culture" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="distance" />
+                                    <span>Distance</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="distance">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="distance" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="distance" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="discretion" />
+                                    <span>Discrétion</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="discretion">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="discretion" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="discretion" value="0" min="-10" max="10" />
+                                </div>
+                              </div>
+
+                              <!-- Column 2 -->
+                              <div class="skillsColumn">
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="empathie" />
+                                    <span>Empathie</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="empathie">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="empathie" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="empathie" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="enquete" />
+                                    <span>Enquête</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="enquete">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="enquete" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="enquete" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="etherologie" />
+                                    <span>Étherologie</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="etherologie">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="etherologie" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="etherologie" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="larcin" />
+                                    <span>Larcin</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="larcin">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="larcin" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="larcin" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="medecine" />
+                                    <span>Médecine</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="medecine">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="medecine" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="medecine" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="melee" />
+                                    <span>Mêlée</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="melee">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="melee" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="melee" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="persuasion" />
+                                    <span>Persuasion</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="persuasion">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="persuasion" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="persuasion" value="0" min="-10" max="10" />
+                                </div>
+                              </div>
+
+                              <!-- Column 3 -->
+                              <div class="skillsColumn">
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="pilotage" />
+                                    <span>Pilotage</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="pilotage">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="pilotage" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="pilotage" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="presence" />
+                                    <span>Présence</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="presence">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="presence" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="presence" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="resistance" />
+                                    <span>Résistance</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="resistance">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="resistance" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="resistance" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="technologie" />
+                                    <span>Technologie</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="technologie">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="technologie" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="technologie" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="netrun" />
+                                    <span>Netrun</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="netrun">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="netrun" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="netrun" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="survie" />
+                                    <span>Survie</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="survie">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="survie" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="survie" value="0" min="-10" max="10" />
+                                </div>
+
+                                <div class="skill">
+                                  <label class="skill__mastery">
+                                    <input type="checkbox" data-skill-mastery="vigilance" />
+                                    <span>Vigilance</span>
+                                  </label>
+                                  <span class="skill__result" data-skill-result="vigilance">0</span>
+                                  <span class="skill__eq">=</span>
+                                  <input type="number" class="skill__input" data-skill="vigilance" value="0" min="0" max="5" />
+                                  <span class="skill__plus">+</span>
+                                  <input type="number" class="skill__bonus" data-skill-bonus="vigilance" value="0" min="-10" max="10" />
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+
+                          <div class="generalSection">
+                            <h3 class="generalSection__title">Actions</h3>
+                            
+                            <div class="actionsGrid">
+                              <!-- Column 1 -->
+                              <div class="actionsColumn">
+                                <div class="action">
+                                  <label>Mêlée FOR</label>
+                                  <span class="action__value" data-action-melee-for>0</span>
+                                  <input type="number" class="action__bonus" data-action-melee-for-bonus value="0" min="-10" max="10" placeholder="+0" />
+                                </div>
+
+                                <div class="action">
+                                  <label>Mêlée DEX</label>
+                                  <span class="action__value" data-action-melee-dex>0</span>
+                                  <input type="number" class="action__bonus" data-action-melee-dex-bonus value="0" min="-10" max="10" placeholder="+0" />
+                                </div>
+                              </div>
+
+                              <!-- Column 2 -->
+                              <div class="actionsColumn">
+                                <div class="action">
+                                  <label>Distance FOR</label>
+                                  <span class="action__value" data-action-distance-for>0</span>
+                                  <input type="number" class="action__bonus" data-action-distance-for-bonus value="0" min="-10" max="10" placeholder="+0" />
+                                </div>
+
+                                <div class="action">
+                                  <label>Distance DEX</label>
+                                  <span class="action__value" data-action-distance-dex>0</span>
+                                  <input type="number" class="action__bonus" data-action-distance-dex-bonus value="0" min="-10" max="10" placeholder="+0" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <div class="characterTabs__panel" data-panel="spells">
+                          <p style="opacity: 0.5;">Contenu Sorts à venir...</p>
+                        </div>
+
+                        <div class="characterTabs__panel" data-panel="talents">
+                          <p style="opacity: 0.5;">Contenu Talents/Particularités à venir...</p>
+                        </div>
+
+                        <div class="characterTabs__panel" data-panel="implants">
+                          <p style="opacity: 0.5;">Contenu Implants à venir...</p>
+                        </div>
+
+                        <div class="characterTabs__panel" data-panel="equipment">
+                          <p style="opacity: 0.5;">Contenu Équipement/Inventaire à venir...</p>
+                        </div>
+
+                        <div class="characterTabs__panel" data-panel="info">
+                          <p style="opacity: 0.5;">Contenu Infos à venir...</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="characterSheet__footer">
+                  <button class="btn btn--secondary" data-back-to-list>Annuler</button>
+                  <button class="btn btn--primary" data-sheet-save>
+                    <i class="fa-solid fa-save"></i> Enregistrer
+                  </button>
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Le Deadwire. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="system.js"></script>
+</body>
+</html>

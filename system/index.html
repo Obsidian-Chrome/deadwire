@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Le Deadwire | Système de jeu</title>
+  <link rel="icon" href="../media/Deadwire_Logo_Neon.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="system.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="../app.js"></script>
+  <script defer src="../radio.js"></script>
+  <script defer src="auth.js"></script>
+  <script defer src="supabase-config.js"></script>
+</head>
+<body>
+  <header class="topbar" data-topbar>
+    <a class="brand" href="/" aria-label="Aller à l'accueil">
+      <img class="brand__logo" src="../media/Deadwire_Logo_Neon.png" alt="Logo néon du Deadwire" />
+      <img class="brand__txt" src="../media/Deadwire_Txt.png" alt="Le Deadwire" />
+    </a>
+
+    <button class="navToggle" type="button" data-nav-toggle aria-label="Ouvrir le menu" aria-expanded="false">
+      <span class="navToggle__bar"></span>
+      <span class="navToggle__bar"></span>
+      <span class="navToggle__bar"></span>
+    </button>
+
+    <nav class="nav" data-nav>
+      <a class="nav__link" href="/" data-nav-link><i class="fa-solid fa-house" aria-hidden="true"></i> Accueil</a>
+      <a class="nav__link" href="/carte" data-nav-link><i class="fa-solid fa-martini-glass-citrus" aria-hidden="true"></i> Carte</a>
+      <a class="nav__link" href="/programme" data-nav-link><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Programme</a>
+      <a class="nav__link" href="/equipe" data-nav-link><i class="fa-solid fa-users" aria-hidden="true"></i> L'équipe</a>
+      <a class="nav__link" href="https://w2g.tv/?r=0a6deu9ljpivxv10fp" target="_blank" rel="noopener noreferrer" data-nav-link><img src="../media/w2g_logo.png" alt="Watch2Gether" style="height: 0.95em; vertical-align: middle; margin-right: 8px; filter: brightness(0) invert(1) opacity(0.7);" /> Watch2Gether</a>
+      <a class="nav__link" href="https://discord.gg/QC6CEGcpgq" target="_blank" rel="noopener noreferrer" data-nav-link><i class="fa-brands fa-discord" aria-hidden="true"></i> Discord</a>
+    </nav>
+
+    <div class="userInfo" data-user-info style="display: none;">
+      <img class="userInfo__avatar" data-user-avatar alt="Avatar" />
+      <span class="userInfo__name" data-user-name></span>
+      <button class="userInfo__logout" data-logout>Déconnexion</button>
+    </div>
+
+    <div class="radioBar" data-radio-bar>
+      <button class="radioBar__toggle" data-radio-toggle aria-label="Ouvrir/Fermer la radio">
+        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <button class="radioBar__play" data-radio-play aria-label="Lecture">
+        <i class="fa-solid fa-play" aria-hidden="true"></i>
+      </button>
+      <div class="radioBar__info">
+        <span class="radioBar__track" data-radio-title>Radio Deadwire</span>
+      </div>
+      <div class="radioBar__volume">
+        <input type="range" min="0" max="1" step="0.01" value="0.2" data-radio-volume aria-label="Volume" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__content">
+        
+        <div class="authGate" data-auth-gate>
+          <div class="authGate__content">
+            <i class="fa-solid fa-dice-d20" style="font-size: 4em; margin-bottom: 24px; color: rgba(255, 42, 61, 0.8);"></i>
+            <h1 class="title title--sm">Système de jeu Deadwire</h1>
+            <p class="lead" style="max-width: 600px; margin: 24px auto;">
+              Connectez-vous avec Discord pour accéder à la documentation du système de jeu et gérer vos fiches personnages.
+            </p>
+            <button class="btn btn--primary" data-discord-login>
+              <i class="fa-brands fa-discord"></i> Se connecter avec Discord
+            </button>
+          </div>
+        </div>
+
+        <div class="systemContent" data-system-content style="display: none;">
+          
+          <section class="pageHero">
+            <div class="container">
+              <p class="kicker">Système de jeu</p>
+              <h1 class="title title--sm">Documentation Deadwire RPG</h1>
+              <p class="lead">Système de jeu de rôle pour l'univers Deadwire</p>
+              
+              <div style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 900px; margin-left: auto; margin-right: auto;">
+                
+                <a href="rules.html" class="systemCard" style="text-decoration: none; display: block; padding: 32px; background: rgba(255, 255, 255, 0.03); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease;">
+                  <i class="fa-solid fa-book" style="font-size: 2.5em; color: rgba(255, 42, 61, 0.8); margin-bottom: 16px; display: block;"></i>
+                  <h3 style="margin-bottom: 12px; font-size: 1.25em;">Règles du système</h3>
+                  <p style="opacity: 0.7; font-size: 0.95em;">Documentation complète du système de jeu, classes, combat et équipement</p>
+                </a>
+
+                <a href="characters.html" class="systemCard" style="text-decoration: none; display: block; padding: 32px; background: rgba(255, 255, 255, 0.03); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease;">
+                  <i class="fa-solid fa-id-card" style="font-size: 2.5em; color: rgba(255, 42, 61, 0.8); margin-bottom: 16px; display: block;"></i>
+                  <h3 style="margin-bottom: 12px; font-size: 1.25em;">Mes personnages</h3>
+                  <p style="opacity: 0.7; font-size: 0.95em;">Créez et gérez vos fiches de personnages</p>
+                </a>
+
+                <a href="gm.html" class="systemCard" data-gm-only style="display: none; text-decoration: none; padding: 32px; background: rgba(255, 255, 255, 0.03); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease;">
+                  <i class="fa-solid fa-crown" style="font-size: 2.5em; color: rgba(255, 42, 61, 0.8); margin-bottom: 16px; display: block;"></i>
+                  <h3 style="margin-bottom: 12px; font-size: 1.25em;">Vue Maître du Jeu</h3>
+                  <p style="opacity: 0.7; font-size: 0.95em;">Gestion complète des personnages et sessions</p>
+                </a>
+
+              </div>
+            </div>
+          </section>
+
+          <section class="section" style="display: none;">
+            <div class="container">
+              
+              <div class="systemPanel" data-panel="rules">
+                <div data-reveal>
+                  <h2 class="sectionTitle">Documentation du système</h2>
+                  
+                  <div class="rulesContainer">
+                    <!-- TABLE DES MATIÈRES -->
+                    <nav class="tableOfContents">
+                      <h4>Sommaire</h4>
+                      <ul>
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#attributs">Attributs & Compétences</a></li>
+                        <li><a href="#combat">Système de Combat</a></li>
+                        <li><a href="#classes">Classes</a></li>
+                        <li style="padding-left: 12px; font-size: 0.85em;"><a href="#astromancien">→ Astromancien</a></li>
+                        <li style="padding-left: 12px; font-size: 0.85em;"><a href="#mage-noir">→ Mage Noir</a></li>
+                        <li style="padding-left: 12px; font-size: 0.85em;"><a href="#mage-blanc">→ Mage Blanc</a></li>
+                        <li style="padding-left: 12px; font-size: 0.85em;"><a href="#mage-rouge">→ Mage Rouge</a></li>
+                        <li style="padding-left: 12px; font-size: 0.85em;"><a href="#paladin">→ Paladin</a></li>
+                        <li style="padding-left: 12px; font-size: 0.85em;"><a href="#chevalier-noir">→ Chevalier Noir</a></li>
+                        <li style="padding-left: 12px; font-size: 0.85em;"><a href="#moine">→ Moine</a></li>
+                        <li style="padding-left: 12px; font-size: 0.85em;"><a href="#faucheur">→ Faucheur</a></li>
+                        <li style="padding-left: 12px; font-size: 0.85em;"><a href="#machiniste">→ Machiniste</a></li>
+                        <li><a href="#equipement">Équipement</a></li>
+                        <li><a href="#transcendance">Transcendance</a></li>
+                      </ul>
+                    </nav>
+
+                    <!-- CONTENU DES RÈGLES -->
+                    <div class="rulesContent">
+                      <div class="docSection" id="introduction">
+                        <h3 class="docSection__title">Introduction</h3>
+                        <div class="docSection__content">
+                          <p>La fiche personnage est faite de sorte à faciliter la vie des joueurs tout en permettant un suivi de leurs évolutions. Nous nous basons sur un système <strong>d10</strong> pour les jets de dés et la plupart des jets seront automatisés une fois que vous l'aurez remplie.</p>
+                          <p>Il restera cela dit quelques encoches à remplir ou jets à réaliser de votre côté.</p>
+                        </div>
+                      </div>
+
+                      <div class="docSection" id="attributs">
+                        <h3 class="docSection__title">Attributs & Compétences</h3>
+                        <div class="docSection__content">
+                          <p>Les attributs et compétences définissent les capacités de votre personnage. Chaque action utilise une combinaison d'un attribut et d'une compétence.</p>
+                          
+                          <h4>Attributs Physiques</h4>
+                          <ul>
+                            <li><strong>Force</strong> : Puissance physique brute</li>
+                            <li><strong>Dextérité</strong> : Agilité et précision</li>
+                            <li><strong>Vigueur</strong> : Endurance et résistance</li>
+                          </ul>
+
+                          <h4>Attributs Mentaux</h4>
+                          <ul>
+                            <li><strong>Intelligence</strong> : Capacité de raisonnement et mémoire</li>
+                            <li><strong>Perception</strong> : Sens de l'observation</li>
+                            <li><strong>Manipulation</strong> : Capacité à influencer et contrôler</li>
+                          </ul>
+
+                          <h4>Attributs Sociaux</h4>
+                          <ul>
+                            <li><strong>Charisme</strong> : Force de personnalité</li>
+                            <li><strong>Présence</strong> : Impact et influence naturelle</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="docSection" id="combat">
+                        <h3 class="docSection__title">Système de Combat</h3>
+                        <div class="docSection__content">
+                          <p>Le combat dans le système Deadwire utilise des <strong>jets de d10</strong> pour résoudre les actions.</p>
+                          
+                          <h4>Déroulement d'un Tour</h4>
+                          <ol>
+                            <li><strong>Initiative</strong> : Détermine l'ordre d'action</li>
+                            <li><strong>Action</strong> : Chaque personnage effectue une action</li>
+                            <li><strong>Résolution</strong> : Les effets sont appliqués</li>
+                          </ol>
+
+                          <h4>Types d'Actions</h4>
+                          <ul>
+                            <li><strong>(P) Action Physique</strong> : Corps-à-corps, distance, déplacement</li>
+                            <li><strong>(M) Action Magique</strong> : Sorts, techniques spéciales</li>
+                            <li><strong>(M+P) Action Mixte</strong> : Combine physique et magique</li>
+                          </ul>
+
+                          <h4>Calcul des Dégâts</h4>
+                          <p><strong>DMG (Dégâts)</strong> - <strong>Armure</strong> = <strong>PV perdus</strong></p>
+                          <p>La <strong>PEN (Pénétration)</strong> réduit l'armure de la cible avant le calcul des dégâts.</p>
+
+                          <h4>Points de Vie & Mort</h4>
+                          <ul>
+                            <li><strong>PV à 0</strong> : Le personnage est inconscient</li>
+                            <li><strong>PV négatifs</strong> : Risque de mort selon le MJ</li>
+                            <li><strong>Récupération</strong> : Soins, repos, ou techniques de classe</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="docSection" id="classes">
+                        <h3 class="docSection__title">Classes</h3>
+                        <div class="docSection__content">
+                          <p>Chaque classe possède des <strong>mécaniques uniques</strong> et des <strong>compétences de niveau</strong> (Niveau 1, 2, 3). Les compétences se débloquent progressivement avec la montée en niveau.</p>
+                        </div>
+                      </div>
+
+                      <!-- ASTROMANCIEN -->
+                      <div class="docSection" id="astromancien">
+                        <h3 class="docSection__title">Astromancien</h3>
+                        <div class="docSection__content">
+                          <p><strong>Mécaniques de classe :</strong> L'astromancien joue avec des arcanes astrales (la balance, le bélier, la flèche, l'épieux) et ombrales (le tronc, la tour, l'aiguière, la dame). Il peut tirer au hasard une de ces arcanes lors de certains lancés de sort pour créer un effet spécifique.</p>
+                          <p>Le tirage se fait avec un d8 qui ne se relance jamais. 1-2-3-4 = astral, 5-6-7-8 = ombral.</p>
+
+                          <h4>Niveau 1</h4>
+                          <ul>
+                            <li><strong>Malefice (M)</strong> : Intelligence + Etherologie DMG 6 PEN 4</li>
+                            <li><strong>Bienfaisance (M)</strong> : Soigne 3 PVs</li>
+                          </ul>
+
+                          <h4>Niveau 2</h4>
+                          <ul>
+                            <li><strong>Dignité (M)</strong> : Soigne 3 + niveau PVs</li>
+                            <li><strong>Atout 1 (M)</strong> : Tirage Astral = Bélier (+niveau DMG pendant 4 tours) / Tirage Ombral = Dame (-niveau dégâts subis pendant 4 tours)</li>
+                          </ul>
+
+                          <h4>Niveau 3</h4>
+                          <ul>
+                            <li><strong>Atout 2 (M)</strong> : Tirage Astral = Balance (Réduit DMG cible de succès/3 pendant 4 tours) / Tirage Ombral = Epieux (Augmente dés d'attaques de succès/3 pendant 4 tours)</li>
+                            <li><strong>Atout 3 (M)</strong> : Tirage Astral = Flèche (+niveau aux soins pendant 4 tours) / Tirage Ombral = Tronc (+succès/4 armure pendant 4 tours)</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <!-- MAGE NOIR -->
+                      <div class="docSection" id="mage-noir">
+                        <h3 class="docSection__title">Mage Noir</h3>
+                        <div class="docSection__content">
+                          <h4>Niveau 1</h4>
+                          <ul>
+                            <li><strong>Feu (M)</strong> : Intelligence + Etherologie DMG 6 PEN 4 - Octroie un degré de feu astral</li>
+                            <li><strong>Glace (M)</strong> : Intelligence + Etherologie DMG 4 PEN 6 - Octroie un degré de glace ombrale</li>
+                          </ul>
+
+                          <h4>Niveau 2</h4>
+                          <ul>
+                            <li><strong>Transposition (M)</strong> : Permet d'interchanger les degrés de feu astral avec des degrés de glace ombrale, et inversement</li>
+                          </ul>
+
+                          <h4>Niveau 3</h4>
+                          <ul>
+                            <li><strong>Gel (M)</strong> : Intelligence + Etherologie DMG 3 PEN 5 (3 cibles max) - Octroie 3 degrés de cœur ombral</li>
+                            <li><strong>Méga foudre (M)</strong> : Intelligence + Etherologie DMG 3 PEN 8 - Si touchée, la cible reçoit les mêmes dégâts au tour suivant automatiquement</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <!-- MAGE BLANC -->
+                      <div class="docSection" id="mage-blanc">
+                        <h3 class="docSection__title">Mage Blanc</h3>
+                        <div class="docSection__content">
+                          <h4>Niveau 1</h4>
+                          <ul>
+                            <li><strong>Terre (M)</strong> : Intelligence + Etherologie DMG 6 PEN 4</li>
+                            <li><strong>Vent (M)</strong> : Intelligence + Etherologie DMG 4 PEN 6</li>
+                          </ul>
+
+                          <h4>Niveau 2</h4>
+                          <ul>
+                            <li><strong>Soin (M)</strong> : Soigne 3 + niveau PVs</li>
+                          </ul>
+
+                          <h4>Niveau 3</h4>
+                          <ul>
+                            <li><strong>Guérison (M)</strong> : Intelligence + Etherologie - Retire les altérations d'état (malus provoqués par un adversaire)</li>
+                            <li><strong>Médica (M)</strong> : Soigne 3 PVs de jusqu'à 3 cibles</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <!-- MAGE ROUGE -->
+                      <div class="docSection" id="mage-rouge">
+                        <h3 class="docSection__title">Mage Rouge</h3>
+                        <div class="docSection__content">
+                          <h4>Niveau 1</h4>
+                          <ul>
+                            <li><strong>À-coup (M)</strong> : Intelligence + Etherologie DMG 6 PEN 4 - Remplit le mana noir et blanc de 2</li>
+                            <li><strong>VerFoudre (M)</strong> : Intelligence + Etherologie DMG 4 PEN 6 - Augmente DMG du VerFeu suivant de 1 par 10 obtenus - Remplit mana noir de 6</li>
+                            <li><strong>VerVent (M)</strong> : Intelligence + Etherologie DMG 4 PEN 6 - Augmente PEN du VerTerre suivant de 1 par 10 obtenus - Remplit mana blanc de 6</li>
+                          </ul>
+
+                          <h4>Niveau 2</h4>
+                          <ul>
+                            <li><strong>Riposte (P)</strong> : Attaque Mêlée (DMG PEN rapière) - Si Mana noir ET blanc >20 : +1 Cristal de mana, +2 DMG +2 PEN</li>
+                            <li><strong>Extra VerFoudre (M)</strong> : Intelligence + Etherologie DMG 3 PEN 5 (3 cibles) - Remplit mana noir de 7</li>
+                            <li><strong>Extra VerVent (M)</strong> : Intelligence + Etherologie DMG 5 PEN 3 (3 cibles) - Remplit mana blanc de 7</li>
+                          </ul>
+
+                          <h4>Niveau 3</h4>
+                          <ul>
+                            <li><strong>VerFeu (M)</strong> : Intelligence + Etherologie DMG 3 PEN 5 - Bonus si VerFoudre précédent - Remplit mana noir de 5</li>
+                            <li><strong>VerTerre (M)</strong> : Intelligence + Etherologie DMG 5 PEN 3 - Bonus si VerVent précédent - Remplit mana blanc de 5</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <!-- PALADIN -->
+                      <div class="docSection" id="paladin">
+                        <h3 class="docSection__title">Paladin</h3>
+                        <div class="docSection__content">
+                          <p><strong>Mécaniques de classe :</strong> Les actions de mêlée octroient +10 dans la jauge de serment. Les sorts consomment du serment.</p>
+
+                          <h4>Niveau 1</h4>
+                          <ul>
+                            <li><strong>Rempart (M)</strong> : Vigueur + Résistance - +1 Armure et bonus aux soins (valeur du soin + Niveau) pendant 3 tours</li>
+                          </ul>
+
+                          <h4>Niveau 2</h4>
+                          <ul>
+                            <li><strong>Provocation (M)</strong> : Charisme + Présence - Provoque la cible</li>
+                            <li><strong>Rétorsion (M)</strong> : Manipulation + Présence - Réduit dégâts corps-à-corps subis de -1 pendant 2 tours</li>
+                          </ul>
+
+                          <h4>Niveau 3</h4>
+                          <ul>
+                            <li><strong>Schiltron (M)</strong> : Consomme 50 serment - Armure +2 pendant 2 tours</li>
+                            <li><strong>Portée de bras (M)</strong> : Force + Athlétisme - Annule projections et attractions jusqu'au prochain tour</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <!-- CHEVALIER NOIR -->
+                      <div class="docSection" id="chevalier-noir">
+                        <h3 class="docSection__title">Chevalier Noir</h3>
+                        <div class="docSection__content">
+                          <p><strong>Mécaniques de classe :</strong> La jauge de sang se remplit avec les attaques et se consomme lors de certaines actions.</p>
+
+                          <h4>Niveau 1</h4>
+                          <ul>
+                            <li><strong>Rempart (M)</strong> : Vigueur + Résistance - +1 Armure et bonus aux soins (valeur du soin + Niveau) pendant 3 tours</li>
+                          </ul>
+
+                          <h4>Niveau 2</h4>
+                          <ul>
+                            <li><strong>Provocation (M)</strong> : Charisme + Présence - Provoque la cible</li>
+                            <li><strong>Rétorsion (M)</strong> : Manipulation + Présence - Réduit dégâts corps-à-corps subis de -1 pendant 2 tours</li>
+                          </ul>
+
+                          <h4>Niveau 3</h4>
+                          <ul>
+                            <li><strong>Arme de sang (M)</strong> : Les 3 prochaines attaques remplissent la jauge de sang de 10 et infligent +1 DMG</li>
+                            <li><strong>Portée de bras (M)</strong> : Force + Athlétisme - Annule projections et attractions jusqu'au prochain tour</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <!-- MOINE -->
+                      <div class="docSection" id="moine">
+                        <h3 class="docSection__title">Moine</h3>
+                        <div class="docSection__content">
+                          <h4>Niveau 1</h4>
+                          <ul>
+                            <li><strong>Volée de coups (P)</strong> : Corps-à-corps (Si posture opo-opo : +2 DMG) - Octroie posture raptor</li>
+                            <li><strong>Coup de poing direct (P)</strong> : Corps-à-corps (Si posture raptor : +2 DMG +2 PEN) - Octroie posture coeurl</li>
+                            <li><strong>Coup de poing brusque (P)</strong> : Corps-à-corps (Si posture coeurl : +3 DMG +1 PEN) - Octroie posture opo-opo</li>
+                          </ul>
+
+                          <h4>Niveau 2</h4>
+                          <ul>
+                            <li><strong>Méditation profonde (M+P)</strong> : Sacrifie son tour pour ouvrir 2 chakras</li>
+                            <li><strong>Charge d'acier (P)</strong> : Corps-à-corps DMG +3 PEN +3 (Nécessite 5 chakras) - Consomme 5 chakras</li>
+                          </ul>
+
+                          <h4>Niveau 3</h4>
+                          <ul>
+                            <li><strong>Frappe du destructeur (P)</strong> : Corps-à-corps (3 cibles) (Si posture opo-opo : +1 DMG) - Octroie posture raptor</li>
+                            <li><strong>Briseur de roc (P)</strong> : Corps-à-corps (3 cibles) (Si posture raptor : +2 DMG) - Octroie posture coeurl</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <!-- FAUCHEUR -->
+                      <div class="docSection" id="faucheur">
+                        <h3 class="docSection__title">Faucheur</h3>
+                        <div class="docSection__content">
+                          <p><strong>Mécaniques de classe :</strong> Remplit sa jauge des âmes à chaque attaque réussie de 15.</p>
+
+                          <h4>Niveau 1</h4>
+                          <ul>
+                            <li><strong>Faux Tournoyante (P)</strong> : Attaque Mêlée DMG/PEN Arme (jusqu'à 3 cibles)</li>
+                            <li><strong>Intrusion de l'enfer (P)</strong> : Attaque Mêlée DMG/PEN Arme - Téléporte jusqu'à la cible (max 25 yalms)</li>
+                          </ul>
+
+                          <h4>Niveau 2</h4>
+                          <ul>
+                            <li><strong>Fétu Ensanglanté (P)</strong> : Attaque Mêlée DMG Arme+2 PEN Arme+1 - Consomme 50 jauge âmes - Donne "Moissonneur d'âme"</li>
+                          </ul>
+
+                          <h4>Niveau 3</h4>
+                          <ul>
+                            <li><strong>Gibet (P)</strong> : Attaque Mêlée DMG Arme+3 PEN Arme+2 - Consomme Moissonneur d'âme - Remplit jauge linceul de 15</li>
+                            <li><strong>Guillotine (P)</strong> : Attaque Mêlée DMG Arme+2 PEN Arme+1 (jusqu'à 3 cibles) - Consomme Moissonneur d'âme - Remplit jauge linceul de 15</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <!-- MACHINISTE -->
+                      <div class="docSection" id="machiniste">
+                        <h3 class="docSection__title">Machiniste</h3>
+                        <div class="docSection__content">
+                          <p><strong>Mécaniques de classe :</strong> Chaque attaque augmente la jauge de chaleur de 15.</p>
+
+                          <h4>Niveau 1</h4>
+                          <ul>
+                            <li><strong>Tir déchaîné (P)</strong> : Attaque distance DMG/PEN Arme - Augmente jauge batterie de 20</li>
+                            <li><strong>Tir Dispersé (P)</strong> : Attaque distance DMG Arme-1 PEN Arme-1 (3 cibles max)</li>
+                          </ul>
+
+                          <h4>Niveau 2</h4>
+                          <ul>
+                            <li><strong>Hypercharge (M)</strong> : Augmente dégâts de 2 pendant 4 tours - Consomme 50 jauge chaleur</li>
+                          </ul>
+
+                          <h4>Niveau 3</h4>
+                          <ul>
+                            <li><strong>Auto Tourelle (M)</strong> : Intelligence + Artisanat DMG 3 PEN 3 - Pendant 4 tours, inflige automatiquement ces dégâts - Consomme 50 jauge batterie</li>
+                            <li><strong>Décharge Gauss (P)</strong> : Attaque distance DMG Arme+2 PEN Arme+1 (2 cibles en ligne) - Consomme 10 jauge chaleur</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="docSection" id="equipement">
+                        <h3 class="docSection__title">Équipement</h3>
+                        <div class="docSection__content">
+                          <h4>Armure</h4>
+                          <table>
+                            <thead>
+                              <tr><th>Type</th><th>Armure</th></tr>
+                            </thead>
+                            <tbody>
+                              <tr><td>Armure légère</td><td>1</td></tr>
+                              <tr><td>Armure intermédiaire</td><td>2</td></tr>
+                              <tr><td>Armure lourde</td><td>3</td></tr>
+                              <tr><td>Bouclier</td><td>2 (et donc 2 de parade aussi)</td></tr>
+                            </tbody>
+                          </table>
+
+                          <h4>Armes</h4>
+                          <table>
+                            <thead>
+                              <tr><th>Type</th><th>Dégâts</th><th>Pénétration</th><th>Portée max.</th></tr>
+                            </thead>
+                            <tbody>
+                              <tr><td>Épée (GLA/PLD)</td><td>5</td><td>5</td><td>3y</td></tr>
+                              <tr><td>Hache à deux mains (MRD/GUE)</td><td>9</td><td>4</td><td>4y</td></tr>
+                              <tr><td>Épée à deux mains (CHN)</td><td>8</td><td>5</td><td>4y</td></tr>
+                              <tr><td>Pistolame (PSB)</td><td>5</td><td>6</td><td>3y</td></tr>
+                              <tr><td>Arme d'hast (HAS/DRG)</td><td>5</td><td>6</td><td>4y</td></tr>
+                              <tr><td>Faux (FCH)</td><td>10</td><td>3</td><td>4y</td></tr>
+                              <tr><td>Cestes (PGL/MOI)</td><td>5</td><td>2</td><td>3y</td></tr>
+                              <tr><td>Sabre (SAM)</td><td>7</td><td>7</td><td>3y</td></tr>
+                              <tr><td>Dagues (SUR NIN)</td><td>4</td><td>6</td><td>3y</td></tr>
+                              <tr><td>Crochets jumeaux (VPR)</td><td>5</td><td>5</td><td>3y</td></tr>
+                              <tr><td>Arc (ARC/BRD)</td><td>4</td><td>9</td><td>25y</td></tr>
+                              <tr><td>Arme à feu (MCH)</td><td>5</td><td>10</td><td>25y</td></tr>
+                              <tr><td>Chakrams (DNS)</td><td>6</td><td>6</td><td>25y</td></tr>
+                              <tr><td>Grimoire (ACN/INV/ÉRU)</td><td>2</td><td>2</td><td>3y</td></tr>
+                              <tr><td>Rapière (MRG)</td><td>4</td><td>6</td><td>3y</td></tr>
+                              <tr><td>Globe (AST)</td><td>2</td><td>2</td><td>25y</td></tr>
+                            </tbody>
+                          </table>
+
+                          <p><strong>Note :</strong> Les armes permettant de lancer des sorts ont leur portée liée au sort lancé. Ex : un grimoire peut permettre de tirer un sort à 25y mais le grimoire en lui-même pourrait servir à assommer quelqu'un à 3y.</p>
+                        </div>
+                      </div>
+
+                      <div class="docSection" id="transcendance">
+                        <h3 class="docSection__title">Transcendance</h3>
+                        <div class="docSection__content">
+                          <p>La transcendance est une mécanique similaire à celle de FFXIV où le personnage peut dépasser ses limites avec un contrecoup derrière.</p>
+
+                          <p>Un PJ peut avoir jusqu'à <strong>3 techniques</strong>. Toutes les trois sont régies par la barre de transcendance et l'utilisation de ces techniques videra celle-ci. Plus la technique est puissante, plus il faudra que la jauge soit pleine.</p>
+
+                          <h4>Remplir la jauge</h4>
+                          <p>Remplir la jauge nécessite de :</p>
+                          <ul>
+                            <li>Toucher un ennemi</li>
+                            <li>Soigner / supporter un allié</li>
+                            <li>Prendre des dégâts</li>
+                          </ul>
+                          <p>À chaque fois qu'une action de ce type est faite / subie, cliquez sur le petit + à côté de la jauge.</p>
+
+                          <h4>Malus de Transcendance</h4>
+                          <p>Quand un PJ consomme sa transcendance, il aura un <strong>malus à tous ses jets</strong> pour le restant de la scène :</p>
+                          <ul>
+                            <li><strong>Transcendance 1</strong> : -1 partout</li>
+                            <li><strong>Transcendance 2</strong> : -3 partout</li>
+                            <li><strong>Transcendance 3</strong> : -5 partout</li>
+                          </ul>
+
+                          <h4>Déblocage</h4>
+                          <p>Les trois paliers de transcendance se débloquent au <strong>niveau 3, 6 et 9</strong>.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="systemPanel" data-panel="characters" style="display: none;">
+                <div data-reveal>
+                  <h2 class="sectionTitle">Mes fiches personnages</h2>
+                  
+                  <div class="characterList" data-character-list>
+                    <div class="emptyState">
+                      <i class="fa-solid fa-user-plus" style="font-size: 3em; opacity: 0.3; margin-bottom: 16px;"></i>
+                      <p>Vous n'avez pas encore de personnage</p>
+                      <button class="btn btn--secondary" data-create-character>
+                        <i class="fa-solid fa-plus"></i> Créer un personnage
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="systemPanel" data-panel="gm" style="display: none;">
+                <div data-reveal>
+                  <h2 class="sectionTitle">Vue Maître du Jeu</h2>
+                  
+                  <div class="gmTools">
+                    <div class="gmSection">
+                      <h3 class="gmSection__title">Tous les personnages</h3>
+                      <div class="allCharactersList" data-all-characters>
+                        <p class="loading">Chargement des personnages...</p>
+                      </div>
+                    </div>
+
+                    <div class="gmSection">
+                      <h3 class="gmSection__title">Gestion des sessions</h3>
+                      <div class="sessionManager">
+                        <button class="btn btn--primary">
+                          <i class="fa-solid fa-plus"></i> Nouvelle session
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Le Deadwire. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="system.js"></script>
+</body>
+</html>

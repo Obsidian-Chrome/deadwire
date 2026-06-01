@@ -39,6 +39,46 @@
       "endTime": "23:59",
       "visualizer": "visualizer_hex.webm",
       "colorFilter": ""
+    },
+    {
+      "name": "Concert Ombre",
+      "date": "2026-06-01",
+      "startTime": "18:00",
+      "endTime": "23:59",
+      "visualizer": "visualizer_ombre.webm",
+      "colorFilter": ""
+    },
+    {
+      "name": "Concert Aube",
+      "date": "2026-06-15",
+      "startTime": "18:00",
+      "endTime": "23:59",
+      "visualizer": "visualizer_aube.webm",
+      "colorFilter": ""
+    },
+    {
+      "name": "Concert HeX",
+      "date": "2026-06-29",
+      "startTime": "18:00",
+      "endTime": "23:59",
+      "visualizer": "visualizer_hex.webm",
+      "colorFilter": ""
+    },
+    {
+      "name": "Concert Warcore",
+      "date": "2026-07-13",
+      "startTime": "18:00",
+      "endTime": "23:59",
+      "visualizer": "visualizer_deadwire.webm",
+      "colorFilter": ""
+    },
+    {
+      "name": "Concert Kaia",
+      "date": "2026-07-27",
+      "startTime": "18:00",
+      "endTime": "23:59",
+      "visualizer": "visualizer_kaia.webm",
+      "colorFilter": ""
     }
   ],
   "default": {

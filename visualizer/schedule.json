@@ -57,6 +57,14 @@
       "colorFilter": ""
     },
     {
+      "name": "Concert Black Harpies",
+      "date": "2026-06-22",
+      "startTime": "18:00",
+      "endTime": "23:59",
+      "visualizer": "visualizer_blackharpies.webm",
+      "colorFilter": ""
+    },
+    {
       "name": "Concert HeX",
       "date": "2026-06-29",
       "startTime": "18:00",

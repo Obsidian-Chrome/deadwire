@@ -7,10 +7,15 @@
   <link rel="icon" href="../media/Deadwire_Logo_Neon.png" type="image/png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .resource-link:hover {
+      text-decoration: underline;
+      transform: translateX(4px);
+    }
+  </style>
   <script defer src="/shared/loader.js"></script>
   <script defer src="/shared/crew-auth.js"></script>
   <script defer src="../app.js"></script>
-  <script defer src="../radio.js"></script>
   <script defer src="auth.js"></script>
 </head>
 <body>
@@ -53,33 +58,20 @@
               <div data-reveal>
                 <h2 class="sectionTitle">Ressources</h2>
                 
-                <div class="grid" style="--cols: 2; gap: 24px; margin-top: 32px;">
-                  <!-- Téléchargements -->
-                  <article class="card">
-                    <div class="card__icon">
-                      <i class="fa-solid fa-download"></i>
-                    </div>
-                    <h3 class="card__title">Téléchargements</h3>
-                    <p class="card__desc">Vêtements, accessoires et ressources.</p>
-                    <a href="/crew/downloads" class="btn btn--primary" style="margin-top: auto;">
-                      <i class="fa-solid fa-folder-open" style="margin-right: 8px;"></i>
-                      Accéder
+                <ul style="list-style: none; padding: 0; margin-top: 32px; max-width: 600px;">
+                  <li style="margin-bottom: 12px;">
+                    <a href="/crew/downloads" class="resource-link" style="color: var(--accent); text-decoration: none; font-size: 1.1rem; display: flex; align-items: center; gap: 12px; transition: all 0.2s ease;">
+                      <i class="fa-solid fa-download" style="width: 20px;"></i>
+                      <span>Téléchargements</span>
                     </a>
-                  </article>
-
-                  <!-- Système de dés -->
-                  <article class="card">
-                    <div class="card__icon">
-                      <i class="fa-solid fa-dice-d20"></i>
-                    </div>
-                    <h3 class="card__title">Système de dés</h3>
-                    <p class="card__desc">Tutoriel et explication des règles.</p>
-                    <a href="/crew/system" class="btn btn--primary" style="margin-top: auto;">
-                      <i class="fa-solid fa-dice" style="margin-right: 8px;"></i>
-                      Accéder
+                  </li>
+                  <li style="margin-bottom: 12px;">
+                    <a href="/crew/system" class="resource-link" style="color: var(--accent); text-decoration: none; font-size: 1.1rem; display: flex; align-items: center; gap: 12px; transition: all 0.2s ease;">
+                      <i class="fa-solid fa-dice-d20" style="width: 20px;"></i>
+                      <span>Système de dés</span>
                     </a>
-                  </article>
-                </div>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

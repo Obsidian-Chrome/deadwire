@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Le Deadwire | Système de jeu</title>
+  <link rel="icon" href="../../media/Deadwire_Logo_Neon.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="system.css" />
+  <script defer src="/shared/loader.js"></script>
+  <script defer src="/shared/crew-auth.js"></script>
+  <script defer src="../../app.js"></script>
+  <script defer src="../auth.js"></script>
+  <script defer src="system.js"></script>
+</head>
+<body>
+
+  <main id="protected-content" style="display: none;">
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__content">
+        <section class="pageHero">
+          <div class="container">
+            <p class="kicker">Guide du joueur</p>
+            <h1 class="title title--sm">Système de jeu</h1>
+            <p class="lead">Règles, statistiques et mécaniques de jeu.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="system-layout">
+              <!-- Table des matières -->
+              <aside class="system-sidebar">
+                <nav class="system-nav">
+                  <h2 class="system-nav__title">Sommaire</h2>
+                  <button class="system-nav__item is-active" data-section="character">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>Créer son personnage</span>
+                  </button>
+                  <button class="system-nav__item" data-section="stats">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Statistiques</span>
+                  </button>
+                  <button class="system-nav__item" data-section="dice">
+                    <i class="fa-solid fa-dice-d20"></i>
+                    <span>Système de dés</span>
+                  </button>
+                  <button class="system-nav__item" data-section="progression">
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+                    <span>Évolution</span>
+                  </button>
+                </nav>
+              </aside>
+
+              <!-- Contenu dynamique -->
+              <div class="system-content">
+                <!-- Section: Créer son personnage -->
+                <article class="system-section is-active" data-content="character">
+                  <h2 class="system-section__title">Créer son personnage</h2>
+                  
+                  <div class="system-block">
+                    <h3><i class="fa-solid fa-download"></i> Installation du plugin</h3>
+                    <p>Pour jouer, vous devez installer le plugin MasterEvent.</p>
+                    <ol class="system-list">
+                      <li>
+                        <strong>Ouvrir les paramètres de Dalamud</strong><br>
+                        Allez dans <strong>Paramètres → Expérimental</strong>
+                      </li>
+                      <li>
+                        <strong>Ajouter le repository personnalisé</strong><br>
+                        Ajoutez ce repo, cliquez sur le <strong>+</strong> et le bouton <strong>Sauvegarder</strong>
+                        <div class="system-copy" style="margin-top: 8px;">
+                          <input type="text" readonly value="https://repo.ashfall-codex.dev/plugins.json" id="repo-url" />
+                          <button class="system-copy__btn" data-copy="repo-url">
+                            <i class="fa-solid fa-copy"></i>
+                          </button>
+                        </div>
+                      </li>
+                      <li>
+                        <strong>Installer et activer le plugin</strong><br>
+                        Recherchez <strong>"MasterEvent"</strong>, installez-le et activez-le
+                      </li>
+                    </ol>
+                  </div>
+
+                  <div class="system-block">
+                    <h3><i class="fa-solid fa-file-circle-plus"></i> Créer votre profil</h3>
+                    <p>Une fois le plugin installé :</p>
+                    <ol class="system-list">
+                      <li>
+                        Importez le modèle du système de dés du Deadwire en collant ce code :
+                        <div class="system-copy" style="margin-top: 8px;">
+                          <input type="text" readonly value="P6Z356" id="model-code" />
+                          <button class="system-copy__btn" data-copy="model-code">
+                            <i class="fa-solid fa-copy"></i>
+                          </button>
+                        </div>
+                      </li>
+                      <li>Créez un profil avec l'alias de votre personnage et le bon modèle</li>
+                      <li>
+                        Répartissez <strong>80 points</strong> dans les <a href="#" class="system-link" data-section="stats">statistiques</a> (20 maximum), mettez le niveau à <strong>1</strong> et l'expérience à <strong>0</strong>. Modifiez les PV et l'éther en fonction de la statistique d'endurance et d'éther
+                      </li>
+                      <li>
+                        Sauvegardez votre profil et lisez le <a href="#" class="system-link" data-section="dice">système de dés</a>
+                      </li>
+                    </ol>
+                  </div>
+                </article>
+
+                <!-- Section: Statistiques -->
+                <article class="system-section" data-content="stats">
+                  <h2 class="system-section__title">Statistiques</h2>
+                  
+                  <div class="system-block">
+                    <p class="system-intro">Les personnages sont définis par 10 statistiques qui déterminent leurs capacités.</p>
+                  </div>
+
+                  <div class="stat-card">
+                    <div class="stat-card__header">
+                      <i class="fa-solid fa-dumbbell"></i>
+                      <h3>Force</h3>
+                    </div>
+                    <p class="stat-card__desc">Puissance physique brute. Sert à frapper au corps-à-corps, soulever, pousser, briser, maîtriser quelqu'un ou utiliser des armes demandant beaucoup de force.</p>
+                  </div>
+
+                  <div class="stat-card">
+                    <div class="stat-card__header">
+                      <i class="fa-solid fa-hand-pointer"></i>
+                      <h3>Dextérité</h3>
+                    </div>
+                    <p class="stat-card__desc">Précision, coordination et finesse manuelle. Sert au tir, aux gestes techniques délicats, au maniement précis d'objets, au vol, au crochetage ou aux actions nécessitant une bonne coordination.</p>
+                  </div>
+
+                  <div class="stat-card">
+                    <div class="stat-card__header">
+                      <i class="fa-solid fa-gauge-high"></i>
+                      <h3>Réflexes</h3>
+                    </div>
+                    <p class="stat-card__desc">Rapidité de réaction, mobilité et vitesse d'exécution. Sert à l'esquive, à l'initiative, aux réactions immédiates, aux poursuites et aux actions réalisées dans l'urgence.</p>
+                  </div>
+
+                  <div class="stat-card">
+                    <div class="stat-card__header">
+                      <i class="fa-solid fa-heart-pulse"></i>
+                      <h3>Endurance</h3>
+                    </div>
+                    <p class="stat-card__desc">Résistance physique générale. Sert à encaisser la fatigue, la douleur physique, les blessures, les toxines, les maladies, les conditions extrêmes et certains contrecoups éthériques. <strong>+10 PV par palier de 10 points d'endurance.</strong></p>
+                  </div>
+
+                  <div class="stat-card">
+                    <div class="stat-card__header">
+                      <i class="fa-solid fa-brain"></i>
+                      <h3>Intelligence</h3>
+                    </div>
+                    <p class="stat-card__desc">Capacité d'analyse, de compréhension et de raisonnement. Sert aux connaissances, à l'enquête, à la stratégie, à l'interprétation d'informations et à la compréhension de phénomènes complexes, y compris éthériques.</p>
+                  </div>
+
+                  <div class="stat-card">
+                    <div class="stat-card__header">
+                      <i class="fa-solid fa-wrench"></i>
+                      <h3>Technique</h3>
+                    </div>
+                    <p class="stat-card__desc">Maîtrise pratique des machines, outils et systèmes matériels. Sert à réparer, fabriquer, modifier, soigner avec du matériel, intervenir sur des implants, des armes, des véhicules ou des dispositifs éthéro-technologiques.</p>
+                  </div>
+
+                  <div class="stat-card">
+                    <div class="stat-card__header">
+                      <i class="fa-solid fa-network-wired"></i>
+                      <h3>Interface</h3>
+                    </div>
+                    <p class="stat-card__desc">Aptitude à interagir avec les réseaux, logiciels et systèmes numériques. Sert au piratage, au netrun, au contrôle à distance, à la cybersécurité, aux drones et aux environnements virtuels.</p>
+                  </div>
+
+                  <div class="stat-card">
+                    <div class="stat-card__header">
+                      <i class="fa-solid fa-user-tie"></i>
+                      <h3>Présence</h3>
+                    </div>
+                    <p class="stat-card__desc">Force de personnalité et impact social. Sert au charisme, à l'intimidation, au commandement, à la persuasion, à la négociation et à l'influence émotionnelle sur autrui.</p>
+                  </div>
+
+                  <div class="stat-card">
+                    <div class="stat-card__header">
+                      <i class="fa-solid fa-shield-halved"></i>
+                      <h3>Sang-froid</h3>
+                    </div>
+                    <p class="stat-card__desc">Discipline mentale, concentration et maîtrise de soi. Sert à résister à la peur, au stress, à la douleur mentale, à la manipulation, aux illusions, aux possessions et à maintenir le contrôle d'un pouvoir éthérique.</p>
+                  </div>
+
+                  <div class="stat-card">
+                    <div class="stat-card__header">
+                      <i class="fa-solid fa-wand-magic-sparkles"></i>
+                      <h3>Éther</h3>
+                    </div>
+                    <p class="stat-card__desc">Affinité avec l'énergie surnaturelle. Sert à produire de la magie, percevoir les perturbations éthériques, alimenter des pouvoirs, manipuler des artefacts et renforcer l'intensité d'un effet magique. <strong>+10 d'éther par palier de 10 points d'éther.</strong></p>
+                  </div>
+
+                  <div class="system-block" style="margin-top: 32px;">
+                    <h3><i class="fa-solid fa-dice"></i> Jets de dés typiques</h3>
+                    <ul class="system-list">
+                      <li><strong>Attaque de mêlée :</strong> Force</li>
+                      <li><strong>Attaque à distance :</strong> Dextérité</li>
+                      <li><strong>Défense / Initiative :</strong> Réflexes</li>
+                      <li><strong>Résistance physique :</strong> Endurance</li>
+                      <li><strong>Résolution d'un casse-tête :</strong> Intelligence</li>
+                      <li><strong>Soin conventionnel :</strong> Technique</li>
+                      <li><strong>Netrun :</strong> Interface</li>
+                      <li><strong>Persuader quelqu'un :</strong> Présence</li>
+                      <li><strong>Résistance à la peur :</strong> Sang-froid</li>
+                      <li><strong>Soin éthérique :</strong> Éther</li>
+                    </ul>
+                  </div>
+                </article>
+
+                <!-- Section: Système de dés -->
+                <article class="system-section" data-content="dice">
+                  <h2 class="system-section__title">Système de dés</h2>
+                  
+                  <div class="system-block">
+                    <h3><i class="fa-solid fa-hourglass-half"></i> Structure d'un tour</h3>
+                    <p>À chaque tour, un personnage peut effectuer :</p>
+                    <ul class="system-list">
+                      <li><strong>1 déplacement</strong> (avant ou après l'action)</li>
+                      <li><strong>1 action</strong> (attaque, soin, compétence, etc.)</li>
+                    </ul>
+                  </div>
+
+                  <div class="dice-rule">
+                    <div class="dice-rule__header">
+                      <i class="fa-solid fa-sword"></i>
+                      <h4>Attaque</h4>
+                    </div>
+                    <p><strong>Pénalité :</strong> -10 par cible supplémentaire</p>
+                    <table class="system-table">
+                      <thead>
+                        <tr>
+                          <th>Résultat final</th>
+                          <th>Effet</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="critical-fail">
+                          <td><strong>1 naturel</strong></td>
+                          <td>L'adversaire contre-attaque : <strong>10 dégâts au joueur</strong></td>
+                        </tr>
+                        <tr>
+                          <td>1 à 29</td>
+                          <td>L'adversaire bloque ou esquive</td>
+                        </tr>
+                        <tr>
+                          <td>30 à 49</td>
+                          <td>10 dégâts</td>
+                        </tr>
+                        <tr>
+                          <td>50 à 74</td>
+                          <td>20 dégâts</td>
+                        </tr>
+                        <tr>
+                          <td>75 à 94</td>
+                          <td>30 dégâts</td>
+                        </tr>
+                        <tr>
+                          <td>95 à 114</td>
+                          <td>40 dégâts</td>
+                        </tr>
+                        <tr>
+                          <td>115 ou plus</td>
+                          <td>50 dégâts</td>
+                        </tr>
+                        <tr class="critical-success">
+                          <td><strong>100 naturel</strong></td>
+                          <td>Coup exceptionnel : <strong>100 dégâts</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="dice-rule">
+                    <div class="dice-rule__header">
+                      <i class="fa-solid fa-shield"></i>
+                      <h4>Défense</h4>
+                    </div>
+                    <table class="system-table">
+                      <thead>
+                        <tr>
+                          <th>Résultat final</th>
+                          <th>Effet</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="critical-fail">
+                          <td><strong>1 naturel</strong></td>
+                          <td>Échec critique : <strong>20 dégâts au joueur</strong></td>
+                        </tr>
+                        <tr>
+                          <td>1 à 49</td>
+                          <td>L'attaque passe : 10 dégâts au joueur</td>
+                        </tr>
+                        <tr>
+                          <td>50 à 94</td>
+                          <td>Le joueur bloque, pare ou esquive</td>
+                        </tr>
+                        <tr>
+                          <td>95 à 114</td>
+                          <td>Le joueur bloque et contre-attaque : 10 dégâts à l'adversaire</td>
+                        </tr>
+                        <tr>
+                          <td>115 ou plus</td>
+                          <td>Contre-attaque parfaite : 20 dégâts à l'adversaire</td>
+                        </tr>
+                        <tr class="critical-success">
+                          <td><strong>100 naturel</strong></td>
+                          <td>Contre-attaque exceptionnelle : <strong>100 dégâts à l'adversaire</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="dice-rule">
+                    <div class="dice-rule__header">
+                      <i class="fa-solid fa-heart"></i>
+                      <h4>Soin</h4>
+                    </div>
+                    <p><strong>Pénalité :</strong> -10 par cible supplémentaire</p>
+                    <table class="system-table">
+                      <thead>
+                        <tr>
+                          <th>Résultat final</th>
+                          <th>Effet</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="critical-fail">
+                          <td><strong>1 naturel</strong></td>
+                          <td>Le soin échoue et provoque une complication</td>
+                        </tr>
+                        <tr>
+                          <td>1 à 19</td>
+                          <td>Le soin est interrompu</td>
+                        </tr>
+                        <tr>
+                          <td>20 à 49</td>
+                          <td>10 PV soignés</td>
+                        </tr>
+                        <tr>
+                          <td>50 à 79</td>
+                          <td>20 PV soignés</td>
+                        </tr>
+                        <tr>
+                          <td>80 à 94</td>
+                          <td>30 PV soignés</td>
+                        </tr>
+                        <tr>
+                          <td>95 à 114</td>
+                          <td>40 PV soignés</td>
+                        </tr>
+                        <tr>
+                          <td>115 ou plus</td>
+                          <td>50 PV soignés</td>
+                        </tr>
+                        <tr class="critical-success">
+                          <td><strong>100 naturel</strong></td>
+                          <td>La cible récupère <strong>tous ses PV</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </article>
+
+                <!-- Section: Évolution -->
+                <article class="system-section" data-content="progression">
+                  <h2 class="system-section__title">Évolution</h2>
+                  
+                  <div class="system-block">
+                    <h3><i class="fa-solid fa-arrow-up"></i> Progression des personnages</h3>
+                    <p>À chaque montée de niveau, votre personnage obtient <strong>5 points de plus</strong> à répartir dans ses statistiques. Lorsqu'un certain seuil est franchi, le maximum de points par statistique augmente.</p>
+                    <p>Pour monter de niveau, il vous faudra gagner de l'expérience que le MJ vous donnera en fin de session ou après une action spécifique.</p>
+                    <p><strong>Veillez donc à garder votre fiche à jour avec son niveau, son expérience et ses points bien dépensés.</strong></p>
+                  </div>
+
+                  <div class="progression-table">
+                    <table class="system-table system-table--full">
+                      <thead>
+                        <tr>
+                          <th>Niveau</th>
+                          <th>Points gagnés</th>
+                          <th>Total cumulé</th>
+                          <th>Maximum par statistique</th>
+                          <th>Seuil d'expérience</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>1</strong></td>
+                          <td>80 à répartir</td>
+                          <td>80</td>
+                          <td><strong>20</strong></td>
+                          <td>0</td>
+                        </tr>
+                        <tr>
+                          <td><strong>2</strong></td>
+                          <td>+5</td>
+                          <td>85</td>
+                          <td>20</td>
+                          <td>100</td>
+                        </tr>
+                        <tr>
+                          <td><strong>3</strong></td>
+                          <td>+5</td>
+                          <td>90</td>
+                          <td>20</td>
+                          <td>250</td>
+                        </tr>
+                        <tr class="stat-increase">
+                          <td><strong>4</strong></td>
+                          <td>+5</td>
+                          <td>95</td>
+                          <td><strong>30</strong></td>
+                          <td>450</td>
+                        </tr>
+                        <tr>
+                          <td><strong>5</strong></td>
+                          <td>+5</td>
+                          <td>100</td>
+                          <td>30</td>
+                          <td>700</td>
+                        </tr>
+                        <tr>
+                          <td><strong>6</strong></td>
+                          <td>+5</td>
+                          <td>105</td>
+                          <td>30</td>
+                          <td>1000</td>
+                        </tr>
+                        <tr class="stat-increase">
+                          <td><strong>7</strong></td>
+                          <td>+5</td>
+                          <td>110</td>
+                          <td><strong>40</strong></td>
+                          <td>1350</td>
+                        </tr>
+                        <tr>
+                          <td><strong>8</strong></td>
+                          <td>+5</td>
+                          <td>115</td>
+                          <td>40</td>
+                          <td>1750</td>
+                        </tr>
+                        <tr>
+                          <td><strong>9</strong></td>
+                          <td>+5</td>
+                          <td>120</td>
+                          <td>40</td>
+                          <td>2200</td>
+                        </tr>
+                        <tr class="stat-increase">
+                          <td><strong>10</strong></td>
+                          <td>+5</td>
+                          <td>125</td>
+                          <td><strong>50</strong></td>
+                          <td>2700</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <!-- Loader pendant vérification -->
+  <div id="auth-loader" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+    <div style="text-align: center;">
+      <i class="fa-solid fa-spinner fa-spin" style="font-size: 3em; color: rgba(255, 42, 61, 0.8);"></i>
+      <p style="color: rgba(255, 255, 255, 0.7); margin-top: 24px;">Vérification...</p>
+    </div>
+  </div>
+
+  <!-- Vue non connecté -->
+  <div id="login-view" style="display: none; min-height: 100vh; justify-content: center; align-items: center;">
+    <div style="text-align: center; padding: 60px 20px;">
+      <i class="fa-solid fa-lock" style="font-size: 4em; color: rgba(255, 42, 61, 0.8); margin-bottom: 24px;"></i>
+      <h2 class="title title--lg" style="margin-bottom: 16px;">Authentification requise</h2>
+      <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 32px;">
+        Connectez-vous avec Discord pour accéder au système de jeu.
+      </p>
+      <button id="discord-login-btn" class="btn btn--primary" style="font-size: 1.1em; padding: 14px 32px;">
+        <i class="fa-brands fa-discord" style="margin-right: 8px;"></i>
+        Se connecter avec Discord
+      </button>
+    </div>
+  </div>
+
+  <script>
+    (async () => {
+      const loader = document.getElementById('auth-loader');
+      const loginView = document.getElementById('login-view');
+      const protectedContent = document.getElementById('protected-content');
+      
+      // Vérification rapide depuis le cache localStorage
+      const cachedToken = localStorage.getItem('discord_token');
+      const cachedExpiry = localStorage.getItem('discord_token_expiry');
+      const cachedIsMember = localStorage.getItem('discord_is_member') === 'true';
+      const cachedIsGM = localStorage.getItem('discord_is_gm') === 'true';
+      
+      // Si cache valide et utilisateur autorisé, afficher immédiatement
+      if (cachedToken && cachedExpiry && Date.now() < parseInt(cachedExpiry) && (cachedIsMember || cachedIsGM)) {
+        if (loader) loader.style.display = 'none';
+        if (protectedContent) protectedContent.style.display = 'block';
+      }
+      
+      // Attendre que auth.js soit chargé
+      function waitForAuth() {
+        return new Promise((resolve) => {
+          if (window.discordAuth) {
+            resolve();
+          } else {
+            const checkInterval = setInterval(() => {
+              if (window.discordAuth) {
+                clearInterval(checkInterval);
+                resolve();
+              }
+            }, 25);
+          }
+        });
+      }
+      
+      async function checkAccess() {
+        await waitForAuth();
+        
+        const isAuthenticated = await window.discordAuth.restoreSession();
+        
+        if (isAuthenticated) {
+          const isMember = window.discordAuth.isMember;
+          const isGM = window.discordAuth.isGM;
+          
+          if (isMember || isGM) {
+            // Afficher le contenu
+            if (loader) loader.style.display = 'none';
+            if (protectedContent) protectedContent.style.display = 'block';
+          } else {
+            // Accès refusé - rediriger vers crew
+            window.location.href = '/crew/';
+          }
+        } else {
+          // Non authentifié - afficher le bouton de connexion
+          if (loader) loader.style.display = 'none';
+          if (loginView) loginView.style.display = 'flex';
+        }
+      }
+      
+      await checkAccess();
+    })();
+  </script>
+
+</body>
+</html>

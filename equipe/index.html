@@ -7,55 +7,12 @@
   <link rel="icon" href="../media/Deadwire_Logo_Neon.png" type="image/png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="../styles.css" />
+  <script defer src="/shared/loader.js"></script>
+  <script defer src="/shared/crew-auth.js"></script>
   <script defer src="../app.js"></script>
   <script defer src="../radio.js"></script>
-  <script defer src="../easterEggLock.js"></script>
-  <script defer src="../bunbun.js"></script>
-  <script defer src="../ahme.js"></script>
-  <script defer src="../iridia.js"></script>
-  <script defer src="../hitomi.js"></script>
-  <script defer src="../selim.js"></script>
-  <script defer src="../eltia.js"></script>
-  <script defer src="../sosyn.js"></script>
-  <script defer src="../hayden.js"></script>
 </head>
 <body>
-  <header class="topbar" data-topbar>
-    <a class="brand" href="/" aria-label="Aller à l'accueil">
-      <img class="brand__logo" src="../media/Deadwire_Logo_Neon.png" alt="Logo néon du Deadwire" />
-      <img class="brand__txt" src="../media/Deadwire_Txt.png" alt="Le Deadwire" />
-    </a>
-
-    <button class="navToggle" type="button" data-nav-toggle aria-label="Ouvrir le menu" aria-expanded="false">
-      <span class="navToggle__bar"></span>
-      <span class="navToggle__bar"></span>
-      <span class="navToggle__bar"></span>
-    </button>
-
-    <nav class="nav" data-nav>
-      <a class="nav__link" href="/" data-nav-link><i class="fa-solid fa-house" aria-hidden="true"></i> Accueil</a>
-      <a class="nav__link" href="/carte" data-nav-link><i class="fa-solid fa-martini-glass-citrus" aria-hidden="true"></i> Carte</a>
-      <a class="nav__link" href="/programme" data-nav-link><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Programme</a>
-      <a class="nav__link" href="/equipe" data-nav-link><i class="fa-solid fa-users" aria-hidden="true"></i> L'équipe</a>
-      <a class="nav__link" href="https://w2g.tv/?r=0a6deu9ljpivxv10fp" target="_blank" rel="noopener noreferrer" data-nav-link><img src="../media/w2g_logo.png" alt="Watch2Gether" style="height: 0.95em; vertical-align: middle; margin-right: 8px; filter: brightness(0) invert(1) opacity(0.7);" /> Watch2Gether</a>
-      <a class="nav__link" href="https://discord.gg/QC6CEGcpgq" target="_blank" rel="noopener noreferrer" data-nav-link><i class="fa-brands fa-discord" aria-hidden="true"></i> Discord</a>
-    </nav>
-
-    <div class="radioBar" data-radio-bar>
-      <button class="radioBar__toggle" data-radio-toggle aria-label="Ouvrir/Fermer la radio">
-        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-      </button>
-      <button class="radioBar__play" data-radio-play aria-label="Lecture">
-        <i class="fa-solid fa-play" aria-hidden="true"></i>
-      </button>
-      <div class="radioBar__info">
-        <span class="radioBar__track" data-radio-title>Radio Deadwire</span>
-      </div>
-      <div class="radioBar__volume">
-        <input type="range" min="0" max="1" step="0.01" value="0.2" data-radio-volume aria-label="Volume" />
-      </div>
-    </div>
-  </header>
 
   <main>
     <section class="hero">
@@ -78,7 +35,7 @@
                 <img class="mediaFrame__slot" src="../media/selim.png" alt="Portrait de Selim" />
               </a>
             </div>
-            <h2 class="profile__name" data-selim style="cursor: pointer;">Selim</h2>
+            <h2 class="profile__name">Selim</h2>
             <div class="profile__role">Gérant / Barman</div>
           </article>
 
@@ -88,7 +45,7 @@
                 <img class="mediaFrame__slot" src="../media/hitomi.png" alt="Portrait de Hitomi" />
               </a>
             </div>
-            <h2 class="profile__name" data-hitomi style="cursor: pointer;">Hitomi</h2>
+            <h2 class="profile__name">Hitomi</h2>
             <div class="profile__role">Sécurité</div>
           </article>
 
@@ -98,7 +55,7 @@
                 <img class="mediaFrame__slot" src="../media/sosyn.png" alt="Portrait de Sosyn" />
               </a>
             </div>
-            <h2 class="profile__name" data-sosyn style="cursor: pointer;">Sosyn</h2>
+            <h2 class="profile__name">Sosyn</h2>
             <div class="profile__role">Sécurité</div>
           </article>
 
@@ -108,7 +65,7 @@
                 <img class="mediaFrame__slot" src="../media/hayden.png" alt="Portrait de Hayden" />
               </a>
             </div>
-            <h2 class="profile__name" data-hayden style="cursor: pointer;">Hayden</h2>
+            <h2 class="profile__name">Hayden</h2>
             <div class="profile__role">Barman</div>
           </article>
 
@@ -118,7 +75,7 @@
                 <img class="mediaFrame__slot" src="../media/mencia.png" alt="Portrait de Bunbun" />
               </a>
             </div>
-            <h2 class="profile__name" data-bunbun style="cursor: pointer;">Bunbun</h2>
+            <h2 class="profile__name">Bunbun</h2>
             <div class="profile__role">Serveuse</div>
           </article>
 
@@ -128,7 +85,7 @@
                 <img class="mediaFrame__slot" src="../media/eltia.png" alt="Portrait de Eltia" />
               </a>
             </div>
-            <h2 class="profile__name" data-eltia style="cursor: pointer;">Eltia</h2>
+            <h2 class="profile__name">Eltia</h2>
             <div class="profile__role">Serveuse / Danseuse</div>
           </article>
 
@@ -138,7 +95,7 @@
                 <img class="mediaFrame__slot" src="../media/ahme.png" alt="Portrait de Ahme" />
               </a>
             </div>
-            <h2 class="profile__name" data-ahme style="cursor: pointer;">Ahme</h2>
+            <h2 class="profile__name">Ahme</h2>
             <div class="profile__role">Serveuse</div>
           </article>
 
@@ -148,7 +105,7 @@
                 <img class="mediaFrame__slot" src="../media/iridia.png" alt="Portrait de Iridia" />
               </a>
             </div>
-            <h2 class="profile__name" data-iridia style="cursor: pointer;">Iridia</h2>
+            <h2 class="profile__name">Iridia</h2>
             <div class="profile__role">DJ / Danseuse</div>
           </article>
 
@@ -217,15 +174,5 @@
       </div>
     </section>
   </main>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__meta">Housing par <a href="https://ko-fi.com/incarnat" target="_blank" rel="noopener noreferrer" class="link">Incarnat</a></div>
-      <div class="footer__brand">
-        <div class="footer__txt">Deadwire</div>
-        <div class="footer__year">© 2026</div>
-      </div>
-    </div>
-  </footer>
 </body>
 </html>

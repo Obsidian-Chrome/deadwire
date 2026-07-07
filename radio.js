@@ -7,13 +7,25 @@
   let totalPlaylistDuration = 0;
   let shouldLoop = true;
 
-  const playPauseBtn = document.querySelector('[data-radio-play]');
-  const volumeSlider = document.querySelector('[data-radio-volume]');
-  const trackTitle = document.querySelector('[data-radio-title]');
-  const radioBar = document.querySelector('[data-radio-bar]');
-  const toggleBtn = document.querySelector('[data-radio-toggle]');
+  // Attendre que la navbar soit chargée
+  function initRadio() {
+    const playPauseBtn = document.querySelector('[data-radio-play]');
+    const volumeSlider = document.querySelector('[data-radio-volume]');
+    const trackTitle = document.querySelector('[data-radio-title]');
+    const radioBar = document.querySelector('[data-radio-bar]');
+    const toggleBtn = document.querySelector('[data-radio-toggle]');
 
-  if (!playPauseBtn || !volumeSlider || !trackTitle || !radioBar || !toggleBtn) return;
+    if (!playPauseBtn || !volumeSlider || !trackTitle || !radioBar || !toggleBtn) {
+      // Réessayer après un court délai
+      setTimeout(initRadio, 100);
+      return;
+    }
+
+    // Initialiser la radio une fois les éléments trouvés
+    setupRadio(playPauseBtn, volumeSlider, trackTitle, radioBar, toggleBtn);
+  }
+
+  function setupRadio(playPauseBtn, volumeSlider, trackTitle, radioBar, toggleBtn) {
 
   const isRootPath = () => {
     const path = window.location.pathname;
@@ -218,5 +230,14 @@
     sync: syncPlayback,
     getAudio: () => audio
   };
+  
+  } // Fin de setupRadio
+
+  // Démarrer l'initialisation
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRadio);
+  } else {
+    initRadio();
+  }
 
 })();

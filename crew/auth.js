@@ -1,6 +1,6 @@
 const DISCORD_CONFIG = {
   clientId: '1503165405370388500',
-  redirectUri: window.location.origin + '/system/callback.html',
+  redirectUri: window.location.origin + '/crew/callback.html',
   scope: 'identify guilds guilds.members.read',
   guildId: '1450556186251231426',
   gmRoleId: '1503164535744368660',

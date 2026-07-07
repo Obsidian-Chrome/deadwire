@@ -6,49 +6,16 @@
   <title>Le Deadwire | Téléchargements</title>
   <link rel="icon" href="../media/Deadwire_Logo_Neon.png" type="image/png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="../styles.css" />
-  <script defer src="../app.js"></script>
-  <script defer src="../radio.js"></script>
+  <link rel="stylesheet" href="../../styles.css" />
+  <script defer src="/shared/loader.js"></script>
+  <script defer src="/shared/crew-auth.js"></script>
+  <script defer src="../../app.js"></script>
+  <script defer src="../../radio.js"></script>
+  <script defer src="../auth.js"></script>
 </head>
 <body>
-  <header class="topbar" data-topbar>
-    <a class="brand" href="/" aria-label="Aller à l'accueil">
-      <img class="brand__logo" src="../media/Deadwire_Logo_Neon.png" alt="Logo néon du Deadwire" />
-      <img class="brand__txt" src="../media/Deadwire_Txt.png" alt="Le Deadwire" />
-    </a>
 
-    <button class="navToggle" type="button" data-nav-toggle aria-label="Ouvrir le menu" aria-expanded="false">
-      <span class="navToggle__bar"></span>
-      <span class="navToggle__bar"></span>
-      <span class="navToggle__bar"></span>
-    </button>
-
-    <nav class="nav" data-nav>
-      <a class="nav__link" href="/" data-nav-link><i class="fa-solid fa-house" aria-hidden="true"></i> Accueil</a>
-      <a class="nav__link" href="/carte" data-nav-link><i class="fa-solid fa-martini-glass-citrus" aria-hidden="true"></i> Carte</a>
-      <a class="nav__link" href="/programme" data-nav-link><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Programme</a>
-      <a class="nav__link" href="/equipe" data-nav-link><i class="fa-solid fa-users" aria-hidden="true"></i> L'équipe</a>
-      <a class="nav__link" href="https://w2g.tv/?r=0a6deu9ljpivxv10fp" target="_blank" rel="noopener noreferrer" data-nav-link><img src="../media/w2g_logo.png" alt="Watch2Gether" style="height: 0.95em; vertical-align: middle; margin-right: 8px; filter: brightness(0) invert(1) opacity(0.7);" /> Watch2Gether</a>
-      <a class="nav__link" href="https://discord.gg/QC6CEGcpgq" target="_blank" rel="noopener noreferrer" data-nav-link><i class="fa-brands fa-discord" aria-hidden="true"></i> Discord</a>
-    </nav>
-
-    <div class="radioBar" data-radio-bar>
-      <button class="radioBar__toggle" data-radio-toggle aria-label="Ouvrir/Fermer la radio">
-        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-      </button>
-      <button class="radioBar__play" data-radio-play aria-label="Lecture">
-        <i class="fa-solid fa-play" aria-hidden="true"></i>
-      </button>
-      <div class="radioBar__info">
-        <span class="radioBar__track" data-radio-title>Radio Deadwire</span>
-      </div>
-      <div class="radioBar__volume">
-        <input type="range" min="0" max="1" step="0.01" value="0.2" data-radio-volume aria-label="Volume" />
-      </div>
-    </div>
-  </header>
-
-  <main>
+  <main id="protected-content" style="display: none;">
     <section class="hero">
       <div class="hero__bg" aria-hidden="true"></div>
       <div class="hero__content">
@@ -104,10 +71,61 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 Le Deadwire. Tous droits réservés.</p>
-    </div>
-  </footer>
+  <script>
+    (async () => {
+      const protectedContent = document.getElementById('protected-content');
+      
+      // Vérification rapide depuis le cache localStorage
+      const cachedToken = localStorage.getItem('discord_token');
+      const cachedExpiry = localStorage.getItem('discord_token_expiry');
+      const cachedIsMember = localStorage.getItem('discord_is_member') === 'true';
+      const cachedIsGM = localStorage.getItem('discord_is_gm') === 'true';
+      
+      // Si cache valide et utilisateur autorisé, afficher immédiatement
+      if (cachedToken && cachedExpiry && Date.now() < parseInt(cachedExpiry) && (cachedIsMember || cachedIsGM)) {
+        if (protectedContent) protectedContent.style.display = 'block';
+      }
+      
+      // Attendre que auth.js soit chargé
+      function waitForAuth() {
+        return new Promise((resolve) => {
+          if (window.discordAuth) {
+            resolve();
+          } else {
+            const checkInterval = setInterval(() => {
+              if (window.discordAuth) {
+                clearInterval(checkInterval);
+                resolve();
+              }
+            }, 50); // Réduit de 100ms à 50ms
+          }
+        });
+      }
+      
+      async function checkAccess() {
+        await waitForAuth();
+        
+        const isAuthenticated = await window.discordAuth.restoreSession();
+        
+        if (isAuthenticated) {
+          const isMember = window.discordAuth.isMember;
+          const isGM = window.discordAuth.isGM;
+          
+          if (isMember || isGM) {
+            // Afficher le contenu (déjà affiché si cache valide)
+            if (protectedContent) protectedContent.style.display = 'block';
+          } else {
+            // Accès refusé - rediriger vers crew
+            window.location.href = '/crew/';
+          }
+        } else {
+          // Non authentifié - rediriger vers Discord OAuth
+          window.location.href = window.discordAuth.getAuthUrl();
+        }
+      }
+      
+      await checkAccess();
+    })();
+  </script>
 </body>
 </html>

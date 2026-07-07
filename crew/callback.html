@@ -71,7 +71,7 @@
         statusEl.textContent = 'Connexion réussie ! Redirection...';
 
         setTimeout(() => {
-          window.location.href = '/system/';
+          window.location.href = '/crew/';
         }, 1000);
 
       } catch (error) {
@@ -80,7 +80,7 @@
           <div class="error">
             <h2>Erreur de connexion</h2>
             <p>${error.message}</p>
-            <button onclick="window.location.href='/system/'" 
+            <button onclick="window.location.href='/crew/'" 
                     style="margin-top: 20px; padding: 10px 20px; background: rgba(255, 42, 61, 0.2); border: 1px solid rgba(255, 42, 61, 0.5); border-radius: 6px; color: white; cursor: pointer;">
               Retour
             </button>

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Le Deadwire | Crew</title>
+  <link rel="icon" href="../media/Deadwire_Logo_Neon.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../styles.css" />
+  <script defer src="/shared/loader.js"></script>
+  <script defer src="/shared/crew-auth.js"></script>
+  <script defer src="../app.js"></script>
+  <script defer src="../radio.js"></script>
+  <script defer src="auth.js"></script>
+</head>
+<body>
+
+  <main>
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__content">
+        <section class="pageHero">
+          <div class="container">
+            <p class="kicker">Espace réservé</p>
+            <h1 class="title title--sm">Crew</h1>
+            <p class="lead">Ressources et outils pour les membres de l'équipe.</p>
+          </div>
+        </section>
+
+        <section class="section" id="crew-content">
+          <div class="container">
+            <!-- Loader pendant vérification -->
+            <div id="auth-loader" style="text-align: center; padding: 60px 20px;">
+              <i class="fa-solid fa-spinner fa-spin" style="font-size: 3em; color: rgba(255, 42, 61, 0.8);"></i>
+              <p style="color: rgba(255, 255, 255, 0.7); margin-top: 24px;">Vérification...</p>
+            </div>
+
+            <!-- Vue non connecté -->
+            <div id="login-view" style="display: none; text-align: center; padding: 60px 20px;">
+              <i class="fa-solid fa-lock" style="font-size: 4em; color: rgba(255, 42, 61, 0.8); margin-bottom: 24px;"></i>
+              <h2 class="title title--lg" style="margin-bottom: 16px;">Authentification requise</h2>
+              <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 32px;">
+                Connectez-vous avec Discord pour accéder à l'espace réservé à l'équipe.
+              </p>
+              <button id="discord-login-btn" class="btn btn--primary" style="font-size: 1.1em; padding: 14px 32px;">
+                <i class="fa-brands fa-discord" style="margin-right: 8px;"></i>
+                Se connecter avec Discord
+              </button>
+            </div>
+
+            <!-- Vue connecté -->
+            <div id="crew-view" style="display: none;">
+              <div data-reveal>
+                <h2 class="sectionTitle">Ressources</h2>
+                
+                <div class="grid" style="--cols: 2; gap: 24px; margin-top: 32px;">
+                  <!-- Téléchargements -->
+                  <article class="card">
+                    <div class="card__icon">
+                      <i class="fa-solid fa-download"></i>
+                    </div>
+                    <h3 class="card__title">Téléchargements</h3>
+                    <p class="card__desc">Vêtements, accessoires et ressources.</p>
+                    <a href="/crew/downloads" class="btn btn--primary" style="margin-top: auto;">
+                      <i class="fa-solid fa-folder-open" style="margin-right: 8px;"></i>
+                      Accéder
+                    </a>
+                  </article>
+
+                  <!-- Système de dés -->
+                  <article class="card">
+                    <div class="card__icon">
+                      <i class="fa-solid fa-dice-d20"></i>
+                    </div>
+                    <h3 class="card__title">Système de dés</h3>
+                    <p class="card__desc">Tutoriel et explication des règles.</p>
+                    <a href="/crew/system" class="btn btn--primary" style="margin-top: auto;">
+                      <i class="fa-solid fa-dice" style="margin-right: 8px;"></i>
+                      Accéder
+                    </a>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (async () => {
+      const authLoader = document.getElementById('auth-loader');
+      const loginView = document.getElementById('login-view');
+      const crewView = document.getElementById('crew-view');
+      const loginBtn = document.getElementById('discord-login-btn');
+
+      // Vérification rapide depuis le cache localStorage
+      const cachedToken = localStorage.getItem('discord_token');
+      const cachedExpiry = localStorage.getItem('discord_token_expiry');
+      const cachedIsMember = localStorage.getItem('discord_is_member') === 'true';
+      const cachedIsGM = localStorage.getItem('discord_is_gm') === 'true';
+      
+      // Si cache valide et utilisateur autorisé, afficher immédiatement
+      if (cachedToken && cachedExpiry && Date.now() < parseInt(cachedExpiry) && (cachedIsMember || cachedIsGM)) {
+        if (authLoader) authLoader.style.display = 'none';
+        showCrewView();
+      }
+
+      // Attendre que auth.js soit chargé
+      function waitForAuth() {
+        return new Promise((resolve) => {
+          if (window.discordAuth) {
+            resolve();
+          } else {
+            const checkInterval = setInterval(() => {
+              if (window.discordAuth) {
+                clearInterval(checkInterval);
+                resolve();
+              }
+            }, 25); // Réduit à 25ms
+          }
+        });
+      }
+
+      async function checkAuth() {
+        await waitForAuth();
+        
+        const isAuthenticated = await window.discordAuth.restoreSession();
+        
+        // Cacher le loader
+        if (authLoader) authLoader.style.display = 'none';
+        
+        if (isAuthenticated) {
+          const isMember = window.discordAuth.isMember;
+          const isGM = window.discordAuth.isGM;
+          
+          if (isMember || isGM) {
+            showCrewView();
+          } else {
+            showAccessDenied();
+          }
+        } else {
+          // Rediriger immédiatement vers Discord OAuth
+          window.location.href = window.discordAuth.getAuthUrl();
+        }
+      }
+
+      function showAccessDenied() {
+        loginView.innerHTML = `
+          <div style="text-align: center; padding: 60px 20px;">
+            <i class="fa-solid fa-ban" style="font-size: 4em; color: rgba(255, 42, 61, 0.8); margin-bottom: 24px;"></i>
+            <h2 class="title title--lg" style="margin-bottom: 16px;">Accès refusé</h2>
+            <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 32px;">
+              Vous devez être membre de l'équipe pour accéder à cette section.
+            </p>
+            <button onclick="window.discordAuth.logout(); window.location.href='/';" class="btn btn--secondary">
+              Retour à l'accueil
+            </button>
+          </div>
+        `;
+        loginView.style.display = 'block';
+        crewView.style.display = 'none';
+      }
+
+      function showCrewView() {
+        loginView.style.display = 'none';
+        crewView.style.display = 'block';
+      }
+
+      if (loginBtn) {
+        loginBtn.addEventListener('click', async () => {
+          await waitForAuth();
+          window.location.href = window.discordAuth.getAuthUrl();
+        });
+      }
+
+      await checkAuth();
+    })();
+  </script>
+</body>
+</html>

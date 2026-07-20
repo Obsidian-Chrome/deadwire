@@ -59,6 +59,18 @@
       "signature": "Ezekiel",
       "price": 25,
       "description": "Eau de vie, vodka, rhum, absinthe, whisky, gin, citron vert."
+    },
+    {
+      "name": "Tank Buster",
+      "signature": "Traven",
+      "price": 23,
+      "description": "Vodka, 25th Hour, citron vert, sirop de gingembre, bitters orange, glaçons."
+    },
+    {
+      "name": "Straya's Signal",
+      "signature": "Straya",
+      "price": 20,
+      "description": "Limoncello, jus de citron, sirop de miel, eau pétillante, feuilles de basilic."
     }
   ],
   "mocktails": [

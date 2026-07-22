@@ -4,7 +4,7 @@
       "numero": 1,
       "type": "Récupération",
       "statut": "ouvert",
-      "mercenaires": 0,
+      "mercenaires": "3 - 4",
       "titre": "On a le permis pour ça ?",
       "description": "Des clients de Shaaloani ont acheté un véhicule à un valentino à la réputation douteuse. Récupérez le véhicule et acheminez-le à bon port.",
       "deroule": [
@@ -28,7 +28,7 @@
       "numero": 2,
       "type": "Vol",
       "statut": "ouvert",
-      "mercenaires": 0,
+      "mercenaires": "3",
       "titre": "Immersion en haute société",
       "description": "Un merc indépendant souhaite obtenir une carte d'accès qui est en possession du mania de la finance Orson Piers. Malheureusement, celui-ci ne quitte que très peu son dispositif de sécurité. Heureusement, il est invité à un gala d'entreprise et vous avez de fausses identités.",
       "deroule": [
@@ -54,7 +54,7 @@
       "numero": 3,
       "type": "Mercenaire",
       "statut": "ouvert",
-      "mercenaires": 0,
+      "mercenaires": "4",
       "titre": "6th Street six pieds sous terre",
       "description": "Une veuve veut venger la mort de son mari assassiné puis exposé sur un panneau publicitaire lors d'une altercation avec les 6th streets, un gang d'anciens militaires extrémistes.",
       "deroule": [
@@ -79,7 +79,7 @@
       "numero": 4,
       "type": "Livraison",
       "statut": "ouvert",
-      "mercenaires": 0,
+      "mercenaires": "3 - 4",
       "titre": "La liberté de la presse",
       "description": "Une ancienne employée de Kugasaka a besoin d'une équipe pour livrer une ancienne base de données de la corpo à Neomi Woldt, une journaliste de N54 News.",
       "deroule": [
@@ -104,7 +104,7 @@
       "numero": 5,
       "type": "SOS",
       "statut": "ouvert",
-      "mercenaires": 0,
+      "mercenaires": "4",
       "titre": "Exfiltration d'une star de DS",
       "description": "Un producteur de médias qui souhaite garder l'anonymat a besoin d'une équipe pour exfiltrer une célébrité de DS nommée Parker Raschke pris en otage dans une planque de chromés.",
       "deroule": [
@@ -129,7 +129,7 @@
       "numero": 6,
       "type": "Sabotage",
       "statut": "ouvert",
-      "mercenaires": 0,
+      "mercenaires": "3 - 4",
       "titre": "Chiffrement risqué dans NewGen Networks Group",
       "description": "Un courtier en données charismatique du nom de M. Trois a besoin d'une équipe pour s'introduire dans le coffre-fort numérique de NewGen Networks Group et chiffrer une base de données financières.",
       "deroule": [

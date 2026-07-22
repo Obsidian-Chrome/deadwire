@@ -556,6 +556,14 @@
       }
       
       await checkAccess();
+      
+      // Relier le bouton de connexion Discord à l'URL d'authentification
+      const loginBtn = document.getElementById('discord-login-btn');
+      if (loginBtn && window.discordAuth) {
+        loginBtn.addEventListener('click', () => {
+          window.location.href = window.discordAuth.getAuthUrl();
+        });
+      }
     })();
   </script>
 

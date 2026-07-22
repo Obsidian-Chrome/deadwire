@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Le Deadwire | Contrats</title>
+  <link rel="icon" href="/media/Deadwire_Logo_Neon.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <style>
+    :root {
+      --xp: #00f0ff;
+    }
+
+    .contracts-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .contracts-tabs {
+      display: flex;
+      gap: 12px;
+    }
+
+    .contracts-tab {
+      background: rgba(255, 42, 61, 0.12);
+      border: 1px solid var(--line);
+      color: var(--text);
+      padding: 10px 22px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.25s ease;
+    }
+
+    .contracts-tab.is-active,
+    .contracts-tab:hover {
+      background: rgba(255, 42, 61, 0.25);
+      border-color: rgba(255, 42, 61, 0.55);
+      box-shadow: var(--shadow);
+    }
+
+    .contracts-mj-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .contracts-mj-toggle input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .mj-toggle__slider {
+      width: 42px;
+      height: 22px;
+      border-radius: 11px;
+      background: rgba(255, 42, 61, 0.2);
+      border: 1px solid var(--line);
+      position: relative;
+      transition: 0.25s;
+    }
+
+    .mj-toggle__slider::before {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 2px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--muted);
+      transition: 0.25s;
+    }
+
+    .contracts-mj-toggle input:checked + .mj-toggle__slider {
+      background: rgba(255, 42, 61, 0.5);
+      border-color: rgba(255, 42, 61, 0.8);
+    }
+
+    .contracts-mj-toggle input:checked + .mj-toggle__slider::before {
+      transform: translateX(20px);
+      background: var(--text);
+    }
+
+    .contracts-types {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .contracts-type {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contracts-type.is-active,
+    .contracts-type:hover {
+      color: var(--text);
+      border-color: rgba(255, 42, 61, 0.55);
+      box-shadow: var(--shadow);
+    }
+
+    .contracts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .contract-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contract-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 42, 61, 0.5);
+      box-shadow: var(--shadow);
+    }
+
+    .contract-card--closed {
+      opacity: 0.65;
+      filter: grayscale(0.4);
+    }
+
+    .contract-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 0.85rem;
+    }
+
+    .contract-card__number {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: var(--red);
+      letter-spacing: 0.05em;
+    }
+
+    .contract-card__type {
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .contract-card__meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contract-card__merc,
+    .contract-modal__merc {
+      color: var(--muted);
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .contract-card__title {
+      margin: 0 0 10px;
+      font-size: 1.25rem;
+      color: var(--text);
+    }
+
+    .contract-card__desc {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0 0 18px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      line-clamp: 3;
+      box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .contract-card__reward {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .reward-label {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .reward-icons {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .reward-icons .reward-icon:not(:first-child) {
+      margin-left: -8px;
+    }
+
+    .reward-icon {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.85));
+    }
+
+    .reward-icon--xp {
+      color: var(--xp);
+      font-size: 16px;
+      width: auto;
+      height: auto;
+    }
+
+    .reward-none {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .mj-only {
+      display: none !important;
+    }
+
+    .mj-vision .mj-only {
+      display: block !important;
+    }
+
+    .contracts-empty {
+      text-align: center;
+      color: var(--muted);
+      padding: 40px 20px;
+    }
+
+    .contract-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .contract-modal.is-open {
+      display: flex;
+    }
+
+    .contract-modal__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(6px);
+    }
+
+    .contract-modal__panel {
+      position: relative;
+      width: min(760px, calc(100% - 40px));
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--panel);
+      border: 1px solid rgba(255, 42, 61, 0.45);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow-strong);
+    }
+
+    .contract-modal__close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 6px;
+      line-height: 1;
+    }
+
+    .contract-modal__close:hover {
+      color: var(--red);
+    }
+
+    .contract-modal__header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .contract-modal__number {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: var(--red);
+      font-size: 0.9rem;
+      border: 1px solid rgba(255, 42, 61, 0.4);
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+
+    .contract-modal__type {
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+
+    .contract-modal__status {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .contract-modal__status--open {
+      background: rgba(0, 240, 255, 0.12);
+      color: var(--xp);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+    }
+
+    .contract-modal__status--closed {
+      background: rgba(255, 42, 61, 0.12);
+      color: var(--red);
+      border: 1px solid var(--line);
+    }
+
+    .contract-modal__title {
+      margin: 0 0 16px;
+      font-size: 1.8rem;
+    }
+
+    .contract-modal__desc {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .contract-modal__section-title {
+      margin: 24px 0 12px;
+      font-size: 1.05rem;
+      color: var(--text);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .contract-modal__section-title--mj {
+      color: var(--red);
+    }
+
+    .contract-modal__list {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .contract-modal__list li {
+      margin-bottom: 6px;
+    }
+
+    .contract-modal__reward {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 24px 0;
+    }
+
+    .contract-modal__mj {
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px dashed rgba(255, 42, 61, 0.4);
+      border-radius: var(--radius);
+      margin-top: 24px;
+    }
+
+    .mj-block {
+      margin-bottom: 18px;
+    }
+
+    .mj-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .mj-block h4 {
+      margin: 0 0 8px;
+      color: var(--red);
+      font-size: 0.95rem;
+    }
+
+    .mj-block p,
+    .mj-block ul {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .mj-block ul {
+      padding-left: 18px;
+    }
+
+    .reward-exact {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .reward-exact--gil {
+      color: var(--red);
+    }
+
+    .reward-exact--xp {
+      color: var(--xp);
+    }
+
+    .reward-separator {
+      color: var(--muted);
+      margin: 0 6px;
+    }
+
+    @media (max-width: 760px) {
+      .contracts-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contracts-tabs {
+        width: 100%;
+      }
+
+      .contracts-tab {
+        flex: 1;
+      }
+
+      .contract-modal__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .contract-modal__status {
+        margin-left: 0;
+      }
+
+      .contract-modal__merc {
+        margin-left: 0;
+      }
+    }
+  </style>
+  <script defer src="/shared/loader.js"></script>
+  <script defer src="/shared/crew-auth.js"></script>
+  <script defer src="../../app.js"></script>
+  <script defer src="../auth.js"></script>
+  <script defer src="contrats.js"></script>
+</head>
+<body>
+
+  <main id="protected-content" style="display: none;">
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__content">
+        <section class="pageHero">
+          <div class="container">
+            <p class="kicker">Crew</p>
+            <h1 class="title title--sm">Contrats</h1>
+            <p class="lead">Offres disponibles et missions archivées pour l'équipe.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div id="contracts-app">
+              <div class="contracts-toolbar">
+                <div class="contracts-tabs" id="status-tabs"></div>
+              </div>
+
+              <div class="contracts-types" id="type-filters"></div>
+
+              <div class="contracts-grid" id="contracts-grid"></div>
+              <div class="contracts-empty" id="contracts-empty" style="display: none;">
+                Aucun contrat trouvé.
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <div id="contracts-loader" style="text-align: center; padding: 60px 20px;">
+    <i class="fa-solid fa-spinner fa-spin" style="font-size: 3em; color: rgba(255, 42, 61, 0.8);"></i>
+    <p style="color: rgba(255, 255, 255, 0.7); margin-top: 24px;">Vérification...</p>
+  </div>
+
+  <div class="contract-modal" id="contract-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Détail du contrat">
+    <div class="contract-modal__overlay"></div>
+    <div class="contract-modal__panel">
+      <button class="contract-modal__close" type="button" aria-label="Fermer">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+      <div id="contract-modal__content"></div>
+    </div>
+  </div>
+
+</body>
+</html>

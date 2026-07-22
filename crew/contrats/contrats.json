@@ -1,0 +1,185 @@
+{
+  "contrats": [
+    {
+      "numero": 1,
+      "type": "Récupération",
+      "statut": "ouvert",
+      "mercenaires": 0,
+      "titre": "On a le permis pour ça ?",
+      "description": "Des clients de Shaaloani ont acheté un véhicule à un valentino à la réputation douteuse. Récupérez le véhicule et acheminez-le à bon port.",
+      "deroule": [
+        "Récupérer le poids lourd auprès du valentino",
+        "Acheminer celui-ci jusqu'aux clients de Shaaloani"
+      ],
+      "recompense": {
+        "gil": 2,
+        "xp": 2
+      },
+      "mj": {
+        "description": "Le valentino est lié à un réseau de poids lourds volés et a plusieurs complices dans le secteur.",
+        "peripeties": [
+          "Si le jet de dé du MJ est défavorable : le valentino n'agissait pas seul et durant le transport, une course poursuite avec des voitures et des motos armées aura lieu."
+        ],
+        "xpExact": "100",
+        "gilExact": "Somme raisonnable (Jolie somme si péripétie accomplie)"
+      }
+    },
+    {
+      "numero": 2,
+      "type": "Vol",
+      "statut": "ouvert",
+      "mercenaires": 0,
+      "titre": "Immersion en haute société",
+      "description": "Un merc indépendant souhaite obtenir une carte d'accès qui est en possession du mania de la finance Orson Piers. Malheureusement, celui-ci ne quitte que très peu son dispositif de sécurité. Heureusement, il est invité à un gala d'entreprise et vous avez de fausses identités.",
+      "deroule": [
+        "Se changer et déposer les armes à l'entrée du gala",
+        "Localiser Orson Piers",
+        "Récupérer sa carte d'accès discrètement",
+        "Quitter les lieux"
+      ],
+      "recompense": {
+        "gil": 4,
+        "xp": 2
+      },
+      "mj": {
+        "description": "Orson Piers porte la carte dans un étui intérieur de sa veste. Son garde du corps reste à proximité même aux toilettes.",
+        "peripeties": [
+          "Si le jet de dé du MJ est favorable : Orson Piers a bu beaucoup de champagne. Il est temps de faire un arrêt aux toilettes où il sera plus vulnérable."
+        ],
+        "xpExact": "100 (+25 si péripétie accomplie)",
+        "gilExact": "Jolie somme"
+      }
+    },
+    {
+      "numero": 3,
+      "type": "Mercenaire",
+      "statut": "ouvert",
+      "mercenaires": 0,
+      "titre": "6th Street six pieds sous terre",
+      "description": "Une veuve veut venger la mort de son mari assassiné puis exposé sur un panneau publicitaire lors d'une altercation avec les 6th streets, un gang d'anciens militaires extrémistes.",
+      "deroule": [
+        "Se rendre au stand de tir contrôlé par les 6th streets",
+        "Éliminer l'ensemble des présents",
+        "Évacuer les lieux et prévenir la veuve"
+      ],
+      "recompense": {
+        "gil": 4,
+        "xp": 2
+      },
+      "mj": {
+        "description": "Le stand de tir dispose d'une alarme silencieuse reliée à un poste de 6th Street à quelques rues.",
+        "peripeties": [
+          "Si le jet de dé du MJ est défavorable : au moment d'évacuer les lieux, un autre groupe de 6th streets arrive à cause d'une alarme silencieuse."
+        ],
+        "xpExact": "100 (+25 si péripétie accomplie)",
+        "gilExact": "Jolie somme"
+      }
+    },
+    {
+      "numero": 4,
+      "type": "Livraison",
+      "statut": "ouvert",
+      "mercenaires": 0,
+      "titre": "La liberté de la presse",
+      "description": "Une ancienne employée de Kugasaka a besoin d'une équipe pour livrer une ancienne base de données de la corpo à Neomi Woldt, une journaliste de N54 News.",
+      "deroule": [
+        "Récupérer la base de données",
+        "Éliminer les menaces qui ne veulent pas voir fuiter son contenu",
+        "Acheminer celle-ci jusqu'à Neomi Woldt"
+      ],
+      "recompense": {
+        "gil": 2,
+        "xp": 2
+      },
+      "mj": {
+        "description": "La base de données contient des preuves de corruption interne ; plusieurs factions veulent l'intercepter.",
+        "peripeties": [
+          "Si le jet de dé du MJ est défavorable : le lieu de livraison est bouclé et les mercs doivent trouver un moyen de pénétrer le périmètre pour sortir Neomi Woldt de là et lui livrer la disquette comme il se doit."
+        ],
+        "xpExact": "100",
+        "gilExact": "Somme raisonnable (Jolie somme si péripétie accomplie)"
+      }
+    },
+    {
+      "numero": 5,
+      "type": "SOS",
+      "statut": "ouvert",
+      "mercenaires": 0,
+      "titre": "Exfiltration d'une star de DS",
+      "description": "Un producteur de médias qui souhaite garder l'anonymat a besoin d'une équipe pour exfiltrer une célébrité de DS nommée Parker Raschke pris en otage dans une planque de chromés.",
+      "deroule": [
+        "Se rendre à la planque des chromés",
+        "Retrouver Parker Raschke",
+        "S'exfiltrer avec l'otage pour l'amener jusqu'à la voiture avec chauffeur non loin"
+      ],
+      "recompense": {
+        "gil": 2,
+        "xp": 2
+      },
+      "mj": {
+        "description": "Les chromés tiennent Parker Raschke dans une chambre sécurisée au deuxième étage. Le producteur craint surtout un scandale médiatique.",
+        "peripeties": [
+          "Si le jet de dé du MJ est favorable : le chauffeur n'est autre que Pactole, le merc qui a été laissé en vie durant le contrat pour Kuro-Hana. Il remerciera le groupe et offrira un petit supplément en gils à la récompense."
+        ],
+        "xpExact": "100",
+        "gilExact": "Somme raisonnable (Jolie somme si péripétie favorable)"
+      }
+    },
+    {
+      "numero": 6,
+      "type": "Sabotage",
+      "statut": "ouvert",
+      "mercenaires": 0,
+      "titre": "Chiffrement risqué dans NewGen Networks Group",
+      "description": "Un courtier en données charismatique du nom de M. Trois a besoin d'une équipe pour s'introduire dans le coffre-fort numérique de NewGen Networks Group et chiffrer une base de données financières.",
+      "deroule": [
+        "S'introduire dans le complexe de NewGen Networks Group",
+        "Trouver un point d'accès physique et utiliser un éclat fourni par le client",
+        "Défendre / Attendre le temps que les données soient chiffrées",
+        "S'exfiltrer",
+        "(Facultatif) : Le faire discrètement assure un bonus de la part du client."
+      ],
+      "recompense": {
+        "gil": 2,
+        "xp": 2
+      },
+      "mj": {
+        "description": "M. Trois a fourni un éclat cybernétique modifié pour contourner les protocoles de NewGen.",
+        "peripeties": [
+          "Si le jet de dé du MJ est défavorable : leur matériel tombe en panne de façon aléatoire à un moment critique et il faut contacter le client pour le relancer.",
+          "Si le jet de dé du MJ est favorable : rien."
+        ],
+        "xpExact": "100",
+        "gilExact": "Somme raisonnable (Jolie somme si objectif facultatif rempli)"
+      }
+    },
+    {
+      "numero": 0,
+      "type": "SOS",
+      "statut": "clos",
+      "mercenaires": 5,
+      "titre": "Capture d'Eden Tengoku",
+      "description": "Mission confidentielle réservée aux membres du Deadwire : localiser et capturer Eden Tengoku, alias Eve / 'La Panthère'. Cible dangereuse, entraînée au combat rapproché et passée par l'Arcadion. Dernière localisation : Rues de Néon. Elle doit être livrée vivante et entière.",
+      "deroule": [
+        "Collecter des renseignements sur la cible avec appui netrun",
+        "Localiser Eden Tengoku dans le secteur des Rues de Néon",
+        "Constituer l'équipe de capture et valider les profils avec la cliente",
+        "Intercepter la cible sans dommage grave",
+        "Livrer Eden Tengoku vivante et entière au point de rendez-vous"
+      ],
+      "recompense": {
+        "gil": 4,
+        "xp": 3
+      },
+      "mj": {
+        "description": "Eden Tengoku alias Eve / La Panthère, 28 ans, originaire d'Hingashi. Combattante entraînée, ancienne nettoyeuse pour Avelyne Kaiser, championne de l'Arcadion. Silhouette athlétique, peau claire tatouée (cou, poitrine, abdomen, bras), cheveux courts brun-rouge, barrette-masque technologique côté gauche, hétérochromie (œil gauche bleu, œil droit vert vif), style sombre utilitaire. Dernier signalement : Rues de Néon.",
+        "peripeties": [
+          "La cible est expérimentée en combat de rue et en arène.",
+          "D'autres chasseurs ou corpos recherchent activement Eden Tengoku."
+        ],
+        "xpExact": "100",
+        "gilExact": "Prime conséquente pour la capture ; somme moindre pour les seuls renseignements"
+      }
+    }
+  ]
+}

@@ -90,7 +90,7 @@
     }
   ],
   "default": {
-    "visualizer": "",
+    "visualizer": "visualizer_warcore.webm",
     "colorFilter": ""
   }
 }

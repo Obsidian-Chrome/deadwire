@@ -87,14 +87,6 @@
       "endTime": "23:59",
       "visualizer": "visualizer_kaia.webm",
       "colorFilter": ""
-    },
-    {
-      "name": "Concert Warcore",
-      "date": "2026-07-28",
-      "startTime": "18:00",
-      "endTime": "23:59",
-      "visualizer": "visualizer_warcore.webm",
-      "colorFilter": ""
     }
   ],
   "default": {

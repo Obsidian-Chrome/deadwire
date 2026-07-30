@@ -104,13 +104,12 @@ function showEventModal(event) {
   
   let contentHTML = '';
   
-  if (event.coverUrl) {
-    contentHTML += `
-      <div style="width: 100%; height: 300px; overflow: hidden; border-radius: 12px 12px 0 0;">
-        <img src="${event.coverUrl}" alt="${escapeHtml(event.name)}" style="width: 100%; height: 100%; object-fit: cover;" />
-      </div>
-    `;
-  }
+  const modalBannerUrl = event.coverUrl || '/media/discordevent_deadwire.png';
+  contentHTML += `
+    <div style="width: 100%; max-height: 384px; overflow: hidden; border-radius: 12px 12px 0 0; background: rgba(10, 0, 12, 0.8);">
+      <img src="${modalBannerUrl}" alt="${escapeHtml(event.name)}" style="width: 100%; height: auto; max-height: 384px; object-fit: contain;" />
+    </div>
+  `;
   
   contentHTML += `
     <div style="padding: 32px;">
@@ -220,9 +219,8 @@ function createEventCard(event) {
   const start = new Date(event.startTime);
   const end = event.endTime ? new Date(event.endTime) : null;
   
-  const bannerHTML = event.coverUrl 
-    ? `<div class="event-card__banner"><img src="${event.coverUrl}" alt="${escapeHtml(event.name)}" /></div>`
-    : `<div class="event-card__banner"></div>`;
+  const bannerUrl = event.coverUrl || '/media/discordevent_deadwire.png';
+  const bannerHTML = `<div class="event-card__banner"><img src="${bannerUrl}" alt="${escapeHtml(event.name)}" /></div>`;
   
   const timeHTML = end 
     ? `${formatTime(start)} - ${formatTime(end)}`

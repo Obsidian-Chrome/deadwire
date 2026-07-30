@@ -2,8 +2,8 @@ name: Update Discord Events
 
 on:
   schedule:
-    # Exécute toutes les heures
-    - cron: '0 * * * *'
+    # Exécute toutes les 10 minutes
+    - cron: '*/10 * * * *'
   workflow_dispatch:
     # Permet le déclenchement manuel depuis l'onglet Actions
 

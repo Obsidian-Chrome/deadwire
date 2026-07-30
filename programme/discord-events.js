@@ -106,8 +106,8 @@ function showEventModal(event) {
   
   const modalBannerUrl = event.coverUrl || '/media/discordevent_deadwire.png';
   contentHTML += `
-    <div style="width: 100%; max-height: 384px; overflow: hidden; border-radius: 12px 12px 0 0; background: rgba(10, 0, 12, 0.8);">
-      <img src="${modalBannerUrl}" alt="${escapeHtml(event.name)}" style="width: 100%; height: auto; max-height: 384px; object-fit: contain;" />
+    <div style="width: 100%; height: 384px; overflow: hidden; border-radius: 12px 12px 0 0; background: rgba(10, 0, 12, 0.8); display: flex; align-items: center; justify-content: center;">
+      <img src="${modalBannerUrl}" alt="${escapeHtml(event.name)}" style="width: 100%; height: 100%; object-fit: cover; object-position: center center;" />
     </div>
   `;
   
@@ -267,7 +267,7 @@ function populateEvents(events) {
     return;
   }
   
-  grid.style.display = 'grid';
+  grid.style.display = 'flex';
   emptyState.style.display = 'none';
   grid.innerHTML = '';
   

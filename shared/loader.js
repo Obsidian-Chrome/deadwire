@@ -19,4 +19,7 @@
   // Charger navbar et footer
   await loadComponent('/shared/navbar.html', 'prepend');
   await loadComponent('/shared/footer.html', 'append');
+  
+  // Déclencher un événement pour signaler que les composants sont chargés
+  document.dispatchEvent(new Event('componentsLoaded'));
 })();

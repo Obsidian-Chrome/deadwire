@@ -2034,6 +2034,27 @@ img{max-width:100%; display:block}
     display:none;
   }
   .nav__link{width:100%}
+  
+  .nav.is-open .nav__link{
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+  
+  .nav.is-open .nav__link span{
+    position: static;
+    transform: none;
+    opacity: 1;
+    font-size: 14px;
+    background: transparent;
+    padding: 0;
+    border: none;
+    pointer-events: auto;
+  }
+  
+  .nav.is-open .nav__link img{
+    display:inline;
+  }
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -2263,17 +2284,110 @@ img{max-width:100%; display:block}
   }
 }
 
+@media (max-width: 1550px){
+  .nav__username{
+    display: none;
+  }
+  
+  .nav__user{
+    padding: 6px;
+    gap: 0;
+  }
+  
+  .brand__txt{
+    display: none;
+  }
+}
+
+@media (max-width: 1400px){
+  .nav{
+    gap: 8px;
+  }
+  
+  .nav__link{
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+}
+
 @media (max-width: 1200px){
   .nav{
     gap: 6px;
   }
   
   .nav__link{
-    padding: 8px 12px;
-    font-size: 14px;
+    padding: 8px 10px;
+    font-size: 13px;
   }
   
   .brand__txt{
+    display: none;
+  }
+  
+  .topbar{
+    gap: 12px;
+  }
+}
+
+@media (max-width: 1024px){
+  .nav__link{
+    padding: 8px 8px;
+    font-size: 13px;
+  }
+  
+  .nav{
+    gap: 4px;
+  }
+  
+  .nav__username{
+    display: none;
+  }
+  
+  .nav__user{
+    padding: 6px;
+    gap: 0;
+  }
+  
+  .nav__auth{
+    right: 12px;
+  }
+}
+
+@media (max-width: 900px){
+  .nav__link{
+    padding: 8px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .nav__link span{
+    position: absolute;
+    bottom: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    background: rgba(10, 0, 12, 0.95);
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 42, 61, 0.3);
+  }
+  
+  .nav__link:hover span{
+    opacity: 1;
+  }
+  
+  .nav__link i{
+    margin: 0;
+  }
+  
+  .nav__link img{
     display: none;
   }
 }

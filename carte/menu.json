@@ -148,7 +148,8 @@
     { "name": "Limonade", "price": 5 },
     { "name": "Jus de fruits", "price": 6 },
     { "name": "Café", "price": 5 },
-    { "name": "25th Hour", "price": 13 },
+    { "name": "25th Hour", "price": 13, "description": "Café" },
+    { "name": "Daemons Energy", "price": 8, "description": "Cerise, framboise ou ananas" },
     { "name": "Cold brew", "price": 6 },
     { "name": "Thé glacé", "price": 5 },
     { "name": "Bubble tea", "price": 8 }

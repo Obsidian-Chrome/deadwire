@@ -38,6 +38,8 @@
     // Navigation entre sections (sidebar)
     navButtons.forEach(button => {
       button.addEventListener('click', () => {
+        // Remonter instantanément en haut
+        window.scrollTo({ top: 0, behavior: 'instant' });
         changeSection(button.dataset.section);
       });
     });

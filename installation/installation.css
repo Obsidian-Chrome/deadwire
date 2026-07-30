@@ -1,0 +1,125 @@
+/* Layout installation avec sidebar */
+.installation-layout {
+  position: relative;
+}
+
+/* Sidebar navigation */
+.installation-sidebar {
+  position: fixed;
+  top: 280px;
+  left: max(20px, calc(50% - 560px));
+  width: 280px;
+  z-index: 10;
+}
+
+.installation-nav__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 16px;
+  padding-left: 12px;
+}
+
+.installation-nav__item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: transparent;
+  border: 1px solid rgba(255, 42, 61, 0.15);
+  border-radius: var(--radius2);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+}
+
+.installation-nav__item i {
+  font-size: 1.1em;
+  color: rgba(255, 42, 61, 0.6);
+  transition: color 0.2s ease;
+}
+
+.installation-nav__item:hover {
+  background: rgba(255, 42, 61, 0.05);
+  border-color: rgba(255, 42, 61, 0.3);
+  color: var(--text);
+  transform: translateX(4px);
+}
+
+/* Contenu principal */
+.installation-content {
+  max-width: 100%;
+  overflow-x: hidden;
+  padding-left: 320px;
+  box-sizing: border-box;
+}
+
+.installation-content > * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+  .installation-sidebar {
+    left: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .installation-layout {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  .installation-sidebar {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    left: auto;
+    top: auto;
+    transform: none;
+    margin-left: 0;
+    margin-bottom: 32px;
+    overflow-x: hidden;
+  }
+
+  .installation-content {
+    padding-left: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .installation-content > div {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .installation-content code {
+    max-width: 100% !important;
+    word-wrap: break-word !important;
+    word-break: break-all !important;
+    white-space: pre-wrap !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .installation-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .installation-nav__title {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .installation-nav {
+    grid-template-columns: 1fr;
+  }
+}

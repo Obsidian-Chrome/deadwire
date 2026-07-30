@@ -50,7 +50,7 @@ async function fetchDiscordEvents() {
  */
 function transformEvents(discordEvents) {
   return discordEvents
-    .filter(event => event.status !== 3) // Exclut les événements terminés (status 3 = COMPLETED)
+    .filter(event => event.status !== 3 && event.status !== 4) // Exclut les événements terminés (3 = COMPLETED) et annulés (4 = CANCELED)
     .map(event => {
       const startDate = new Date(event.scheduled_start_time);
       const endDate = event.scheduled_end_time ? new Date(event.scheduled_end_time) : null;

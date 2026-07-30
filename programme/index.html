@@ -10,7 +10,7 @@
   <script defer src="/shared/loader.js"></script>
   <script defer src="/shared/crew-auth.js"></script>
   <script defer src="../app.js"></script>
-  <script defer src="../calendar.js"></script>
+  <script defer src="discord-events.js"></script>
 </head>
 <body>
 
@@ -27,189 +27,123 @@
         </section>
 
         <section class="section">
-      <div class="container">
-        <div class="timeline" data-reveal>
-          <div class="timeline__week">
-            <h2 class="timeline__weekTitle" data-week="1"></h2>
-            <div class="timeline__weekGrid">
-          <article class="event">
-            <div class="event__when">
-              <div class="event__day">Lun</div>
-              <div class="event__date"></div>
-              <div class="event__hours"></div>
+          <div class="container">
+            <div id="eventsGrid" class="events-grid" data-reveal>
+              <!-- Les événements seront injectés ici par JS -->
             </div>
-            <div class="event__body">
-              <h3 class="event__title"></h3>
-              <p class="event__text"></p>
-            </div>
-          </article>
 
-          <article class="event">
-            <div class="event__when">
-              <div class="event__day">Mar</div>
-              <div class="event__date"></div>
-              <div class="event__hours"></div>
-            </div>
-            <div class="event__body">
-              <h3 class="event__title"></h3>
-              <p class="event__text"></p>
-            </div>
-          </article>
-
-          <article class="event">
-            <div class="event__when">
-              <div class="event__day">Mer</div>
-              <div class="event__date"></div>
-              <div class="event__hours"></div>
-            </div>
-            <div class="event__body">
-              <h3 class="event__title"></h3>
-              <p class="event__text"></p>
-            </div>
-          </article>
-
-          <article class="event">
-            <div class="event__when">
-              <div class="event__day">Jeu</div>
-              <div class="event__date"></div>
-              <div class="event__hours"></div>
-            </div>
-            <div class="event__body">
-              <h3 class="event__title"></h3>
-              <p class="event__text"></p>
-            </div>
-          </article>
-
-          <article class="event">
-            <div class="event__when">
-              <div class="event__day">Ven</div>
-              <div class="event__date"></div>
-              <div class="event__hours"></div>
-            </div>
-            <div class="event__body">
-              <h3 class="event__title"></h3>
-              <p class="event__text"></p>
-            </div>
-          </article>
-
-          <article class="event">
-            <div class="event__when">
-              <div class="event__day">Sam</div>
-              <div class="event__date"></div>
-              <div class="event__hours"></div>
-            </div>
-            <div class="event__body">
-              <h3 class="event__title"></h3>
-              <p class="event__text"></p>
-            </div>
-          </article>
-
-          <article class="event">
-            <div class="event__when">
-              <div class="event__day">Dim</div>
-              <div class="event__date"></div>
-              <div class="event__hours"></div>
-            </div>
-            <div class="event__body">
-              <h3 class="event__title"></h3>
-              <p class="event__text"></p>
-            </div>
-          </article>
+            <div id="emptyState" class="empty-state" style="display: none;">
+              <i class="fa-solid fa-calendar-xmark" aria-hidden="true"></i>
+              <h2>Aucun événement prévu</h2>
+              <p>Revenez bientôt pour découvrir nos prochaines soirées !</p>
             </div>
           </div>
+        </section>
 
-          <div class="timeline__week">
-            <h2 class="timeline__weekTitle" data-week="2"></h2>
-            <div class="timeline__weekGrid">
-          <article class="event">
-            <div class="event__when">
-              <div class="event__day">Lun</div>
-              <div class="event__date"></div>
-              <div class="event__hours"></div>
-            </div>
-            <div class="event__body">
-              <h3 class="event__title"></h3>
-              <p class="event__text"></p>
-            </div>
-          </article>
+        <style>
+          .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+          }
 
-          <article class="event">
-            <div class="event__when">
-              <div class="event__day">Mar</div>
-              <div class="event__date"></div>
-              <div class="event__hours"></div>
-            </div>
-            <div class="event__body">
-              <h3 class="event__title"></h3>
-              <p class="event__text"></p>
-            </div>
-          </article>
+          @media (min-width: 768px) {
+            .events-grid {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
 
-          <article class="event">
-            <div class="event__when">
-              <div class="event__day">Mer</div>
-              <div class="event__date"></div>
-              <div class="event__hours"></div>
-            </div>
-            <div class="event__body">
-              <h3 class="event__title"></h3>
-              <p class="event__text"></p>
-            </div>
-          </article>
+          @media (min-width: 1200px) {
+            .events-grid {
+              grid-template-columns: repeat(4, 1fr);
+            }
+          }
 
-          <article class="event">
-            <div class="event__when">
-              <div class="event__day">Jeu</div>
-              <div class="event__date"></div>
-              <div class="event__hours"></div>
-            </div>
-            <div class="event__body">
-              <h3 class="event__title"></h3>
-              <p class="event__text"></p>
-            </div>
-          </article>
+          .event-card {
+            background: rgba(10, 0, 12, 0.6);
+            border: 1px solid rgba(255, 42, 61, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+          }
 
-          <article class="event">
-            <div class="event__when">
-              <div class="event__day">Ven</div>
-              <div class="event__date"></div>
-              <div class="event__hours"></div>
-            </div>
-            <div class="event__body">
-              <h3 class="event__title"></h3>
-              <p class="event__text"></p>
-            </div>
-          </article>
+          .event-card:hover {
+            border-color: rgba(255, 42, 61, 0.5);
+            box-shadow: 0 8px 24px rgba(255, 42, 61, 0.25);
+            transform: translateY(-4px);
+          }
 
-          <article class="event">
-            <div class="event__when">
-              <div class="event__day">Sam</div>
-              <div class="event__date"></div>
-              <div class="event__hours"></div>
-            </div>
-            <div class="event__body">
-              <h3 class="event__title"></h3>
-              <p class="event__text"></p>
-            </div>
-          </article>
+          .event-card__banner {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: linear-gradient(135deg, rgba(255, 42, 61, 0.1) 0%, rgba(10, 0, 12, 0.8) 100%);
+          }
 
-          <article class="event">
-            <div class="event__when">
-              <div class="event__day">Dim</div>
-              <div class="event__date"></div>
-              <div class="event__hours"></div>
-            </div>
-            <div class="event__body">
-              <h3 class="event__title"></h3>
-              <p class="event__text"></p>
-            </div>
-          </article>
-            </div>
-          </div>
-        </div>
+          .event-card__banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
 
-      </div>
-    </section>
+          .event-card__content {
+            padding: 20px;
+          }
+
+          .event-card__title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: rgba(247, 233, 239, 0.95);
+            margin: 0 0 12px 0;
+            line-height: 1.3;
+          }
+
+          .event-card__meta {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: rgba(247, 233, 239, 0.7);
+          }
+
+          .event-card__meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+
+          .event-card__meta-item i {
+            color: rgba(255, 42, 61, 0.8);
+            width: 16px;
+            text-align: center;
+          }
+
+          .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: rgba(247, 233, 239, 0.6);
+          }
+
+          .empty-state i {
+            font-size: 4rem;
+            color: rgba(255, 42, 61, 0.3);
+            margin-bottom: 24px;
+          }
+
+          .empty-state h2 {
+            font-size: 1.75rem;
+            color: rgba(247, 233, 239, 0.8);
+            margin: 0 0 12px 0;
+          }
+
+          .empty-state p {
+            font-size: 1.1rem;
+            margin: 0;
+          }
+        </style>
       </div>
     </section>
   </main>

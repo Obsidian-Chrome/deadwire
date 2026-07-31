@@ -27,26 +27,52 @@
         </section>
 
         <section class="section">
-      <div class="container">
-        <div class="menuGrid" data-reveal>
-          <div class="menuBlock" data-menu-block="cocktails">
-            <h2 class="sectionTitle">Cocktails</h2>
-          </div>
+          <div class="container">
+            <div class="carte-layout">
+              <!-- Sommaire fixe sur la gauche -->
+              <aside class="carte-sidebar">
+                <nav class="carte-nav">
+                  <h2 class="carte-nav__title">Sommaire</h2>
+                  <a href="#cocktails" class="carte-nav__item">
+                    <i class="fa-solid fa-martini-glass-citrus" aria-hidden="true"></i>
+                    <span>Cocktails</span>
+                  </a>
+                  <a href="#mocktails" class="carte-nav__item">
+                    <i class="fa-solid fa-glass-water" aria-hidden="true"></i>
+                    <span>Mocktails</span>
+                  </a>
+                  <a href="#alcools" class="carte-nav__item">
+                    <i class="fa-solid fa-whiskey-glass" aria-hidden="true"></i>
+                    <span>Alcools</span>
+                  </a>
+                  <a href="#sans-alcools" class="carte-nav__item">
+                    <i class="fa-solid fa-mug-hot" aria-hidden="true"></i>
+                    <span>Sans alcools</span>
+                  </a>
+                </nav>
+              </aside>
 
-          <div class="menuBlock" data-menu-block="mocktails">
-            <h2 class="sectionTitle">Mocktails</h2>
-          </div>
+              <!-- Contenu principal -->
+              <div class="carte-content" data-reveal>
+                <div id="cocktails" class="menuBlock" data-menu-block="cocktails">
+                  <h2 class="sectionTitle">Cocktails</h2>
+                </div>
 
-          <div class="menuBlock" data-menu-block="alcools">
-            <h2 class="sectionTitle">Alcools</h2>
-          </div>
+                <div id="mocktails" class="menuBlock" data-menu-block="mocktails">
+                  <h2 class="sectionTitle">Mocktails</h2>
+                </div>
 
-          <div class="menuBlock" data-menu-block="sansAlcools">
-            <h2 class="sectionTitle">Sans alcools</h2>
+                <div id="alcools" class="menuBlock" data-menu-block="alcools">
+                  <h2 class="sectionTitle">Alcools</h2>
+                </div>
+
+                <div id="sans-alcools" class="menuBlock" data-menu-block="sansAlcools">
+                  <h2 class="sectionTitle">Sans alcools</h2>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
       </div>
     </section>
   </main>
@@ -77,13 +103,12 @@
         
         // Fonction pour générer HTML d'un item simple (sans signature, avec description optionnelle)
         function renderSimpleItem(item) {
-          const imageUrl = item.image || '../media/menu/default.png';
           const nameWithDesc = item.description 
             ? `${item.name} <span style="color: rgba(247, 233, 239, 0.5); font-size: 0.9em; font-weight: normal;">(${item.description})</span>`
             : item.name;
           return `
             <div class="menuItem menuItem--withImage">
-              <img class="menuItem__image" src="${imageUrl}" alt="${item.name}" onerror="this.style.display='none'" />
+              ${item.image ? `<img class="menuItem__image" src="${item.image}" alt="${item.name}" onerror="this.style.display='none'" />` : ''}
               <div class="menuItem__content">
                 <div class="menuItem__row">
                   <span class="menuItem__name">${nameWithDesc}</span>

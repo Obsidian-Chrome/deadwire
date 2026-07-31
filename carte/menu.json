@@ -4,73 +4,85 @@
       "name": "Black Mane",
       "signature": "Selim",
       "price": 20,
-      "description": "Rhum ambré, jus de grenade, infusion d'hibiscus, piment fumé."
+      "description": "Rhum ambré, jus de grenade, infusion d'hibiscus, piment fumé.",
+      "image": "../media/carte/black-mane.png"
     },
     {
       "name": "NeonVeins",
       "signature": "Iridia",
       "price": 22,
-      "description": "Gin, liqueur de violette, sirop de fruit du dragon, jus de citron vert, crème de coco, grenadine noire."
+      "description": "Gin, liqueur de violette, sirop de fruit du dragon, jus de citron vert, crème de coco, grenadine noire.",
+      "image": "../media/carte/neonveins.png"
     },
     {
       "name": "WhiteFox",
       "signature": "Ahme",
       "price": 19,
-      "description": "Vodka, liqueur de coco, liqueur de vanille, citron vert, lait de coco, sirop de sucre."
+      "description": "Vodka, liqueur de coco, liqueur de vanille, citron vert, lait de coco, sirop de sucre.",
+      "image": "../media/carte/whitefox.png"
     },
     {
       "name": "Ketsuryu",
       "signature": "Hitomi",
       "price": 24,
-      "description": "Whisky hingashien, Umeshu, liqueur de yuzu, sirop de grenade, Angostura bitters."
+      "description": "Whisky hingashien, Umeshu, liqueur de yuzu, sirop de grenade, Angostura bitters.",
+      "image": "../media/carte/ketsuryu.png"
     },
     {
       "name": "Ruby",
       "signature": "Hayden",
       "price": 20,
-      "description": "Thé glacé à la fraise, gros sucre, vodka, morceau de fraise, eau pétillante."
+      "description": "Thé glacé à la fraise, gros sucre, vodka, morceau de fraise, eau pétillante.",
+      "image": "../media/carte/ruby.png"
     },
     {
       "name": "Triple Pulse",
       "signature": "Eltia",
       "price": 21,
-      "description": "Bière blonde, rhum ambré, vodka, liqueur de caramel."
+      "description": "Bière blonde, rhum ambré, vodka, liqueur de caramel.",
+      "image": "../media/carte/triple-pulse.png"
     },
     {
       "name": "Afterglow",
       "signature": "Ember",
       "price": 20,
-      "description": "Tequila blanco, jus d'orange sanguine, jus de citron vert, grenadine, miel, glaçons."
+      "description": "Tequila blanco, jus d'orange sanguine, jus de citron vert, grenadine, miel, glaçons.",
+      "image": "../media/carte/afterglow.png"
     },
     {
       "name": "Shutter Protocol",
       "signature": "Lane",
       "price": 23,
-      "description": "Tequila blanco, liqueur de mûre, citron vert, sirop d'agave noir, charbon végétal, brume saline."
+      "description": "Tequila blanco, liqueur de mûre, citron vert, sirop d'agave noir, charbon végétal, brume saline.",
+      "image": "../media/carte/shutter-protocol.png"
     },
     {
       "name": "Glitch In Matrix",
       "signature": "Azurea",
       "price": 21,
-      "description": "Vodka, liqueur de myrtille, jus de citron, sirop de violette, limonade, glace pilée."
+      "description": "Vodka, liqueur de myrtille, jus de citron, sirop de violette, limonade, glace pilée.",
+      "image": "../media/carte/glitch-in-matrix.png"
     },
     {
       "name": "The Crusher",
       "signature": "Ezekiel",
       "price": 25,
-      "description": "Eau de vie, vodka, rhum, absinthe, whisky, gin, citron vert."
+      "description": "Eau de vie, vodka, rhum, absinthe, whisky, gin, citron vert.",
+      "image": "../media/carte/the-crusher.png"
     },
     {
       "name": "Tank Buster",
       "signature": "Traven",
       "price": 23,
-      "description": "Vodka, 25th Hour, citron vert, sirop de gingembre, bitters orange, glaçons."
+      "description": "Vodka, 25th Hour, citron vert, sirop de gingembre, bitters orange, glaçons.",
+      "image": "../media/carte/tank-buster.png"
     },
     {
       "name": "Straya's Signal",
       "signature": "Straya",
       "price": 20,
-      "description": "Limoncello, jus de citron, sirop de miel, eau pétillante, feuilles de basilic."
+      "description": "Limoncello, jus de citron, sirop de miel, eau pétillante, feuilles de basilic.",
+      "image": "../media/carte/strayas-signal.png"
     }
   ],
   "mocktails": [
@@ -78,63 +90,73 @@
       "name": "Ghost Mane",
       "signature": "Selim",
       "price": 14,
-      "description": "Thé noir, jus de grenade, infusion d'hibiscus, miel, piment fumé."
+      "description": "Thé noir, jus de grenade, infusion d'hibiscus, miel, piment fumé.",
+      "image": "../media/carte/ghost-mane.png"
     },
     {
       "name": "Virgin NeonVeins",
       "signature": "Iridia",
       "price": 16,
-      "description": "Thé bleu, sirop de violette, jus de fruit du dragon, jus de citron vert, crème de coco, grenadine noire."
+      "description": "Thé bleu, sirop de violette, jus de fruit du dragon, jus de citron vert, crème de coco, grenadine noire.",
+      "image": "../media/carte/virgin-neonveins.png"
     },
     {
       "name": "WhitePlushieFox",
       "signature": "Ahme",
       "price": 15,
-      "description": "Lait de coco, eau de coco, sirop de vanille, jus de citron vert, sirop de fleur de sureau."
+      "description": "Lait de coco, eau de coco, sirop de vanille, jus de citron vert, sirop de fleur de sureau.",
+      "image": "../media/carte/whiteplushiefox.png"
     },
     {
       "name": "Pink Bunny",
       "signature": "Bunbun",
       "price": 14,
-      "description": "Eau gazeuse, jus de pamplemousse rose, sirop de fraise, gingembre, menthe."
+      "description": "Eau gazeuse, jus de pamplemousse rose, sirop de fraise, gingembre, menthe.",
+      "image": "../media/carte/pink-bunny.png"
     },
     {
       "name": "Ruby Tea",
       "signature": "Hayden",
       "price": 12,
-      "description": "Thé glacé à la fraise, gros sucre, morceau de fraise, eau pétillante."
+      "description": "Thé glacé à la fraise, gros sucre, morceau de fraise, eau pétillante.",
+      "image": "../media/carte/ruby-tea.png"
     },
     {
       "name": "Soft Pulse",
       "signature": "Eltia",
       "price": 14,
-      "description": "Bière blonde sans alcool, sirop de caramel, sirop de fleur de sureau, zeste d'orange, arôme de vanille."
+      "description": "Bière blonde sans alcool, sirop de caramel, sirop de fleur de sureau, zeste d'orange, arôme de vanille.",
+      "image": "../media/carte/soft-pulse.png"
     },
     {
       "name": "Softglow",
       "signature": "Ember",
       "price": 15,
-      "description": "Ginger beer, jus d'orange sanguine, jus de citron vert, grenadine, miel, glaçons."
+      "description": "Ginger beer, jus d'orange sanguine, jus de citron vert, grenadine, miel, glaçons.",
+      "image": "../media/carte/softglow.png"
     },
     {
       "name": "High kick",
       "signature": "Sosyn",
       "price": 13,
-      "description": "Jus de pomme, jus de citron, sirop de sucre, eau pétillante."
+      "description": "Jus de pomme, jus de citron, sirop de sucre, eau pétillante.",
+      "image": "../media/carte/high-kick.png"
     },
     {
       "name": "Placebo",
       "signature": "HeX",
       "price": 15,
-      "description": "Thé noir corsé, jus de citron, sirop d'érable, extrait de vanille, pincée de canelle, zeste d'orange."
+      "description": "Thé noir corsé, jus de citron, sirop d'érable, extrait de vanille, pincée de canelle, zeste d'orange.",
+      "image": "../media/carte/placebo.png"
     }
   ],
   "alcools": [
     { "name": "Bière", "price": 8 },
+    { "name": "Vin", "price": 10 },
     { "name": "Gin", "price": 9 },
     { "name": "Vodka", "price": 9 },
     { "name": "Tequila", "price": 9 },
-    { "name": "Saké", "price": 10},
+    { "name": "Saké", "price": 10 },
     { "name": "Rhum", "price": 12 },
     { "name": "Cognac", "price": 18 },
     { "name": "Eau-de-vie", "price": 11 },
@@ -149,7 +171,7 @@
     { "name": "Jus de fruits", "price": 6 },
     { "name": "Café", "price": 5 },
     { "name": "25th Hour", "price": 13, "description": "Café" },
-    { "name": "Daemons Energy", "price": 8, "description": "Cerise, framboise ou ananas" },
+    { "name": "Daemons Energy", "price": 13, "description": "Cerise, framboise ou ananas" },
     { "name": "Cold brew", "price": 6 },
     { "name": "Thé glacé", "price": 5 },
     { "name": "Bubble tea", "price": 8 }

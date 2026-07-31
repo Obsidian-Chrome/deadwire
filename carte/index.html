@@ -7,6 +7,7 @@
   <link rel="icon" href="../media/Deadwire_Logo_Neon.png" type="image/png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="carte.css" />
   <script defer src="/shared/loader.js"></script>
   <script defer src="/shared/crew-auth.js"></script>
   <script defer src="../app.js"></script>
@@ -59,27 +60,35 @@
         
         // Fonction pour générer HTML d'un item avec signature
         function renderItemWithSignature(item) {
+          const imageUrl = item.image || '../media/carte/default.png';
           return `
-            <div class="menuItem">
-              <div class="menuItem__row">
-                <span class="menuItem__name">${item.name}<span class="menuItem__signature">★ ${item.signature}</span></span>
-                <span class="menuItem__price"><span class="priceGil">${item.price}<img class="priceGil__icon" src="../media/gil.webp" alt="Gil" /></span></span>
+            <div class="menuItem menuItem--withImage">
+              <img class="menuItem__image" src="${imageUrl}" alt="${item.name}" onerror="this.style.display='none'" />
+              <div class="menuItem__content">
+                <div class="menuItem__row">
+                  <span class="menuItem__name">${item.name}<span class="menuItem__signature">★ ${item.signature}</span></span>
+                  <span class="menuItem__price"><span class="priceGil">${item.price}<img class="priceGil__icon" src="../media/gil.webp" alt="Gil" /></span></span>
+                </div>
+                <div class="menuItem__desc">${item.description}</div>
               </div>
-              <div class="menuItem__desc">${item.description}</div>
             </div>
           `;
         }
         
         // Fonction pour générer HTML d'un item simple (sans signature, avec description optionnelle)
         function renderSimpleItem(item) {
+          const imageUrl = item.image || '../media/menu/default.png';
           const nameWithDesc = item.description 
             ? `${item.name} <span style="color: rgba(247, 233, 239, 0.5); font-size: 0.9em; font-weight: normal;">(${item.description})</span>`
             : item.name;
           return `
-            <div class="menuItem">
-              <div class="menuItem__row">
-                <span class="menuItem__name">${nameWithDesc}</span>
-                <span class="menuItem__price"><span class="priceGil">${item.price}<img class="priceGil__icon" src="../media/gil.webp" alt="Gil" /></span></span>
+            <div class="menuItem menuItem--withImage">
+              <img class="menuItem__image" src="${imageUrl}" alt="${item.name}" onerror="this.style.display='none'" />
+              <div class="menuItem__content">
+                <div class="menuItem__row">
+                  <span class="menuItem__name">${nameWithDesc}</span>
+                  <span class="menuItem__price"><span class="priceGil">${item.price}<img class="priceGil__icon" src="../media/gil.webp" alt="Gil" /></span></span>
+                </div>
               </div>
             </div>
           `;
@@ -88,7 +97,6 @@
         // Remplir Cocktails
         const cocktailsBlock = document.querySelector('[data-menu-block="cocktails"]');
         if (cocktailsBlock) {
-          const title = cocktailsBlock.querySelector('.sectionTitle');
           cocktailsBlock.innerHTML = '<h2 class="sectionTitle">Cocktails</h2>' + 
             data.cocktails.map(renderItemWithSignature).join('');
         }

@@ -1,0 +1,32 @@
+/* Styles pour la page carte */
+
+/* Item de menu avec image */
+.menuItem--withImage {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.menuItem__image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.menuItem__content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .menuItem--withImage {
+    gap: 12px;
+  }
+  
+  .menuItem__image {
+    width: 64px;
+    height: 64px;
+  }
+}

@@ -41,6 +41,10 @@
                     <i class="fa-solid fa-glass-water" aria-hidden="true"></i>
                     <span>Mocktails</span>
                   </a>
+                  <a href="#habitues" class="carte-nav__item carte-nav__item--members" style="display: none;">
+                    <i class="fa-solid fa-star" aria-hidden="true"></i>
+                    <span>Habitués</span>
+                  </a>
                   <a href="#alcools" class="carte-nav__item">
                     <i class="fa-solid fa-whiskey-glass" aria-hidden="true"></i>
                     <span>Alcools</span>
@@ -62,6 +66,10 @@
                   <h2 class="sectionTitle">Mocktails</h2>
                 </div>
 
+                <div id="habitues" class="menuBlock menuBlock--members" data-menu-block="habitues" style="display: none;">
+                  <h2 class="sectionTitle">Habitués</h2>
+                </div>
+
                 <div id="alcools" class="menuBlock" data-menu-block="alcools">
                   <h2 class="sectionTitle">Alcools</h2>
                 </div>
@@ -78,22 +86,43 @@
   </main>
 
   <script>
+    // Vérifier si l'utilisateur a le rôle membre
+    function checkMemberRole() {
+      const isMember = localStorage.getItem('discord_is_member');
+      const isGM = localStorage.getItem('discord_is_gm');
+      return isMember === 'true' || isGM === 'true';
+    }
+
     // Charge menu.json et génère le contenu dynamiquement
     async function loadMenu() {
       try {
         const response = await fetch('menu.json');
         const data = await response.json();
+        const isMember = checkMemberRole();
         
         // Fonction pour générer HTML d'un item avec signature
         function renderItemWithSignature(item) {
-          const imageUrl = item.image || '../media/carte/default.png';
+          const rpButton = (isMember && item.emote) ? `
+            <button class="menuItem__rpBtn" 
+                    onclick="navigator.clipboard.writeText('${item.emote.replace(/'/g, "\\'")}'); const text = this.querySelector('.rpBtn__text'); const originalText = text.textContent; text.innerHTML = '<i class=\\'fa-solid fa-check\\'></i>'; setTimeout(() => text.textContent = originalText, 1500)"
+                    title="Copier l'emote RP">
+              <span class="rpBtn__text">Emote</span>
+            </button>
+          ` : '';
+          
           return `
             <div class="menuItem menuItem--withImage">
-              <img class="menuItem__image" src="${imageUrl}" alt="${item.name}" onerror="this.style.display='none'" />
+              ${item.image ? `<img class="menuItem__image" src="${item.image}" alt="${item.name}" onerror="this.style.display='none'" />` : ''}
               <div class="menuItem__content">
                 <div class="menuItem__row">
-                  <span class="menuItem__name">${item.name}<span class="menuItem__signature">★ ${item.signature}</span></span>
-                  <span class="menuItem__price"><span class="priceGil">${item.price}<img class="priceGil__icon" src="../media/gil.webp" alt="Gil" /></span></span>
+                  <span class="menuItem__name">
+                    ${item.name}
+                    <span class="menuItem__signature">★ ${item.signature}</span>
+                    ${rpButton}
+                  </span>
+                  <span class="menuItem__price">
+                    <span class="priceGil">${item.price}<img class="priceGil__icon" src="../media/gil.webp" alt="Gil" /></span>
+                  </span>
                 </div>
                 <div class="menuItem__desc">${item.description}</div>
               </div>
@@ -131,6 +160,22 @@
         if (mocktailsBlock) {
           mocktailsBlock.innerHTML = '<h2 class="sectionTitle">Mocktails</h2>' + 
             data.mocktails.map(renderItemWithSignature).join('');
+        }
+        
+        // Remplir Habitués (visible uniquement pour les membres)
+        if (isMember && data.habitues) {
+          const habituesBlock = document.querySelector('[data-menu-block="habitues"]');
+          const habituesNav = document.querySelector('.carte-nav__item--members');
+          
+          if (habituesBlock) {
+            habituesBlock.style.display = 'block';
+            habituesBlock.innerHTML = '<h2 class="sectionTitle">Habitués</h2>' + 
+              data.habitues.map(renderItemWithSignature).join('');
+          }
+          
+          if (habituesNav) {
+            habituesNav.style.display = 'flex';
+          }
         }
         
         // Remplir Alcools

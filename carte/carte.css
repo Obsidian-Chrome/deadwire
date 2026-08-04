@@ -103,6 +103,47 @@ html {
   min-width: 0;
 }
 
+/* Bouton RP pour les emotes */
+.menuItem__rpBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(138, 43, 226, 0.12);
+  border: 1px solid rgba(138, 43, 226, 0.35);
+  color: rgba(138, 43, 226, 1);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-left: 8px;
+  box-shadow: 0 0 8px rgba(138, 43, 226, 0.15);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 23px;
+}
+
+.menuItem__rpBtn:hover {
+  background: rgba(138, 43, 226, 0.25);
+  border-color: rgba(138, 43, 226, 0.6);
+}
+
+.menuItem__rpBtn .rpBtn__text {
+  transition: all 0.2s ease;
+}
+
+.menuItem__rpBtn:active {
+  transform: translateY(0);
+}
+
+.menuItem__price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 /* Responsive */
 @media (max-width: 1400px) {
   .carte-sidebar {

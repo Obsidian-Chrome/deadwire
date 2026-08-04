@@ -5,84 +5,96 @@
       "signature": "Selim",
       "price": 20,
       "description": "Rhum ambré, jus de grenade, infusion d'hibiscus, piment fumé.",
-      "image": "../media/carte/black-mane.png"
+      "image": "../media/carte/black-mane.png",
+      "emote": "/em se saisit d'un verre à mélange emplit de glaçons pour y remuer du rhum ambré, du jus de grenade et une infusion d'hibiscus préparée en amont. Filtrant le contenu dans un verre old fashioned, une pincée de piment fumée est ajoutée pour une pointe d'épice."
     },
     {
       "name": "NeonVeins",
       "signature": "Iridia",
       "price": 22,
       "description": "Gin, liqueur de violette, sirop de fruit du dragon, jus de citron vert, crème de coco, grenadine noire.",
-      "image": "../media/carte/neonveins.png"
+      "image": "../media/carte/neonveins.png",
+      "emote": "/em ajoute dans un shaker le gin, la liqueur de violette, le sirop de fruit du dragon, le jus de citron vert et la crème de coco, remuant par la suite vigoureusement le shaker avec de la glace. Enfin, le tout est filtré dans un verre bas large tandis qu'il y ajoute un semblant de grenadine noire le long de la paroi intérieure pour donner de la couleur."
     },
     {
       "name": "WhiteFox",
       "signature": "Ahme",
       "price": 19,
       "description": "Vodka, liqueur de coco, liqueur de vanille, citron vert, lait de coco, sirop de sucre.",
-      "image": "../media/carte/whitefox.png"
+      "image": "../media/carte/whitefox.png",
+      "emote": "/em verse de la vodka, de la liqueur de coco et de la liqueur de vanille dans un shaker. Par la suite, il y sera ajouté du sirop de sucre, du lait de coco et un peu de jus de citron vert pour casser le tout avec de l'acidité. Enfin, il remuera vigoureusement le cocktail après y avoir ajouté des glaçons, servant le tout dans un verre coupe."
     },
     {
       "name": "Ketsuryu",
       "signature": "Hitomi",
       "price": 24,
       "description": "Whisky hingashien, Umeshu, liqueur de yuzu, sirop de grenade, Angostura bitters.",
-      "image": "../media/carte/ketsuryu.png"
+      "image": "../media/carte/ketsuryu.png",
+      "emote": "/em prépare un verre à mélange en y ajoutant de la glace pour ensuite verser du whisky hingashien, de l'umeshu, de la liqueur de yuzu, du sirop de grenade et de l'angostura. Avec un ustensile métallique, la boisson est remuée lentement avant d'être filtrée dans un verre old fashioned avec un gros glaçon."
     },
     {
       "name": "Ruby",
       "signature": "Hayden",
       "price": 20,
       "description": "Thé glacé à la fraise, gros sucre, vodka, morceau de fraise, eau pétillante.",
-      "image": "../media/carte/ruby.png"
+      "image": "../media/carte/ruby.png",
+      "emote": "/em remplit un verre à cocktail avec des glaçons, ajoutant ensuite de la vodka, du thé glacé aromatisé à la fraise et un gros sucre à fondre pour ensuite remuer le tout. Enfin il complète le mélange avec de l'eau gazeuse, décorant le verre d'un morceau de fraise taillé et placé sur le côté du verre."
     },
     {
       "name": "Triple Pulse",
       "signature": "Eltia",
       "price": 21,
       "description": "Bière blonde, rhum ambré, vodka, liqueur de caramel.",
-      "image": "../media/carte/triple-pulse.png"
+      "image": "../media/carte/triple-pulse.png",
+      "emote": "/em dépose un shaker et y verse le rhum ambré, la vodka et la liqueur de caramel avec des glaçons par la suite avant de remuer vigoureusement le tout, servant le tout dans un grand verre qu'il terminera de remplir avec de la bière blonde pour en préserver la mousse."
     },
     {
       "name": "Afterglow",
       "signature": "Ember",
       "price": 20,
       "description": "Tequila blanco, jus d'orange sanguine, jus de citron vert, grenadine, miel, glaçons.",
-      "image": "../media/carte/afterglow.png"
+      "image": "../media/carte/afterglow.png",
+      "emote": "/em verse de la tequila blanco, du jus d'orange sanguine du jus de citron vert, de la grenadine et du miel dans un shaker, ajoutant les glaçons à la fin avant de remuer vigoureusement. Enfin, le tout est servi dans un grand verre avec une ombrelle noire et rouge."
     },
     {
       "name": "Shutter Protocol",
       "signature": "Lane",
       "price": 23,
       "description": "Tequila blanco, liqueur de mûre, citron vert, sirop d'agave noir, charbon végétal, brume saline.",
-      "image": "../media/carte/shutter-protocol.png"
+      "image": "../media/carte/shutter-protocol.png",
+      "emote": "/em mélange de la tequila blanco, de la liqueur de mûre, du jus de citron vert et du sirop d'agave dans un verre à mélange, terminant le tout avec une pincée de charbon végétal. Enfin, il verse le tout dans un verre lowball, ajoutant un spray d'eau salée en surface de la boisson."
     },
     {
       "name": "Glitch In Matrix",
       "signature": "Azurea",
       "price": 21,
       "description": "Vodka, liqueur de myrtille, jus de citron, sirop de violette, limonade, glace pilée.",
-      "image": "../media/carte/glitch-in-matrix.png"
+      "image": "../media/carte/glitch-in-matrix.png",
+      "emote": "/em vient verser dans un verre à mélange la vodka, le jus de citron, le sirop de violette et la liqueur de myrtille, remuant ensuite le contenu à l'aide d'un mélangeur métallique. Le contenu est alors servi dans un long verre qu'il remplit de glace pilée puis d'une limonade pour combler le tout."
     },
     {
       "name": "The Crusher",
       "signature": "Ezekiel",
       "price": 25,
       "description": "Eau de vie, vodka, rhum, absinthe, whisky, gin, citron vert.",
-      "image": "../media/carte/the-crusher.png"
+      "image": "../media/carte/the-crusher.png",
+      "emote": "/em se saisit d'un verre à mélange, ajoutant à la suite de l'eau de vie, de la vodka, de l'absinthe, du whisky et du gin pour terminer par du citron vert. Mélangeant le tout, le cocktail est ensuite versé dans un verre calibré pour une petite quantité au vu de l'assommoir que cela peut être."
     },
     {
       "name": "Tank Buster",
       "signature": "Traven",
       "price": 23,
       "description": "Vodka, 25th Hour, citron vert, sirop de gingembre, bitters orange, glaçons.",
-      "image": "../media/carte/tank-buster.png"
+      "image": "../media/carte/tank-buster.png",
+      "emote": "/em verse dans un shaker la vodka, le jus de citron vert, le sirop de gingembre et quelques traits de bitters à l’orange, y ajoutant une poignée de glaçons avant de secouer le mélange. Il filtre ensuite le tout dans un verre haut rempli de glace, complète avec de la 25th Hour puis dépose une fine pincée de sel à la surface. Une tranche de citron vert vient se caler sur le bord du verre dont une partie a été légèrement poudrée de piment fumé."
     },
     {
       "name": "Straya's Signal",
       "signature": "Straya",
       "price": 20,
       "description": "Limoncello, jus de citron, sirop de miel, eau pétillante, feuilles de basilic.",
-      "image": "../media/carte/strayas-signal.png"
+      "image": "../media/carte/strayas-signal.png",
+      "emote": "/em dépose quelques feuilles de basilic dans un shaker et les presse légèrement pour en libérer les arômes, avant d’y verser le limoncello, le jus de citron et le sirop de miel. Il ajoute quelques glaçons, remue vivement le mélange, puis le filtre dans un verre rempli de glace. Il complète délicatement avec l’eau pétillante, laissant les bulles soulever les notes fraîches et citronnées, avant de garnir le tout d’une feuille de basilic et d’une fine tranche de citron."
     }
   ],
   "mocktails": [
@@ -91,63 +103,98 @@
       "signature": "Selim",
       "price": 14,
       "description": "Thé noir, jus de grenade, infusion d'hibiscus, miel, piment fumé.",
-      "image": "../media/carte/ghost-mane.png"
+      "image": "../media/carte/ghost-mane.png",
+      "emote": "/em se saisit d'un verre à mélange emplit de glaçons pour y remuer du thé noir, du jus de grenade, une infusion d'hibiscus préparée en amont et un peu de miel. Filtrant le contenu dans un verre old fashioned, une pincée de piment fumée est ajoutée pour une pointe d'épice."
     },
     {
       "name": "Virgin NeonVeins",
       "signature": "Iridia",
       "price": 16,
       "description": "Thé bleu, sirop de violette, jus de fruit du dragon, jus de citron vert, crème de coco, grenadine noire.",
-      "image": "../media/carte/virgin-neonveins.png"
+      "image": "../media/carte/virgin-neonveins.png",
+      "emote": "/em ajoute dans un shaker le thé bleu, le sirop de violette, le sirop de fruit du dragon, le jus de citron vert et la crème de coco, remuant par la suite vigoureusement le shaker avec de la glace. Enfin, le tout est filtré dans un verre bas large tandis qu'il y ajoute un semblant de grenadine noire le long de la paroi intérieure pour donner de la couleur."
     },
     {
       "name": "WhitePlushieFox",
       "signature": "Ahme",
       "price": 15,
       "description": "Lait de coco, eau de coco, sirop de vanille, jus de citron vert, sirop de fleur de sureau.",
-      "image": "../media/carte/whiteplushiefox.png"
+      "image": "../media/carte/whiteplushiefox.png",
+      "emote": "/em verse du lait et de l'eau de coco, ajoutant du sirop de vanille et de fleur de sureau avec un semblant de jus de citron vert pour briser avec de l'acidité dans un shaker. Enfin, il remuera vigoureusement le mocktail après y avoir ajouté des glaçons, servant le tout dans un verre coupe."
     },
     {
       "name": "Pink Bunny",
       "signature": "Bunbun",
       "price": 14,
       "description": "Eau gazeuse, jus de pamplemousse rose, sirop de fraise, gingembre, menthe.",
-      "image": "../media/carte/pink-bunny.png"
+      "image": "../media/carte/pink-bunny.png",
+      "emote": "/em prépare dans un verre à mélange du jus de pamplemousse rose avec du sirop de fraise, du gingembre et de la menthe, venant remuer doucement le contenu en écrasant le nécessaire pour faire ressortir les saveurs. Enfin, il filtre le tout dans un grand verre en y ajoutant de l'eau gazeuse."
     },
     {
       "name": "Ruby Tea",
       "signature": "Hayden",
       "price": 12,
       "description": "Thé glacé à la fraise, gros sucre, morceau de fraise, eau pétillante.",
-      "image": "../media/carte/ruby-tea.png"
+      "image": "../media/carte/ruby-tea.png",
+      "emote": "/em remplit un verre à cocktail avec des glaçons, ajoutant ensuite du thé glacé aromatisé à la fraise et un gros sucre à fondre pour ensuite remuer le tout. Enfin il complète le mélange avec de l'eau gazeuse, décorant le verre d'un morceau de fraise taillé et placé sur le côté du verre."
     },
     {
       "name": "Soft Pulse",
       "signature": "Eltia",
       "price": 14,
       "description": "Bière blonde sans alcool, sirop de caramel, sirop de fleur de sureau, zeste d'orange, arôme de vanille.",
-      "image": "../media/carte/soft-pulse.png"
+      "image": "../media/carte/soft-pulse.png",
+      "emote": "/em verse dans un grand verre le sirop de caramel, de fleur de sureau et de l'arôme de vanille, remuant le contenu pour homogénéiser les liquides avant d'ajouter de la bière blonde sans alcool, des glaçons et un zeste d'orange en surface de la mousse."
     },
     {
       "name": "Softglow",
       "signature": "Ember",
       "price": 15,
       "description": "Ginger beer, jus d'orange sanguine, jus de citron vert, grenadine, miel, glaçons.",
-      "image": "../media/carte/softglow.png"
+      "image": "../media/carte/softglow.png",
+      "emote": "/em verse de la ginger beer, du jus d'orange sanguine du jus de citron vert, de la grenadine et du miel dans un shaker, ajoutant les glaçons à la fin avant de remuer vigoureusement. Enfin, le tout est servi dans un grand verre avec une ombrelle rouge et noire."
     },
     {
       "name": "High kick",
       "signature": "Sosyn",
       "price": 13,
       "description": "Jus de pomme, jus de citron, sirop de sucre, eau pétillante.",
-      "image": "../media/carte/high-kick.png"
+      "image": "../media/carte/high-kick.png",
+      "emote": "/em prépare dans un verre à mélange du jus de pomme et du jus de citron avec du sirop de sucre, remuant le contenu jusqu'à homogénéiser le tout. Enfin, le tout est placé dans un grand verre avec de l'eau pétillante pour compléter."
     },
     {
       "name": "Placebo",
       "signature": "HeX",
       "price": 15,
       "description": "Thé noir corsé, jus de citron, sirop d'érable, extrait de vanille, pincée de canelle, zeste d'orange.",
-      "image": "../media/carte/placebo.png"
+      "image": "../media/carte/placebo.png",
+      "emote": "/em ajoute dans un shaker le thé noir corsé, le jus de citron, le sirop d’érable et une pointe de vanille, y glissant quelques glaçons avant de remuer le tout avec énergie pour en libérer les arômes. Il filtre ensuite délicatement le mélange dans un verre bas, laissant tomber une légère pincée de cannelle à la surface, tandis qu’un zeste d’orange est frotté sur le bord pour en exhaler les notes boisées et fumées."
+    },
+    {
+      "name": "False blood",
+      "signature": "Emily",
+      "price": 14,
+      "description": "Jus de raisin rouge, jus d'orange, grenadine, fruits, cannelle, limonade.",
+      "image": "../media/carte/false-blood.png",
+      "emote": "/em récupère une bouteille de sangria sans alcool préparée plus tôt, laissant apparaître à travers le verre quelques morceaux de fruits ayant longuement infusé dans les jus. Il en verse une généreuse portion dans un verre rempli de glaçons, complète d’un trait de limonade bien fraîche, puis mélange rapidement avant de décorer le bord d’une rondelle d’orange et d'une paille orange néon."
+    }
+  ],
+  "habitues": [
+    {
+      "name": "Black Mamba",
+      "signature": "Selim",
+      "price": 22,
+      "description": "Eau de vie à la mirabelle, jus de grenade, infusion d'hibiscus, piment fumé.",
+      "image": "../media/carte/black-mamba.png",
+      "emote": "/em se saisit d'un verre à mélange emplit de glaçons pour y remuer de l'eau de vie à la mirabelle, du jus de grenade et une infusion d'hibiscus préparée en amont. Filtrant le contenu dans un verre old fashioned, une BELLE pincée de piment fumée est ajoutée pour une pointe d'épice."
+    },
+    {
+      "name": "Mousehole",
+      "signature": "Nikolai",
+      "price": 18,
+      "description": "Vodka, bière de gingembre, jus de citron vert, menthe fraîche.",
+      "image": "../media/carte/mousehole.png",
+      "emote": "/em prépare dans une tasse en cuivre une base de vodka avec de la bière de gingembre et du jus de citron vert. Il pile alors des feuilles de menthe fraîche pour en faire ressortir le goût, versant le tout dans le mélange."
     }
   ],
   "alcools": [

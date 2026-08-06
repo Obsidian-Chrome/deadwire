@@ -56,7 +56,39 @@
             <!-- Vue connecté -->
             <div id="crew-view" style="display: none;">
               <div data-reveal>
-                <h2 class="sectionTitle">Ressources</h2>
+                <h2 class="sectionTitle">Macros</h2>
+                
+                <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 16px;">
+                  <!-- WatchTogether -->
+                  <div style="background: rgba(255, 42, 61, 0.05); border: 1px solid rgba(255, 42, 61, 0.2); border-radius: 12px; padding: 20px;">
+                    <div style="font-weight: 600; color: rgba(247, 233, 239, 0.95); margin-bottom: 12px; font-size: 1.05rem;">WatchTogether</div>
+                    <div style="background: rgba(10, 0, 12, 0.6); border: 1px solid rgba(255, 42, 61, 0.3); border-radius: 8px; padding: 12px; font-family: 'Courier New', monospace; font-size: 0.95rem; color: rgba(247, 233, 239, 0.9); cursor: pointer; transition: all 0.2s; position: relative;"
+                         onclick="navigator.clipboard.writeText('/y [ Profitez de l\'ambiance du Deadwire et de ses artistes : https://w2g.tv/?r=0a6deu9ljpivxv10fp ]'); this.style.background='rgba(255, 42, 61, 0.15)'; setTimeout(() => this.style.background='rgba(10, 0, 12, 0.6)', 200); const indicator = this.querySelector('.copy-indicator'); indicator.style.opacity='1'; setTimeout(() => indicator.style.opacity='0', 1500)"
+                         onmouseover="this.style.borderColor='rgba(255, 42, 61, 0.5)'"
+                         onmouseout="this.style.borderColor='rgba(255, 42, 61, 0.3)'">
+                      /y [ Profitez de l'ambiance du Deadwire et de ses artistes : https://w2g.tv/?r=0a6deu9ljpivxv10fp ]
+                      <span class="copy-indicator" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 0.85rem; color: rgba(255, 42, 61, 0.9); opacity: 0; transition: opacity 0.3s; pointer-events: none;">
+                        <i class="fa-solid fa-check"></i> Copié !
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Carte Deadwire -->
+                  <div style="background: rgba(255, 42, 61, 0.05); border: 1px solid rgba(255, 42, 61, 0.2); border-radius: 12px; padding: 20px;">
+                    <div style="font-weight: 600; color: rgba(247, 233, 239, 0.95); margin-bottom: 12px; font-size: 1.05rem;">Carte Deadwire</div>
+                    <div style="background: rgba(10, 0, 12, 0.6); border: 1px solid rgba(255, 42, 61, 0.3); border-radius: 8px; padding: 12px; font-family: 'Courier New', monospace; font-size: 0.95rem; color: rgba(247, 233, 239, 0.9); cursor: pointer; transition: all 0.2s; position: relative;"
+                         onclick="navigator.clipboard.writeText('/tell <t> [ https://www.deadwire.fr/carte/ ]'); this.style.background='rgba(255, 42, 61, 0.15)'; setTimeout(() => this.style.background='rgba(10, 0, 12, 0.6)', 200); const indicator = this.querySelector('.copy-indicator'); indicator.style.opacity='1'; setTimeout(() => indicator.style.opacity='0', 1500)"
+                         onmouseover="this.style.borderColor='rgba(255, 42, 61, 0.5)'"
+                         onmouseout="this.style.borderColor='rgba(255, 42, 61, 0.3)'">
+                      /tell &lt;t&gt; [ https://www.deadwire.fr/carte/ ]
+                      <span class="copy-indicator" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 0.85rem; color: rgba(255, 42, 61, 0.9); opacity: 0; transition: opacity 0.3s; pointer-events: none;">
+                        <i class="fa-solid fa-check"></i> Copié !
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <h2 class="sectionTitle" style="margin-top: 48px;">Ressources</h2>
                 
                 <ul style="list-style: none; padding: 0; margin-top: 32px; max-width: 600px;">
                   <li style="margin-bottom: 12px;">

@@ -185,7 +185,6 @@
       "signature": "Selim",
       "price": 22,
       "description": "Eau de vie à la mirabelle, jus de grenade, infusion d'hibiscus, piment fumé.",
-      "image": "../media/carte/black-mamba.png",
       "emote": "/em se saisit d'un verre à mélange emplit de glaçons pour y remuer de l'eau de vie à la mirabelle, du jus de grenade et une infusion d'hibiscus préparée en amont. Filtrant le contenu dans un verre old fashioned, une BELLE pincée de piment fumée est ajoutée pour une pointe d'épice."
     },
     {
@@ -193,7 +192,6 @@
       "signature": "Nikolai",
       "price": 18,
       "description": "Vodka, bière de gingembre, jus de citron vert, menthe fraîche.",
-      "image": "../media/carte/mousehole.png",
       "emote": "/em prépare dans une tasse en cuivre une base de vodka avec de la bière de gingembre et du jus de citron vert. Il pile alors des feuilles de menthe fraîche pour en faire ressortir le goût, versant le tout dans le mélange."
     }
   ],

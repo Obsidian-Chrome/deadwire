@@ -291,9 +291,7 @@ function populateEvents(events) {
 
 // Initialise l'affichage des événements
 async function initDiscordEvents() {
-  console.log('🔄 Chargement des événements Discord...');
   const events = await fetchDiscordEvents();
-  console.log(`📅 ${events.length} événement(s) trouvé(s)`);
   populateEvents(events);
 }
 

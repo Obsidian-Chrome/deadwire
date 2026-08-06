@@ -1690,6 +1690,35 @@ img{max-width:100%; display:block}
   border: 1px solid rgba(255,42,61,.2);
 }
 
+.profile__phone{
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(247,233,239,.85);
+  font-size: 14px;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(138,43,226,.12);
+  border-radius: 8px;
+  border: 1px solid rgba(138,43,226,.3);
+  width: fit-content;
+  transition: all 0.2s ease;
+}
+
+.profile__phone:hover{
+  background: rgba(138,43,226,.2);
+  border-color: rgba(138,43,226,.5);
+  transform: translateY(-1px);
+}
+
+.profile__phone i{
+  color: rgba(138,43,226,.9);
+  font-size: 13px;
+}
+
 .profile__chips{margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; justify-content: center;}
 
 .chip{

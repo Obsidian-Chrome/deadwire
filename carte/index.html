@@ -86,6 +86,23 @@
   </main>
 
   <script>
+    // Fonction globale pour copier une emote
+    function copyEmote(button) {
+      const emoteText = button.dataset.emote;
+      if (!emoteText) return;
+      
+      navigator.clipboard.writeText(emoteText).then(() => {
+        const textSpan = button.querySelector('.rpBtn__text');
+        const originalText = textSpan.textContent;
+        textSpan.innerHTML = '<i class="fa-solid fa-check"></i>';
+        setTimeout(() => {
+          textSpan.textContent = originalText;
+        }, 1500);
+      }).catch(err => {
+        console.error('Erreur copie:', err);
+      });
+    }
+
     // Vérifier si l'utilisateur a le rôle membre
     function checkMemberRole() {
       const isMember = localStorage.getItem('discord_is_member');
@@ -97,14 +114,23 @@
     async function loadMenu() {
       try {
         const response = await fetch('menu.json');
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
         const isMember = checkMemberRole();
         
         // Fonction pour générer HTML d'un item avec signature
         function renderItemWithSignature(item) {
+          // Échapper les guillemets pour data-emote
+          const escapedEmote = item.emote ? item.emote.replace(/"/g, '&quot;') : '';
+          
           const rpButton = (isMember && item.emote) ? `
             <button class="menuItem__rpBtn" 
-                    onclick="navigator.clipboard.writeText('${item.emote.replace(/'/g, "\\'")}'); const text = this.querySelector('.rpBtn__text'); const originalText = text.textContent; text.innerHTML = '<i class=\\'fa-solid fa-check\\'></i>'; setTimeout(() => text.textContent = originalText, 1500)"
+                    data-emote="${escapedEmote}"
+                    onclick="copyEmote(this)"
                     title="Copier l'emote RP">
               <span class="rpBtn__text">Emote</span>
             </button>
@@ -149,47 +175,73 @@
         }
         
         // Remplir Cocktails
-        const cocktailsBlock = document.querySelector('[data-menu-block="cocktails"]');
-        if (cocktailsBlock) {
-          cocktailsBlock.innerHTML = '<h2 class="sectionTitle">Cocktails</h2>' + 
-            data.cocktails.map(renderItemWithSignature).join('');
+        try {
+          const cocktailsBlock = document.querySelector('[data-menu-block="cocktails"]');
+          if (cocktailsBlock && data.cocktails) {
+            const html = data.cocktails.map(renderItemWithSignature).join('');
+            cocktailsBlock.innerHTML = '<h2 class="sectionTitle">Cocktails</h2>' + html;
+          }
+        } catch (e) {
+          console.error('Erreur Cocktails:', e);
         }
         
         // Remplir Mocktails
-        const mocktailsBlock = document.querySelector('[data-menu-block="mocktails"]');
-        if (mocktailsBlock) {
-          mocktailsBlock.innerHTML = '<h2 class="sectionTitle">Mocktails</h2>' + 
-            data.mocktails.map(renderItemWithSignature).join('');
+        try {
+          const mocktailsBlock = document.querySelector('[data-menu-block="mocktails"]');
+          if (mocktailsBlock && data.mocktails) {
+            const html = data.mocktails.map(renderItemWithSignature).join('');
+            mocktailsBlock.innerHTML = '<h2 class="sectionTitle">Mocktails</h2>' + html;
+          }
+        } catch (e) {
+          console.error('Erreur Mocktails:', e);
         }
         
         // Remplir Habitués (visible uniquement pour les membres)
-        if (isMember && data.habitues) {
-          const habituesBlock = document.querySelector('[data-menu-block="habitues"]');
-          const habituesNav = document.querySelector('.carte-nav__item--members');
-          
-          if (habituesBlock) {
-            habituesBlock.style.display = 'block';
-            habituesBlock.innerHTML = '<h2 class="sectionTitle">Habitués</h2>' + 
-              data.habitues.map(renderItemWithSignature).join('');
+        try {
+          if (isMember && data.habitues) {
+            const habituesBlock = document.querySelector('[data-menu-block="habitues"]');
+            const habituesNav = document.querySelector('.carte-nav__item--members');
+            
+            if (habituesBlock) {
+              habituesBlock.style.display = 'block';
+              const html = data.habitues.map(renderItemWithSignature).join('');
+              habituesBlock.innerHTML = '<h2 class="sectionTitle">Habitués</h2>' + html;
+            }
+            
+            if (habituesNav) {
+              habituesNav.style.display = 'flex';
+            }
           }
-          
-          if (habituesNav) {
-            habituesNav.style.display = 'flex';
-          }
+        } catch (e) {
+          console.error('Erreur Habitués:', e);
         }
         
         // Remplir Alcools
-        const alcoholsBlock = document.querySelector('[data-menu-block="alcools"]');
-        if (alcoholsBlock) {
-          alcoholsBlock.innerHTML = '<h2 class="sectionTitle">Alcools</h2>' + 
-            data.alcools.map(renderSimpleItem).join('');
+        try {
+          const alcoholsBlock = document.querySelector('[data-menu-block="alcools"]');
+          if (alcoholsBlock && data.alcools) {
+            const html = data.alcools.map(renderSimpleItem).join('');
+            alcoholsBlock.innerHTML = '<h2 class="sectionTitle">Alcools</h2>' + html;
+          }
+        } catch (e) {
+          console.error('Erreur Alcools:', e);
         }
         
         // Remplir Sans Alcools
-        const sansAlcoolsBlock = document.querySelector('[data-menu-block="sansAlcools"]');
-        if (sansAlcoolsBlock) {
-          sansAlcoolsBlock.innerHTML = '<h2 class="sectionTitle">Sans alcools</h2>' + 
-            data.sansAlcools.map(renderSimpleItem).join('');
+        try {
+          const sansAlcoolsBlock = document.querySelector('[data-menu-block="sansAlcools"]');
+          if (sansAlcoolsBlock && data.sansAlcools) {
+            const html = data.sansAlcools.map(renderSimpleItem).join('');
+            sansAlcoolsBlock.innerHTML = '<h2 class="sectionTitle">Sans alcools</h2>' + html;
+          }
+        } catch (e) {
+          console.error('Erreur Sans Alcools:', e);
+        }
+        
+        // Forcer l'affichage du contenu (contourner l'animation data-reveal)
+        const carteContent = document.querySelector('.carte-content[data-reveal]');
+        if (carteContent) {
+          carteContent.classList.add('is-visible');
         }
         
       } catch (error) {
@@ -197,7 +249,14 @@
       }
     }
     
-    loadMenu();
+    // Attendre que tout soit complètement chargé (DOM + ressources)
+    if (document.readyState === 'complete') {
+      // Déjà chargé
+      loadMenu();
+    } else {
+      // Attendre le chargement complet
+      window.addEventListener('load', loadMenu);
+    }
   </script>
 </body>
 </html>

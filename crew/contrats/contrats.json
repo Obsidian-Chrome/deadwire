@@ -103,7 +103,7 @@
     {
       "numero": 5,
       "type": "SOS",
-      "statut": "ouvert",
+      "statut": "clos",
       "mercenaires": "4",
       "titre": "Exfiltration d'une star de DS",
       "description": "Un producteur de médias qui souhaite garder l'anonymat a besoin d'une équipe pour exfiltrer une célébrité de DS nommée Parker Raschke pris en otage dans une planque de chromés.",

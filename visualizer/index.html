@@ -9,7 +9,8 @@
   <script type="importmap">
     {
       "imports": {
-        "three": "https://esm.sh/three@0.175.0"
+        "three": "https://cdn.jsdelivr.net/npm/three@0.161/build/three.module.js",
+        "jsm/": "https://cdn.jsdelivr.net/npm/three@0.161/examples/jsm/"
       }
     }
   </script>
@@ -69,7 +70,7 @@
     }
 
     .visualizerPage__logo img {
-      width: clamp(300px, 40vw, 600px);
+      width: clamp(400px, 50vw, 800px);
       height: auto;
       opacity: 1.0;
       filter: 
@@ -104,6 +105,9 @@
 
   <script type="module">
     import * as THREE from 'three';
+    import { EffectComposer } from 'jsm/postprocessing/EffectComposer.js';
+    import { RenderPass } from 'jsm/postprocessing/RenderPass.js';
+    import { UnrealBloomPass } from 'jsm/postprocessing/UnrealBloomPass.js';
 
     const video = document.querySelector('[data-visualizer-video]');
     const source = document.querySelector('[data-video-source]');
@@ -147,7 +151,6 @@
       // Cherche une session active pour aujourd'hui
       for (const session of scheduleData.schedule) {
         if (session.date === currentDate && isInTimeRange(session.startTime, session.endTime)) {
-          console.log(`📅 Session active: ${session.name} (${session.date})`);
           return {
             visualizer: session.visualizer || '',
             colorFilter: session.colorFilter || ''
@@ -156,7 +159,6 @@
       }
       
       // Aucune session active, retourne le défaut
-      console.log(`📅 Aucune session planifiée pour ${currentDate}, affichage par défaut`);
       return scheduleData.default;
     }
 
@@ -202,12 +204,25 @@
       initVisualizer();
     }
 
-    // Visualizer Three.js (oscillation douce sans audio)
+    // Visualizer Three.js - Vagues audio-réactives Deadwire
     function initVisualizer() {
-      let scene, camera, renderer, shaderMaterial;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      
       let time = 0;
-
-      // Shaders
+      
+      const scene = new THREE.Scene();
+      const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+      camera.position.z = 1;
+      
+      const renderer = new THREE.WebGLRenderer({ 
+        canvas: canvas,
+        alpha: true,
+        antialias: true 
+      });
+      renderer.setSize(w, h);
+      
+      // Shader pour les vagues Deadwire
       const vertexShader = `
         varying vec2 vUv;
         void main() {
@@ -215,104 +230,95 @@
           gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
         }
       `;
-
+      
       const fragmentShader = `
         precision highp float;
         uniform vec2 iResolution;
         uniform float iTime;
         varying vec2 vUv;
-
-        float squared(float value) { return value * value; }
-
+        
+        float squared(float value) {
+          return value * value;
+        }
+        
         void main() {
           vec2 p = vUv;
           
-          vec3 bgCol = vec3(0.0);
+          // Fond noir avec dégradé subtil
+          vec3 bgCol = mix(vec3(0.02, 0.0, 0.01), vec3(0.01, 0.0, 0.005), p.y);
           
-          // Oscillations douces basées uniquement sur le temps
-          float slowWave = 0.3 + 0.2 * sin(iTime * 0.5);
-          float mediumWave = 0.25 + 0.15 * sin(iTime * 0.8);
-          float fastWave = 0.2 + 0.1 * sin(iTime * 1.2);
-          
-          float curve = 0.08 * slowWave * sin(6.25 * p.x + iTime * 0.6);
-          float audioWave = 0.06 * sin(p.x * 20.0 + iTime * 0.4) * mediumWave;
-          
-          // Rouge néon Deadwire
+          // Couleurs Deadwire
           vec3 neonRed = vec3(1.0, 0.165, 0.239);
-          vec3 darkRed = vec3(0.6, 0.0, 0.1);
+          vec3 darkRed = vec3(0.4, 0.0, 0.08);
           vec3 brightRed = vec3(1.0, 0.3, 0.4);
           
-          // Ligne A - oscillation douce
-          float lineAY = 0.5 + curve + audioWave + 0.03 * sin(40.0 * p.x - iTime * 0.8) * slowWave;
+          // Vagues ondulantes
+          float speed = 1.0;
+          float curve = 0.08 * sin(6.25 * p.x + iTime * speed);
+          
+          // Ligne A - vague principale
+          float lineAY = 0.5 + curve + 0.03 * sin(40.0 * p.x - iTime * 0.8);
           float lineADist = distance(p.y, lineAY) * 0.55;
           float lineAShape = smoothstep(1.0 - clamp(lineADist, 0.0, 1.0), 1.0, 0.99);
           vec3 lineACol = (1.0 - lineAShape) * mix(neonRed, darkRed, lineAShape);
           
-          // Ligne B - oscillation moyenne
-          float lineBY = 0.5 + curve - audioWave * 0.7 + 0.03 * sin(50.0 * p.x + iTime) * mediumWave;
+          // Ligne B - vague secondaire
+          float lineBY = 0.5 + curve * 0.7 + 0.03 * sin(50.0 * p.x + iTime);
           float lineBDist = distance(p.y, lineBY) * 0.55;
           float lineBShape = smoothstep(1.0 - clamp(lineBDist, 0.0, 1.0), 1.0, 0.99);
           vec3 lineBCol = (1.0 - lineBShape) * mix(brightRed, neonRed, lineBShape);
           
-          // Ligne C - oscillation rapide
-          float lineCY = 0.5 + curve * 0.7 - audioWave * 0.5 + 0.03 * sin(60.0 * p.x + iTime * 1.3) * fastWave;
+          // Ligne C - vague tertiaire
+          float lineCY = 0.5 + curve * 0.5 + 0.03 * sin(60.0 * p.x + iTime * 1.3);
           float lineCDist = distance(p.y, lineCY) * 0.55;
           float lineCShape = smoothstep(1.0 - clamp(lineCDist, 0.0, 1.0), 1.0, 0.99);
           vec3 lineCCol = (1.0 - lineCShape) * mix(neonRed, vec3(0.8, 0.1, 0.15), lineCShape);
           
           vec3 fcolor = bgCol + lineACol + lineBCol + lineCCol;
-          float alpha = length(fcolor); // Transparence basée sur l'intensité
+          float alpha = length(fcolor);
           gl_FragColor = vec4(fcolor, alpha);
         }
       `;
-
-      // Init Three.js
-      scene = new THREE.Scene();
-      camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-      camera.position.z = 1;
-
-      renderer = new THREE.WebGLRenderer({ 
-        canvas: canvas,
-        alpha: true,
-        antialias: true,
-        premultipliedAlpha: false
-      });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setClearColor(0x000000, 0);
-
-      shaderMaterial = new THREE.ShaderMaterial({
+      
+      const shaderMaterial = new THREE.ShaderMaterial({
         vertexShader,
         fragmentShader,
         transparent: true,
         uniforms: {
-          iResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+          iResolution: { value: new THREE.Vector2(w, h) },
           iTime: { value: 0 }
         }
       });
-
+      
+      // Créer le mesh plein écran
       const geometry = new THREE.PlaneGeometry(2, 2);
       const mesh = new THREE.Mesh(geometry, shaderMaterial);
       scene.add(mesh);
-
-      window.addEventListener('resize', () => {
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        shaderMaterial.uniforms.iResolution.value.set(window.innerWidth, window.innerHeight);
-      });
-
-      // Animation loop
+      
+      // Animation
       function animate() {
         requestAnimationFrame(animate);
         time += 0.016;
         shaderMaterial.uniforms.iTime.value = time;
         renderer.render(scene, camera);
       }
-
+      
       animate();
+      
+      // Gestion du resize
+      window.addEventListener('resize', () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        shaderMaterial.uniforms.iResolution.value.set(window.innerWidth, window.innerHeight);
+      });
     }
     }
 
-    // Démarre l'application
-    init();
+    // Démarre l'application après chargement complet
+    if (document.readyState === 'complete') {
+      init();
+    } else {
+      window.addEventListener('load', init);
+    }
   </script>
 </body>
 </html>

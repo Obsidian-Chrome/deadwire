@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deadwire - Hex</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .visualizerPage {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background-color: #000;
+    }
+
+    .visualizerPage__video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="visualizerPage">
+    <video 
+      class="visualizerPage__video" 
+      autoplay 
+      loop 
+      muted
+      playsinline
+    >
+      <source src="../media/visualizer/visualizer_hex.webm" type="video/webm">
+      Votre navigateur ne supporte pas la lecture vidéo.
+    </video>
+
+  </div>
+
+  <script>
+    const video = document.querySelector('.visualizerPage__video');
+    
+    video.play().catch(err => {
+      console.log('Autoplay bloqué, tentative au premier clic');
+      document.addEventListener('click', () => {
+        video.play();
+      }, { once: true });
+    });
+  </script>
+</body>
+</html>

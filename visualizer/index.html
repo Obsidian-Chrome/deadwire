@@ -1,324 +1,698 @@
 <!doctype html>
+
 <html lang="fr">
+
 <head>
+
   <meta charset="utf-8" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Visualizer | Le Deadwire</title>
+
   <link rel="icon" href="../media/Deadwire_Logo_Neon.png" type="image/png" />
+
   <link rel="stylesheet" href="../styles.css" />
+
   <script type="importmap">
+
     {
+
       "imports": {
+
         "three": "https://cdn.jsdelivr.net/npm/three@0.161/build/three.module.js",
+
         "jsm/": "https://cdn.jsdelivr.net/npm/three@0.161/examples/jsm/"
+
       }
+
     }
+
   </script>
+
   <style>
+
     body {
+
       margin: 0;
+
       padding: 0;
+
       overflow: hidden;
+
       background: linear-gradient(135deg, #1a0a1f 0%, #0a000c 50%, #1a0a1f 100%);
+
     }
+
+
 
     .visualizerPage {
+
       width: 100vw;
+
       height: 100vh;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
       position: relative;
+
     }
+
+
 
     .visualizerPage__video {
+
       width: 100%;
+
       height: 100%;
+
       object-fit: cover;
+
     }
+
+
 
     .visualizerPage__filter {
+
       position: absolute;
+
       top: 0;
+
       left: 0;
+
       width: 100%;
+
       height: 100%;
+
       pointer-events: none;
+
       mix-blend-mode: multiply;
+
       opacity: 0.6;
+
     }
+
+
 
     .visualizerPage__canvas {
+
       position: absolute;
+
       top: 0;
+
       left: 0;
+
       width: 100%;
+
       height: 100%;
+
       z-index: 1;
+
     }
+
+
 
     .visualizerPage__logo {
+
       position: absolute;
+
       top: 50%;
+
       left: 50%;
+
       transform: translate(-50%, -50%);
+
       z-index: 10;
+
       pointer-events: none;
+
       padding: 40px;
+
       background: radial-gradient(ellipse at center, rgba(10, 0, 12, 0.8) 0%, transparent 70%);
+
       border-radius: 50%;
+
     }
+
+
 
     .visualizerPage__logo img {
+
       width: clamp(400px, 50vw, 800px);
+
       height: auto;
+
       opacity: 1.0;
+
       filter: 
+
         brightness(1.1) 
+
         contrast(1.2)
+
         drop-shadow(0 0 30px rgba(255, 42, 61, 0.9))
+
         drop-shadow(0 0 60px rgba(255, 42, 61, 0.7));
+
     }
+
   </style>
+
 </head>
+
 <body>
+
   <div class="visualizerPage">
+
     <canvas class="visualizerPage__canvas" data-visualizer-canvas style="display: none;"></canvas>
+
     
+
     <div class="visualizerPage__logo" data-visualizer-logo style="display: none;">
+
       <img src="../media/Deadwire_Txt.png" alt="Deadwire" />
+
     </div>
 
+
+
     <video 
+
       class="visualizerPage__video" 
+
       autoplay 
+
       loop 
+
       muted
+
       playsinline
+
       data-visualizer-video
+
       style="display: none;"
+
     >
+
       <source data-video-source type="video/webm">
+
       Votre navigateur ne supporte pas la lecture vidéo.
+
     </video>
+
   </div>
 
+
+
   <script type="module">
+
     import * as THREE from 'three';
+
     import { EffectComposer } from 'jsm/postprocessing/EffectComposer.js';
+
     import { RenderPass } from 'jsm/postprocessing/RenderPass.js';
+
     import { UnrealBloomPass } from 'jsm/postprocessing/UnrealBloomPass.js';
 
+
+
     const video = document.querySelector('[data-visualizer-video]');
+
     const source = document.querySelector('[data-video-source]');
+
     const container = document.querySelector('.visualizerPage');
+
     const canvas = document.querySelector('[data-visualizer-canvas]');
+
     const logo = document.querySelector('[data-visualizer-logo]');
 
+
+
     // ═══════════════════════════════════════════════════════════════
+
     // Chargement du planning depuis schedule.json
+
     // ═══════════════════════════════════════════════════════════════
+
     async function loadSchedule() {
+
       try {
+
         const response = await fetch('schedule.json');
+
         const data = await response.json();
+
         return data;
+
       } catch (error) {
+
         console.error('Erreur chargement schedule.json:', error);
+
         return { schedule: [], default: { visualizer: '', colorFilter: '' } };
+
       }
+
     }
+
+
 
     // Vérifie si l'heure actuelle correspond à une plage horaire
+
     function isInTimeRange(startTime, endTime) {
+
       const now = new Date();
+
       const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
       
+
       const [startHour, startMin] = startTime.split(':').map(Number);
+
       const [endHour, endMin] = endTime.split(':').map(Number);
+
       
+
       const startMinutes = startHour * 60 + startMin;
+
       const endMinutes = endHour * 60 + endMin;
+
       
+
       return currentMinutes >= startMinutes && currentMinutes < endMinutes;
+
     }
+
+
 
     // Trouve le visualizer actif selon le planning
+
     function getCurrentVisualizer(scheduleData) {
+
       const now = new Date();
+
       const currentDate = now.toISOString().split('T')[0]; // Format YYYY-MM-DD
+
       
+
       // Cherche une session active pour aujourd'hui
+
       for (const session of scheduleData.schedule) {
+
         if (session.date === currentDate && isInTimeRange(session.startTime, session.endTime)) {
+
           return {
+
             visualizer: session.visualizer || '',
+
             colorFilter: session.colorFilter || ''
+
           };
+
         }
+
       }
+
       
+
       // Aucune session active, retourne le défaut
+
       return scheduleData.default;
+
     }
+
+
 
     // Initialise la page avec le planning
+
     async function init() {
+
       const scheduleData = await loadSchedule();
+
       const config = getCurrentVisualizer(scheduleData);
+
       
+
       const VISUALIZER_SOURCE = config.visualizer;
+
       const COLOR_FILTER = config.colorFilter;
+
       
+
       const useVideoMode = VISUALIZER_SOURCE && VISUALIZER_SOURCE.trim() !== '';
+
     
+
     if (useVideoMode) {
+
       // Mode vidéo
+
       video.style.display = 'block';
+
       source.src = `../media/visualizer/${VISUALIZER_SOURCE}`;
+
       
+
       video.load();
+
       
+
       video.play().catch(err => {
+
         console.log('Autoplay bloqué, tentative au premier clic');
+
         document.addEventListener('click', () => {
+
           video.play();
+
         }, { once: true });
+
       });
+
+
 
       video.addEventListener('pause', () => {
+
         video.play();
+
       });
+
+
 
       // Applique le filtre couleur si défini
+
       if (COLOR_FILTER && COLOR_FILTER.trim() !== '') {
+
         const filter = document.createElement('div');
+
         filter.className = 'visualizerPage__filter';
+
         filter.style.backgroundColor = COLOR_FILTER;
+
         container.appendChild(filter);
+
       }
+
     } else {
+
       // Mode visualizer + logo
+
+      console.log('Initialisation du visualizer...');
+
+      
+
+      // S'assurer que les éléments existent
+
+      if (!canvas) {
+
+        console.error('Canvas non trouvé !');
+
+        return;
+
+      }
+
+      if (!logo) {
+
+        console.error('Logo non trouvé !');
+
+        return;
+
+      }
+
+      
+
+      // Forcer l'affichage
+
       canvas.style.display = 'block';
+
       logo.style.display = 'block';
+
+      
+
+      console.log('Canvas et logo affichés');
+
+      
+
+      // Initialiser le visualizer
+
       initVisualizer();
+
     }
+
+
 
     // Visualizer Three.js - Vagues audio-réactives Deadwire
+
     function initVisualizer() {
+
+      console.log('Démarrage initVisualizer...');
+
+      
+
       const w = window.innerWidth;
+
       const h = window.innerHeight;
+
       
+
       let time = 0;
+
       
+
       const scene = new THREE.Scene();
+
       const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
       camera.position.z = 1;
+
       
+
       const renderer = new THREE.WebGLRenderer({ 
+
         canvas: canvas,
+
         alpha: true,
+
         antialias: true 
+
       });
+
       renderer.setSize(w, h);
+
       
+
+      console.log('Renderer initialisé');
+
+      
+
       // Shader pour les vagues Deadwire
+
       const vertexShader = `
+
         varying vec2 vUv;
+
         void main() {
+
           vUv = uv;
+
           gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+
         }
+
       `;
+
       
+
       const fragmentShader = `
+
         precision highp float;
+
         uniform vec2 iResolution;
+
         uniform float iTime;
+
         varying vec2 vUv;
+
         
+
         float squared(float value) {
+
           return value * value;
+
         }
+
         
+
         void main() {
+
           vec2 p = vUv;
+
           
+
           // Fond noir avec dégradé subtil
+
           vec3 bgCol = mix(vec3(0.02, 0.0, 0.01), vec3(0.01, 0.0, 0.005), p.y);
+
           
+
           // Couleurs Deadwire
+
           vec3 neonRed = vec3(1.0, 0.165, 0.239);
+
           vec3 darkRed = vec3(0.4, 0.0, 0.08);
+
           vec3 brightRed = vec3(1.0, 0.3, 0.4);
+
           
+
           // Vagues ondulantes
+
           float speed = 1.0;
+
           float curve = 0.08 * sin(6.25 * p.x + iTime * speed);
+
           
+
           // Ligne A - vague principale
+
           float lineAY = 0.5 + curve + 0.03 * sin(40.0 * p.x - iTime * 0.8);
+
           float lineADist = distance(p.y, lineAY) * 0.55;
+
           float lineAShape = smoothstep(1.0 - clamp(lineADist, 0.0, 1.0), 1.0, 0.99);
+
           vec3 lineACol = (1.0 - lineAShape) * mix(neonRed, darkRed, lineAShape);
+
           
+
           // Ligne B - vague secondaire
+
           float lineBY = 0.5 + curve * 0.7 + 0.03 * sin(50.0 * p.x + iTime);
+
           float lineBDist = distance(p.y, lineBY) * 0.55;
+
           float lineBShape = smoothstep(1.0 - clamp(lineBDist, 0.0, 1.0), 1.0, 0.99);
+
           vec3 lineBCol = (1.0 - lineBShape) * mix(brightRed, neonRed, lineBShape);
+
           
+
           // Ligne C - vague tertiaire
+
           float lineCY = 0.5 + curve * 0.5 + 0.03 * sin(60.0 * p.x + iTime * 1.3);
+
           float lineCDist = distance(p.y, lineCY) * 0.55;
+
           float lineCShape = smoothstep(1.0 - clamp(lineCDist, 0.0, 1.0), 1.0, 0.99);
+
           vec3 lineCCol = (1.0 - lineCShape) * mix(neonRed, vec3(0.8, 0.1, 0.15), lineCShape);
+
           
+
           vec3 fcolor = bgCol + lineACol + lineBCol + lineCCol;
+
           float alpha = length(fcolor);
+
           gl_FragColor = vec4(fcolor, alpha);
+
         }
+
       `;
+
       
+
       const shaderMaterial = new THREE.ShaderMaterial({
+
         vertexShader,
+
         fragmentShader,
+
         transparent: true,
+
         uniforms: {
+
           iResolution: { value: new THREE.Vector2(w, h) },
+
           iTime: { value: 0 }
+
         }
+
       });
+
       
+
       // Créer le mesh plein écran
+
       const geometry = new THREE.PlaneGeometry(2, 2);
+
       const mesh = new THREE.Mesh(geometry, shaderMaterial);
+
       scene.add(mesh);
+
       
+
+      console.log('Mesh créé et ajouté à la scène');
+
+      
+
       // Animation
+
       function animate() {
+
         requestAnimationFrame(animate);
+
         time += 0.016;
+
         shaderMaterial.uniforms.iTime.value = time;
+
         renderer.render(scene, camera);
+
       }
+
       
+
       animate();
+
       
+
+      console.log('Animation démarrée - Visualizer prêt !');
+
+      
+
       // Gestion du resize
+
       window.addEventListener('resize', () => {
+
         renderer.setSize(window.innerWidth, window.innerHeight);
+
         shaderMaterial.uniforms.iResolution.value.set(window.innerWidth, window.innerHeight);
+
       });
-    }
+
     }
 
-    // Démarre l'application après chargement complet
-    if (document.readyState === 'complete') {
-      init();
-    } else {
-      window.addEventListener('load', init);
     }
+
+
+
+    // Démarre l'application après chargement complet
+
+    if (document.readyState === 'complete') {
+
+      init();
+
+    } else {
+
+      window.addEventListener('load', init);
+
+    }
+
   </script>
+
 </body>
+
 </html>
+

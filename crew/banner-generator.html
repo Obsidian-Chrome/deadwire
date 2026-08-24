@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deadwire - Générateur de Bannières</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @font-face {
+      font-family: 'SDDystopianDemo';
+      src: url('../fonts/Sddystopiandemo-GO7xa.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: block;
+    }
+
+    body {
+      background-color: #0a0a0a;
+      color: #fff;
+      font-family: 'Chakra Petch', sans-serif;
+      padding: 20px;
+    }
+
+    /* Préchargement de la police */
+    body::before {
+      content: '';
+      font-family: 'SDDystopianDemo';
+      position: absolute;
+      visibility: hidden;
+    }
+
+    .auth-check {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    .generator-container {
+      display: none;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .generator-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .generator-header h1 {
+      color: #ff2a3d;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .generator-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .controls-panel {
+      background: #1a1a1a;
+      border: 1px solid #ff2a3d;
+      border-radius: 8px;
+      padding: 30px;
+    }
+
+    .preview-panel {
+      background: #1a1a1a;
+      border: 1px solid #ff2a3d;
+      border-radius: 8px;
+      padding: 30px;
+    }
+
+    .downloads-container {
+      grid-column: 1 / -1;
+      margin-top: 40px;
+    }
+
+    #fullscreenBtn:hover {
+      color: #ff2a3d;
+    }
+
+    .control-group {
+      margin-bottom: 25px;
+    }
+
+    .control-group label {
+      display: block;
+      color: #ff2a3d;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    .control-group input[type="text"],
+    .control-group input[type="color"],
+    .control-group select {
+      width: 100%;
+      padding: 12px;
+      background: #0a0a0a;
+      border: 1px solid #333;
+      border-radius: 4px;
+      color: #fff;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 1rem;
+    }
+
+    .control-group input[type="text"]:focus,
+    .control-group select:focus {
+      outline: none;
+      border-color: #ff2a3d;
+    }
+
+    .control-group input[type="file"] {
+      width: 100%;
+      padding: 12px;
+      background: #0a0a0a;
+      border: 1px solid #333;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .control-group input[type="file"]::file-selector-button {
+      background: #ff2a3d;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .color-input-wrapper {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .color-input-wrapper input[type="color"] {
+      width: 60px;
+      height: 45px;
+      padding: 4px;
+      cursor: pointer;
+    }
+
+    .color-input-wrapper input[type="text"] {
+      flex: 1;
+    }
+
+    .previews-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .preview-panel {
+      background: #1a1a1a;
+      border: 1px solid #ff2a3d;
+      border-radius: 8px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .preview-panel h3 {
+      color: #ff2a3d;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+
+    .canvas-wrapper {
+      background: #000;
+      border: 2px solid #333;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      display: inline-block;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .canvas-wrapper canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .download-btn {
+      background: #ff2a3d;
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background 0.3s;
+      font-family: 'Chakra Petch', sans-serif;
+    }
+
+    .download-btn:hover {
+      background: #cc0015;
+    }
+
+    .text-color-toggle {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .text-color-btn {
+      flex: 1;
+      background: #0a0a0a;
+      color: #fff;
+      border: 1px solid #333;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: 'Chakra Petch', sans-serif;
+    }
+
+    .text-color-btn.active {
+      border-color: #ff2a3d;
+      background: #1a1a1a;
+    }
+
+    @media (max-width: 1200px) {
+      .generator-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-check" id="authCheck">
+    <h2>Vérification de l'accès...</h2>
+    <p>Connexion Discord requise</p>
+  </div>
+
+  <div class="generator-container" id="generatorContainer">
+    <div class="generator-header" style="text-align: center; margin-bottom: 40px;">
+      <a href="/" style="display: inline-block;">
+        <img src="../media/Deadwire_Txt.png" alt="Deadwire" style="max-width: 400px; height: auto; cursor: pointer;">
+      </a>
+    </div>
+
+    <div class="generator-content">
+      <!-- Panneau de contrôles -->
+      <div class="controls-panel">
+        <h2 style="color: #ff2a3d; margin-bottom: 20px;">Paramètres</h2>
+
+        <div class="control-group">
+          <label>Nom de l'artiste</label>
+          <textarea id="artistName" style="width: 100%; padding: 12px; background: #0a0a0a; border: 1px solid #333; border-radius: 4px; color: #fff; font-family: 'Chakra Petch', sans-serif; font-size: 1rem; resize: vertical; min-height: 50px;">Artiste</textarea>
+          <small style="color: #888; display: block; margin-top: 5px;">Utilisez Entrée pour un saut de ligne si nécessaire</small>
+        </div>
+
+        <div class="control-group">
+          <label>Taille du texte artiste (%)</label>
+          <input type="range" id="artistFontSize" min="50" max="150" value="100" style="width: 100%;">
+          <small style="color: #888; display: block; margin-top: 5px;">Valeur: <span id="fontSizeValue">100</span>%</small>
+        </div>
+
+        <div class="control-group">
+          <label>Image de l'artiste</label>
+          <input type="file" id="artistImage" accept="image/*">
+          <small style="color: #888; display: block; margin-top: 5px;">L'image sera en arrière-plan de toute la bannière</small>
+        </div>
+
+        <div class="control-group">
+          <label>Contrôles de l'image</label>
+          <small style="color: #888; display: block; margin-top: 5px;">Cliquez sur l'aperçu pour déplacer l'image. Utilisez la molette pour zoomer.</small>
+        </div>
+
+        <div class="control-group">
+          <label>Date du bandeau</label>
+          <input type="date" id="bannerDate" style="width: 100%; padding: 12px; background: #0a0a0a; border: 1px solid #ff2a3d; border-radius: 4px; color: #fff; font-family: 'Chakra Petch', sans-serif; font-size: 1rem; cursor: pointer;">
+        </div>
+
+        <div class="control-group">
+          <label>Horaires</label>
+          <input type="text" id="bannerText2" placeholder="Ex: 21h00 - 23h00" value="21h00 - 23h00">
+        </div>
+
+        <div class="control-group">
+          <label>Couleur du bandeau</label>
+          <div class="color-input-wrapper">
+            <input type="color" id="bannerColor" value="#ff2a3d">
+            <input type="text" id="bannerColorHex" value="#ff2a3d" maxlength="7">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label>Couleur du texte du bandeau</label>
+          <div class="text-color-toggle">
+            <button class="text-color-btn active" data-color="#ffffff">Blanc</button>
+            <button class="text-color-btn" data-color="#000000">Noir</button>
+            <button class="text-color-btn" data-color="knockout">Transparent</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label>Adresse (pied de page)</label>
+          <input type="text" id="footerAddress" placeholder="Ex: La Coupe 2 - 6 | Ragnarok" value="La Coupe 2 - 6 | Ragnarok">
+        </div>
+
+        <div class="control-group" style="margin-top: 40px;">
+          <button id="validateBtn" style="width: 100%; padding: 15px; background: #ff2a3d; color: #fff; border: none; border-radius: 4px; font-size: 1.1rem; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Chakra Petch', sans-serif; transition: background 0.3s;">Valider et générer</button>
+        </div>
+      </div>
+
+      <!-- Aperçu unique -->
+      <div class="preview-panel">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+          <h3 style="color: #ff2a3d; margin: 0; font-size: 1.3rem;">Aperçu</h3>
+          <button id="fullscreenBtn" style="padding: 8px; background: transparent; color: #888; border: none; cursor: pointer; transition: color 0.3s; font-size: 1.2rem;" title="Plein écran">
+            <i class="fas fa-expand"></i>
+          </button>
+        </div>
+        <div class="canvas-wrapper" id="mainPreview" style="cursor: move;">
+          <canvas id="previewCanvas" width="1200" height="500"></canvas>
+        </div>
+        <small style="color: #888; display: block; margin-top: 10px; text-align: center;">Cliquez et faites glisser pour déplacer l'image • Molette pour zoomer</small>
+        
+        <!-- Liens de téléchargement (cachés par défaut, sous l'aperçu) -->
+        <div id="downloadsContainer" style="display: none; margin-top: 30px;">
+          <h4 style="color: #ff2a3d; margin-bottom: 15px; font-size: 1.1rem; text-align: center;">Télécharger les bannières</h4>
+          
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <button class="download-btn" data-canvas="canvas1200x500" data-format="1200x500" style="padding: 12px 20px; background: #ff2a3d; color: #fff; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Chakra Petch', sans-serif; transition: background 0.3s; font-size: 0.95rem;">
+              Bannière (1200×500)
+            </button>
+            
+            <button class="download-btn" data-canvas="canvas800x320" data-format="800x320" style="padding: 12px 20px; background: #ff2a3d; color: #fff; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Chakra Petch', sans-serif; transition: background 0.3s; font-size: 0.95rem;">
+              Events (800×320)
+            </button>
+            
+            <button class="download-btn" data-canvas="canvas720x300" data-format="720x300" style="padding: 12px 20px; background: #ff2a3d; color: #fff; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Chakra Petch', sans-serif; transition: background 0.3s; font-size: 0.95rem;">
+              Snowcloak (720×300)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Canvas cachés pour la génération -->
+      <canvas id="canvas1200x500" width="1200" height="500" style="display: none;"></canvas>
+      <canvas id="canvas800x320" width="800" height="320" style="display: none;"></canvas>
+      <canvas id="canvas720x300" width="720" height="300" style="display: none;"></canvas>
+      
+      <!-- Modal plein écran -->
+      <div id="fullscreenModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.95); z-index: 9999; justify-content: center; align-items: center;">
+        <div style="position: relative; max-width: 95vw; max-height: 95vh;">
+          <canvas id="fullscreenCanvas" style="max-width: 100%; max-height: 95vh; border: 2px solid #ff2a3d;"></canvas>
+          <button id="closeFullscreen" style="position: absolute; top: -40px; right: 0; padding: 8px 16px; background: #ff2a3d; color: #fff; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; font-family: 'Chakra Petch', sans-serif; font-size: 1rem;">
+            Fermer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    // Vérification de l'authentification Discord
+    const REQUIRED_ROLE_ID = '1450560950850818089'; // Rôle Gérant
+
+    async function checkAuth() {
+      const isGM = localStorage.getItem('discord_is_gm') === 'true';
+      
+      if (isGM) {
+        document.getElementById('authCheck').style.display = 'none';
+        document.getElementById('generatorContainer').style.display = 'block';
+        initGenerator();
+      } else {
+        document.getElementById('authCheck').innerHTML = `
+          <h2 style="color: #ff2a3d;">Accès refusé</h2>
+          <p>Cette page est réservée aux gérants.</p>
+          <p style="color: #888; margin-top: 20px;">Vous devez avoir le rôle Gérant pour accéder à cette page.</p>
+        `;
+      }
+    }
+
+    // Initialisation du générateur
+    let artistImageData = null;
+    let bannerTextColor = '#ffffff';
+    let imageZoom = 100;
+    let imageX = 0;
+    let imageY = 0;
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    
+    const formats = [
+      { id: 'canvas1200x500', width: 1200, height: 500 },
+      { id: 'canvas800x320', width: 800, height: 320 },
+      { id: 'canvas720x300', width: 720, height: 300 }
+    ];
+
+    function initGenerator() {
+      // Précharger la police avant de dessiner
+      const fontLoader = new FontFace('SDDystopianDemo', 'url(../fonts/Sddystopiandemo-GO7xa.otf)');
+      fontLoader.load().then((loadedFont) => {
+        document.fonts.add(loadedFont);
+        // Dessiner après le chargement de la police
+        drawPreview();
+      }).catch((error) => {
+        console.error('Erreur de chargement de la police:', error);
+        // Dessiner quand même avec la police de secours
+        drawPreview();
+      });
+
+      // Contrôles interactifs sur le canvas
+      const previewCanvas = document.getElementById('previewCanvas');
+      const previewWrapper = document.getElementById('mainPreview');
+
+      // Drag pour déplacer l'image
+      previewCanvas.addEventListener('mousedown', (e) => {
+        if (!artistImageData) return;
+        isDragging = true;
+        dragStartX = e.clientX;
+        dragStartY = e.clientY;
+        previewWrapper.style.cursor = 'grabbing';
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (!isDragging || !artistImageData) return;
+        const deltaX = e.clientX - dragStartX;
+        const deltaY = e.clientY - dragStartY;
+        
+        imageX += deltaX * 0.1;
+        imageY += deltaY * 0.1;
+        
+        // Limiter les valeurs
+        imageX = Math.max(-50, Math.min(50, imageX));
+        imageY = Math.max(-50, Math.min(50, imageY));
+        
+        dragStartX = e.clientX;
+        dragStartY = e.clientY;
+        
+        drawPreview();
+      });
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+        previewWrapper.style.cursor = 'move';
+      });
+
+      // Zoom avec la molette
+      previewCanvas.addEventListener('wheel', (e) => {
+        if (!artistImageData) return;
+        e.preventDefault();
+        
+        const delta = e.deltaY > 0 ? -5 : 5;
+        imageZoom += delta;
+        imageZoom = Math.max(50, Math.min(200, imageZoom));
+        
+        drawPreview();
+      });
+
+      // Bouton de validation
+      document.getElementById('validateBtn').addEventListener('click', () => {
+        // Générer les 3 formats
+        drawAllBanners();
+        // Afficher la section de téléchargement
+        document.getElementById('downloadsContainer').style.display = 'block';
+      });
+
+      // Bouton plein écran
+      document.getElementById('fullscreenBtn').addEventListener('click', () => {
+        const modal = document.getElementById('fullscreenModal');
+        const fullscreenCanvas = document.getElementById('fullscreenCanvas');
+        
+        // Copier le canvas de prévisualisation
+        fullscreenCanvas.width = 1200;
+        fullscreenCanvas.height = 500;
+        const ctx = fullscreenCanvas.getContext('2d');
+        const previewCanvas = document.getElementById('previewCanvas');
+        ctx.drawImage(previewCanvas, 0, 0);
+        
+        // Afficher le modal
+        modal.style.display = 'flex';
+      });
+
+      // Fermer le plein écran
+      document.getElementById('closeFullscreen').addEventListener('click', () => {
+        document.getElementById('fullscreenModal').style.display = 'none';
+      });
+
+      // Fermer avec Echap
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          document.getElementById('fullscreenModal').style.display = 'none';
+        }
+      });
+
+      // Fermer en cliquant sur le fond
+      document.getElementById('fullscreenModal').addEventListener('click', (e) => {
+        if (e.target.id === 'fullscreenModal') {
+          document.getElementById('fullscreenModal').style.display = 'none';
+        }
+      });
+
+      // Gestion de l'image de l'artiste
+      document.getElementById('artistImage').addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const img = new Image();
+            img.onload = () => {
+              artistImageData = img;
+              drawPreview();
+            };
+            img.src = event.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // Initialiser la date par défaut (aujourd'hui)
+      const today = new Date();
+      const dateInput = document.getElementById('bannerDate');
+      dateInput.value = today.toISOString().split('T')[0];
+
+      // Gestion des inputs texte
+      ['artistName', 'bannerText2', 'footerAddress'].forEach(id => {
+        document.getElementById(id).addEventListener('input', drawPreview);
+      });
+
+      // Gestion de la date
+      dateInput.addEventListener('input', drawPreview);
+
+      // Gestion de la taille de police de l'artiste
+      const fontSizeSlider = document.getElementById('artistFontSize');
+      fontSizeSlider.addEventListener('input', (e) => {
+        document.getElementById('fontSizeValue').textContent = e.target.value;
+        drawPreview();
+      });
+
+      // Gestion de la couleur du bandeau
+      const colorInput = document.getElementById('bannerColor');
+      const colorHex = document.getElementById('bannerColorHex');
+      
+      colorInput.addEventListener('input', (e) => {
+        colorHex.value = e.target.value;
+        drawPreview();
+      });
+      
+      colorHex.addEventListener('input', (e) => {
+        if (/^#[0-9A-F]{6}$/i.test(e.target.value)) {
+          colorInput.value = e.target.value;
+          drawPreview();
+        }
+      });
+
+      // Gestion de la couleur du texte
+      document.querySelectorAll('.text-color-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.text-color-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          bannerTextColor = btn.dataset.color;
+          drawPreview();
+        });
+      });
+
+      // Téléchargement individuel pour chaque format
+      document.querySelectorAll('.download-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const canvasId = btn.dataset.canvas;
+          const format = btn.dataset.format;
+          const canvas = document.getElementById(canvasId);
+          const artistNameRaw = document.getElementById('artistName').value || 'artiste';
+          
+          // Normaliser le nom : minuscules, remplacer espaces et sauts de ligne par underscores
+          const artistName = artistNameRaw
+            .toLowerCase()
+            .replace(/\s+/g, '_')
+            .replace(/[^a-z0-9_]/g, '');
+          
+          const link = document.createElement('a');
+          let filename;
+          if (format === '1200x500') {
+            filename = `deadwire_ad_${artistName}.png`;
+          } else if (format === '800x320') {
+            filename = `deadwire_adevents_${artistName}.png`;
+          } else if (format === '720x300') {
+            filename = `deadwire_adsnow_${artistName}.png`;
+          } else {
+            filename = `deadwire_banner_${artistName}_${format}.png`;
+          }
+          link.download = filename;
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+        });
+      });
+    }
+
+    function drawPreview() {
+      drawBanner('previewCanvas', 1200, 500);
+    }
+
+    function drawAllBanners() {
+      formats.forEach(format => {
+        drawBanner(format.id, format.width, format.height);
+      });
+    }
+
+    function drawBanner(canvasId, width, height) {
+      const canvas = document.getElementById(canvasId);
+      const ctx = canvas.getContext('2d');
+
+      // Fond noir
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, width, height);
+
+      // Calcul des tailles proportionnelles
+      const scale = width / 1200;
+      const padding = 20 * scale; // Réduit de 30 à 20
+
+      // Image de l'artiste en arrière-plan (plein écran avec zoom et position)
+      if (artistImageData) {
+        const zoom = imageZoom / 100;
+        const offsetX = imageX / 100;
+        const offsetY = imageY / 100;
+        
+        ctx.save();
+        
+        // Calculer les dimensions pour couvrir tout le canvas avec le zoom
+        const imgRatio = artistImageData.width / artistImageData.height;
+        const canvasRatio = width / height;
+        
+        let drawWidth, drawHeight, drawX, drawY;
+        
+        if (imgRatio > canvasRatio) {
+          drawHeight = height * zoom;
+          drawWidth = drawHeight * imgRatio;
+        } else {
+          drawWidth = width * zoom;
+          drawHeight = drawWidth / imgRatio;
+        }
+        
+        drawX = (width - drawWidth) / 2 + (offsetX * width);
+        drawY = (height - drawHeight) / 2 + (offsetY * height);
+        
+        ctx.drawImage(artistImageData, drawX, drawY, drawWidth, drawHeight);
+        ctx.restore();
+      }
+
+      // Vignettage rouge aux bords (réduit)
+      const gradient = ctx.createRadialGradient(width / 2, height / 2, Math.min(width, height) * 0.3, width / 2, height / 2, Math.max(width, height) * 0.8);
+      gradient.addColorStop(0, 'rgba(255, 42, 61, 0)');
+      gradient.addColorStop(1, 'rgba(255, 42, 61, 0.15)');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, width, height);
+
+      // Logo Deadwire en haut à gauche (deadwire_adlogo.png) avec ombre portée renforcée
+      const logoImg = new Image();
+      logoImg.src = '../media/deadwire_adlogo.png';
+      if (logoImg.complete) {
+        const logoHeight = 90 * scale; // Augmenté de 60 à 90
+        const logoWidth = (logoImg.width / logoImg.height) * logoHeight;
+        
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+        ctx.shadowBlur = 15 * scale;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 5 * scale;
+        ctx.drawImage(logoImg, padding, padding, logoWidth, logoHeight);
+        ctx.shadowColor = 'transparent';
+      } else {
+        logoImg.onload = () => {
+          const logoHeight = 90 * scale; // Augmenté de 60 à 90
+          const logoWidth = (logoImg.width / logoImg.height) * logoHeight;
+          
+          ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+          ctx.shadowBlur = 15 * scale;
+          ctx.shadowOffsetX = 0;
+          ctx.shadowOffsetY = 5 * scale;
+          ctx.drawImage(logoImg, padding, padding, logoWidth, logoHeight);
+          ctx.shadowColor = 'transparent';
+        };
+      }
+
+      // Préparer les textes du bandeau
+      const dateValue = document.getElementById('bannerDate').value;
+      let bannerText1 = '';
+      if (dateValue) {
+        const date = new Date(dateValue + 'T00:00:00');
+        const jours = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+        const mois = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+        bannerText1 = `${jours[date.getDay()]} ${date.getDate()} ${mois[date.getMonth()]} ${date.getFullYear()}`;
+      }
+      const bannerText2 = document.getElementById('bannerText2').value || '';
+      const bannerColor = document.getElementById('bannerColor').value;
+
+      // Configuration du texte avec espacement
+      const letterSpacing = 3 * scale;
+      const bannerFontSize = 26 * scale; // Augmenté de 20 à 26
+      ctx.font = `bold ${bannerFontSize}px 'Chakra Petch', sans-serif`;
+      
+      // Fonction pour mesurer le texte avec espacement
+      function measureTextWithSpacing(text) {
+        const baseWidth = ctx.measureText(text).width;
+        return baseWidth + (text.length - 1) * letterSpacing;
+      }
+      
+      // Fonction pour dessiner du texte avec espacement
+      function drawTextWithSpacing(text, x, y, align = 'center') {
+        const totalWidth = measureTextWithSpacing(text);
+        let startX = align === 'center' ? x - totalWidth / 2 : x;
+        
+        for (let i = 0; i < text.length; i++) {
+          const char = text[i];
+          const charWidth = ctx.measureText(char).width;
+          ctx.fillText(char, startX + charWidth / 2, y);
+          startX += charWidth + letterSpacing;
+        }
+      }
+
+      // Calculer les dimensions de chaque ligne de bandeau
+      const text1Width = measureTextWithSpacing(bannerText1.toUpperCase());
+      const text2Width = measureTextWithSpacing(bannerText2.toUpperCase());
+      const lineHeight = 45 * scale; // Augmenté pour la plus grande police
+      const linePadding = 20 * scale;
+      const lineGap = 0; // Pas d'espace entre les lignes
+      
+      // Position de base (aligné à droite, très proche du nom de l'artiste)
+      const baseX = width - padding;
+      const baseY = (height / 2) + (50 * scale); // Rapproché du nom de l'artiste
+
+      // Calculer les positions
+      const banner1Width = text1Width + linePadding * 2;
+      const banner1X = baseX - banner1Width;
+      const banner1CenterX = banner1X + banner1Width / 2;
+      
+      const banner2Width = text2Width + linePadding * 2;
+      const banner2X = banner1CenterX - banner2Width / 2;
+      const banner2Y = baseY + lineHeight + lineGap;
+
+      // Vérifier si mode knockout (transparent)
+      const isKnockout = bannerTextColor === 'knockout';
+
+      if (isKnockout) {
+        // Mode knockout : créer un masque avec le texte découpé
+        
+        // Créer un canvas temporaire pour le bandeau avec knockout
+        const tempCanvas = document.createElement('canvas');
+        tempCanvas.width = width;
+        tempCanvas.height = height;
+        const tempCtx = tempCanvas.getContext('2d');
+        
+        // Dessiner le bandeau sur le canvas temporaire
+        tempCtx.fillStyle = bannerColor;
+        tempCtx.fillRect(banner1X, baseY, banner1Width, lineHeight);
+        tempCtx.fillRect(banner2X, banner2Y, banner2Width, lineHeight);
+        
+        // Soustraire le texte
+        tempCtx.globalCompositeOperation = 'destination-out';
+        tempCtx.font = `bold ${bannerFontSize}px 'Chakra Petch', sans-serif`;
+        tempCtx.fillStyle = 'rgba(0, 0, 0, 1)';
+        tempCtx.textAlign = 'center';
+        tempCtx.textBaseline = 'middle';
+        
+        // Fonction locale pour dessiner avec espacement sur le canvas temporaire (même logique que drawTextWithSpacing)
+        function drawTextWithSpacingTemp(text, x, y) {
+          const totalWidth = tempCtx.measureText(text).width + (text.length - 1) * letterSpacing;
+          let startX = x - totalWidth / 2;
+          
+          for (let i = 0; i < text.length; i++) {
+            const char = text[i];
+            const charWidth = tempCtx.measureText(char).width;
+            tempCtx.fillText(char, startX + charWidth / 2, y);
+            startX += charWidth + letterSpacing;
+          }
+        }
+        
+        drawTextWithSpacingTemp(bannerText1.toUpperCase(), baseX - banner1Width / 2, baseY + lineHeight / 2);
+        drawTextWithSpacingTemp(bannerText2.toUpperCase(), banner1CenterX, banner2Y + lineHeight / 2);
+        
+        // Dessiner l'ombre sur le canvas principal
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+        ctx.shadowBlur = 15 * scale;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 5 * scale;
+        
+        // Dessiner le bandeau avec knockout
+        ctx.drawImage(tempCanvas, 0, 0);
+        
+        ctx.shadowColor = 'transparent';
+        
+      } else {
+        // Mode normal : bandeau avec texte par-dessus
+        
+        // Ombre portée sous l'ensemble du bandeau
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+        ctx.shadowBlur = 15 * scale;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 5 * scale;
+
+        // Dessiner les deux rectangles en un seul chemin pour une ombre unifiée
+        ctx.fillStyle = bannerColor;
+        ctx.beginPath();
+        ctx.rect(banner1X, baseY, banner1Width, lineHeight);
+        ctx.rect(banner2X, banner2Y, banner2Width, lineHeight);
+        ctx.fill();
+
+        // Désactiver l'ombre pour le texte
+        ctx.shadowColor = 'transparent';
+
+        // Texte ligne 1
+        ctx.font = `bold ${bannerFontSize}px 'Chakra Petch', sans-serif`;
+        ctx.fillStyle = bannerTextColor;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        drawTextWithSpacing(bannerText1.toUpperCase(), baseX - banner1Width / 2, baseY + lineHeight / 2);
+
+        // Texte ligne 2
+        ctx.font = `bold ${bannerFontSize}px 'Chakra Petch', sans-serif`;
+        ctx.fillStyle = bannerTextColor;
+        drawTextWithSpacing(bannerText2.toUpperCase(), banner1CenterX, banner2Y + lineHeight / 2);
+      }
+
+      // Nom de l'artiste centré par rapport au bandeau (police SDDystopianDemo, couleur du bandeau, responsive)
+      const artistName = document.getElementById('artistName').value || '';
+      if (artistName) {
+        const artistX = banner1CenterX;
+        
+        // Récupérer le multiplicateur de taille
+        const fontSizeMultiplier = parseFloat(document.getElementById('artistFontSize').value) / 100;
+        
+        let baseFontSize = 80 * scale * fontSizeMultiplier;
+        let capitalFontSize = 90 * scale * fontSizeMultiplier;
+        const maxWidth = width - (padding * 6); // Largeur max disponible (plus de marge)
+        const minFontSize = 30 * scale; // Taille minimale
+        
+        ctx.fillStyle = bannerColor;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+        ctx.shadowBlur = 10 * scale;
+        ctx.shadowOffsetX = 2 * scale;
+        ctx.shadowOffsetY = 2 * scale;
+        
+        // Fonction pour mesurer la largeur d'un texte avec majuscules agrandies
+        function measureArtistText(text, baseSize, capSize) {
+          const nameUpper = text.toUpperCase();
+          let totalWidth = 0;
+          for (let i = 0; i < nameUpper.length; i++) {
+            const char = nameUpper[i];
+            const isCapital = text[i] === text[i].toUpperCase() && text[i] !== text[i].toLowerCase();
+            ctx.font = `${isCapital ? capSize : baseSize}px 'SDDystopianDemo', sans-serif`;
+            totalWidth += ctx.measureText(char).width;
+          }
+          return totalWidth;
+        }
+        
+        // Gérer les sauts de ligne manuels (textarea)
+        const manualLines = artistName.split('\n');
+        const lines = [];
+        
+        // Traiter chaque ligne manuelle
+        for (const manualLine of manualLines) {
+          const trimmedLine = manualLine.trim();
+          if (!trimmedLine) continue;
+          
+          // Vérifier si la ligne tient
+          const lineWidth = measureArtistText(trimmedLine, baseFontSize, capitalFontSize);
+          
+          if (lineWidth <= maxWidth) {
+            // La ligne tient, l'ajouter telle quelle
+            lines.push(trimmedLine);
+          } else {
+            // La ligne est trop large, la découper par mots
+            const words = trimmedLine.split(' ');
+            let currentLine = '';
+            
+            for (const word of words) {
+              const testLine = currentLine ? currentLine + ' ' + word : word;
+              const testWidth = measureArtistText(testLine, baseFontSize, capitalFontSize);
+              
+              if (testWidth > maxWidth && currentLine) {
+                lines.push(currentLine);
+                currentLine = word;
+              } else {
+                currentLine = testLine;
+              }
+            }
+            if (currentLine) {
+              lines.push(currentLine);
+            }
+          }
+        }
+        
+        // Trouver la ligne la plus large
+        let maxLineWidth = 0;
+        for (const line of lines) {
+          const lineWidth = measureArtistText(line, baseFontSize, capitalFontSize);
+          maxLineWidth = Math.max(maxLineWidth, lineWidth);
+        }
+        
+        // Si une ligne dépasse, réduire la taille de police
+        if (maxLineWidth > maxWidth) {
+          const ratio = maxWidth / maxLineWidth;
+          baseFontSize = Math.max(minFontSize, baseFontSize * ratio * 0.9);
+          capitalFontSize = baseFontSize * 1.125;
+        }
+        
+        // Dessiner chaque ligne avec espacement réduit
+        const lineSpacing = baseFontSize * 0.9;
+        
+        // Limite haute du bandeau avec marge réduite
+        const bannerTopY = baseY - 15 * scale; // Réduit de 40 à 15
+        
+        // ANCRAGE EN BAS : la dernière ligne est toujours à la même position
+        // Position fixe pour la dernière ligne (très proche du bandeau)
+        const lastLineY = bannerTopY - baseFontSize / 2;
+        
+        // Calculer la position de la première ligne en remontant
+        const startY = lastLineY - ((lines.length - 1) * lineSpacing);
+        
+        lines.forEach((line, lineIndex) => {
+          const nameUpper = line.toUpperCase();
+          const charWidths = [];
+          let totalWidth = 0;
+          
+          // Calculer la largeur de la ligne
+          for (let i = 0; i < nameUpper.length; i++) {
+            const char = nameUpper[i];
+            const isCapital = line[i] === line[i].toUpperCase() && line[i] !== line[i].toLowerCase();
+            ctx.font = `${isCapital ? capitalFontSize : baseFontSize}px 'SDDystopianDemo', sans-serif`;
+            const charWidth = ctx.measureText(char).width;
+            charWidths.push({ char, width: charWidth, isCapital });
+            totalWidth += charWidth;
+          }
+          
+          // Dessiner les caractères de la ligne
+          let currentX = artistX - totalWidth / 2;
+          const currentY = startY + (lineIndex * lineSpacing);
+          
+          for (let i = 0; i < charWidths.length; i++) {
+            const { char, width, isCapital } = charWidths[i];
+            ctx.font = `${isCapital ? capitalFontSize : baseFontSize}px 'SDDystopianDemo', sans-serif`;
+            ctx.fillText(char, currentX + width / 2, currentY);
+            currentX += width;
+          }
+        });
+        
+        ctx.shadowColor = 'transparent';
+      }
+
+      // Adresse en pied de page (centrée, plus grande, en majuscules, avec espacement et ombre portée)
+      const footerAddress = document.getElementById('footerAddress').value || '';
+      if (footerAddress) {
+        ctx.font = `${24 * scale}px 'Chakra Petch', sans-serif`;
+        ctx.fillStyle = '#ffffff';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+        ctx.shadowBlur = 10 * scale;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 3 * scale;
+        drawTextWithSpacing(footerAddress.toUpperCase(), width / 2, height - padding);
+        ctx.shadowColor = 'transparent';
+      }
+    }
+
+    // Lancer la vérification
+    checkAuth();
+  </script>
+</body>
+</html>

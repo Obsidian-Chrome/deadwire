@@ -109,7 +109,20 @@
                       <span>Contrats</span>
                     </a>
                   </li>
+                  <li id="bannerGeneratorLink" style="margin-bottom: 12px; display: none;">
+                    <a href="/crew/banner-generator.html" class="resource-link" style="color: var(--accent); text-decoration: none; font-size: 1.1rem; display: flex; align-items: center; gap: 12px; transition: all 0.2s ease;">
+                      <i class="fa-solid fa-image" style="width: 20px;"></i>
+                      <span>Générateur de bannières</span>
+                    </a>
+                  </li>
                 </ul>
+
+                <script>
+                  // Afficher le lien du générateur de bannières uniquement pour les gérants
+                  if (localStorage.getItem('discord_is_gm') === 'true') {
+                    document.getElementById('bannerGeneratorLink').style.display = 'block';
+                  }
+                </script>
 
                 <h2 class="sectionTitle" style="margin-top: 48px;">Mods</h2>
                 <ul style="list-style: none; padding: 0; margin-top: 16px; max-width: 600px;">

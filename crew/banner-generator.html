@@ -518,6 +518,10 @@
             const img = new Image();
             img.onload = () => {
               artistImageData = img;
+              // Réinitialiser le zoom et la position pour la nouvelle image
+              imageZoom = 100;
+              imageX = 0;
+              imageY = 0;
               drawPreview();
             };
             img.src = event.target.result;

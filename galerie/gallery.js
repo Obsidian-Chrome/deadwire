@@ -5,19 +5,23 @@
 let allMedia = [];
 let currentIndex = 0;
 let displayedCount = 0;
-const ITEMS_PER_LOAD = 20;
+const ITEMS_PER_LOAD = 50;
 
 // Récupère les médias depuis le fichier JSON
 async function fetchGalleryMedia() {
   try {
+    console.log('Tentative de chargement: ./gallery.json');
     let response = await fetch('./gallery.json');
     if (!response.ok) {
+      console.log('Échec, tentative: /galerie/gallery.json');
       response = await fetch('/galerie/gallery.json');
     }
     if (!response.ok) {
       throw new Error(`Erreur de chargement: ${response.status}`);
     }
     const data = await response.json();
+    console.log('Données chargées:', data);
+    console.log('Nombre de médias:', data.media ? data.media.length : 0);
     return data.media || [];
   } catch (error) {
     console.error('Erreur lors de la récupération de la galerie:', error);
@@ -64,6 +68,7 @@ function createMediaCard(media, index) {
 // Charge plus d'éléments
 function loadMoreItems() {
   const grid = document.getElementById('galleryGrid');
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
   const endIndex = Math.min(displayedCount + ITEMS_PER_LOAD, allMedia.length);
   
   for (let i = displayedCount; i < endIndex; i++) {
@@ -73,29 +78,36 @@ function loadMoreItems() {
   
   displayedCount = endIndex;
   
-  // Si tous les éléments sont chargés, retirer l'observer
+  // Cacher le bouton si tous les éléments sont chargés
   if (displayedCount >= allMedia.length) {
-    observer.disconnect();
+    loadMoreBtn.style.display = 'none';
   }
 }
 
-// Intersection Observer pour le chargement infini
-let observer;
-function setupInfiniteScroll() {
-  const sentinel = document.createElement('div');
-  sentinel.id = 'sentinel';
-  sentinel.style.height = '1px';
-  document.querySelector('.container').appendChild(sentinel);
+// Configuration du bouton de chargement
+function setupLoadMoreButton() {
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
+  const originalText = loadMoreBtn.textContent;
   
-  observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting && displayedCount < allMedia.length) {
+  loadMoreBtn.addEventListener('click', () => {
+    // Afficher le loading
+    loadMoreBtn.disabled = true;
+    loadMoreBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Chargement...';
+    
+    // Simuler un petit délai pour voir le loading
+    setTimeout(() => {
       loadMoreItems();
-    }
-  }, {
-    rootMargin: '200px'
+      loadMoreBtn.disabled = false;
+      loadMoreBtn.textContent = originalText;
+    }, 300);
   });
   
-  observer.observe(sentinel);
+  // Afficher le bouton seulement s'il y a plus d'éléments à charger
+  if (displayedCount >= allMedia.length) {
+    loadMoreBtn.style.display = 'none';
+  } else {
+    loadMoreBtn.style.display = 'block';
+  }
 }
 
 // Ouvre la lightbox
@@ -119,13 +131,17 @@ function closeLightbox() {
 // Met à jour le contenu de la lightbox
 function updateLightbox() {
   const content = document.getElementById('lightboxContent');
+  const authorName = document.getElementById('lightboxAuthorName');
   const media = allMedia[currentIndex];
   
   if (media.type === 'video') {
-    content.innerHTML = `<video src="${media.url}" controls autoplay style="max-width: 100%; max-height: 90vh;"></video>`;
+    content.innerHTML = `<video src="${media.url}" controls autoplay></video>`;
   } else {
     content.innerHTML = `<img src="${media.url}" alt="Image Discord" />`;
   }
+  
+  // Afficher le nom de l'auteur
+  authorName.textContent = media.author.username;
   
   // Gérer les boutons de navigation
   document.getElementById('lightboxPrev').style.display = currentIndex > 0 ? 'flex' : 'none';
@@ -165,8 +181,8 @@ async function populateGallery() {
   // Charger les premiers éléments
   loadMoreItems();
   
-  // Configurer le scroll infini
-  setupInfiniteScroll();
+  // Configurer le bouton de chargement
+  setupLoadMoreButton();
 }
 
 // Initialisation

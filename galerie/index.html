@@ -32,6 +32,12 @@
               <!-- Les médias seront injectés ici par JS -->
             </div>
 
+            <div style="text-align: center; margin-top: 32px;">
+              <button id="loadMoreBtn" class="btn" style="display: none;">
+                Charger 50 images supplémentaires
+              </button>
+            </div>
+
             <div id="loadingState" class="loading-state" style="display: none;">
               <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
               <p>Chargement des images...</p>
@@ -165,97 +171,128 @@
             margin: 0;
           }
 
-          /* Modal lightbox */
+          /* Modal lightbox - calquée sur celle de l'équipe */
           .lightbox {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 100000;
+            inset: 0;
+            z-index: 200;
             display: none;
             align-items: center;
             justify-content: center;
-            animation: fadeIn 0.3s ease;
+            padding: 20px;
+            background: rgba(0, 0, 0, .75);
+            backdrop-filter: blur(8px);
           }
 
           .lightbox.active {
             display: flex;
           }
 
-          .lightbox__content {
+          .lightbox__dialog {
+            position: relative;
             max-width: 90vw;
             max-height: 90vh;
-            position: relative;
+            border-radius: 22px;
+            border: 1px solid rgba(255, 42, 61, .30);
+            background: rgba(10, 0, 12, .60);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, .5);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .lightbox__content {
+            max-width: 100%;
+            max-height: calc(90vh - 60px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
 
           .lightbox__content img,
           .lightbox__content video {
             max-width: 100%;
-            max-height: 90vh;
+            max-height: calc(90vh - 60px);
+            width: auto;
+            height: auto;
             object-fit: contain;
+            display: block;
+            background: rgba(0, 0, 0, .25);
+          }
+
+          .lightbox__author-info {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
             border-radius: 8px;
+            color: rgba(247, 233, 239, 0.95);
+            font-size: 0.9rem;
+          }
+
+          .lightbox__author-info i {
+            color: rgba(255, 42, 61, 0.8);
           }
 
           .lightbox__close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 42, 61, 0.9);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 24px;
+            top: 10px;
+            right: 10px;
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 42, 61, .30);
+            background: rgba(10, 0, 12, .45);
+            color: rgba(247, 233, 239, .90);
+            box-shadow: 0 0 16px rgba(255, 42, 61, .14);
             cursor: pointer;
+            font-size: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 100001;
+            transition: box-shadow 0.3s ease;
           }
 
           .lightbox__close:hover {
-            background: rgba(255, 42, 61, 1);
-            transform: scale(1.1);
+            box-shadow: 0 4px 24px rgba(255, 42, 61, .3);
           }
 
           .lightbox__nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 42, 61, 0.9);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 42, 61, .30);
+            background: rgba(10, 0, 12, .45);
+            color: rgba(247, 233, 239, .90);
+            box-shadow: 0 0 16px rgba(255, 42, 61, .14);
             cursor: pointer;
+            font-size: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
+            transition: box-shadow 0.3s ease;
           }
 
           .lightbox__nav:hover {
-            background: rgba(255, 42, 61, 1);
-            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 4px 24px rgba(255, 42, 61, .3);
           }
 
           .lightbox__nav--prev {
-            left: 20px;
+            left: 10px;
           }
 
           .lightbox__nav--next {
-            right: 20px;
-          }
-
-          @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            right: 10px;
           }
         </style>
       </div>
@@ -264,16 +301,22 @@
 
   <!-- Lightbox -->
   <div id="lightbox" class="lightbox">
-    <button id="lightboxClose" class="lightbox__close" aria-label="Fermer">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
-    <button id="lightboxPrev" class="lightbox__nav lightbox__nav--prev" aria-label="Précédent">
-      <i class="fa-solid fa-chevron-left"></i>
-    </button>
-    <button id="lightboxNext" class="lightbox__nav lightbox__nav--next" aria-label="Suivant">
-      <i class="fa-solid fa-chevron-right"></i>
-    </button>
-    <div id="lightboxContent" class="lightbox__content"></div>
+    <div class="lightbox__dialog">
+      <button id="lightboxClose" class="lightbox__close" aria-label="Fermer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <button id="lightboxPrev" class="lightbox__nav lightbox__nav--prev" aria-label="Précédent">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button id="lightboxNext" class="lightbox__nav lightbox__nav--next" aria-label="Suivant">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+      <div id="lightboxContent" class="lightbox__content"></div>
+      <div id="lightboxAuthor" class="lightbox__author-info">
+        <i class="fa-solid fa-camera"></i>
+        <span id="lightboxAuthorName"></span>
+      </div>
+    </div>
   </div>
 
 </body>

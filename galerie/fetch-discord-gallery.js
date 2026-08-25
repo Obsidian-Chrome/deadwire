@@ -51,6 +51,11 @@ async function extractMediaFromMessages(messages) {
   
   console.log(`Processing ${messages.length} messages for media extraction...`);
   
+  // Afficher un exemple de message pour debug
+  if (messages.length > 0) {
+    console.log('Example message structure:', JSON.stringify(messages[0], null, 2));
+  }
+  
   for (const message of messages) {
     // Extraire les pièces jointes (images, vidéos, GIFs)
     // Discord renvoie attachments comme un objet, pas un tableau

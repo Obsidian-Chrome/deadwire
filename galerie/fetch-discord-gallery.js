@@ -49,11 +49,18 @@ async function fetchChannelMessages(channelId, limit = 100) {
 async function extractMediaFromMessages(messages) {
   const media = [];
   
+  console.log(`Processing ${messages.length} messages for media extraction...`);
+  
   for (const message of messages) {
     // Extraire les pièces jointes (images, vidéos, GIFs)
-    if (message.attachments && message.attachments.length > 0) {
-      for (const attachment of message.attachments) {
+    // Discord renvoie attachments comme un objet, pas un tableau
+    const attachments = message.attachments ? Object.values(message.attachments) : [];
+    
+    if (attachments.length > 0) {
+      console.log(`Message ${message.id} has ${attachments.length} attachments`);
+      for (const attachment of attachments) {
         const contentType = attachment.content_type || '';
+        console.log(`  Attachment: ${attachment.filename}, type: ${contentType}`);
         
         // Filtrer images, vidéos et GIFs
         if (contentType.startsWith('image/') || contentType.startsWith('video/')) {
@@ -79,8 +86,10 @@ async function extractMediaFromMessages(messages) {
     }
     
     // Extraire les embeds avec images/vidéos
-    if (message.embeds && message.embeds.length > 0) {
-      for (const embed of message.embeds) {
+    const embeds = message.embeds ? (Array.isArray(message.embeds) ? message.embeds : Object.values(message.embeds)) : [];
+    
+    if (embeds.length > 0) {
+      for (const embed of embeds) {
         if (embed.type === 'image' && embed.thumbnail) {
           media.push({
             id: `embed_${message.id}_${embed.thumbnail.url}`,

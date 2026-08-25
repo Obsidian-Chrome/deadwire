@@ -9,9 +9,13 @@ async function fetchChannelMessages(channelId, limit = 100) {
   const messages = [];
   let lastMessageId = null;
   
+  console.log(`Fetching messages from channel: ${channelId}`);
+  
   // Récupérer les messages par batch de 100 (limite Discord)
   while (messages.length < limit) {
     const url = `https://discord.com/api/v10/channels/${channelId}/messages?limit=100${lastMessageId ? `&before=${lastMessageId}` : ''}`;
+    
+    console.log(`Requesting: ${url}`);
     
     const response = await fetch(url, {
       headers: {
@@ -21,10 +25,13 @@ async function fetchChannelMessages(channelId, limit = 100) {
     });
 
     if (!response.ok) {
-      throw new Error(`Discord API error: ${response.status}`);
+      const errorText = await response.text();
+      console.error(`Discord API error: ${response.status} - ${errorText}`);
+      throw new Error(`Discord API error: ${response.status} - ${errorText}`);
     }
 
     const batch = await response.json();
+    console.log(`Received ${batch.length} messages in this batch`);
     
     if (batch.length === 0) break;
     
@@ -35,6 +42,7 @@ async function fetchChannelMessages(channelId, limit = 100) {
     await new Promise(resolve => setTimeout(resolve, 1000));
   }
   
+  console.log(`Total messages fetched: ${messages.length}`);
   return messages.slice(0, limit);
 }
 

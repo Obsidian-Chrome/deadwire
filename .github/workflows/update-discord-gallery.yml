@@ -43,10 +43,10 @@ jobs:
           
           # Vérifier s'il y a des changements
           if git diff --staged --quiet; then
-            echo "✅ Aucun changement détecté dans gallery.json - Pas de commit nécessaire"
+            echo "Aucun changement détecté dans gallery.json - Pas de commit nécessaire"
           else
-            echo "📝 Changements détectés - Création du commit"
-            git commit -m "📸 Update Discord gallery [automated]"
+            echo "Changements détectés - Création du commit"
+            git commit -m "Update Discord gallery [automated]"
             git push
-            echo "✅ Changements poussés avec succès"
+            echo "Changements poussés avec succès"
           fi

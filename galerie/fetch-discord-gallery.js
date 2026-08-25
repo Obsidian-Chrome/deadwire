@@ -51,18 +51,27 @@ async function extractMediaFromMessages(messages) {
   
   console.log(`Processing ${messages.length} messages for media extraction...`);
   
-  // Afficher un exemple de message pour debug
-  if (messages.length > 0) {
-    console.log('Example message structure:', JSON.stringify(messages[0], null, 2));
-  }
+  // Compter les messages avec attachments
+  let messagesWithAttachments = 0;
   
   for (const message of messages) {
     // Extraire les pièces jointes (images, vidéos, GIFs)
-    // Discord renvoie attachments comme un objet, pas un tableau
-    const attachments = message.attachments ? Object.values(message.attachments) : [];
+    // Vérifier si attachments est un tableau ou un objet
+    let attachments = [];
+    
+    if (message.attachments) {
+      if (Array.isArray(message.attachments)) {
+        attachments = message.attachments;
+      } else if (typeof message.attachments === 'object') {
+        attachments = Object.values(message.attachments);
+      }
+    }
     
     if (attachments.length > 0) {
+      messagesWithAttachments++;
       console.log(`Message ${message.id} has ${attachments.length} attachments`);
+      console.log('Attachments:', JSON.stringify(attachments, null, 2));
+      
       for (const attachment of attachments) {
         const contentType = attachment.content_type || '';
         console.log(`  Attachment: ${attachment.filename}, type: ${contentType}`);
@@ -133,6 +142,9 @@ async function extractMediaFromMessages(messages) {
       }
     }
   }
+  
+  console.log(`Messages with attachments: ${messagesWithAttachments}`);
+  console.log(`Total media extracted: ${media.length}`);
   
   return media;
 }

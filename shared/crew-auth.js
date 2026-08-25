@@ -28,7 +28,12 @@
         ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=64`
         : '/media/Deadwire_Logo_Neon.png';
 
+      // Préserver le bouton Discord s'il existe
+      const discordBtn = navAuth.querySelector('.nav__discord-icon');
+      const discordHTML = discordBtn ? discordBtn.outerHTML : '';
+      
       navAuth.innerHTML = `
+        ${discordHTML}
         <div class="nav__user">
           <img src="${avatarUrl}" alt="${user.username}" class="nav__avatar" />
           <span class="nav__username">${user.username}</span>
@@ -58,7 +63,12 @@
       }
     } else {
       // Pas de cache ou expiré - afficher le bouton login immédiatement
+      // Préserver le bouton Discord s'il existe
+      const discordBtn = navAuth.querySelector('.nav__discord-icon');
+      const discordHTML = discordBtn ? discordBtn.outerHTML : '';
+      
       navAuth.innerHTML = `
+        ${discordHTML}
         <a class="nav__link nav__link--crew" href="#" data-crew-login aria-label="Se connecter avec Discord">
           <i class="fa-solid fa-user-lock" aria-hidden="true"></i>
         </a>
@@ -87,7 +97,12 @@
             ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=64`
             : '/media/Deadwire_Logo_Neon.png';
 
+          // Préserver le bouton Discord
+          const discordBtn2 = navAuth.querySelector('.nav__discord-icon');
+          const discordHTML2 = discordBtn2 ? discordBtn2.outerHTML : '';
+          
           navAuth.innerHTML = `
+            ${discordHTML2}
             <div class="nav__user">
               <img src="${avatarUrl}" alt="${user.username}" class="nav__avatar" />
               <span class="nav__username">${user.username}</span>

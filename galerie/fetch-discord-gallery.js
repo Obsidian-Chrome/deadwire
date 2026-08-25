@@ -1,0 +1,152 @@
+const fetch = require('node-fetch');
+const fs = require('fs').promises;
+const path = require('path');
+
+const DISCORD_BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
+const DISCORD_CHANNEL_ID = process.env.DISCORD_CHANNEL_ID;
+
+async function fetchChannelMessages(channelId, limit = 100) {
+  const messages = [];
+  let lastMessageId = null;
+  
+  // Récupérer les messages par batch de 100 (limite Discord)
+  while (messages.length < limit) {
+    const url = `https://discord.com/api/v10/channels/${channelId}/messages?limit=100${lastMessageId ? `&before=${lastMessageId}` : ''}`;
+    
+    const response = await fetch(url, {
+      headers: {
+        'Authorization': `Bot ${DISCORD_BOT_TOKEN}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Discord API error: ${response.status}`);
+    }
+
+    const batch = await response.json();
+    
+    if (batch.length === 0) break;
+    
+    messages.push(...batch);
+    lastMessageId = batch[batch.length - 1].id;
+    
+    // Pause pour éviter le rate limit
+    await new Promise(resolve => setTimeout(resolve, 1000));
+  }
+  
+  return messages.slice(0, limit);
+}
+
+async function extractMediaFromMessages(messages) {
+  const media = [];
+  
+  for (const message of messages) {
+    // Extraire les pièces jointes (images, vidéos, GIFs)
+    if (message.attachments && message.attachments.length > 0) {
+      for (const attachment of message.attachments) {
+        const contentType = attachment.content_type || '';
+        
+        // Filtrer images, vidéos et GIFs
+        if (contentType.startsWith('image/') || contentType.startsWith('video/')) {
+          media.push({
+            id: attachment.id,
+            url: attachment.url,
+            proxyUrl: attachment.proxy_url,
+            filename: attachment.filename,
+            width: attachment.width,
+            height: attachment.height,
+            size: attachment.size,
+            type: contentType.startsWith('video/') ? 'video' : 'image',
+            timestamp: message.timestamp,
+            messageId: message.id,
+            author: {
+              id: message.author.id,
+              username: message.author.username,
+              avatar: message.author.avatar
+            }
+          });
+        }
+      }
+    }
+    
+    // Extraire les embeds avec images/vidéos
+    if (message.embeds && message.embeds.length > 0) {
+      for (const embed of message.embeds) {
+        if (embed.type === 'image' && embed.thumbnail) {
+          media.push({
+            id: `embed_${message.id}_${embed.thumbnail.url}`,
+            url: embed.thumbnail.url,
+            proxyUrl: embed.thumbnail.proxy_url,
+            width: embed.thumbnail.width,
+            height: embed.thumbnail.height,
+            type: 'image',
+            timestamp: message.timestamp,
+            messageId: message.id,
+            author: {
+              id: message.author.id,
+              username: message.author.username,
+              avatar: message.author.avatar
+            }
+          });
+        }
+        
+        if (embed.type === 'video' && embed.video) {
+          media.push({
+            id: `embed_video_${message.id}`,
+            url: embed.video.url,
+            proxyUrl: embed.video.proxy_url,
+            width: embed.video.width,
+            height: embed.video.height,
+            type: 'video',
+            timestamp: message.timestamp,
+            messageId: message.id,
+            author: {
+              id: message.author.id,
+              username: message.author.username,
+              avatar: message.author.avatar
+            }
+          });
+        }
+      }
+    }
+  }
+  
+  return media;
+}
+
+async function main() {
+  try {
+    console.log('🔍 Récupération des messages du canal Discord...');
+    
+    // Récupérer les 500 derniers messages (ajustable)
+    const messages = await fetchChannelMessages(DISCORD_CHANNEL_ID, 500);
+    console.log(`✅ ${messages.length} messages récupérés`);
+    
+    // Extraire les médias
+    const media = await extractMediaFromMessages(messages);
+    console.log(`${media.length} médias extraits`);
+    
+    // Trier par date (plus récents en premier)
+    media.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    
+    // Sauvegarder dans gallery.json
+    const output = {
+      media: media,
+      lastUpdated: new Date().toISOString(),
+      totalCount: media.length
+    };
+    
+    const outputPath = path.join(__dirname, 'gallery.json');
+    await fs.writeFile(outputPath, JSON.stringify(output, null, 2));
+    
+    console.log(`Galerie sauvegardée dans ${outputPath}`);
+    console.log(`Total: ${media.length} médias`);
+    
+  } catch (error) {
+    console.error('Erreur:', error.message);
+    process.exit(1);
+  }
+}
+
+main();

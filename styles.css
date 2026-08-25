@@ -201,6 +201,30 @@ img{max-width:100%; display:block}
   z-index: 10;
 }
 
+.nav__discord-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  color: rgba(247, 233, 239, 0.86);
+  font-size: 1.2rem;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease, color .15s ease;
+  text-decoration: none;
+  position: relative;
+  top: 2px;
+}
+
+.nav__discord-icon:hover {
+  background: rgba(255, 42, 61, .06);
+  border-color: rgba(255, 42, 61, .25);
+  transform: translateY(-1px);
+  color: var(--text);
+}
+
 .nav__user{
   display: flex;
   align-items: center;

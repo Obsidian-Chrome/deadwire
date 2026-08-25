@@ -1,0 +1,8 @@
+{
+  "name": "discord-gallery",
+  "version": "1.0.0",
+  "description": "Récupération des images Discord pour la galerie",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}

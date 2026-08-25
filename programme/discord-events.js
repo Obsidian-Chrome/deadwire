@@ -5,7 +5,11 @@
 // Récupère les événements depuis le fichier JSON
 async function fetchDiscordEvents() {
   try {
-    const response = await fetch('/programme/events.json');
+    // Essayer d'abord le chemin relatif (local), puis absolu (production)
+    let response = await fetch('./events.json');
+    if (!response.ok) {
+      response = await fetch('/programme/events.json');
+    }
     if (!response.ok) {
       throw new Error(`Erreur de chargement: ${response.status}`);
     }
@@ -106,8 +110,8 @@ function showEventModal(event) {
   
   const modalBannerUrl = event.coverUrl || '/media/discordevent_deadwire.png';
   contentHTML += `
-    <div style="width: 100%; height: 384px; overflow: hidden; border-radius: 12px 12px 0 0; background: rgba(10, 0, 12, 0.8); display: flex; align-items: center; justify-content: center;">
-      <img src="${modalBannerUrl}" alt="${escapeHtml(event.name)}" style="width: 100%; height: 100%; object-fit: cover; object-position: center center;" />
+    <div style="width: 100%; aspect-ratio: 800 / 320; overflow: hidden; border-radius: 12px 12px 0 0; background: rgba(10, 0, 12, 0.8); display: flex; align-items: center; justify-content: center;">
+      <img src="${modalBannerUrl}" alt="${escapeHtml(event.name)}" style="width: 100%; height: 100%; object-fit: contain; object-position: center center;" />
     </div>
   `;
   

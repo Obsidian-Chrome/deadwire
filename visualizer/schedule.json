@@ -87,6 +87,38 @@
       "endTime": "23:59",
       "visualizer": "visualizer_kaia.webm",
       "colorFilter": ""
+    },
+    {
+      "name": "Concert Nogta",
+      "date": "2026-09-07",
+      "startTime": "18:00",
+      "endTime": "23:59",
+      "visualizer": "visualizer_nogta.webm",
+      "colorFilter": ""
+    },
+    {
+      "name": "Concert Magenta",
+      "date": "2026-09-14",
+      "startTime": "18:00",
+      "endTime": "23:59",
+      "visualizer": "visualizer_magenta.webm",
+      "colorFilter": ""
+    },
+    {
+      "name": "Concert Vixcen",
+      "date": "2026-09-21",
+      "startTime": "18:00",
+      "endTime": "23:59",
+      "visualizer": "visualizer_vixcen.webm",
+      "colorFilter": ""
+    },
+    {
+      "name": "Concert Twilight",
+      "date": "2026-09-28",
+      "startTime": "18:00",
+      "endTime": "23:59",
+      "visualizer": "visualizer_twilight.webm",
+      "colorFilter": ""
     }
   ],
   "default": {

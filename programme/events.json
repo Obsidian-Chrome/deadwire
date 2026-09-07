@@ -1,20 +1,6 @@
 {
-  "lastUpdate": "2026-09-07T19:10:22.877Z",
+  "lastUpdate": "2026-09-07T22:00:24.299Z",
   "events": [
-    {
-      "id": "1541594967389249646",
-      "name": "Ouverture du Deadwire (Avec Nogta)",
-      "description": "Thème vestimentaire : Gothique / Alternatif",
-      "location": "La Coupe 2 - 6 | Ragnarok",
-      "coverUrl": "https://cdn.discordapp.com/guild-events/1541594967389249646/e60730ecf174284fa9f1390a5e8e3b01.png?size=1024",
-      "startTime": "2026-09-07T19:00:00.000Z",
-      "endTime": "2026-09-07T21:00:00.000Z",
-      "status": 2,
-      "entityType": 3,
-      "creatorId": "159360181476524032",
-      "channelId": null,
-      "interestedCount": 0
-    },
     {
       "id": "1541595187136962631",
       "name": "Ouverture du Deadwire (Avec Magenta)",

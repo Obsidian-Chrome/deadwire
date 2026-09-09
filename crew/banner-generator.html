@@ -178,7 +178,14 @@
     }
 
     .canvas-wrapper {
-      background: #000;
+      background: 
+        linear-gradient(45deg, #ccc 25%, transparent 25%),
+        linear-gradient(-45deg, #ccc 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #ccc 75%),
+        linear-gradient(-45deg, transparent 75%, #ccc 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      background-color: #fff;
       border: 2px solid #333;
       border-radius: 4px;
       margin-bottom: 20px;
@@ -314,6 +321,29 @@
           <input type="text" id="footerAddress" placeholder="Ex: La Coupe 2 - 6 | Ragnarok" value="La Coupe 2 - 6 | Ragnarok">
         </div>
 
+        <div class="control-group">
+          <label>Logo sponsor/placement (optionnel)</label>
+          <input type="file" id="sponsorLogo" accept="image/*">
+          <small style="color: #888; display: block; margin-top: 5px;">Le logo sera affiché en bas à gauche de la bannière</small>
+        </div>
+
+        <div class="control-group" id="logoSizeControl" style="display: none;">
+          <label>Taille du logo (%)</label>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <input type="range" id="logoSize" min="10" max="500" value="250" style="flex: 1;">
+            <input type="number" id="logoSizeInput" min="10" max="500" value="250" style="width: 80px; padding: 8px; background: #0a0a0a; border: 1px solid #333; border-radius: 4px; color: #fff; font-family: 'Chakra Petch', sans-serif;">
+          </div>
+          <small style="color: #888; display: block; margin-top: 5px;">De 10% à 500%</small>
+        </div>
+
+        <div class="control-group" id="logoShadowControl" style="display: none;">
+          <label>Ombre portée du logo</label>
+          <div class="text-color-toggle">
+            <button class="text-color-btn active" data-shadow="true">Avec ombre</button>
+            <button class="text-color-btn" data-shadow="false">Sans ombre</button>
+          </div>
+        </div>
+
         <div class="control-group" style="margin-top: 40px;">
           <button id="validateBtn" style="width: 100%; padding: 15px; background: #ff2a3d; color: #fff; border: none; border-radius: 4px; font-size: 1.1rem; font-weight: 600; cursor: pointer; text-transform: uppercase; font-family: 'Chakra Petch', sans-serif; transition: background 0.3s;">Valider et générer</button>
         </div>
@@ -391,6 +421,9 @@
 
     // Initialisation du générateur
     let artistImageData = null;
+    let sponsorLogoData = null;
+    let logoSize = 250;
+    let logoShadow = true;
     let bannerTextColor = '#ffffff';
     let imageZoom = 100;
     let imageX = 0;
@@ -530,6 +563,60 @@
         }
       });
 
+      // Gestion du logo sponsor
+      document.getElementById('sponsorLogo').addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const img = new Image();
+            img.onload = () => {
+              sponsorLogoData = img;
+              document.getElementById('logoSizeControl').style.display = 'block';
+              document.getElementById('logoShadowControl').style.display = 'block';
+              drawPreview();
+            };
+            img.src = event.target.result;
+          };
+          reader.readAsDataURL(file);
+        } else {
+          sponsorLogoData = null;
+          document.getElementById('logoSizeControl').style.display = 'none';
+          document.getElementById('logoShadowControl').style.display = 'none';
+          drawPreview();
+        }
+      });
+
+      // Gestion de la taille du logo (slider)
+      const logoSizeSlider = document.getElementById('logoSize');
+      const logoSizeInput = document.getElementById('logoSizeInput');
+      
+      logoSizeSlider.addEventListener('input', (e) => {
+        logoSize = parseInt(e.target.value);
+        logoSizeInput.value = logoSize;
+        drawPreview();
+      });
+      
+      // Gestion de la taille du logo (input)
+      logoSizeInput.addEventListener('input', (e) => {
+        let value = parseInt(e.target.value);
+        if (value < 10) value = 10;
+        if (value > 500) value = 500;
+        logoSize = value;
+        logoSizeSlider.value = value;
+        drawPreview();
+      });
+
+      // Gestion de l'ombre du logo
+      document.querySelectorAll('#logoShadowControl .text-color-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#logoShadowControl .text-color-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          logoShadow = btn.dataset.shadow === 'true';
+          drawPreview();
+        });
+      });
+
       // Initialiser la date par défaut (aujourd'hui)
       const today = new Date();
       const dateInput = document.getElementById('bannerDate');
@@ -622,9 +709,15 @@
       const canvas = document.getElementById(canvasId);
       const ctx = canvas.getContext('2d');
 
-      // Fond noir
-      ctx.fillStyle = '#000000';
-      ctx.fillRect(0, 0, width, height);
+      // Fond avec damier (grillage blanc et gris)
+      const squareSize = 20;
+      for (let y = 0; y < height; y += squareSize) {
+        for (let x = 0; x < width; x += squareSize) {
+          const isEven = (Math.floor(x / squareSize) + Math.floor(y / squareSize)) % 2 === 0;
+          ctx.fillStyle = isEven ? '#ffffff' : '#cccccc';
+          ctx.fillRect(x, y, squareSize, squareSize);
+        }
+      }
 
       // Calcul des tailles proportionnelles
       const scale = width / 1200;
@@ -972,6 +1065,43 @@
         ctx.shadowOffsetX = 0;
         ctx.shadowOffsetY = 3 * scale;
         drawTextWithSpacing(footerAddress.toUpperCase(), width / 2, height - padding);
+        ctx.shadowColor = 'transparent';
+      }
+
+      // Logo sponsor en bas à gauche
+      if (sponsorLogoData) {
+        const logoScale = (logoSize / 100) * scale;
+        const maxLogoHeight = 80 * logoScale;
+        const maxLogoWidth = 200 * logoScale;
+        
+        // Calculer les dimensions du logo en conservant le ratio
+        let logoWidth = sponsorLogoData.width;
+        let logoHeight = sponsorLogoData.height;
+        const logoRatio = logoWidth / logoHeight;
+        
+        if (logoHeight > maxLogoHeight) {
+          logoHeight = maxLogoHeight;
+          logoWidth = logoHeight * logoRatio;
+        }
+        
+        if (logoWidth > maxLogoWidth) {
+          logoWidth = maxLogoWidth;
+          logoHeight = logoWidth / logoRatio;
+        }
+        
+        // Position en bas à gauche avec marge
+        const logoX = padding * 2;
+        const logoY = height - logoHeight - (padding * 1.5);
+        
+        // Ombre portée pour le logo (si activée)
+        if (logoShadow) {
+          ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+          ctx.shadowBlur = 10 * scale;
+          ctx.shadowOffsetX = 0;
+          ctx.shadowOffsetY = 3 * scale;
+        }
+        
+        ctx.drawImage(sponsorLogoData, logoX, logoY, logoWidth, logoHeight);
         ctx.shadowColor = 'transparent';
       }
     }

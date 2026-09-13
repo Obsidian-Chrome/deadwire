@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-09-13T00:00:15.752Z",
+  "lastUpdate": "2026-09-13T00:23:12.413Z",
   "events": [
     {
       "id": "1541595187136962631",
@@ -9,6 +9,20 @@
       "coverUrl": "https://cdn.discordapp.com/guild-events/1541595187136962631/37718f0c5afbea4e906a5a24cda8dcbc.png?size=1024",
       "startTime": "2026-09-14T19:00:00.000Z",
       "endTime": "2026-09-14T21:00:00.000Z",
+      "status": 1,
+      "entityType": 3,
+      "creatorId": "159360181476524032",
+      "channelId": null,
+      "interestedCount": 0
+    },
+    {
+      "id": "1548485348672143501",
+      "name": "Ouverture du Deadwire (Avec ViXCen)",
+      "description": "Thème vestimentaire : Torrent de couleurs flashies",
+      "location": "La Coupe 2 - 6 | Ragnarok",
+      "coverUrl": "https://cdn.discordapp.com/guild-events/1548485348672143501/2f66bcc627dd68ad7ba40cf8a60689d1.png?size=1024",
+      "startTime": "2026-09-21T19:00:00.000Z",
+      "endTime": "2026-09-21T21:00:00.000Z",
       "status": 1,
       "entityType": 3,
       "creatorId": "159360181476524032",

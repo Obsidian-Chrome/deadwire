@@ -1,20 +1,6 @@
 {
-  "lastUpdate": "2026-09-14T19:00:29.370Z",
+  "lastUpdate": "2026-09-14T22:25:42.155Z",
   "events": [
-    {
-      "id": "1541595187136962631",
-      "name": "Ouverture du Deadwire (Avec Magenta)",
-      "description": "Thème vestimentaire : Punk",
-      "location": "La Coupe 2 - 6 | Ragnarok",
-      "coverUrl": "https://cdn.discordapp.com/guild-events/1541595187136962631/37718f0c5afbea4e906a5a24cda8dcbc.png?size=1024",
-      "startTime": "2026-09-14T19:00:00.000Z",
-      "endTime": "2026-09-14T21:00:00.000Z",
-      "status": 2,
-      "entityType": 3,
-      "creatorId": "159360181476524032",
-      "channelId": null,
-      "interestedCount": 0
-    },
     {
       "id": "1548485348672143501",
       "name": "Ouverture du Deadwire (Avec ViXCen)",

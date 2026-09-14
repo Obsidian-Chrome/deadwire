@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-09-14T13:55:31.126Z",
+  "lastUpdate": "2026-09-14T19:00:29.370Z",
   "events": [
     {
       "id": "1541595187136962631",
@@ -9,7 +9,7 @@
       "coverUrl": "https://cdn.discordapp.com/guild-events/1541595187136962631/37718f0c5afbea4e906a5a24cda8dcbc.png?size=1024",
       "startTime": "2026-09-14T19:00:00.000Z",
       "endTime": "2026-09-14T21:00:00.000Z",
-      "status": 1,
+      "status": 2,
       "entityType": 3,
       "creatorId": "159360181476524032",
       "channelId": null,

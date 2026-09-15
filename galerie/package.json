@@ -2,7 +2,14 @@
   "name": "discord-gallery",
   "version": "1.0.0",
   "description": "Récupération des images Discord pour la galerie",
+  "scripts": {
+    "fetch": "node fetch-discord-gallery.js",
+    "fetch:prod": "PRODUCTION_MODE=true node fetch-discord-gallery.js",
+    "download": "node download-images.js",
+    "migrate": "node migrate-to-webp.js"
+  },
   "dependencies": {
-    "node-fetch": "^2.6.7"
+    "node-fetch": "^2.6.7",
+    "sharp": "^0.33.0"
   }
 }

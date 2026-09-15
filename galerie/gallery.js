@@ -3,8 +3,10 @@
  */
 
 let allMedia = [];
+let mediaByDate = {}; // Médias groupés par date
+let dateGroups = []; // Liste des dates dans l'ordre
 let currentIndex = 0;
-let displayedCount = 0;
+let displayedDateIndex = 0; // Index de la dernière date affichée
 const ITEMS_PER_LOAD = 50;
 
 // Récupère les médias depuis le fichier JSON
@@ -29,15 +31,74 @@ async function fetchGalleryMedia() {
   }
 }
 
+// Groupe les médias par date
+function groupMediaByDate(media) {
+  const grouped = {};
+  const dates = [];
+  
+  media.forEach(item => {
+    const date = new Date(item.timestamp);
+    const dateKey = date.toLocaleDateString('fr-FR', { 
+      day: '2-digit', 
+      month: '2-digit', 
+      year: 'numeric' 
+    });
+    
+    if (!grouped[dateKey]) {
+      grouped[dateKey] = [];
+      dates.push(dateKey);
+    }
+    
+    grouped[dateKey].push(item);
+  });
+  
+  return { grouped, dates };
+}
+
+// Obtient l'URL à utiliser (avec fallback en cascade)
+function getMediaUrl(media, useProxy = true) {
+  // Priorité 1: WebP local (le plus léger et rapide)
+  if (media.localWebp) {
+    return media.localWebp;
+  }
+  
+  // Priorité 2: Original local
+  if (media.localOriginal) {
+    return media.localOriginal;
+  }
+  
+  // Priorité 3: Ancienne structure (rétrocompatibilité)
+  if (media.localUrl) {
+    return media.localUrl;
+  }
+  
+  // Priorité 4: URL Discord (proxy ou directe)
+  if (useProxy && media.proxyUrl) {
+    return media.proxyUrl;
+  }
+  
+  return media.url;
+}
+
+// Obtient l'URL de fallback
+function getFallbackUrl(media) {
+  if (media.localOriginal) return media.localOriginal;
+  if (media.localUrl) return media.localUrl;
+  return media.url;
+}
+
 // Crée une carte média
 function createMediaCard(media, index) {
   const card = document.createElement('div');
   card.className = 'gallery-item';
   card.dataset.index = index;
   
+  const mediaUrl = getMediaUrl(media, true);
+  const fallbackUrl = getFallbackUrl(media);
+  
   if (media.type === 'video') {
     card.innerHTML = `
-      <video src="${media.url}" preload="metadata"></video>
+      <video src="${mediaUrl}" preload="metadata" onerror="this.src='${fallbackUrl}'"></video>
       <div class="gallery-item__video-icon">
         <i class="fa-solid fa-play"></i>
       </div>
@@ -50,7 +111,7 @@ function createMediaCard(media, index) {
     `;
   } else {
     card.innerHTML = `
-      <img src="${media.proxyUrl || media.url}" alt="Image Discord" loading="lazy" />
+      <img src="${mediaUrl}" alt="Image Discord" loading="lazy" onerror="this.src='${fallbackUrl}'" />
       <div class="gallery-item__overlay">
         <div class="gallery-item__author">
           <i class="fa-solid fa-camera"></i>
@@ -65,21 +126,56 @@ function createMediaCard(media, index) {
   return card;
 }
 
-// Charge plus d'éléments
+// Crée un séparateur de date
+function createDateSeparator(dateStr) {
+  const separator = document.createElement('div');
+  separator.className = 'gallery-date-separator';
+  separator.innerHTML = `
+    <hr class="gallery-date-line" />
+    <span class="gallery-date-text">${dateStr}</span>
+    <hr class="gallery-date-line" />
+  `;
+  return separator;
+}
+
+// Charge plus d'éléments (par groupes de dates)
 function loadMoreItems() {
   const grid = document.getElementById('galleryGrid');
   const loadMoreBtn = document.getElementById('loadMoreBtn');
-  const endIndex = Math.min(displayedCount + ITEMS_PER_LOAD, allMedia.length);
   
-  for (let i = displayedCount; i < endIndex; i++) {
-    const card = createMediaCard(allMedia[i], i);
-    grid.appendChild(card);
+  let itemsLoaded = 0;
+  let startDateIndex = displayedDateIndex;
+  let globalIndex = 0;
+  
+  // Calculer l'index global de départ
+  for (let i = 0; i < displayedDateIndex; i++) {
+    globalIndex += mediaByDate[dateGroups[i]].length;
   }
   
-  displayedCount = endIndex;
+  // Charger des dates jusqu'à atteindre environ ITEMS_PER_LOAD images
+  while (displayedDateIndex < dateGroups.length && itemsLoaded < ITEMS_PER_LOAD) {
+    const currentDate = dateGroups[displayedDateIndex];
+    const mediaForDate = mediaByDate[currentDate];
+    
+    // Ajouter le séparateur de date
+    const separator = createDateSeparator(currentDate);
+    grid.appendChild(separator);
+    
+    // Ajouter toutes les images de cette date
+    mediaForDate.forEach(media => {
+      const card = createMediaCard(media, globalIndex);
+      grid.appendChild(card);
+      globalIndex++;
+    });
+    
+    itemsLoaded += mediaForDate.length;
+    displayedDateIndex++;
+  }
   
-  // Cacher le bouton si tous les éléments sont chargés
-  if (displayedCount >= allMedia.length) {
+  console.log(`Chargé ${itemsLoaded} images de ${startDateIndex} à ${displayedDateIndex - 1}`);
+  
+  // Cacher le bouton si toutes les dates sont chargées
+  if (displayedDateIndex >= dateGroups.length) {
     loadMoreBtn.style.display = 'none';
   }
 }
@@ -87,26 +183,25 @@ function loadMoreItems() {
 // Configuration du bouton de chargement
 function setupLoadMoreButton() {
   const loadMoreBtn = document.getElementById('loadMoreBtn');
-  const originalText = loadMoreBtn.textContent;
   
   loadMoreBtn.addEventListener('click', () => {
     // Afficher le loading
     loadMoreBtn.disabled = true;
-    loadMoreBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Chargement...';
+    loadMoreBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
     
     // Simuler un petit délai pour voir le loading
     setTimeout(() => {
       loadMoreItems();
       loadMoreBtn.disabled = false;
-      loadMoreBtn.textContent = originalText;
+      loadMoreBtn.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
     }, 300);
   });
   
-  // Afficher le bouton seulement s'il y a plus d'éléments à charger
-  if (displayedCount >= allMedia.length) {
+  // Afficher le bouton seulement s'il y a plus de dates à charger
+  if (displayedDateIndex >= dateGroups.length) {
     loadMoreBtn.style.display = 'none';
   } else {
-    loadMoreBtn.style.display = 'block';
+    loadMoreBtn.style.display = 'inline-flex';
   }
 }
 
@@ -134,10 +229,13 @@ function updateLightbox() {
   const authorName = document.getElementById('lightboxAuthorName');
   const media = allMedia[currentIndex];
   
+  const mediaUrl = getMediaUrl(media, false);
+  const fallbackUrl = media.localUrl || media.url;
+  
   if (media.type === 'video') {
-    content.innerHTML = `<video src="${media.url}" controls autoplay></video>`;
+    content.innerHTML = `<video src="${mediaUrl}" controls autoplay onerror="this.src='${fallbackUrl}'"></video>`;
   } else {
-    content.innerHTML = `<img src="${media.url}" alt="Image Discord" />`;
+    content.innerHTML = `<img src="${mediaUrl}" alt="Image Discord" onerror="this.src='${fallbackUrl}'" />`;
   }
   
   // Afficher le nom de l'auteur
@@ -174,6 +272,13 @@ async function populateGallery() {
     emptyState.style.display = 'block';
     return;
   }
+  
+  // Grouper les médias par date
+  const { grouped, dates } = groupMediaByDate(allMedia);
+  mediaByDate = grouped;
+  dateGroups = dates;
+  
+  console.log(`${dateGroups.length} dates trouvées:`, dateGroups);
   
   grid.style.display = 'grid';
   emptyState.style.display = 'none';

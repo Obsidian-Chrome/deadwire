@@ -1,0 +1,21 @@
+# Images originaux (backup local uniquement)
+images/old/
+
+# Fichiers temporaires
+images/temp_*
+
+# Node modules
+node_modules/
+
+# Package lock (optionnel selon préférence)
+package-lock.json
+
+# Fichiers d'environnement
+.env
+
+# Scripts de nettoyage (déjà exécutés)
+cleanup-old-structure.js
+download-images.js
+
+# Documentation locale
+README.md

@@ -1,0 +1,73 @@
+name: Update Gallery from Discord
+
+on:
+  schedule:
+    # Exécute tous les jours à 2h du matin (UTC)
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Permet de lancer manuellement
+
+jobs:
+  update-gallery:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: |
+          cd galerie
+          npm install
+      
+      - name: Verify Discord secrets
+        run: |
+          if [ -z "${{ secrets.DISCORD_BOT_TOKEN }}" ]; then
+            echo "ERROR: DISCORD_BOT_TOKEN secret is not set"
+            exit 1
+          fi
+          echo "Discord secrets are configured"
+      
+      - name: Fetch and convert new images
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_CHANNEL_ID: '1450789959383388285'
+          PRODUCTION_MODE: 'true'
+        run: |
+          cd galerie
+          node fetch-discord-gallery.js
+      
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add galerie/images/ galerie/gallery.json
+          git commit -m "Update gallery: Add new images from Discord"
+          git push
+      
+      - name: Summary
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          echo "Gallery updated successfully!"
+          echo "Check the commit for details"
+      
+      - name: No changes
+        if: steps.check_changes.outputs.changes == 'false'
+        run: |
+          echo "No new images to add"

@@ -4,6 +4,7 @@ const path = require('path');
 
 const DISCORD_BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
 const DISCORD_CHANNEL_ID = process.env.DISCORD_CHANNEL_ID;
+const PRODUCTION_MODE = process.env.PRODUCTION_MODE === 'true'; // Mode GitHub Actions
 
 async function fetchChannelMessages(channelId, limit = 100) {
   const messages = [];
@@ -149,33 +150,202 @@ async function extractMediaFromMessages(messages) {
   return media;
 }
 
+const sharp = require('sharp');
+
+// Convertit une date ISO en format DDMMYYYY
+function formatDateFolder(isoDate) {
+  const date = new Date(isoDate);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${day}${month}${year}`;
+}
+
+// Télécharge une image et la sauvegarde localement
+async function downloadImage(url, filepath) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    
+    const buffer = await response.arrayBuffer();
+    await fs.writeFile(filepath, Buffer.from(buffer));
+    return true;
+  } catch (error) {
+    console.error(`❌ Erreur téléchargement ${filepath}:`, error.message);
+    return false;
+  }
+}
+
+// Convertit une image en WebP
+async function convertToWebP(inputPath, outputPath) {
+  try {
+    await sharp(inputPath)
+      .webp({ quality: 85 })
+      .toFile(outputPath);
+    return true;
+  } catch (error) {
+    console.error(`❌ Erreur conversion WebP ${outputPath}:`, error.message);
+    return false;
+  }
+}
+
+// Extrait l'extension depuis le filename
+function getExtension(media) {
+  if (media.filename) {
+    const ext = path.extname(media.filename);
+    if (ext) return ext;
+  }
+  return media.type === 'video' ? '.mp4' : '.png';
+}
+
 async function main() {
   try {
     console.log('🔍 Récupération des messages du canal Discord...');
+    
+    // Créer le dossier images s'il n'existe pas
+    const imagesDir = path.join(__dirname, 'images');
+    await fs.mkdir(imagesDir, { recursive: true });
+    
+    // Charger l'ancien gallery.json s'il existe
+    const outputPath = path.join(__dirname, 'gallery.json');
+    let existingMedia = [];
+    let existingMediaIds = new Set();
+    
+    try {
+      const existingData = JSON.parse(await fs.readFile(outputPath, 'utf-8'));
+      existingMedia = existingData.media || [];
+      existingMediaIds = new Set(existingMedia.map(m => m.id));
+      console.log(`📂 ${existingMedia.length} médias existants dans gallery.json`);
+    } catch {
+      console.log('📂 Aucun gallery.json existant, création d\'un nouveau');
+    }
     
     // Récupérer les 500 derniers messages (ajustable)
     const messages = await fetchChannelMessages(DISCORD_CHANNEL_ID, 500);
     console.log(`✅ ${messages.length} messages récupérés`);
     
     // Extraire les médias
-    const media = await extractMediaFromMessages(messages);
-    console.log(`${media.length} médias extraits`);
+    const newMedia = await extractMediaFromMessages(messages);
+    console.log(`📊 ${newMedia.length} médias extraits de Discord`);
+    
+    // Filtrer uniquement les nouveaux médias
+    const mediaToAdd = newMedia.filter(m => !existingMediaIds.has(m.id));
+    console.log(`🆕 ${mediaToAdd.length} nouveaux médias à ajouter`);
+    
+    // Télécharger et convertir les nouvelles images
+    let downloadedCount = 0;
+    let convertedCount = 0;
+    
+    for (const media of mediaToAdd) {
+      const dateFolder = formatDateFolder(media.timestamp);
+      const ext = getExtension(media);
+      const originalFilename = `${media.id}${ext}`;
+      const webpFilename = `${media.id}.webp`;
+      
+      // Créer les dossiers pour cette date
+      const webpFolder = path.join(imagesDir, dateFolder);
+      await fs.mkdir(webpFolder, { recursive: true });
+      
+      const webpPath = path.join(webpFolder, webpFilename);
+      
+      // En mode production, pas de dossier old/
+      let oldFolder = null;
+      let originalPath = null;
+      
+      if (!PRODUCTION_MODE) {
+        oldFolder = path.join(imagesDir, 'old', dateFolder);
+        await fs.mkdir(oldFolder, { recursive: true });
+        originalPath = path.join(oldFolder, originalFilename);
+      }
+      
+      // Vérifier si déjà converti
+      try {
+        await fs.access(webpPath);
+        console.log(`⏭️  Déjà présent: ${dateFolder}/${webpFilename}`);
+        
+        // Mettre à jour les URLs
+        media.localWebp = `/galerie/images/${dateFolder}/${webpFilename}`;
+        if (!PRODUCTION_MODE) {
+          media.localOriginal = `/galerie/images/old/${dateFolder}/${originalFilename}`;
+        }
+        continue;
+      } catch {
+        // Pas encore converti
+      }
+      
+      // Télécharger l'image originale dans un fichier temporaire
+      const tempPath = path.join(imagesDir, `temp_${media.id}${ext}`);
+      console.log(`⬇️  Téléchargement: ${originalFilename}`);
+      const downloadSuccess = await downloadImage(media.url, tempPath);
+      
+      if (downloadSuccess) {
+        downloadedCount++;
+        console.log(`✅ Téléchargé: ${originalFilename}`);
+        
+        // Convertir en WebP
+        console.log(`🔄 Conversion en WebP: ${dateFolder}/${webpFilename}`);
+        const convertSuccess = await convertToWebP(tempPath, webpPath);
+        
+        if (convertSuccess) {
+          convertedCount++;
+          console.log(`✅ Converti: ${dateFolder}/${webpFilename}`);
+          
+          // Mettre à jour les URLs
+          media.localWebp = `/galerie/images/${dateFolder}/${webpFilename}`;
+          
+          if (PRODUCTION_MODE) {
+            // Mode production : supprimer l'original
+            await fs.unlink(tempPath);
+            console.log(`�️  Original supprimé (mode production)`);
+          } else {
+            // Mode local : sauvegarder l'original
+            await fs.rename(tempPath, originalPath);
+            console.log(`📦 Original sauvegardé: old/${dateFolder}/${originalFilename}`);
+            media.localOriginal = `/galerie/images/old/${dateFolder}/${originalFilename}`;
+          }
+        } else {
+          // Échec de conversion
+          if (PRODUCTION_MODE) {
+            // Mode production : supprimer le fichier temporaire
+            await fs.unlink(tempPath);
+            console.log(`❌ Conversion échouée, fichier temporaire supprimé`);
+          } else {
+            // Mode local : garder l'original quand même
+            await fs.rename(tempPath, originalPath);
+            media.localOriginal = `/galerie/images/old/${dateFolder}/${originalFilename}`;
+          }
+        }
+      }
+      
+      // Pause pour éviter le rate limit
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+    
+    // Fusionner les médias (nouveaux + existants)
+    const allMedia = [...mediaToAdd, ...existingMedia];
     
     // Trier par date (plus récents en premier)
-    media.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    allMedia.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
     
     // Sauvegarder dans gallery.json
     const output = {
-      media: media,
+      media: allMedia,
       lastUpdated: new Date().toISOString(),
-      totalCount: media.length
+      totalCount: allMedia.length
     };
     
-    const outputPath = path.join(__dirname, 'gallery.json');
     await fs.writeFile(outputPath, JSON.stringify(output, null, 2));
     
-    console.log(`Galerie sauvegardée dans ${outputPath}`);
-    console.log(`Total: ${media.length} médias`);
+    console.log('\n' + '='.repeat(60));
+    console.log(`✅ Galerie mise à jour: ${outputPath}`);
+    console.log(`📊 Total: ${allMedia.length} médias`);
+    console.log(`🆕 Nouveaux: ${mediaToAdd.length}`);
+    console.log(`💾 Images téléchargées: ${downloadedCount}`);
+    console.log(`🔄 Converties en WebP: ${convertedCount}`);
+    console.log(`📁 Structure: images/DDMMYYYY/ (WebP) + images/old/DDMMYYYY/ (originaux)`);
+    console.log('='.repeat(60));
     
   } catch (error) {
     console.error('Erreur:', error.message);

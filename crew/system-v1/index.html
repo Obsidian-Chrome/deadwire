@@ -1,0 +1,1053 @@
+<!doctype html>
+<html lang="fr" style="visibility: hidden;">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>System V1 - MJ Only | Le Deadwire</title>
+  <link rel="icon" href="/media/Deadwire_Logo_Neon.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="../system/system.css" />
+  
+  <script defer src="/shared/loader.js"></script>
+  <script defer src="/shared/crew-auth.js"></script>
+  <script defer src="/app.js"></script>
+  <script defer src="../system/system.js"></script>
+  
+  <!-- PROTECTION GM - Chargé après auth.js -->
+  <script defer src="gm-protection.js"></script>
+</head>
+<body>
+
+  <main>
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__content">
+        <section class="pageHero">
+          <div class="container">
+            <p class="kicker">
+              <i class="fa-solid fa-lock"></i>
+              MJ Only
+            </p>
+            <h1 class="title title--sm">Système de dés V1</h1>
+            <p class="lead">Règles et mécaniques de jeu - Version 1</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="system-layout">
+              <!-- Table des matières -->
+              <aside class="system-sidebar">
+                <nav class="system-nav">
+                  <h2 class="system-nav__title">Sommaire</h2>
+                  <button class="system-nav__item is-active" data-section="installation">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Installation</span>
+                  </button>
+                  <button class="system-nav__item" data-section="character">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>Créer son personnage</span>
+                  </button>
+                  <button class="system-nav__item" data-section="attributes">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Attributs & Compétences</span>
+                  </button>
+                  <button class="system-nav__item" data-section="talents">
+                    <i class="fa-solid fa-wand-sparkles"></i>
+                    <span>Talents</span>
+                  </button>
+                  <button class="system-nav__item" data-section="experience">
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+                    <span>Expérience</span>
+                  </button>
+                  <!-- Ajoute tes sections ici -->
+                </nav>
+              </aside>
+
+              <!-- Contenu dynamique -->
+              <div class="system-content">
+                <!-- Section: Installation -->
+                <article class="system-section is-active" data-content="installation">
+                  <h2 class="system-section__title">Installation</h2>
+                  
+                  <div class="system-block">
+                    <h3>
+                      <i class="fa-solid fa-download"></i> Installation du plugin Soulstone
+                      <img src="/media/Soulstone.png" alt="Soulstone" style="width: 24px; height: 24px; object-fit: contain; margin-left: 8px; vertical-align: middle;" />
+                    </h3>
+                    <p>Pour utiliser le système de dés, vous devez installer le plugin Soulstone.</p>
+                    <ol class="system-list">
+                      <li>
+                        <strong>Ouvrir les paramètres de Dalamud</strong><br>
+                        Allez dans <strong>Paramètres → Expérimental</strong>
+                      </li>
+                      <li>
+                        <strong>Ajouter le repository personnalisé</strong><br>
+                        Ajoutez ce repo, cliquez sur le <strong>+</strong> et le bouton <strong>Sauvegarder</strong>
+                        <div class="system-copy" style="margin-top: 8px;">
+                          <input type="text" readonly value="https://raw.githubusercontent.com/Taelina/Soulstone/refs/heads/master/SoulstoneRep.json" id="repo-url" />
+                          <button class="system-copy__btn" data-copy="repo-url">
+                            <i class="fa-solid fa-copy"></i>
+                          </button>
+                        </div>
+                      </li>
+                      <li>
+                        <strong>Installer et activer le plugin</strong><br>
+                        Recherchez <strong>"Soulstone"</strong>, installez-le et activez-le
+                      </li>
+                    </ol>
+                  </div>
+
+                  <div class="system-block">
+                    <h3><i class="fa-solid fa-file-arrow-down"></i> Télécharger le système de dés</h3>
+                    <p>Une fois le plugin installé, téléchargez le fichier de configuration :</p>
+                    <div style="margin-top: 16px;">
+                      <a href="/media/system/deadwire-v1.json" download class="btn btn--primary" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-download"></i>
+                        Télécharger le système de dés
+                      </a>
+                    </div>
+                    <p style="margin-top: 12px; font-size: 0.9rem; color: rgba(247, 233, 239, 0.6);">
+                      <i class="fa-solid fa-clock"></i>
+                      Dernière mise à jour : <strong id="last-update">Chargement...</strong>
+                    </p>
+                    <script>
+                      // Récupérer la date de dernière modification du fichier JSON
+                      fetch('/media/system/deadwire-v1.json')
+                        .then(response => {
+                          const lastModified = response.headers.get('Last-Modified');
+                          if (lastModified) {
+                            const date = new Date(lastModified);
+                            const formatted = date.toLocaleString('fr-FR', {
+                              day: '2-digit',
+                              month: '2-digit',
+                              year: 'numeric',
+                              hour: '2-digit',
+                              minute: '2-digit'
+                            });
+                            document.getElementById('last-update').textContent = formatted;
+                          } else {
+                            document.getElementById('last-update').textContent = 'Non disponible';
+                          }
+                        })
+                        .catch(() => {
+                          document.getElementById('last-update').textContent = 'Non disponible';
+                        });
+                    </script>
+                    <p style="margin-top: 8px; font-size: 0.95rem; color: rgba(247, 233, 239, 0.7);">
+                      <i class="fa-solid fa-info-circle"></i>
+                      Importez ce fichier dans Soulstone pour configurer automatiquement le système de dés.
+                    </p>
+                  </div>
+                </article>
+
+                <!-- Section: Attributs & Compétences -->
+                <article class="system-section" data-content="attributes">
+                  <h2 class="system-section__title">Attributs & Compétences</h2>
+                  
+                  <style>
+                    .tooltip-cell {
+                      position: relative;
+                      cursor: help;
+                    }
+                    .tooltip-text {
+                      visibility: hidden;
+                      opacity: 0;
+                      position: absolute;
+                      z-index: 1000;
+                      bottom: 125%;
+                      left: 50%;
+                      transform: translateX(-50%);
+                      background: rgba(10, 0, 12, 0.95);
+                      color: rgba(247, 233, 239, 0.95);
+                      padding: 12px 16px;
+                      border-radius: 8px;
+                      border: 1px solid rgba(255, 42, 61, 0.4);
+                      font-size: 0.9rem;
+                      line-height: 1.4;
+                      white-space: normal;
+                      width: 280px;
+                      text-align: left;
+                      transition: opacity 0.3s, visibility 0.3s;
+                      pointer-events: none;
+                    }
+                    .tooltip-text::after {
+                      content: "";
+                      position: absolute;
+                      top: 100%;
+                      left: 50%;
+                      transform: translateX(-50%);
+                      border: 6px solid transparent;
+                      border-top-color: rgba(255, 42, 61, 0.4);
+                    }
+                    .tooltip-cell:hover .tooltip-text {
+                      visibility: visible;
+                      opacity: 1;
+                    }
+                    .tooltip-cell:hover {
+                      background: rgba(255, 42, 61, 0.1);
+                    }
+                  </style>
+
+                  <div class="system-block">
+                    <h3>Les 9 Attributs</h3>
+                    <p style="margin-bottom: 16px;">Survolez un attribut pour voir sa description.</p>
+
+                    <table class="system-table">
+                      <thead>
+                        <tr>
+                          <th>Physique</th>
+                          <th>Social</th>
+                          <th>Mental</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="tooltip-cell">
+                            <strong>Force</strong>
+                            <span class="tooltip-text">Mesure la puissance physique et la capacité à soulever, frapper et résister aux efforts.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Charisme</strong>
+                            <span class="tooltip-text">Influence la prestance, la capacité à séduire et à inspirer les autres.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Perception</strong>
+                            <span class="tooltip-text">Représente la vigilance, la capacité à remarquer des détails et à interpréter son environnement.</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tooltip-cell">
+                            <strong>Dextérité</strong>
+                            <span class="tooltip-text">Représente l'agilité, la coordination et la vitesse des mouvements.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Manipulation</strong>
+                            <span class="tooltip-text">Évalue l'aptitude à tromper, persuader ou influencer subtilement autrui.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Intelligence</strong>
+                            <span class="tooltip-text">Mesure la capacité de réflexion, d'apprentissage et de résolution de problèmes.</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tooltip-cell">
+                            <strong>Vigueur</strong>
+                            <span class="tooltip-text">Détermine l'endurance, la résistance à la fatigue et la robustesse du personnage.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Apparence</strong>
+                            <span class="tooltip-text">Définit l'attrait physique et l'impact visuel du personnage.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Astuce</strong>
+                            <span class="tooltip-text">Symbolise l'ingéniosité, la rapidité d'esprit et l'adaptabilité en situation imprévue.</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <h3 style="margin-top: 48px;">Les 21 Compétences</h3>
+                    <p style="margin-bottom: 16px;">Survolez une compétence pour voir sa description.</p>
+
+                    <table class="system-table">
+                      <tbody>
+                        <tr>
+                          <td class="tooltip-cell">
+                            <strong>Animaux</strong>
+                            <span class="tooltip-text">Correspond à vos compétences en matière de dressage, de compréhension du comportement animal.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Enquête</strong>
+                            <span class="tooltip-text">Détermine votre sens de l'investigation, de la recherche.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Persuasion</strong>
+                            <span class="tooltip-text">Correspond à votre aisance à convaincre autrui.</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tooltip-cell">
+                            <strong>Athlétisme</strong>
+                            <span class="tooltip-text">Définit votre capacité à faire des efforts comme courir, sauter, grimper.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Étherologie</strong>
+                            <span class="tooltip-text">Définit vos capacités et vos connaissances en matière d'éther.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Pilotage</strong>
+                            <span class="tooltip-text">Définit vos capacités en pilotage (tous les véhicules).</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tooltip-cell">
+                            <strong>Conscience</strong>
+                            <span class="tooltip-text">Définit la conscience de soi, la résistance mentale...</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Interface</strong>
+                            <span class="tooltip-text">Aptitude à interagir avec les réseaux, logiciels et systèmes numériques. Sert au piratage, au netrun, au contrôle à distance, à la cybersécurité, aux drones et aux environnements virtuels.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Présence</strong>
+                            <span class="tooltip-text">Capacité à s'imposer, présenter son aura ou donner des ordres.</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tooltip-cell">
+                            <strong>Culture</strong>
+                            <span class="tooltip-text">Correspond à vos connaissances ou compréhensions de la culture qui vous entoure.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Larcin</strong>
+                            <span class="tooltip-text">Détermine l'habileté de vos doigts à dérober.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Résistance</strong>
+                            <span class="tooltip-text">Correspond à la résistance physique du personnage.</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tooltip-cell">
+                            <strong>Discrétion</strong>
+                            <span class="tooltip-text">Mesure vos talents en matière de discrétion.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Médecine</strong>
+                            <span class="tooltip-text">Correspond à vos connaissances / habiletés en médecine.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Sciences</strong>
+                            <span class="tooltip-text">Correspond à vos connaissances dans toutes les sciences.</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tooltip-cell">
+                            <strong>Distance</strong>
+                            <span class="tooltip-text">Est utilisé pour les capacités de lancer, les armes à feu ou tout autre objet nécessitant de tirer / lancer.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Survie</strong>
+                            <span class="tooltip-text">Détermine vos capacités à survivre en milieu hostile.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Technologie</strong>
+                            <span class="tooltip-text">Maîtrise pratique des machines, outils et systèmes matériels. Sert à réparer, fabriquer, modifier, intervenir sur des implants, des armes...</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tooltip-cell">
+                            <strong>Empathie</strong>
+                            <span class="tooltip-text">Détermine votre capacité à lire les émotions d'autrui et l'ambiance dans une pièce.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Mêlée</strong>
+                            <span class="tooltip-text">Définit votre habileté avec vos poings ou une arme de mêlée.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Vigilance</strong>
+                            <span class="tooltip-text">Capacité à empêcher d'être surpris ou encore de jouer sur la prévention.</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </article>
+
+                <!-- Section: Créer son personnage -->
+                <article class="system-section" data-content="character">
+                  <h2 class="system-section__title">Créer son personnage</h2>
+
+                  <!-- ÉTAPE 1: ATTRIBUTS -->
+                  <div class="system-block">
+                    <h3>Étape 1 : Répartir les attributs</h3>
+                    
+                    <p style="margin-bottom: 16px;">Les attributs sont répartis en <strong>3 catégories</strong>. <a href="#" class="system-link" data-section="attributes">Voir les descriptions complètes</a></p>
+
+                    <table class="system-table" style="margin-bottom: 24px;">
+                      <thead>
+                        <tr>
+                          <th>Physique</th>
+                          <th>Social</th>
+                          <th>Mental</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="tooltip-cell">
+                            <strong>Force</strong>
+                            <span class="tooltip-text">Mesure la puissance physique et la capacité à soulever, frapper et résister aux efforts.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Charisme</strong>
+                            <span class="tooltip-text">Influence la prestance, la capacité à séduire et à inspirer les autres.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Perception</strong>
+                            <span class="tooltip-text">Représente la vigilance, la capacité à remarquer des détails et à interpréter son environnement.</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tooltip-cell">
+                            <strong>Dextérité</strong>
+                            <span class="tooltip-text">Représente l'agilité, la coordination et la vitesse des mouvements.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Manipulation</strong>
+                            <span class="tooltip-text">Évalue l'aptitude à tromper, persuader ou influencer subtilement autrui.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Intelligence</strong>
+                            <span class="tooltip-text">Mesure la capacité de réflexion, d'apprentissage et de résolution de problèmes.</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tooltip-cell">
+                            <strong>Vigueur</strong>
+                            <span class="tooltip-text">Détermine l'endurance, la résistance à la fatigue et la robustesse du personnage.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Apparence</strong>
+                            <span class="tooltip-text">Définit l'attrait physique et l'impact visuel du personnage.</span>
+                          </td>
+                          <td class="tooltip-cell">
+                            <strong>Astuce</strong>
+                            <span class="tooltip-text">Symbolise l'ingéniosité, la rapidité d'esprit et l'adaptabilité en situation imprévue.</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <h4>Répartition des points</h4>
+                    <p>Choisissez quelle catégorie recevra :</p>
+                    <ul class="system-list">
+                      <li><strong>8 points</strong> (catégorie primaire)</li>
+                      <li><strong>6 points</strong> (catégorie secondaire)</li>
+                      <li><strong>4 points</strong> (catégorie tertiaire)</li>
+                    </ul>
+                    <p style="margin-top: 12px; font-size: 0.95rem; color: rgba(247, 233, 239, 0.7);">
+                      <strong>Exemple :</strong> 8 points en Physique, 6 points en Social, 4 points en Mental
+                    </p>
+
+                    <h4 style="margin-top: 32px;">Distribution dans les attributs</h4>
+                    <ul class="system-list">
+                      <li>Chaque attribut commence à <strong>1 point</strong> de base</li>
+                      <li>Les attributs épiques commencent à <strong>0 point</strong></li>
+                      <li>Répartissez vos points dans les attributs de chaque catégorie</li>
+                    </ul>
+
+                    <h4 style="margin-top: 32px;">Limites à la création</h4>
+                    <ul class="system-list">
+                      <li>Maximum <strong>4 points</strong> par attribut normal</li>
+                      <li>Maximum <strong>2 points</strong> par attribut épique</li>
+                    </ul>
+                  </div>
+
+                  <!-- ATTRIBUTS ÉPIQUES -->
+                  <div class="system-block">
+                    <h3>Étape 2 : Choisir vos attributs épiques favorisés</h3>
+                    <p>Ajoutez <strong>1 point</strong> à <strong>3 attributs épiques</strong> de votre choix.</p>
+                    <p style="margin-top: 12px; font-size: 0.95rem; color: rgba(247, 233, 239, 0.7);">
+                      Ces attributs épiques seront <strong>moins chers à augmenter</strong> lors de la progression.
+                    </p>
+                  </div>
+
+                  <!-- ÉTAPE 3: COMPÉTENCES -->
+                  <div class="system-block">
+                    <h3>Étape 3 : Répartir les compétences</h3>
+                    
+                    <h4>Points de compétences</h4>
+                    <p>Vous disposez de <strong>25 points</strong> à répartir dans vos <a href="#" class="system-link" data-section="attributes">compétences</a>.</p>
+                    <ul class="system-list">
+                      <li>Chaque compétence commence à <strong>0 point</strong></li>
+                      <li>Maximum <strong>5 points</strong> par compétence (hors bonus d'équipement)</li>
+                      <li>À la création : maximum <strong>3 points</strong> par compétence</li>
+                    </ul>
+
+                    <h4 style="margin-top: 32px;">Compétences favorisées</h4>
+                    <p>Sélectionnez <strong>6 compétences</strong> de votre choix.</p>
+                    <p style="margin-top: 12px; font-size: 0.95rem; color: rgba(247, 233, 239, 0.7);">
+                      Ces compétences seront <strong>moins chères à augmenter</strong> lors de la progression.
+                    </p>
+                  </div>
+
+                  <!-- ÉTAPE 4: TALENTS -->
+                  <div class="system-block">
+                    <h3>Étape 4 : Choisir vos talents</h3>
+                    
+                    <p>Vous obtenez <strong>1 talent</strong> par <strong>point d'attribut épique</strong> que vous possédez.</p>
+                    <p style="margin-top: 12px; font-size: 0.95rem; color: rgba(247, 233, 239, 0.7);">
+                      <strong>Exemple :</strong> Si vous avez 2 points en Force épique et 1 point en Dextérité épique, vous avez 3 talents disponibles.
+                    </p>
+
+                    <h4 style="margin-top: 32px;">Restriction importante</h4>
+                    <p>Vous ne pouvez choisir que des talents liés aux attributs épiques que vous avez augmentés.</p>
+                    <p style="margin-top: 12px; font-size: 0.95rem; color: rgba(247, 233, 239, 0.7);">
+                      La liste complète des talents se trouve dans l'onglet <a href="#" class="system-link" data-section="talents">Talents</a>.
+                    </p>
+                  </div>
+
+                  <!-- ÉTAPE 5: POINTS D'EXPÉRIENCE BONUS -->
+                  <div class="system-block">
+                    <h3>Étape 5 : Dépenser vos points d'expérience bonus</h3>
+                    
+                    <p>À la création, vous recevez <strong>10 points d'expérience</strong> supplémentaires.</p>
+                    <p style="margin-top: 12px; font-size: 0.95rem; color: rgba(247, 233, 239, 0.7);">
+                      Vous pouvez les dépenser <strong>comme si vous étiez niveau 2</strong>, ce qui vous permet d'augmenter des attributs épiques jusqu'à 2 points.
+                    </p>
+
+                    <h4 style="margin-top: 32px;">Coûts d'amélioration</h4>
+                    <table class="system-table">
+                      <thead>
+                        <tr>
+                          <th>Amélioration</th>
+                          <th>Coût normal</th>
+                          <th>Coût réduit</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>+1 Attribut</strong></td>
+                          <td>4 points</td>
+                          <td>-</td>
+                        </tr>
+                        <tr>
+                          <td><strong>+1 Attribut épique</strong></td>
+                          <td>5 points</td>
+                          <td>4 points (si favorisé)</td>
+                        </tr>
+                        <tr>
+                          <td><strong>+1 Compétence</strong></td>
+                          <td>2 points</td>
+                          <td>1 point (si favorisée)</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </article>
+
+                <!-- Section: Talents -->
+                <article class="system-section" data-content="talents">
+                  <h2 class="system-section__title">Talents</h2>
+                  
+                  <div class="system-block">
+                    <p style="margin-bottom: 32px;">Les talents sont des capacités spéciales liées à vos attributs épiques. Vous obtenez 1 talent par point d'attribut épique.</p>
+
+                    <!-- FORCE -->
+                    <h3>Force</h3>
+                    <table class="system-table" style="margin-bottom: 48px;">
+                      <thead>
+                        <tr>
+                          <th>Talent</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>Destruction sacrée</strong></td>
+                          <td>Peut détruire tout objet (si inférieur niveau)</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Puissance de soulèvement</strong></td>
+                          <td>+1d sur soulèvement ou port / plus élément RP</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Poigne écrasante</strong></td>
+                          <td>+1d CaC sur saisie / plus élément RP</td>
+                        </tr>
+                        <tr>
+                          <td><strong>One inch punch</strong></td>
+                          <td>Le joueur peut mobiliser toute sa force sur un geste minime (par exemple une pichenette)</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Frappe lunaire</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : One inch punch</span>
+                          </td>
+                          <td>Si le joueur le souhaite son attaque peut ne pas faire de dégât mais envoyer voler l'adversaire</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Attaque défigurante</strong></td>
+                          <td>Le joueur peut remodeler le visage des gens qu'il frappe</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Bond sacré</strong></td>
+                          <td>+1d sur les sauts</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Jet prodigieux</strong></td>
+                          <td>+1d sur jet + élément RP</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <!-- DEXTÉRITÉ -->
+                    <h3>Dextérité</h3>
+                    <table class="system-table" style="margin-bottom: 48px;">
+                      <thead>
+                        <tr>
+                          <th>Talent</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>Sprinter éclair</strong></td>
+                          <td>+1d sur jet de course / plus élément RP</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Tireur d'élite</strong></td>
+                          <td>Pas de malus à la visée. +1 réussite auto sur tout jet de tir</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Ricochet</strong></td>
+                          <td>Sur attaque à distance si nombre de succès sup à la moitié du pool de dés lancés, l'attaque du joueur peut ricocher une fois</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Grâce féline</strong></td>
+                          <td>Le joueur n'est jamais victime d'une projection au sol</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Bouclier Tourbillon</strong></td>
+                          <td>Le joueur peut désormais parer les attaques à distances comme il le ferait avec une attaque au corps à corps (si projectile physique)</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Adversaire intouchable</strong></td>
+                          <td>+1d sur jet d'esquive</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Petit singe</strong></td>
+                          <td>+1 sur un jet pour escalader</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Ignorer la gravité</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Petit singe</span>
+                          </td>
+                          <td>Marcher sur surface verticale, sur le plafond... (sur jet d'escalade)</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <!-- VIGUEUR -->
+                    <h3>Vigueur</h3>
+                    <table class="system-table" style="margin-bottom: 48px;">
+                      <thead>
+                        <tr>
+                          <th>Talent</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>Auto guérison</strong></td>
+                          <td>Le joueur récupère de la vitalité entre les scènes (1 point de niveau : 1 PV)</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Résistance sacrée</strong></td>
+                          <td>+1d vigueur</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Conversion des dégâts</strong></td>
+                          <td>Permet de réduire ou augmenter une blessure sur soi-même ou les autres. Vigueur + médecine (si inférieur niveau)</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Taureau enragé</strong></td>
+                          <td>Plus le joueur prend de dégâts plus il fait mal (+1 contre 2 dégâts)</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Bien être solipsiste</strong></td>
+                          <td>Peut ignorer des dégâts une fois par scène (si inférieur niveau)</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Armure corporelle</strong></td>
+                          <td>+1 armure</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Dévoreur</strong></td>
+                          <td>Le joueur peut manger ce qu'il veut et boire n'importe quel liquide pour survivre</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Travailleur infatigable</strong></td>
+                          <td>Le joueur ne s'essouffle plus et ne ressent plus la fatigue</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <!-- CHARISME -->
+                    <h3>Charisme</h3>
+                    <table class="system-table" style="margin-bottom: 48px;">
+                      <thead>
+                        <tr>
+                          <th>Talent</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>Figure édifiante</strong></td>
+                          <td>Le joueur n'a aucun mal à se faire entendre au sein d'une foule</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Bénédiction d'importance</strong></td>
+                          <td>Donné à une personne (si inférieur niveau) un sentiment d'importance (gain d'allié)</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Optimisme forcené</strong></td>
+                          <td>Si un joueur rate une action il reçoit 1d bonus pour retenter la même action au tour d'après</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Bénéfice du doute</strong></td>
+                          <td>Fait douter une personne de ses convictions (si inférieur niveau)</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Source sûre</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Bénéfice du doute</span>
+                          </td>
+                          <td>Permet de bénir un allié ce qui rend sa parole sûre et lui offre les effet de "Bénéfice du doute"</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Mec Sympa</strong></td>
+                          <td>1 fois par scénario, le joueur peut éviter les conséquences d'une connerie qu'il aurait fait face à une figure d'autorité</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Blâmer autrui</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Mec sympa</span>
+                          </td>
+                          <td>Peut rejeter la faute de l'action annulée par mec sympa sur une autre personne</td>
+                        </tr>
+                        <tr>
+                          <td><strong>La cavalerie est là !</strong></td>
+                          <td>Par son sourire, le joueur inspire un groupe et les empêche de succomber aux émotions négatives</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <!-- MANIPULATION -->
+                    <h3>Manipulation</h3>
+                    <table class="system-table" style="margin-bottom: 48px;">
+                      <thead>
+                        <tr>
+                          <th>Talent</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>Honnêteté des dieux</strong></td>
+                          <td>La cible dit la vérité (si inférieur niveau)</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Ordre direct</strong></td>
+                          <td>Donne un ordre à une cible (si inférieur niveau)</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Implantation de faux souvenirs</strong></td>
+                          <td>Tente de placer un souvenir fabriqué dans l'esprit d'une personne</td>
+                        </tr>
+                        <tr>
+                          <td><strong>On reconnaît les siens</strong></td>
+                          <td>Le joueur a plus de chances de reconnaître les mensonges</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Pas le visage !</strong></td>
+                          <td>Permet de faire hésiter un attaquant</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Retrouve moi derrière</strong></td>
+                          <td>Permet en un regard de signaler une information simple à une personne</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Messager</strong></td>
+                          <td>Le joueur fait un jet de manipulation + commandement et la cible a ce résultat pour utiliser un talent de manipulation ou convaincre une autre personne</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Maïeutique</strong></td>
+                          <td>Dans un contexte de conversation, le joueur peut faire échapper la vérité à une cible</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <!-- APPARENCE -->
+                    <h3>Apparence</h3>
+                    <table class="system-table" style="margin-bottom: 48px;">
+                      <thead>
+                        <tr>
+                          <th>Talent</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>Regard du serpent</strong></td>
+                          <td>Le joueur peut paralyser quelqu'un en le regardant (si inférieur niveau)</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Centre d'attention</strong></td>
+                          <td>S'il le souhaite, le joueur peut captiver l'attention des gens autour</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Pose</strong></td>
+                          <td>+1d apparence</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Beauté/laideur surnaturelle</strong></td>
+                          <td>Le joueur peut prendre une apparence complètement surnaturelle tant qu'elle reste globalement humaine. Cette apparence peut-être laide comme belle</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Sur mesure</strong></td>
+                          <td>Le joueur peut changer ses habits à volonté. Une armure créée de la sorte n'a pas de caractéristiques</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Tout va bien</strong></td>
+                          <td>Même au bord de la mort le joueur n'aura jamais de marques de blessures ou de fatigue apparentes</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Tes yeux ne voient rien</strong></td>
+                          <td>Le joueur peut cacher sa divinité</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Visage aveuglant</strong></td>
+                          <td>Le joueur impose son visage dans les yeux d'un être (inférieur niveau) celui-ci ne voit plus rien d'autre que le visage du joueur gravé dans sa rétine pour la scène</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <!-- PERCEPTION -->
+                    <h3>Perception</h3>
+                    <table class="system-table" style="margin-bottom: 48px;">
+                      <thead>
+                        <tr>
+                          <th>Talent</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>Sens télescopiques</strong></td>
+                          <td>Le joueur peut voir, entendre, sentir beaucoup plus loin</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Avertissement subliminal</strong></td>
+                          <td>Le joueur peut sentir les guet-apens, embuscades. +1d sur jet d'initiative</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Concentration prédatrice</strong></td>
+                          <td>Permet de retrouver une cible perdue de vue en suivant sa trace</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Osmose spatiale</strong></td>
+                          <td>Le joueur n'a plus besoin de la vue pour "voir"</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Sentir le divin</strong></td>
+                          <td>Le joueur peut sentir le panthéon d'origine des pouvoirs d'un autre joueur ou titanide</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Vrai nature</strong></td>
+                          <td>Le joueur peut savoir si une créature a sa forme d'origine ou pas</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Oreille parfaite</strong></td>
+                          <td>Décuple l'ouïe du joueur et lui permet d'écouter les sons les plus faibles</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Clairvoyance</strong></td>
+                          <td>Le joueur peut entendre et voir ce qui se passe dans un endroit familier comme si il y était</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <!-- INTELLIGENCE -->
+                    <h3>Intelligence</h3>
+                    <table class="system-table" style="margin-bottom: 48px;">
+                      <thead>
+                        <tr>
+                          <th>Talent</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>Raison plus forte que le cœur</strong></td>
+                          <td>Le joueur peut appliquer son intelligence épique face aux jets sociaux</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Combattre avec sa tête</strong></td>
+                          <td>Le joueur peut appliquer son intelligence épique à ses jets de parade et d'esquive</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Étudiant devant l'éternel</strong></td>
+                          <td>Au moment où vous prenez ce talent gagnez 10 points de compétences</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Retrouve moi derrière</strong></td>
+                          <td>D'un regard sans parler le joueur peut transmettre une indication</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Enseignant prodige</strong></td>
+                          <td>Permet de partager des domaines/ connaissances/ compétences avec des alliés (ne marche pas sur les joueurs)</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Maîtrise linguistique</strong></td>
+                          <td>Le joueur maîtrise toutes les langues</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Télépathie</strong></td>
+                          <td>Le joueur peut communiquer mentalement avec tous ses alliés proches</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Lecteur rapide</strong></td>
+                          <td>Entrapercevoir un texte permet d'en connaître le contenu</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <!-- ASTUCE -->
+                    <h3>Astuce</h3>
+                    <table class="system-table">
+                      <thead>
+                        <tr>
+                          <th>Talent</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>Concentration</strong></td>
+                          <td>+1d sur jet d'astuce</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Réflexes éclairs</strong></td>
+                          <td>+1d d'esquive en cas de surprise</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Profiler</strong></td>
+                          <td>En un coup d'œil, le personnage peut saisir les grosses lignes de la personnalité d'une personne</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Combat adaptatif</strong></td>
+                          <td>Le joueur peut ajouter son astuce épique à ses jets d'attaque</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Réflexe du cobra</strong></td>
+                          <td>Lors d'une attaque surprise, le joueur a droit à une contre-attaque gratuite</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Concentration méditative</strong></td>
+                          <td>Le joueur peut ignorer les effets d'un environnement difficile en méditant (ne peut pas faire d'autres action mentales en maintenant la méditation)</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Manœuvre stratégique</strong></td>
+                          <td>Le joueur peut sacrifier son tour pour décaler (avancer ou reculer) l'action d'un joueur</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Investigateur intuitif</strong></td>
+                          <td>Le joueur peut voir une scène et comprendre ce qu'il s'est passé</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </article>
+
+                <!-- Section: Expérience -->
+                <article class="system-section" data-content="experience">
+                  <h2 class="system-section__title">Expérience</h2>
+                  
+                  <div class="system-block">
+                    <h3>Dépenser l'expérience</h3>
+                    <p style="margin-bottom: 16px;">Voici les coûts pour améliorer votre personnage avec vos points d'expérience.</p>
+
+                    <table class="system-table">
+                      <thead>
+                        <tr>
+                          <th>Amélioration</th>
+                          <th>Coût normal</th>
+                          <th>Coût réduit</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>+1 Attribut</strong></td>
+                          <td>4 points</td>
+                          <td>-</td>
+                        </tr>
+                        <tr>
+                          <td><strong>+1 Attribut épique</strong></td>
+                          <td>5 points</td>
+                          <td>4 points (si favorisé)</td>
+                        </tr>
+                        <tr>
+                          <td><strong>+1 Compétence</strong></td>
+                          <td>2 points</td>
+                          <td>1 point (si favorisée)</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p style="margin-top: 16px; margin-bottom: 48px; font-size: 0.95rem; color: rgba(247, 233, 239, 0.7);">
+                      Les attributs épiques ne peuvent pas dépasser votre niveau actuel.
+                    </p>
+
+                    <h3>Progression et montée de niveau</h3>
+                    <p style="margin-bottom: 16px;">Vous gagnez des points d'expérience à chaque fin de contrat. Ces points peuvent être dépensés immédiatement pour améliorer votre personnage.</p>
+
+                    <table class="system-table">
+                      <thead>
+                        <tr>
+                          <th>Niveau</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>1</strong></td>
+                        </tr>
+                        <tr>
+                          <td><strong>2</strong></td>
+                        </tr>
+                        <tr>
+                          <td><strong>3</strong></td>
+                        </tr>
+                        <tr>
+                          <td><strong>4</strong></td>
+                        </tr>
+                        <tr>
+                          <td><strong>5</strong></td>
+                        </tr>
+                        <tr>
+                          <td><strong>6</strong></td>
+                        </tr>
+                        <tr>
+                          <td><strong>7</strong></td>
+                        </tr>
+                        <tr>
+                          <td><strong>8</strong></td>
+                        </tr>
+                        <tr>
+                          <td><strong>9</strong></td>
+                        </tr>
+                        <tr>
+                          <td><strong>10</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p style="margin-top: 24px; font-size: 0.95rem; color: rgba(247, 233, 239, 0.7);">
+                      Les points d'XP sont consommés lorsque vous les dépensez pour acheter des améliorations. La montée de niveau se fait indépendamment de vos dépenses d'XP.
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

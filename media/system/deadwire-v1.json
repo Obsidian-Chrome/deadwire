@@ -1,0 +1,395 @@
+{
+  "SystemName": "Deadwire-v1",
+  "DicePoolSystemEnabled": false,
+  "RegularDiceSystemEnabled": true,
+  "DiceType": 3,
+  "SuccessThreshold": 7,
+  "DicePoolMaxSuccessCount": 2,
+  "DndStyleAttributes": true,
+  "SkillLinkedToOneAttribute": true,
+  "AbilityLinkedToOneAttribute": true,
+  "AbilityLinkedToOneSkill": true,
+  "SystemHasSaves": false,
+  "SystemHasAdvantageDisadvantage": true,
+  "SystemType": 1,
+  "SuccessInterval": 0,
+  "SystemHasManaOrResourcePoints": false,
+  "SystemHasClasses": false,
+  "SystemHasBonusTemp": true,
+  "SystemHasBonusPerm": true,
+  "SystemHasEpicAttributes": true,
+  "SystemHasInventoryLimit": false,
+  "InventoryMaxSlots": 30,
+  "SystemHasAugmentations": true,
+  "AugmentationTitle": "Cyberware \u0026 Implants",
+  "CustomAugmentationSlots": [
+    "Neural",
+    "Optique",
+    "Cr\u00E2nien",
+    "Torse",
+    "Bras",
+    "Jambes",
+    "Sous-cutan\u00E9",
+    "Interne"
+  ],
+  "SystemResources": [
+    {
+      "Name": "PV",
+      "Description": "Points de vie",
+      "DefaultMax": 4,
+      "DefaultCurrent": 4,
+      "ColorHex": "#2ecc71",
+      "IsRequired": true,
+      "Formula": "(Vigueur \u002B Vigueur.epic \u002B Athl\u00E9tisme \u002B lvl) *2",
+      "ResourceType": 0
+    },
+    {
+      "Name": "Transcendance",
+      "Description": "Transcendance",
+      "DefaultMax": 3,
+      "DefaultCurrent": 3,
+      "ColorHex": "#f1c40f",
+      "IsRequired": true,
+      "Formula": "",
+      "ResourceType": 1
+    },
+    {
+      "Name": "M\u00EAl\u00E9e [FOR]",
+      "Description": "Force \u002B M\u00EAl\u00E9e \u002B Niveau",
+      "DefaultMax": 2,
+      "DefaultCurrent": 1,
+      "ColorHex": "#e74c3c",
+      "IsRequired": true,
+      "Formula": "[Force] \u002B [M\u00EAl\u00E9e] \u002B lvl",
+      "ResourceType": 2
+    },
+    {
+      "Name": "M\u00EAl\u00E9e [DEX]",
+      "Description": "Dext\u00E9rit\u00E9 \u002B M\u00EAl\u00E9e \u002B Niveau",
+      "DefaultMax": 2,
+      "DefaultCurrent": 1,
+      "ColorHex": "#e74c3c",
+      "IsRequired": true,
+      "Formula": "[Dext\u00E9rit\u00E9] \u002B [M\u00EAl\u00E9e] \u002B lvl",
+      "ResourceType": 2
+    },
+    {
+      "Name": "Distance [FOR]",
+      "Description": "Dext\u00E9rit\u00E9 \u002B Distance \u002B Niveau",
+      "DefaultMax": 2,
+      "DefaultCurrent": 1,
+      "ColorHex": "#9b59b6",
+      "IsRequired": true,
+      "Formula": "[Dext\u00E9rit\u00E9] \u002B [Distance] \u002B lvl",
+      "ResourceType": 2
+    },
+    {
+      "Name": "Distance [DEX]",
+      "Description": "Dext\u00E9rit\u00E9 \u002B Distance \u002B Niveau",
+      "DefaultMax": 2,
+      "DefaultCurrent": 1,
+      "ColorHex": "#9b59b6",
+      "IsRequired": true,
+      "Formula": "[Dext\u00E9rit\u00E9] \u002B [Distance] \u002B lvl",
+      "ResourceType": 2
+    },
+    {
+      "Name": "Armure",
+      "Description": "Vigueur \u002B R\u00E9sistance \u002B Armure \u002B Niveau",
+      "DefaultMax": 2,
+      "DefaultCurrent": 2,
+      "ColorHex": "#7f8c8d",
+      "IsRequired": true,
+      "Formula": "[Vigueur] \u002B [R\u00E9sistance] \u002B lvl",
+      "ResourceType": 2
+    },
+    {
+      "Name": "Parade",
+      "Description": "Force ou Dext\u00E9rit\u00E9 \u002B M\u00EAl\u00E9e \u002B Bouclier \u002B Niveau",
+      "DefaultMax": 2,
+      "DefaultCurrent": 2,
+      "ColorHex": "#7f8c8d",
+      "IsRequired": true,
+      "Formula": "max(Force, Dext\u00E9rit\u00E9) \u002B [M\u00EAl\u00E9e] \u002B lvl",
+      "ResourceType": 2
+    },
+    {
+      "Name": "Volont\u00E9",
+      "Description": "Intelligence \u002B Conscience \u002B Niveau",
+      "DefaultMax": 2,
+      "DefaultCurrent": 2,
+      "ColorHex": "#7f8c8d",
+      "IsRequired": true,
+      "Formula": "[Intelligence] \u002B [Conscience] \u002B lvl",
+      "ResourceType": 2
+    },
+    {
+      "Name": "Esquive",
+      "Description": "Dext\u00E9rit\u00E9 \u002B Athl\u00E9tisme \u002B Niveau",
+      "DefaultMax": 2,
+      "DefaultCurrent": 2,
+      "ColorHex": "#7f8c8d",
+      "IsRequired": true,
+      "Formula": "[Dext\u00E9rit\u00E9] \u002B [Athl\u00E9tisme] \u002B lvl",
+      "ResourceType": 2
+    },
+    {
+      "Name": "Health",
+      "Description": "",
+      "DefaultMax": 150,
+      "DefaultCurrent": 150,
+      "ColorHex": "#2ecc71",
+      "IsRequired": false,
+      "Formula": "",
+      "ResourceType": 0
+    },
+    {
+      "Name": "Mana",
+      "Description": "",
+      "DefaultMax": 100,
+      "DefaultCurrent": 100,
+      "ColorHex": "#2ecc71",
+      "IsRequired": false,
+      "Formula": "",
+      "ResourceType": 0
+    }
+  ],
+  "CustomEquipmentSlots": [],
+  "SystemAttributes": {
+    "Dext\u00E9rit\u00E9": {
+      "TotalValue": 1,
+      "Name": "Dext\u00E9rit\u00E9",
+      "Description": "[Physique] Repr\u00E9sente l\u0027agilit\u00E9, la coordination et la vitesse des mouvements.",
+      "Value": 1,
+      "TempBonus": 0,
+      "PermBonus": 0,
+      "EpicBonus": 0
+    },
+    "Force": {
+      "TotalValue": 1,
+      "Name": "Force",
+      "Description": "[Physique] Mesure la puissance physique et la capacit\u00E9 \u00E0 soulever, frapper et r\u00E9sister aux efforts.",
+      "Value": 1,
+      "TempBonus": 0,
+      "PermBonus": 0,
+      "EpicBonus": 0
+    },
+    "Vigueur": {
+      "TotalValue": 1,
+      "Name": "Vigueur",
+      "Description": "[Physique] D\u00E9termine l\u0027endurance, la r\u00E9sistance \u00E0 la fatigue et la robustesse du personnage.",
+      "Value": 1,
+      "TempBonus": 0,
+      "PermBonus": 0,
+      "EpicBonus": 0
+    },
+    "Charisme": {
+      "TotalValue": 1,
+      "Name": "Charisme",
+      "Description": "[Social] Influence la prestance, la capacit\u00E9 \u00E0 s\u00E9duire et \u00E0 inspirer les autres.",
+      "Value": 1,
+      "TempBonus": 0,
+      "PermBonus": 0,
+      "EpicBonus": 0
+    },
+    "Manipulation": {
+      "TotalValue": 1,
+      "Name": "Manipulation",
+      "Description": "[Social] \u00C9value l\u0027aptitude \u00E0 tromper, persuader ou influencer subtilement autrui.",
+      "Value": 1,
+      "TempBonus": 0,
+      "PermBonus": 0,
+      "EpicBonus": 0
+    },
+    "Apparence": {
+      "TotalValue": 1,
+      "Name": "Apparence",
+      "Description": "[Social] D\u00E9finit l\u0027attrait physique et l\u2019impact visuel du personnage.",
+      "Value": 1,
+      "TempBonus": 0,
+      "PermBonus": 0,
+      "EpicBonus": 0
+    },
+    "Perception": {
+      "TotalValue": 1,
+      "Name": "Perception",
+      "Description": "[Mental] Repr\u00E9sente la vigilance, la capacit\u00E9 \u00E0 remarquer des d\u00E9tails et \u00E0 interpr\u00E9ter son environnement.",
+      "Value": 1,
+      "TempBonus": 0,
+      "PermBonus": 0,
+      "EpicBonus": 0
+    },
+    "Intelligence": {
+      "TotalValue": 1,
+      "Name": "Intelligence",
+      "Description": "[Mental] Mesure la capacit\u00E9 de r\u00E9flexion, d\u2019apprentissage et de r\u00E9solution de probl\u00E8mes.",
+      "Value": 1,
+      "TempBonus": 0,
+      "PermBonus": 0,
+      "EpicBonus": 0
+    },
+    "Astuce": {
+      "TotalValue": 1,
+      "Name": "Astuce",
+      "Description": "[Mental] Symbolise l\u2019ing\u00E9niosit\u00E9, la rapidit\u00E9 d\u2019esprit et l\u2019adaptabilit\u00E9 en situation impr\u00E9vue.",
+      "Value": 1,
+      "TempBonus": 0,
+      "PermBonus": 0,
+      "EpicBonus": 0
+    }
+  },
+  "SystemSkills": {
+    "Animaux": {
+      "SkillName": "Animaux",
+      "SkillDescription": "Correspond \u00E0 vos comp\u00E9tences en mati\u00E8re de dressage, de compr\u00E9hension du comportement animal.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "Athl\u00E9tisme": {
+      "SkillName": "Athl\u00E9tisme",
+      "SkillDescription": "D\u00E9finit votre capacit\u00E9 \u00E0 faire des efforts comme courir, sauter, grimper.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "Conscience": {
+      "SkillName": "Conscience",
+      "SkillDescription": "D\u00E9finit la conscience de soi, la r\u00E9sistance mentale...",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "Culture": {
+      "SkillName": "Culture",
+      "SkillDescription": "Correspond \u00E0 vos connaissances ou compr\u00E9hensions de la culture qui vous entoure.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "Discr\u00E9tion": {
+      "SkillName": "Discr\u00E9tion",
+      "SkillDescription": "Mesure vos talents en mati\u00E8re de discr\u00E9tion.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "Distance": {
+      "SkillName": "Distance",
+      "SkillDescription": "Est utilis\u00E9 pour les capacit\u00E9s de lancer, les armes \u00E0 feu ou tout autre objet n\u00E9cessitant de tirer / lancer.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "Empathie": {
+      "SkillName": "Empathie",
+      "SkillDescription": "D\u00E9termine votre capacit\u00E9 \u00E0 lire les \u00E9motions d\u0027autrui et l\u0027ambiance dans une pi\u00E8ce.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "Enqu\u00EAte": {
+      "SkillName": "Enqu\u00EAte",
+      "SkillDescription": "D\u00E9termine votre sens de l\u0027investigation, de la recherche.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "\u00C9therologie": {
+      "SkillName": "\u00C9therologie",
+      "SkillDescription": "D\u00E9finit vos capacit\u00E9s et vos connaissances en mati\u00E8re d\u0027\u00E9ther.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "Interface": {
+      "SkillName": "Interface",
+      "SkillDescription": "Aptitude \u00E0 interagir avec les r\u00E9seaux, logiciels et syst\u00E8mes num\u00E9riques. Sert au piratage, au netrun, au contr\u00F4le \u00E0 distance, \u00E0 la cybers\u00E9curit\u00E9, aux drones et aux environnements virtuels.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "Larcin": {
+      "SkillName": "Larcin",
+      "SkillDescription": "D\u00E9termine l\u0027habilet\u00E9 de vos doigts \u00E0 d\u00E9rober.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "M\u00E9decine": {
+      "SkillName": "M\u00E9decine",
+      "SkillDescription": "Correspond \u00E0 vos connaissances / habilet\u00E9s en m\u00E9decine.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "M\u00EAl\u00E9e": {
+      "SkillName": "M\u00EAl\u00E9e",
+      "SkillDescription": "D\u00E9finit votre habilet\u00E9 avec vos poings ou une arme de m\u00EAl\u00E9e.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "Persuasion": {
+      "SkillName": "Persuasion",
+      "SkillDescription": "Correspond \u00E0 votre aisance \u00E0 convaincre autrui.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "Pilotage": {
+      "SkillName": "Pilotage",
+      "SkillDescription": "D\u00E9finit vos capacit\u00E9s en pilotage (tous les v\u00E9hicules).",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "Pr\u00E9sence": {
+      "SkillName": "Pr\u00E9sence",
+      "SkillDescription": "Capacit\u00E9 \u00E0 s\u0027imposer, pr\u00E9senter son aura ou donner des ordres.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "R\u00E9sistance": {
+      "SkillName": "R\u00E9sistance",
+      "SkillDescription": "Correspond \u00E0 la r\u00E9sistance physique du personnage.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "Sciences": {
+      "SkillName": "Sciences",
+      "SkillDescription": "Correspond \u00E0 vos connaissances dans toutes les sciences.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "Survie": {
+      "SkillName": "Survie",
+      "SkillDescription": "D\u00E9termine vos capacit\u00E9s \u00E0 survivre en milieu hostile.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "Technologie": {
+      "SkillName": "Technologie",
+      "SkillDescription": "Ma\u00EEtrise pratique des machines, outils et syst\u00E8mes mat\u00E9riels. Sert \u00E0 r\u00E9parer, fabriquer, modifier, intervenir sur des implants, des armes...",
+      "LinkedAttribute": "Force",
+      "SkillModifier": 0,
+      "Id": 0
+    },
+    "Vigilance": {
+      "SkillName": "Vigilance",
+      "SkillDescription": "Capacit\u00E9 \u00E0 emp\u00EAcher d\u0027\u00EAtre surpris ou encore de jouer sur la pr\u00E9vention.",
+      "LinkedAttribute": "Dext\u00E9rit\u00E9",
+      "SkillModifier": 0,
+      "Id": 0
+    }
+  },
+  "SystemAbilities": {},
+  "InitiativeStatType": 3,
+  "InitiativeStatName": "",
+  "InitiativeFormula": "[Dext\u00E9rit\u00E9] \u002B [Astuce] \u002B lvl",
+  "DynamicSkillAttributeLinking": true
+}

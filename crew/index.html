@@ -103,6 +103,12 @@
                       <span>Système de dés</span>
                     </a>
                   </li>
+                  <li id="systemV1Link" style="margin-bottom: 12px; display: none;">
+                    <a href="/crew/system-v1" class="resource-link" style="color: var(--accent); text-decoration: none; font-size: 1.1rem; display: flex; align-items: center; gap: 12px; transition: all 0.2s ease;">
+                      <i class="fa-solid fa-lock" style="width: 20px;"></i>
+                      <span>Système de dés V1</span>
+                    </a>
+                  </li>
                   <li style="margin-bottom: 12px;">
                     <a href="/crew/contrats" class="resource-link" style="color: var(--accent); text-decoration: none; font-size: 1.1rem; display: flex; align-items: center; gap: 12px; transition: all 0.2s ease;">
                       <i class="fa-solid fa-file-contract" style="width: 20px;"></i>
@@ -118,9 +124,10 @@
                 </ul>
 
                 <script>
-                  // Afficher le lien du générateur de bannières uniquement pour les gérants
+                  // Afficher les liens réservés aux MJ
                   if (localStorage.getItem('discord_is_gm') === 'true') {
                     document.getElementById('bannerGeneratorLink').style.display = 'block';
+                    document.getElementById('systemV1Link').style.display = 'block';
                   }
                 </script>
 

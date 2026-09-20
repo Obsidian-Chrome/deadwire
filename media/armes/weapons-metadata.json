@@ -1,0 +1,1703 @@
+[
+  {
+    "name": "Achilles",
+    "filename": "achilles.png",
+    "type": "snipers",
+    "class": "Precision Rifle",
+    "evolution": "Tech",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/snipers/achilles.png"
+  },
+  {
+    "name": "Achilles X Mod2",
+    "filename": "achilles-x-mod2.png",
+    "type": "snipers",
+    "class": "Precision Rifle",
+    "evolution": "Tech",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/snipers/achilles-x-mod2.png"
+  },
+  {
+    "name": "Agaou",
+    "filename": "agaou.png",
+    "type": "melee",
+    "class": "Axe",
+    "evolution": "Throwable",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/agaou.png"
+  },
+  {
+    "name": "Ajax",
+    "filename": "ajax.png",
+    "type": "fusils",
+    "class": "Rifle",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/fusils/ajax.png"
+  },
+  {
+    "name": "Alabai",
+    "filename": "alabai.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/alabai.png"
+  },
+  {
+    "name": "Ambition",
+    "filename": "ambition.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Tech",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/ambition.png"
+  },
+  {
+    "name": "Amnesty",
+    "filename": "amnesty.png",
+    "type": "pistolets",
+    "class": "Revolver",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/amnesty.png"
+  },
+  {
+    "name": "Amstaff",
+    "filename": "amstaff.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/amstaff.png"
+  },
+  {
+    "name": "Apparition",
+    "filename": "apparition.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Tech",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/apparition.png"
+  },
+  {
+    "name": "Ar Raygun Supreme 9000",
+    "filename": "ar-raygun-supreme-9000.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/ar-raygun-supreme-9000.png"
+  },
+  {
+    "name": "Archangel",
+    "filename": "archangel.png",
+    "type": "pistolets",
+    "class": "Revolver",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/archangel.png"
+  },
+  {
+    "name": "Ashura",
+    "filename": "ashura.png",
+    "type": "snipers",
+    "class": "Sniper Rifle",
+    "evolution": "Smart",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/snipers/ashura.png"
+  },
+  {
+    "name": "Baby Boomer",
+    "filename": "baby-boomer.png",
+    "type": "melee",
+    "class": "Two Handed Club",
+    "evolution": "Blunt",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/baby-boomer.png"
+  },
+  {
+    "name": "Bald Eagle",
+    "filename": "bald-eagle.png",
+    "type": "pistolets",
+    "class": "Revolver",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/bald-eagle.png"
+  },
+  {
+    "name": "Baseball Bat",
+    "filename": "baseball-bat.png",
+    "type": "melee",
+    "class": "Two Handed Club",
+    "evolution": "Blunt",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/baseball-bat.png"
+  },
+  {
+    "name": "Baseball Bat X Mod2",
+    "filename": "baseball-bat-x-mod2.png",
+    "type": "melee",
+    "class": "Two Handed Club",
+    "evolution": "Blunt",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/baseball-bat-x-mod2.png"
+  },
+  {
+    "name": "Bfc 9000",
+    "filename": "bfc-9000.png",
+    "type": "melee",
+    "class": "One Handed Club",
+    "evolution": "Blunt",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/bfc-9000.png"
+  },
+  {
+    "name": "Black Unicorn",
+    "filename": "black-unicorn.png",
+    "type": "melee",
+    "class": "Katana",
+    "evolution": "Blade",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/black-unicorn.png"
+  },
+  {
+    "name": "Bloody Maria",
+    "filename": "bloody-maria.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/bloody-maria.png"
+  },
+  {
+    "name": "Blue Fang",
+    "filename": "blue-fang.png",
+    "type": "melee",
+    "class": "Knife",
+    "evolution": "Throwable",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/blue-fang.png"
+  },
+  {
+    "name": "Borzaya",
+    "filename": "borzaya.png",
+    "type": "snipers",
+    "class": "Sniper Rifle",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/snipers/borzaya.png"
+  },
+  {
+    "name": "Breakthrough",
+    "filename": "breakthrough.png",
+    "type": "snipers",
+    "class": "Sniper Rifle",
+    "evolution": "Tech",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/snipers/breakthrough.png"
+  },
+  {
+    "name": "Burya",
+    "filename": "burya.png",
+    "type": "pistolets",
+    "class": "Revolver",
+    "evolution": "Tech",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/burya.png"
+  },
+  {
+    "name": "Butchers Cleaver",
+    "filename": "butchers-cleaver.png",
+    "type": "melee",
+    "class": "Knife",
+    "evolution": "Throwable",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/butchers-cleaver.png"
+  },
+  {
+    "name": "Buzzsaw",
+    "filename": "buzzsaw.png",
+    "type": "mitraillettes",
+    "class": "Submachine Gun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/mitraillettes/buzzsaw.png"
+  },
+  {
+    "name": "Byakko",
+    "filename": "byakko.png",
+    "type": "melee",
+    "class": "Katana",
+    "evolution": "Blade",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/byakko.png"
+  },
+  {
+    "name": "Caretakers Spade",
+    "filename": "caretakers-spade.png",
+    "type": "melee",
+    "class": "Hammer",
+    "evolution": "Blunt",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/caretakers-spade.png"
+  },
+  {
+    "name": "Carmen",
+    "filename": "carmen.png",
+    "type": "fusils",
+    "class": "Rifle",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils/carmen.png"
+  },
+  {
+    "name": "Carnage",
+    "filename": "carnage.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/carnage.png"
+  },
+  {
+    "name": "Catahoula",
+    "filename": "catahoula.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Tech",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/catahoula.png"
+  },
+  {
+    "name": "Chao",
+    "filename": "chao.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Smart",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/chao.png"
+  },
+  {
+    "name": "Chaos",
+    "filename": "chaos.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Tech",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/chaos.png"
+  },
+  {
+    "name": "Cheetah",
+    "filename": "cheetah.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/cheetah.png"
+  },
+  {
+    "name": "Chefs Knife",
+    "filename": "chefs-knife.png",
+    "type": "melee",
+    "class": "Chef&#039;s Knife",
+    "evolution": "Throwable",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/chefs-knife.png"
+  },
+  {
+    "name": "Chesapeake",
+    "filename": "chesapeake.png",
+    "type": "mitraillettes",
+    "class": "Submachine Gun",
+    "evolution": "Smart",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/mitraillettes/chesapeake.png"
+  },
+  {
+    "name": "Chinook",
+    "filename": "chinook.png",
+    "type": "fusils",
+    "class": "Rifle",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils/chinook.png"
+  },
+  {
+    "name": "Claw",
+    "filename": "claw.png",
+    "type": "melee",
+    "class": "Axe",
+    "evolution": "Throwable",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/claw.png"
+  },
+  {
+    "name": "Claw X Mod2",
+    "filename": "claw-x-mod2.png",
+    "type": "melee",
+    "class": "Axe",
+    "evolution": "Throwable",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/claw-x-mod2.png"
+  },
+  {
+    "name": "Cocktail Stick",
+    "filename": "cocktail-stick.png",
+    "type": "melee",
+    "class": "Katana",
+    "evolution": "Blade",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/cocktail-stick.png"
+  },
+  {
+    "name": "Comrades Hammer",
+    "filename": "comrades-hammer.png",
+    "type": "melee",
+    "class": "Comrade&#039;s Hammer",
+    "evolution": "Tech",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/comrades-hammer.png"
+  },
+  {
+    "name": "Copperhead",
+    "filename": "copperhead.png",
+    "type": "fusils",
+    "class": "Rifle",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/fusils/copperhead.png"
+  },
+  {
+    "name": "Cottonmouth",
+    "filename": "cottonmouth.png",
+    "type": "melee",
+    "class": "One Handed Club",
+    "evolution": "Blunt",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/cottonmouth.png"
+  },
+  {
+    "name": "Crash",
+    "filename": "crash.png",
+    "type": "pistolets",
+    "class": "Revolver",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/crash.png"
+  },
+  {
+    "name": "Crimestopper",
+    "filename": "crimestopper.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Smart",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/crimestopper.png"
+  },
+  {
+    "name": "Crowbar",
+    "filename": "crowbar.png",
+    "type": "melee",
+    "class": "One Handed Club",
+    "evolution": "Blunt",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/crowbar.png"
+  },
+  {
+    "name": "Crusher",
+    "filename": "crusher.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/crusher.png"
+  },
+  {
+    "name": "Cut O Matic",
+    "filename": "cut-o-matic.png",
+    "type": "melee",
+    "class": "The missing link between machetes and chainsaws. As effective and it is noisy – forget about stealth when using this baby.",
+    "evolution": "Blade",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/cut-o-matic.png"
+  },
+  {
+    "name": "Cut O Matic X Mod2",
+    "filename": "cut-o-matic-x-mod2.png",
+    "type": "melee",
+    "class": "The missing link between machetes and chainsaws. As effective and it is noisy – forget about stealth when using this baby.",
+    "evolution": "Blade",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/cut-o-matic-x-mod2.png"
+  },
+  {
+    "name": "Da8 Umbra",
+    "filename": "da8-umbra.png",
+    "type": "fusils",
+    "class": "Rifle",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/fusils/da8-umbra.png"
+  },
+  {
+    "name": "Death And Taxes",
+    "filename": "death-and-taxes.png",
+    "type": "melee",
+    "class": "Death and Taxes",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/death-and-taxes.png"
+  },
+  {
+    "name": "Defender",
+    "filename": "defender.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/defender.png"
+  },
+  {
+    "name": "Dezerter",
+    "filename": "dezerter.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun Dual",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/dezerter.png"
+  },
+  {
+    "name": "Dian",
+    "filename": "dian.png",
+    "type": "mitraillettes",
+    "class": "Submachine Gun",
+    "evolution": "Smart",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/mitraillettes/dian.png"
+  },
+  {
+    "name": "Divided We Stand",
+    "filename": "divided-we-stand.png",
+    "type": "fusils",
+    "class": "Rifle",
+    "evolution": "Smart",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils/divided-we-stand.png"
+  },
+  {
+    "name": "Doom Doom",
+    "filename": "doom-doom.png",
+    "type": "pistolets",
+    "class": "Revolver",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/doom-doom.png"
+  },
+  {
+    "name": "Dying Night",
+    "filename": "dying-night.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/dying-night.png"
+  },
+  {
+    "name": "Electric Baton Alpha",
+    "filename": "electric-baton-alpha.png",
+    "type": "melee",
+    "class": "One Handed Club",
+    "evolution": "Blunt",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/electric-baton-alpha.png"
+  },
+  {
+    "name": "Electric Baton Beta",
+    "filename": "electric-baton-beta.png",
+    "type": "melee",
+    "class": "One Handed Club",
+    "evolution": "Blunt",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/electric-baton-beta.png"
+  },
+  {
+    "name": "Electric Baton Gamma",
+    "filename": "electric-baton-gamma.png",
+    "type": "melee",
+    "class": "One Handed Club",
+    "evolution": "Blunt",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/electric-baton-gamma.png"
+  },
+  {
+    "name": "Errata",
+    "filename": "errata.png",
+    "type": "melee",
+    "class": "Katana",
+    "evolution": "Blade",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/errata.png"
+  },
+  {
+    "name": "Fang",
+    "filename": "fang.png",
+    "type": "melee",
+    "class": "Knife",
+    "evolution": "Throwable",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/fang.png"
+  },
+  {
+    "name": "Fenrir",
+    "filename": "fenrir.png",
+    "type": "mitraillettes",
+    "class": "Submachine Gun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/mitraillettes/fenrir.png"
+  },
+  {
+    "name": "Foxhound",
+    "filename": "foxhound.png",
+    "type": "snipers",
+    "class": "Sniper Rifle",
+    "evolution": "Tech",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/snipers/foxhound.png"
+  },
+  {
+    "name": "Genjiroh",
+    "filename": "genjiroh.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Smart",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/genjiroh.png"
+  },
+  {
+    "name": "Gold Plated Baseball Bat",
+    "filename": "gold-plated-baseball-bat.png",
+    "type": "melee",
+    "class": "Two Handed Club",
+    "evolution": "Blunt",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/gold-plated-baseball-bat.png"
+  },
+  {
+    "name": "Grad",
+    "filename": "grad.png",
+    "type": "snipers",
+    "class": "Sniper Rifle",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/snipers/grad.png"
+  },
+  {
+    "name": "Gris Gris",
+    "filename": "gris-gris.png",
+    "type": "pistolets",
+    "class": "Revolver",
+    "evolution": "Tech",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/gris-gris.png"
+  },
+  {
+    "name": "Guillotine",
+    "filename": "guillotine.png",
+    "type": "mitraillettes",
+    "class": "Submachine Gun",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/mitraillettes/guillotine.png"
+  },
+  {
+    "name": "Guillotine X Mod2",
+    "filename": "guillotine-x-mod2.png",
+    "type": "mitraillettes",
+    "class": "Submachine Gun",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/mitraillettes/guillotine-x-mod2.png"
+  },
+  {
+    "name": "Guts",
+    "filename": "guts.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/guts.png"
+  },
+  {
+    "name": "Gwynbleidd",
+    "filename": "gwynbleidd.png",
+    "type": "melee",
+    "class": "Katana",
+    "evolution": "Blade",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/gwynbleidd.png"
+  },
+  {
+    "name": "Ha 4 Grit",
+    "filename": "ha-4-grit.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Tech",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/ha-4-grit.png"
+  },
+  {
+    "name": "Hammer",
+    "filename": "hammer.png",
+    "type": "melee",
+    "class": "Hammer",
+    "evolution": "Blunt",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/hammer.png"
+  },
+  {
+    "name": "Hawk",
+    "filename": "hawk.png",
+    "type": "fusils",
+    "class": "Rifle",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils/hawk.png"
+  },
+  {
+    "name": "Headhunter",
+    "filename": "headhunter.png",
+    "type": "melee",
+    "class": "Knife",
+    "evolution": "Throwable",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/headhunter.png"
+  },
+  {
+    "name": "Her Majesty",
+    "filename": "her-majesty.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/her-majesty.png"
+  },
+  {
+    "name": "Hercules 3ax",
+    "filename": "hercules-3ax.png",
+    "type": "fusils",
+    "class": "Rifle",
+    "evolution": "Smart",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/fusils/hercules-3ax.png"
+  },
+  {
+    "name": "Hypercritical",
+    "filename": "hypercritical.png",
+    "type": "snipers",
+    "class": "Precision Rifle",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/snipers/hypercritical.png"
+  },
+  {
+    "name": "Igla",
+    "filename": "igla.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun Dual",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/igla.png"
+  },
+  {
+    "name": "Jinchu Maru",
+    "filename": "jinchu-maru.png",
+    "type": "melee",
+    "class": "Katana",
+    "evolution": "Blade",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/jinchu-maru.png"
+  },
+  {
+    "name": "Kaiken",
+    "filename": "kaiken.png",
+    "type": "melee",
+    "class": "Knife",
+    "evolution": "Throwable",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/kaiken.png"
+  },
+  {
+    "name": "Kanabo",
+    "filename": "kanabo.png",
+    "type": "melee",
+    "class": "Two Handed Club",
+    "evolution": "Blunt",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/kanabo.png"
+  },
+  {
+    "name": "Kappa",
+    "filename": "kappa.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Smart",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/kappa.png"
+  },
+  {
+    "name": "Kappa X Mod2",
+    "filename": "kappa-x-mod2.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Smart",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/kappa-x-mod2.png"
+  },
+  {
+    "name": "Katana",
+    "filename": "katana.png",
+    "type": "melee",
+    "class": "Katana",
+    "evolution": "Blade",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/katana.png"
+  },
+  {
+    "name": "Kenshin",
+    "filename": "kenshin.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Tech",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/kenshin.png"
+  },
+  {
+    "name": "Knuckles",
+    "filename": "knuckles.png",
+    "type": "melee",
+    "class": "Two Handed Club",
+    "evolution": "Blunt",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/knuckles.png"
+  },
+  {
+    "name": "Kolac",
+    "filename": "kolac.png",
+    "type": "snipers",
+    "class": "Precision Rifle",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/snipers/kolac.png"
+  },
+  {
+    "name": "Kongou",
+    "filename": "kongou.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/kongou.png"
+  },
+  {
+    "name": "Kukri",
+    "filename": "kukri.png",
+    "type": "melee",
+    "class": "Machete",
+    "evolution": "Blade",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/kukri.png"
+  },
+  {
+    "name": "Kyubi",
+    "filename": "kyubi.png",
+    "type": "fusils",
+    "class": "Rifle",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/fusils/kyubi.png"
+  },
+  {
+    "name": "Kyubi X Mod2",
+    "filename": "kyubi-x-mod2.png",
+    "type": "fusils",
+    "class": "Rifle",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils/kyubi-x-mod2.png"
+  },
+  {
+    "name": "La Chingona Dorada",
+    "filename": "la-chingona-dorada.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/la-chingona-dorada.png"
+  },
+  {
+    "name": "Laika",
+    "filename": "laika.png",
+    "type": "pistolets",
+    "class": "Revolver",
+    "evolution": "Tech",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/laika.png"
+  },
+  {
+    "name": "Lexington X Mod2",
+    "filename": "lexington-x-mod2.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/lexington-x-mod2.png"
+  },
+  {
+    "name": "Liberty",
+    "filename": "liberty.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/liberty.png"
+  },
+  {
+    "name": "Lizzie",
+    "filename": "lizzie.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Tech",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/lizzie.png"
+  },
+  {
+    "name": "M 10af Lexington",
+    "filename": "m-10af-lexington.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/m-10af-lexington.png"
+  },
+  {
+    "name": "Ma70 Hb",
+    "filename": "ma70-hb.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/ma70-hb.png"
+  },
+  {
+    "name": "Ma70 Hb X Mod2",
+    "filename": "ma70-hb-x-mod2.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/ma70-hb-x-mod2.png"
+  },
+  {
+    "name": "Machete",
+    "filename": "machete.png",
+    "type": "melee",
+    "class": "Machete",
+    "evolution": "Blade",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/machete.png"
+  },
+  {
+    "name": "Malorian Arms 3516",
+    "filename": "malorian-arms-3516.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/malorian-arms-3516.png"
+  },
+  {
+    "name": "Mancinella",
+    "filename": "mancinella.png",
+    "type": "pistolets",
+    "class": "Revolver",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/mancinella.png"
+  },
+  {
+    "name": "Masamune",
+    "filename": "masamune.png",
+    "type": "fusils",
+    "class": "Rifle",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/fusils/masamune.png"
+  },
+  {
+    "name": "Metel",
+    "filename": "metel.png",
+    "type": "pistolets",
+    "class": "Revolver",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/metel.png"
+  },
+  {
+    "name": "Militech Ticon",
+    "filename": "militech-ticon.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "tech",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/militech-ticon.png"
+  },
+  {
+    "name": "Mk 31 Hmg",
+    "filename": "mk-31-hmg.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/mk-31-hmg.png"
+  },
+  {
+    "name": "Monkey Wrench",
+    "filename": "monkey-wrench.png",
+    "type": "melee",
+    "class": "One Handed Club",
+    "evolution": "Blunt",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/monkey-wrench.png"
+  },
+  {
+    "name": "Moron Labe",
+    "filename": "moron-labe.png",
+    "type": "fusils",
+    "class": "Rifle",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils/moron-labe.png"
+  },
+  {
+    "name": "Mox",
+    "filename": "mox.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/mox.png"
+  },
+  {
+    "name": "Murphys Law",
+    "filename": "murphys-law.png",
+    "type": "melee",
+    "class": "One Handed Club",
+    "evolution": "Blunt",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/murphys-law.png"
+  },
+  {
+    "name": "Ndi Osprey",
+    "filename": "ndi-osprey.png",
+    "type": "snipers",
+    "class": "Sniper Rifle",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/snipers/ndi-osprey.png"
+  },
+  {
+    "name": "Nehan",
+    "filename": "nehan.png",
+    "type": "melee",
+    "class": "Knife",
+    "evolution": "Throwable",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/nehan.png"
+  },
+  {
+    "name": "Nekomata",
+    "filename": "nekomata.png",
+    "type": "snipers",
+    "class": "Sniper Rifle",
+    "evolution": "Tech",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/snipers/nekomata.png"
+  },
+  {
+    "name": "Neurotoxin Knife",
+    "filename": "neurotoxin-knife.png",
+    "type": "melee",
+    "class": "Neurotoxin Knife",
+    "evolution": "Throwable",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/neurotoxin-knife.png"
+  },
+  {
+    "name": "Nova",
+    "filename": "nova.png",
+    "type": "pistolets",
+    "class": "Revolver",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/nova.png"
+  },
+  {
+    "name": "Nue",
+    "filename": "nue.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/nue.png"
+  },
+  {
+    "name": "Ofive",
+    "filename": "ofive.png",
+    "type": "snipers",
+    "class": "Sniper Rifle",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/snipers/ofive.png"
+  },
+  {
+    "name": "Ogou",
+    "filename": "ogou.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Smart",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/ogou.png"
+  },
+  {
+    "name": "Ol Reliable",
+    "filename": "ol-reliable.png",
+    "type": "pistolets",
+    "class": "Revolver",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/ol-reliable.png"
+  },
+  {
+    "name": "Omaha",
+    "filename": "omaha.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Tech",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/omaha.png"
+  },
+  {
+    "name": "Order",
+    "filename": "order.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun Dual",
+    "evolution": "Tech",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/order.png"
+  },
+  {
+    "name": "Overture",
+    "filename": "overture.png",
+    "type": "pistolets",
+    "class": "Revolver",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/overture.png"
+  },
+  {
+    "name": "Overwatch",
+    "filename": "overwatch.png",
+    "type": "snipers",
+    "class": "Sniper Rifle",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/snipers/overwatch.png"
+  },
+  {
+    "name": "Palica",
+    "filename": "palica.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun Dual",
+    "evolution": "Smart",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/palica.png"
+  },
+  {
+    "name": "Pariah",
+    "filename": "pariah.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Tech",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/pariah.png"
+  },
+  {
+    "name": "Pit Bull",
+    "filename": "pit-bull.png",
+    "type": "fusils",
+    "class": "Rifle",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils/pit-bull.png"
+  },
+  {
+    "name": "Pizdets",
+    "filename": "pizdets.png",
+    "type": "mitraillettes",
+    "class": "Submachine Gun",
+    "evolution": "Smart",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/mitraillettes/pizdets.png"
+  },
+  {
+    "name": "Plan B",
+    "filename": "plan-b.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/plan-b.png"
+  },
+  {
+    "name": "Pozhar X Mod2",
+    "filename": "pozhar-x-mod2.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/pozhar-x-mod2.png"
+  },
+  {
+    "name": "Prejudice",
+    "filename": "prejudice.png",
+    "type": "fusils",
+    "class": "Rifle",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils/prejudice.png"
+  },
+  {
+    "name": "Pride",
+    "filename": "pride.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/pride.png"
+  },
+  {
+    "name": "Problem Solver",
+    "filename": "problem-solver.png",
+    "type": "mitraillettes",
+    "class": "Submachine Gun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/mitraillettes/problem-solver.png"
+  },
+  {
+    "name": "Prototype Shingen Mark V",
+    "filename": "prototype-shingen-mark-v.png",
+    "type": "mitraillettes",
+    "class": "Submachine Gun",
+    "evolution": "Smart",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/mitraillettes/prototype-shingen-mark-v.png"
+  },
+  {
+    "name": "Psalm 116",
+    "filename": "psalm-116.png",
+    "type": "fusils",
+    "class": "Rifle",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils/psalm-116.png"
+  },
+  {
+    "name": "Pulsar",
+    "filename": "pulsar.png",
+    "type": "mitraillettes",
+    "class": "Submachine Gun",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/mitraillettes/pulsar.png"
+  },
+  {
+    "name": "Punknife",
+    "filename": "punknife.png",
+    "type": "melee",
+    "class": "Punknife",
+    "evolution": "Throwable",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/punknife.png"
+  },
+  {
+    "name": "Quasar",
+    "filename": "quasar.png",
+    "type": "pistolets",
+    "class": "Revolver",
+    "evolution": "Tech",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/quasar.png"
+  },
+  {
+    "name": "Raiju",
+    "filename": "raiju.png",
+    "type": "mitraillettes",
+    "class": "Submachine Gun",
+    "evolution": "Tech",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/mitraillettes/raiju.png"
+  },
+  {
+    "name": "Rasetsu",
+    "filename": "rasetsu.png",
+    "type": "snipers",
+    "class": "Sniper Rifle",
+    "evolution": "Tech",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/snipers/rasetsu.png"
+  },
+  {
+    "name": "Razor",
+    "filename": "razor.png",
+    "type": "melee",
+    "class": "Machete",
+    "evolution": "Blade",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/razor.png"
+  },
+  {
+    "name": "Riskit",
+    "filename": "riskit.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/riskit.png"
+  },
+  {
+    "name": "Rook",
+    "filename": "rook.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/rook.png"
+  },
+  {
+    "name": "Rosco",
+    "filename": "rosco.png",
+    "type": "pistolets",
+    "class": "Revolver",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/rosco.png"
+  },
+  {
+    "name": "Saratoga",
+    "filename": "saratoga.png",
+    "type": "mitraillettes",
+    "class": "Submachine Gun",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/mitraillettes/saratoga.png"
+  },
+  {
+    "name": "Sasquatchs Hammer",
+    "filename": "sasquatchs-hammer.png",
+    "type": "melee",
+    "class": "Sasquatch&#039;s Hammer",
+    "evolution": "Blunt",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/sasquatchs-hammer.png"
+  },
+  {
+    "name": "Satara",
+    "filename": "satara.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun Dual",
+    "evolution": "Tech",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/satara.png"
+  },
+  {
+    "name": "Satori",
+    "filename": "satori.png",
+    "type": "melee",
+    "class": "Katana",
+    "evolution": "Blade",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/satori.png"
+  },
+  {
+    "name": "Scalpel",
+    "filename": "scalpel.png",
+    "type": "melee",
+    "class": "Katana",
+    "evolution": "Blade",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/scalpel.png"
+  },
+  {
+    "name": "Scorch",
+    "filename": "scorch.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Tech",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/scorch.png"
+  },
+  {
+    "name": "Senkoh Lx",
+    "filename": "senkoh-lx.png",
+    "type": "mitraillettes",
+    "class": "Submachine Gun",
+    "evolution": "Tech",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/mitraillettes/senkoh-lx.png"
+  },
+  {
+    "name": "Seraph",
+    "filename": "seraph.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/seraph.png"
+  },
+  {
+    "name": "Shingen",
+    "filename": "shingen.png",
+    "type": "mitraillettes",
+    "class": "Submachine Gun",
+    "evolution": "Smart",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/mitraillettes/shingen.png"
+  },
+  {
+    "name": "Sidewinder",
+    "filename": "sidewinder.png",
+    "type": "fusils",
+    "class": "Rifle",
+    "evolution": "Smart",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/fusils/sidewinder.png"
+  },
+  {
+    "name": "Sir John Phallustiff",
+    "filename": "sir-john-phallustiff.png",
+    "type": "melee",
+    "class": "One Handed Club",
+    "evolution": "Blunt",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/sir-john-phallustiff.png"
+  },
+  {
+    "name": "Skippy",
+    "filename": "skippy.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Smart",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/skippy.png"
+  },
+  {
+    "name": "Slaughtomatic",
+    "filename": "slaughtomatic.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/slaughtomatic.png"
+  },
+  {
+    "name": "Sor 22",
+    "filename": "sor-22.png",
+    "type": "snipers",
+    "class": "Precision Rifle",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/snipers/sor-22.png"
+  },
+  {
+    "name": "Sovereign",
+    "filename": "sovereign.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun Dual",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/sovereign.png"
+  },
+  {
+    "name": "Sparky",
+    "filename": "sparky.png",
+    "type": "snipers",
+    "class": "Sniper Rifle",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/snipers/sparky.png"
+  },
+  {
+    "name": "Steel Pipe",
+    "filename": "steel-pipe.png",
+    "type": "melee",
+    "class": "One Handed Club",
+    "evolution": "Blunt",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/steel-pipe.png"
+  },
+  {
+    "name": "Stinger",
+    "filename": "stinger.png",
+    "type": "melee",
+    "class": "Knife",
+    "evolution": "Throwable",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/stinger.png"
+  },
+  {
+    "name": "Tactician",
+    "filename": "tactician.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/tactician.png"
+  },
+  {
+    "name": "Taigan",
+    "filename": "taigan.png",
+    "type": "pistolets",
+    "class": "Revolver",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/pistolets/taigan.png"
+  },
+  {
+    "name": "Testera",
+    "filename": "testera.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun Dual",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/testera.png"
+  },
+  {
+    "name": "The Headsman",
+    "filename": "the-headsman.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/the-headsman.png"
+  },
+  {
+    "name": "Tinker Bell",
+    "filename": "tinker-bell.png",
+    "type": "melee",
+    "class": "One Handed Club",
+    "evolution": "Blunt",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/tinker-bell.png"
+  },
+  {
+    "name": "Tire Iron",
+    "filename": "tire-iron.png",
+    "type": "melee",
+    "class": "One Handed Club",
+    "evolution": "Blunt",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/tire-iron.png"
+  },
+  {
+    "name": "Tomahawk",
+    "filename": "tomahawk.png",
+    "type": "melee",
+    "class": "Axe",
+    "evolution": "Throwable",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/melee/tomahawk.png"
+  },
+  {
+    "name": "Tsumetogi",
+    "filename": "tsumetogi.png",
+    "type": "melee",
+    "class": "Katana",
+    "evolution": "Blade",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/tsumetogi.png"
+  },
+  {
+    "name": "Umbra X Mod2",
+    "filename": "umbra-x-mod2.png",
+    "type": "fusils",
+    "class": "Rifle",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/fusils/umbra-x-mod2.png"
+  },
+  {
+    "name": "Unity",
+    "filename": "unity.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/unity.png"
+  },
+  {
+    "name": "Volkodav",
+    "filename": "volkodav.png",
+    "type": "melee",
+    "class": "Machete",
+    "evolution": "Blade",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/melee/volkodav.png"
+  },
+  {
+    "name": "Vst 37 Pozhar",
+    "filename": "vst-37-pozhar.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun",
+    "evolution": "Power",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/vst-37-pozhar.png"
+  },
+  {
+    "name": "Warden",
+    "filename": "warden.png",
+    "type": "mitraillettes",
+    "class": "Submachine Gun",
+    "evolution": "Smart",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/mitraillettes/warden.png"
+  },
+  {
+    "name": "Widow Maker",
+    "filename": "widow-maker.png",
+    "type": "snipers",
+    "class": "Precision Rifle",
+    "evolution": "Tech",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/snipers/widow-maker.png"
+  },
+  {
+    "name": "Wild Dog",
+    "filename": "wild-dog.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun",
+    "evolution": "Power",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/wild-dog.png"
+  },
+  {
+    "name": "Yasha",
+    "filename": "yasha.png",
+    "type": "snipers",
+    "class": "Sniper Rifle",
+    "evolution": "Smart",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/snipers/yasha.png"
+  },
+  {
+    "name": "Yinglong",
+    "filename": "yinglong.png",
+    "type": "mitraillettes",
+    "class": "Submachine Gun",
+    "evolution": "Smart",
+    "iconic": true,
+    "path": "https://deadwire.fr/media/armes/mitraillettes/yinglong.png"
+  },
+  {
+    "name": "Yukimura",
+    "filename": "yukimura.png",
+    "type": "pistolets",
+    "class": "Handgun",
+    "evolution": "Smart",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/pistolets/yukimura.png"
+  },
+  {
+    "name": "Zhuo",
+    "filename": "zhuo.png",
+    "type": "fusils-a-pompe",
+    "class": "Shotgun",
+    "evolution": "Smart",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/fusils-a-pompe/zhuo.png"
+  },
+  {
+    "name": "MOLODETS BioHaz Grenade",
+    "filename": "molodets-biohaz-grenade.png",
+    "type": "autres",
+    "class": "Grenade",
+    "evolution": "Throwable",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/autres/molodets-biohaz-grenade.png"
+  },
+  {
+    "name": "GASH Antipersonnel Grenade",
+    "filename": "gash-antipersonnel-grenade.png",
+    "type": "autres",
+    "class": "Grenade",
+    "evolution": "Throwable",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/autres/gash-antipersonnel-grenade.png"
+  },
+  {
+    "name": "EMP Grenade",
+    "filename": "emp-grenade.png",
+    "type": "autres",
+    "class": "Grenade",
+    "evolution": "Throwable",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/autres/emp-grenade.png"
+  },
+  {
+    "name": "X-22 Flashbang Grenade",
+    "filename": "x-22-flashbang-grenade.png",
+    "type": "autres",
+    "class": "Grenade",
+    "evolution": "Throwable",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/autres/x-22-flashbang-grenade.png"
+  },
+  {
+    "name": "F-GX Frag Grenade",
+    "filename": "f-gx-frag-grenade.png",
+    "type": "autres",
+    "class": "Grenade",
+    "evolution": "Throwable",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/autres/f-gx-frag-grenade.png"
+  },
+  {
+    "name": "CHAR Incendiary Grenade",
+    "filename": "char-incendiary-grenade.png",
+    "type": "autres",
+    "class": "Grenade",
+    "evolution": "Throwable",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/autres/char-incendiary-grenade.png"
+  },
+  {
+    "name": "Recon Grenade",
+    "filename": "recon-grenade.png",
+    "type": "autres",
+    "class": "Grenade",
+    "evolution": "Throwable",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/autres/recon-grenade.png"
+  },
+  {
+    "name": "Smoke Grenade",
+    "filename": "smoke-grenade.png",
+    "type": "autres",
+    "class": "Grenade",
+    "evolution": "Throwable",
+    "iconic": false,
+    "path": "https://deadwire.fr/media/armes/autres/smoke-grenade.png"
+  }
+]

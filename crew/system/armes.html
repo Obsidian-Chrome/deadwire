@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Icônes d'armes - Cyberpunk 2077 | Le Deadwire</title>
+  <link rel="icon" href="/media/Deadwire_Logo_Neon.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="system.css" />
+  
+  <style>
+    .weapons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .weapon-card {
+      background: rgba(10, 0, 12, 0.6);
+      border: 1px solid rgba(255, 42, 61, 0.3);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    .weapon-card:hover {
+      border-color: rgba(255, 42, 61, 0.8);
+      background: rgba(255, 42, 61, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .weapon-card img {
+      width: 100%;
+      height: auto;
+      max-width: 120px;
+      margin: 0 auto;
+      display: block;
+      image-rendering: crisp-edges;
+    }
+
+    .weapon-name {
+      margin-top: 8px;
+      font-size: 0.85rem;
+      color: rgba(247, 233, 239, 0.9);
+      word-break: break-word;
+    }
+
+    .weapon-type-section {
+      margin-bottom: 48px;
+    }
+
+    .weapon-type-title {
+      color: rgba(255, 42, 61, 0.95);
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid rgba(255, 42, 61, 0.3);
+    }
+
+    .copy-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(46, 204, 113, 0.95);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 0.3s;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .copy-notification.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .search-box {
+      margin-bottom: 24px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(10, 0, 12, 0.6);
+      border: 1px solid rgba(255, 42, 61, 0.3);
+      border-radius: 8px;
+      color: rgba(247, 233, 239, 0.95);
+      font-size: 1rem;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: rgba(255, 42, 61, 0.8);
+    }
+
+    .filters {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 8px 16px;
+      background: rgba(10, 0, 12, 0.6);
+      border: 1px solid rgba(255, 42, 61, 0.3);
+      border-radius: 6px;
+      color: rgba(247, 233, 239, 0.9);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+
+    .filter-btn:hover {
+      border-color: rgba(255, 42, 61, 0.6);
+      background: rgba(255, 42, 61, 0.1);
+    }
+
+    .filter-btn.active {
+      background: rgba(255, 42, 61, 0.3);
+      border-color: rgba(255, 42, 61, 0.8);
+      font-weight: bold;
+    }
+
+    .weapon-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .weapon-modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      background: rgba(10, 0, 12, 0.95);
+      border: 2px solid rgba(255, 42, 61, 0.5);
+      border-radius: 12px;
+      padding: 32px;
+      max-width: 600px;
+      width: 100%;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: rgba(247, 233, 239, 0.7);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 8px;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: rgba(255, 42, 61, 0.95);
+    }
+
+    .modal-weapon-img {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 24px;
+      display: block;
+    }
+
+    .modal-weapon-name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: rgba(255, 42, 61, 0.95);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .copy-field {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .copy-field input {
+      flex: 1;
+      padding: 12px;
+      background: rgba(10, 0, 12, 0.6);
+      border: 1px solid rgba(255, 42, 61, 0.3);
+      border-radius: 6px;
+      color: rgba(247, 233, 239, 0.95);
+      font-family: monospace;
+      font-size: 0.9rem;
+    }
+
+    .copy-btn {
+      padding: 12px 24px;
+      background: rgba(255, 42, 61, 0.3);
+      border: 1px solid rgba(255, 42, 61, 0.5);
+      border-radius: 6px;
+      color: rgba(247, 233, 239, 0.95);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: bold;
+    }
+
+    .copy-btn:hover {
+      background: rgba(255, 42, 61, 0.5);
+      border-color: rgba(255, 42, 61, 0.8);
+    }
+
+    .field-label {
+      font-size: 0.85rem;
+      color: rgba(247, 233, 239, 0.7);
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .stats {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      background: rgba(255, 42, 61, 0.1);
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 42, 61, 0.3);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: rgba(247, 233, 239, 0.7);
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: rgba(255, 42, 61, 0.95);
+    }
+  </style>
+  
+  <script defer src="/shared/loader.js"></script>
+  <script defer src="/shared/crew-auth.js"></script>
+  <script defer src="/app.js"></script>
+</head>
+<body>
+
+  <main>
+    <section class="container" style="margin-top: 48px; margin-bottom: 48px;">
+      
+      <a href="/crew/system-v1/" style="display: inline-flex; align-items: center; gap: 8px; color: rgba(255, 42, 61, 0.9); text-decoration: none; font-weight: 600; margin-bottom: 24px; transition: all 0.2s;">
+        <i class="fa-solid fa-arrow-left"></i>
+        Retour au système v1
+      </a>
+      
+      <div style="margin-bottom: 32px;">
+        <p class="kicker">
+          <i class="fa-solid fa-lock"></i>
+          Ressources MJ
+        </p>
+        <h1 style="font-size: 2.5rem; margin: 16px 0; color: rgba(255, 42, 61, 0.95);">Icônes d'armes - Cyberpunk 2077</h1>
+        <p style="color: rgba(247, 233, 239, 0.7); font-size: 1.1rem;">
+          Cliquez sur une arme pour copier son lien direct
+        </p>
+      </div>
+      
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-label">Total</div>
+          <div class="stat-value" id="total-count">0</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Affichées</div>
+          <div class="stat-value" id="visible-count">0</div>
+        </div>
+      </div>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">Toutes</button>
+        <button class="filter-btn" data-filter="pistolets">Pistolets</button>
+        <button class="filter-btn" data-filter="fusils">Fusils</button>
+        <button class="filter-btn" data-filter="fusils-a-pompe">Fusils à pompe</button>
+        <button class="filter-btn" data-filter="mitraillettes">Mitraillettes</button>
+        <button class="filter-btn" data-filter="snipers">Snipers</button>
+        <button class="filter-btn" data-filter="melee">Mêlée</button>
+        <button class="filter-btn" data-filter="autres">Autres</button>
+      </div>
+      
+      <div style="margin-top: 16px;">
+        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: rgba(247, 233, 239, 0.9);">
+          <input type="checkbox" id="show-iconic" style="cursor: pointer;">
+          <span>Afficher les armes iconiques</span>
+        </label>
+      </div>
+
+      <div class="search-box">
+        <input 
+          type="text" 
+          id="search-input" 
+          placeholder="Rechercher une arme..."
+          autocomplete="off"
+        />
+      </div>
+
+      <div id="weapons-container"></div>
+
+
+
+    </section>
+  </main>
+
+  <script>
+    const weaponTypes = {
+      'pistolets': 'Pistolets',
+      'fusils': 'Fusils',
+      'fusils-a-pompe': 'Fusils à pompe',
+      'mitraillettes': 'Mitraillettes',
+      'snipers': 'Snipers',
+      'melee': 'Armes de mêlée',
+      'autres': 'Autres'
+    };
+
+    let allWeapons = [];
+    let weaponsMetadata = {};
+    let currentFilter = 'all';
+
+    // Charger les métadonnées
+    async function loadMetadata() {
+      try {
+        const response = await fetch('/media/armes/weapons-metadata.json');
+        const data = await response.json();
+        data.forEach(weapon => {
+          weaponsMetadata[weapon.path] = weapon;
+        });
+      } catch (error) {
+        console.log('Métadonnées non disponibles');
+      }
+    }
+
+    async function loadWeapons() {
+      const container = document.getElementById('weapons-container');
+      
+      // Grouper les armes par type
+      const weaponsByType = {};
+      
+      Object.keys(weaponTypes).forEach(type => {
+        weaponsByType[type] = [];
+      });
+      
+      // Remplir depuis les métadonnées
+      Object.values(weaponsMetadata).forEach(weapon => {
+        if (weaponsByType[weapon.type]) {
+          weaponsByType[weapon.type].push(weapon);
+        }
+      });
+      
+      // Créer les sections
+      for (const [typeKey, typeLabel] of Object.entries(weaponTypes)) {
+        const weapons = weaponsByType[typeKey];
+        
+        if (!weapons || weapons.length === 0) continue;
+
+        const section = document.createElement('div');
+        section.className = 'weapon-type-section';
+        section.dataset.type = typeKey;
+
+        const title = document.createElement('h2');
+        title.className = 'weapon-type-title';
+        title.textContent = `${typeLabel} (${weapons.length})`;
+        section.appendChild(title);
+
+        const grid = document.createElement('div');
+        grid.className = 'weapons-grid';
+
+        weapons.forEach(weapon => {
+          const card = document.createElement('div');
+          card.className = 'weapon-card';
+          card.dataset.name = weapon.name.toLowerCase();
+          card.dataset.type = typeKey;
+          card.dataset.iconic = weapon.iconic ? 'true' : 'false';
+          
+          // Traduire l'évolution en français
+          const evolutionFr = {
+            'Power': 'Cinétique',
+            'Tech': 'Technique',
+            'Smart': 'Intelligent',
+            'Blade': 'Lame',
+            'Blunt': 'Contondant',
+            'Throwable': 'Lançable'
+          };
+          
+          const evolutionText = evolutionFr[weapon.evolution] || weapon.evolution;
+          
+          // Ajouter une bordure selon l'évolution
+          if (weapon.evolution === 'Power') {
+            card.style.borderColor = 'rgba(255, 87, 51, 0.6)'; // Orange/Rouge
+          } else if (weapon.evolution === 'Tech') {
+            card.style.borderColor = 'rgba(51, 187, 255, 0.6)'; // Bleu
+          } else if (weapon.evolution === 'Smart') {
+            card.style.borderColor = 'rgba(255, 215, 0, 0.6)'; // Jaune/Or
+          }
+
+          const img = document.createElement('img');
+          img.src = `/media/armes/${typeKey}/${weapon.filename}`;
+          img.alt = weapon.name;
+          img.loading = 'lazy';
+
+          const name = document.createElement('div');
+          name.className = 'weapon-name';
+          name.textContent = weapon.name;
+          
+          // Ajouter badge iconique si applicable
+          if (weapon.iconic) {
+            const iconicBadge = document.createElement('span');
+            iconicBadge.textContent = ' ⭐';
+            iconicBadge.style.color = 'rgba(255, 215, 0, 0.9)';
+            iconicBadge.title = 'Iconique';
+            name.appendChild(iconicBadge);
+          }
+          
+          // Ajouter badge évolution
+          if (weapon.evolution && weapon.evolution !== 'Unknown') {
+            const evolutionBadge = document.createElement('div');
+            evolutionBadge.style.cssText = 'font-size: 0.7rem; margin-top: 4px; opacity: 0.7;';
+            evolutionBadge.textContent = evolutionText;
+            name.appendChild(evolutionBadge);
+          }
+
+          card.appendChild(img);
+          card.appendChild(name);
+
+          card.addEventListener('click', () => {
+            // Copier directement le lien
+            navigator.clipboard.writeText(weapon.path).then(() => {
+              card.style.backgroundColor = 'rgba(0, 255, 0, 0.1)';
+              setTimeout(() => {
+                card.style.backgroundColor = '';
+              }, 300);
+            });
+          });
+
+          grid.appendChild(card);
+          allWeapons.push({ 
+            element: card, 
+            name: weapon.name.toLowerCase(), 
+            type: typeKey,
+            iconic: weapon.iconic
+          });
+        });
+
+        section.appendChild(grid);
+        container.appendChild(section);
+      }
+
+      updateCounts();
+    }
+
+
+
+    function updateCounts() {
+      const total = allWeapons.length;
+      const visible = allWeapons.filter(w => w.element.style.display !== 'none').length;
+      
+      document.getElementById('total-count').textContent = total;
+      document.getElementById('visible-count').textContent = visible;
+    }
+
+    // Filtres
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        applyFilters();
+      });
+    });
+
+    function applyFilters() {
+      const query = document.getElementById('search-input').value.toLowerCase().trim();
+      const showIconic = document.getElementById('show-iconic').checked;
+
+      allWeapons.forEach(weapon => {
+        const matchesSearch = weapon.name.includes(query);
+        const matchesFilter = currentFilter === 'all' || weapon.type === currentFilter;
+        const matchesIconic = showIconic || !weapon.iconic;
+        weapon.element.style.display = (matchesSearch && matchesFilter && matchesIconic) ? '' : 'none';
+      });
+
+      // Masquer les sections vides
+      document.querySelectorAll('.weapon-type-section').forEach(section => {
+        const visibleCards = section.querySelectorAll('.weapon-card:not([style*="display: none"])');
+        section.style.display = visibleCards.length > 0 ? '' : 'none';
+      });
+
+      updateCounts();
+    }
+
+    // Recherche
+    document.getElementById('search-input').addEventListener('input', applyFilters);
+    
+    // Checkbox iconiques
+    document.getElementById('show-iconic').addEventListener('change', applyFilters);
+
+    // Charger au démarrage
+    loadMetadata().then(() => {
+      loadWeapons();
+      // Cacher les iconiques par défaut
+      applyFilters();
+    });
+  </script>
+
+</body>
+</html>

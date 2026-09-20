@@ -26,8 +26,8 @@
         <section class="pageHero">
           <div class="container">
             <p class="kicker">
-              <i class="fa-solid fa-lock"></i>
-              MJ Only
+              <i class="fa-solid fa-dice-d20"></i>
+              Système de jeu
             </p>
             <h1 class="title title--sm">Système de dés V1</h1>
             <p class="lead">Règles et mécaniques de jeu - Version 1</p>
@@ -61,6 +61,17 @@
                     <i class="fa-solid fa-arrow-trend-up"></i>
                     <span>Expérience</span>
                   </button>
+                  
+                  <div style="margin-top: 32px; padding-top: 16px; border-top: 1px solid rgba(255, 42, 61, 0.3);">
+                    <a href="/crew/system/armes.html" class="system-nav__item" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                      <i class="fa-solid fa-gun"></i>
+                      <span>Icônes d'armes</span>
+                    </a>
+                    <a href="/crew/system/armes-stats.html" class="system-nav__item" style="display: flex; align-items: center; gap: 12px; text-decoration: none; margin-top: 8px;">
+                      <i class="fa-solid fa-chart-bar"></i>
+                      <span>Statistiques d'armes</span>
+                    </a>
+                  </div>
                   <!-- Ajoute tes sections ici -->
                 </nav>
               </aside>
@@ -546,39 +557,59 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td><strong>Destruction sacrée</strong></td>
-                          <td>Peut détruire tout objet (si inférieur niveau)</td>
+                          <td><strong>Force brute</strong></td>
+                          <td>+1d pour soulever, pousser, tirer ou déplacer une charge lourde.</td>
                         </tr>
                         <tr>
-                          <td><strong>Puissance de soulèvement</strong></td>
-                          <td>+1d sur soulèvement ou port / plus élément RP</td>
+                          <td><strong>Poigne d'acier</strong></td>
+                          <td>+1d lors des saisies et pour empêcher une cible de se libérer.</td>
                         </tr>
                         <tr>
-                          <td><strong>Poigne écrasante</strong></td>
-                          <td>+1d CaC sur saisie / plus élément RP</td>
+                          <td><strong>Impact lourd</strong></td>
+                          <td>Les attaques de mêlée peuvent plus facilement endommager portes, mobilier, cloisons et protections légères.</td>
                         </tr>
                         <tr>
-                          <td><strong>One inch punch</strong></td>
-                          <td>Le joueur peut mobiliser toute sa force sur un geste minime (par exemple une pichenette)</td>
+                          <td><strong>Ancrage</strong></td>
+                          <td>+1d pour résister à une poussée, une projection ou maintenir sa position.</td>
+                        </tr>
+                        <tr>
+                          <td><strong>One Inch Punch</strong></td>
+                          <td>Le personnage peut utiliser toute sa puissance sans avoir besoin d'élan.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Projection</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Poigne d'acier</span>
+                          </td>
+                          <td>Après une saisie réussie, le personnage peut projeter sa cible sur une courte distance.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Arme titanesque</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Force brute</span>
+                          </td>
+                          <td>Permet d'utiliser efficacement des objets normalement trop lourds ou trop encombrants comme armes improvisées.</td>
                         </tr>
                         <tr>
                           <td>
                             <strong>Frappe lunaire</strong><br>
-                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : One inch punch</span>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : One Inch Punch</span>
                           </td>
-                          <td>Si le joueur le souhaite son attaque peut ne pas faire de dégât mais envoyer voler l'adversaire</td>
+                          <td>Une attaque peut ne pas infliger de dégâts et à la place projeter violemment la cible.</td>
                         </tr>
                         <tr>
-                          <td><strong>Attaque défigurante</strong></td>
-                          <td>Le joueur peut remodeler le visage des gens qu'il frappe</td>
+                          <td>
+                            <strong>Briseur</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Force épique 2</span>
+                          </td>
+                          <td>Permet de tenter de détruire à mains nues des portes renforcées, chaînes, mécanismes ou structures comparables.</td>
                         </tr>
                         <tr>
-                          <td><strong>Bond sacré</strong></td>
-                          <td>+1d sur les sauts</td>
-                        </tr>
-                        <tr>
-                          <td><strong>Jet prodigieux</strong></td>
-                          <td>+1d sur jet + élément RP</td>
+                          <td>
+                            <strong>Surcharge musculaire</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Force épique 2 + Force brute</span>
+                          </td>
+                          <td>Une fois par scène, gagne +2d sur une action de Force. L'effort entraîne ensuite une conséquence physique ou une fatigue importante.</td>
                         </tr>
                       </tbody>
                     </table>
@@ -594,39 +625,59 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td><strong>Sprinter éclair</strong></td>
-                          <td>+1d sur jet de course / plus élément RP</td>
+                          <td><strong>Main sûre</strong></td>
+                          <td>+1d pour les actions demandant une grande précision manuelle.</td>
                         </tr>
                         <tr>
-                          <td><strong>Tireur d'élite</strong></td>
-                          <td>Pas de malus à la visée. +1 réussite auto sur tout jet de tir</td>
+                          <td><strong>Équilibriste</strong></td>
+                          <td>+1d pour garder son équilibre ou évoluer sur une surface difficile.</td>
                         </tr>
                         <tr>
-                          <td><strong>Ricochet</strong></td>
-                          <td>Sur attaque à distance si nombre de succès sup à la moitié du pool de dés lancés, l'attaque du joueur peut ricocher une fois</td>
+                          <td><strong>Dégaine éclair</strong></td>
+                          <td>Sortir une arme ou un objet immédiatement accessible ne ralentit pas l'action du personnage.</td>
                         </tr>
                         <tr>
-                          <td><strong>Grâce féline</strong></td>
-                          <td>Le joueur n'est jamais victime d'une projection au sol</td>
+                          <td><strong>Doigts fantômes</strong></td>
+                          <td>+1d en crochetage, vol à la tire et manipulation discrète.</td>
                         </tr>
                         <tr>
-                          <td><strong>Bouclier Tourbillon</strong></td>
-                          <td>Le joueur peut désormais parer les attaques à distances comme il le ferait avec une attaque au corps à corps (si projectile physique)</td>
-                        </tr>
-                        <tr>
-                          <td><strong>Adversaire intouchable</strong></td>
-                          <td>+1d sur jet d'esquive</td>
-                        </tr>
-                        <tr>
-                          <td><strong>Petit singe</strong></td>
-                          <td>+1 sur un jet pour escalader</td>
+                          <td><strong>Réception parfaite</strong></td>
+                          <td>Réduit fortement les conséquences d'une chute lorsqu'une réception est possible.</td>
                         </tr>
                         <tr>
                           <td>
-                            <strong>Ignorer la gravité</strong><br>
-                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Petit singe</span>
+                            <strong>Mouvement fluide</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Équilibriste</span>
                           </td>
-                          <td>Marcher sur surface verticale, sur le plafond... (sur jet d'escalade)</td>
+                          <td>Permet d'enchaîner franchissement, glissade, saut ou escalade sans pénalité liée à la complexité du mouvement.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Tir réflexe</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Dégaine éclair</span>
+                          </td>
+                          <td>+1d lorsqu'un tir doit être effectué immédiatement, sans véritable possibilité de viser.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Ricochet</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Dextérité épique 2</span>
+                          </td>
+                          <td>Permet de tenter des tirs ou jets utilisant une surface intermédiaire pour atteindre une cible difficilement accessible. <span style="color: rgba(255, 42, 61, 0.9); font-weight: 600;">Arme cinétique uniquement.</span></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Corps impossible</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Dextérité épique 2</span>
+                          </td>
+                          <td>Le personnage peut se contorsionner, se glisser ou se repositionner dans des espaces qu'un humain ordinaire aurait beaucoup de mal à exploiter.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Temps mort</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Dextérité épique 2 + Mouvement fluide</span>
+                          </td>
+                          <td>Une fois par scène, lorsqu'un événement physique soudain se déclenche, le personnage peut effectuer immédiatement un déplacement court avant sa résolution.</td>
                         </tr>
                       </tbody>
                     </table>
@@ -642,36 +693,59 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td><strong>Auto guérison</strong></td>
-                          <td>Le joueur récupère de la vitalité entre les scènes (1 point de niveau : 1 PV)</td>
+                          <td><strong>Increvable</strong></td>
+                          <td>+1d contre fatigue, épuisement et manque de sommeil.</td>
                         </tr>
                         <tr>
-                          <td><strong>Résistance sacrée</strong></td>
-                          <td>+1d vigueur</td>
+                          <td><strong>Résistance toxique</strong></td>
+                          <td>+1d contre poisons, drogues, alcool et substances chimiques.</td>
                         </tr>
                         <tr>
-                          <td><strong>Conversion des dégâts</strong></td>
-                          <td>Permet de réduire ou augmenter une blessure sur soi-même ou les autres. Vigueur + médecine (si inférieur niveau)</td>
+                          <td><strong>Corps endurci</strong></td>
+                          <td>+1d contre froid, chaleur et environnements hostiles.</td>
                         </tr>
                         <tr>
-                          <td><strong>Taureau enragé</strong></td>
-                          <td>Plus le joueur prend de dégâts plus il fait mal (+1 contre 2 dégâts)</td>
+                          <td><strong>Tolérance à la douleur</strong></td>
+                          <td>+1d lorsque la douleur ou une blessure gêne directement une action.</td>
                         </tr>
                         <tr>
-                          <td><strong>Bien être solipsiste</strong></td>
-                          <td>Peut ignorer des dégâts une fois par scène (si inférieur niveau)</td>
+                          <td><strong>Souffle long</strong></td>
+                          <td>Peut maintenir un effort physique soutenu bien plus longtemps qu'un individu ordinaire.</td>
                         </tr>
                         <tr>
-                          <td><strong>Armure corporelle</strong></td>
-                          <td>+1 armure</td>
+                          <td>
+                            <strong>Second souffle</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Increvable</span>
+                          </td>
+                          <td>Une fois par scène, ignore temporairement les effets de la fatigue.</td>
                         </tr>
                         <tr>
-                          <td><strong>Dévoreur</strong></td>
-                          <td>Le joueur peut manger ce qu'il veut et boire n'importe quel liquide pour survivre</td>
+                          <td>
+                            <strong>Métabolisme renforcé</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Résistance toxique</span>
+                          </td>
+                          <td>Le corps élimine plus rapidement toxines, médicaments et effets physiologiques temporaires.</td>
                         </tr>
                         <tr>
-                          <td><strong>Travailleur infatigable</strong></td>
-                          <td>Le joueur ne s'essouffle plus et ne ressent plus la fatigue</td>
+                          <td>
+                            <strong>Tenir debout</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Vigueur épique 2</span>
+                          </td>
+                          <td>Lorsqu'un choc devrait faire tomber ou assommer le personnage, il peut tenter de rester opérationnel.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Dernier effort</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Vigueur épique 2</span>
+                          </td>
+                          <td>Lorsqu'une blessure devrait immédiatement l'empêcher d'agir, le personnage peut accomplir une dernière action avant d'en subir pleinement les conséquences.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Refus de mourir</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Vigueur épique 2 + Tenir debout</span>
+                          </td>
+                          <td>+1d à tous les tests directement liés à la survie lorsque le personnage se trouve dans un état critique.</td>
                         </tr>
                       </tbody>
                     </table>
@@ -687,42 +761,59 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td><strong>Figure édifiante</strong></td>
-                          <td>Le joueur n'a aucun mal à se faire entendre au sein d'une foule</td>
+                          <td><strong>Présence magnétique</strong></td>
+                          <td>+1d lorsqu'il cherche volontairement à attirer l'attention sur lui.</td>
                         </tr>
                         <tr>
-                          <td><strong>Bénédiction d'importance</strong></td>
-                          <td>Donné à une personne (si inférieur niveau) un sentiment d'importance (gain d'allié)</td>
+                          <td><strong>Voix qui porte</strong></td>
+                          <td>Peut reprendre facilement l'attention d'un groupe bruyant, dispersé ou agité.</td>
                         </tr>
                         <tr>
-                          <td><strong>Optimisme forcené</strong></td>
-                          <td>Si un joueur rate une action il reçoit 1d bonus pour retenter la même action au tour d'après</td>
+                          <td><strong>Leader naturel</strong></td>
+                          <td>+1d lorsqu'il donne des directives à des personnes reconnaissant déjà son autorité.</td>
                         </tr>
                         <tr>
-                          <td><strong>Bénéfice du doute</strong></td>
-                          <td>Fait douter une personne de ses convictions (si inférieur niveau)</td>
+                          <td><strong>Ralliement</strong></td>
+                          <td>+1d lorsqu'il tente de remotiver ou rassurer un allié.</td>
                         </tr>
                         <tr>
-                          <td>
-                            <strong>Source sûre</strong><br>
-                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Bénéfice du doute</span>
-                          </td>
-                          <td>Permet de bénir un allié ce qui rend sa parole sûre et lui offre les effet de "Bénéfice du doute"</td>
-                        </tr>
-                        <tr>
-                          <td><strong>Mec Sympa</strong></td>
-                          <td>1 fois par scénario, le joueur peut éviter les conséquences d'une connerie qu'il aurait fait face à une figure d'autorité</td>
+                          <td><strong>Figure marquante</strong></td>
+                          <td>Les personnes ayant réellement interagi avec lui ont beaucoup plus de facilité à se souvenir de sa présence.</td>
                         </tr>
                         <tr>
                           <td>
-                            <strong>Blâmer autrui</strong><br>
-                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Mec sympa</span>
+                            <strong>Orateur</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Voix qui porte</span>
                           </td>
-                          <td>Peut rejeter la faute de l'action annulée par mec sympa sur une autre personne</td>
+                          <td>+1d lorsqu'il tente d'influencer plusieurs personnes simultanément par un discours.</td>
                         </tr>
                         <tr>
-                          <td><strong>La cavalerie est là !</strong></td>
-                          <td>Par son sourire, le joueur inspire un groupe et les empêche de succomber aux émotions négatives</td>
+                          <td>
+                            <strong>Assurance contagieuse</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Ralliement</span>
+                          </td>
+                          <td>Les alliés proches résistent plus facilement à la peur ou à la panique lorsqu'ils peuvent voir ou entendre le personnage.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Autorité naturelle</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Charisme épique 2</span>
+                          </td>
+                          <td>Les inconnus ont tendance à supposer que le personnage a une certaine légitimité tant qu'aucun élément évident ne vient contredire cette impression.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Icône</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Charisme épique 2</span>
+                          </td>
+                          <td>Lorsque sa réputation est connue, le personnage peut utiliser son identité publique comme véritable levier social.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Aura éthérique</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Charisme épique 2 + Présence magnétique</span>
+                          </td>
+                          <td>Une fois par scène sociale, le personnage peut amplifier surnaturellement sa présence et obtenir +2d sur une action visant directement à imposer son autorité ou captiver un groupe.</td>
                         </tr>
                       </tbody>
                     </table>
@@ -738,36 +829,59 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td><strong>Honnêteté des dieux</strong></td>
-                          <td>La cible dit la vérité (si inférieur niveau)</td>
+                          <td><strong>Mensonge naturel</strong></td>
+                          <td>+1d lorsqu'il ment directement à quelqu'un.</td>
                         </tr>
                         <tr>
-                          <td><strong>Ordre direct</strong></td>
-                          <td>Donne un ordre à une cible (si inférieur niveau)</td>
+                          <td><strong>Faux prétexte</strong></td>
+                          <td>+1d lorsqu'il improvise une couverture, une excuse ou une fausse identité.</td>
                         </tr>
                         <tr>
-                          <td><strong>Implantation de faux souvenirs</strong></td>
-                          <td>Tente de placer un souvenir fabriqué dans l'esprit d'une personne</td>
+                          <td><strong>Lecture des attentes</strong></td>
+                          <td>Après quelques échanges, peut déterminer ce que l'interlocuteur espère principalement obtenir de la situation.</td>
                         </tr>
                         <tr>
-                          <td><strong>On reconnaît les siens</strong></td>
-                          <td>Le joueur a plus de chances de reconnaître les mensonges</td>
+                          <td><strong>Détournement</strong></td>
+                          <td>+1d lorsqu'il cherche à changer discrètement le sujet d'une conversation compromettante.</td>
                         </tr>
                         <tr>
-                          <td><strong>Pas le visage !</strong></td>
-                          <td>Permet de faire hésiter un attaquant</td>
+                          <td><strong>Social engineering</strong></td>
+                          <td>+1d pour obtenir accès, renseignements ou autorisations en manipulant un individu.</td>
                         </tr>
                         <tr>
-                          <td><strong>Retrouve moi derrière</strong></td>
-                          <td>Permet en un regard de signaler une information simple à une personne</td>
+                          <td>
+                            <strong>Semer le doute</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Mensonge naturel</span>
+                          </td>
+                          <td>Peut tenter de fragiliser la confiance d'une personne envers une information ou une autre personne.</td>
                         </tr>
                         <tr>
-                          <td><strong>Messager</strong></td>
-                          <td>Le joueur fait un jet de manipulation + commandement et la cible a ce résultat pour utiliser un talent de manipulation ou convaincre une autre personne</td>
+                          <td>
+                            <strong>Fausse confiance</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Faux prétexte</span>
+                          </td>
+                          <td>Peut donner rapidement l'impression d'appartenir à un groupe, une entreprise ou une organisation dont il connaît suffisamment les codes.</td>
                         </tr>
                         <tr>
-                          <td><strong>Maïeutique</strong></td>
-                          <td>Dans un contexte de conversation, le joueur peut faire échapper la vérité à une cible</td>
+                          <td>
+                            <strong>Diviser pour régner</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Manipulation épique 2</span>
+                          </td>
+                          <td>+1d lorsqu'il exploite une tension préexistante entre plusieurs personnes.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Retourner la situation</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Manipulation épique 2</span>
+                          </td>
+                          <td>Une fois par scène sociale, lorsqu'il devient lui-même l'objet de soupçons, peut immédiatement tenter de déplacer l'attention vers une autre cible.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Marionnettiste</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Manipulation épique 2 + Lecture des attentes</span>
+                          </td>
+                          <td>Après avoir suffisamment étudié une personne, le personnage identifie l'un de ses principaux leviers psychologiques. +1d lorsqu'il l'exploite explicitement.</td>
                         </tr>
                       </tbody>
                     </table>
@@ -783,36 +897,56 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td><strong>Regard du serpent</strong></td>
-                          <td>Le joueur peut paralyser quelqu'un en le regardant (si inférieur niveau)</td>
+                          <td><strong>Photogénique</strong></td>
+                          <td>+1d lorsque l'image, la présentation ou la mise en scène du personnage influence directement une interaction.</td>
                         </tr>
                         <tr>
-                          <td><strong>Centre d'attention</strong></td>
-                          <td>S'il le souhaite, le joueur peut captiver l'attention des gens autour</td>
+                          <td><strong>Style signature</strong></td>
+                          <td>Le personnage peut construire une identité visuelle immédiatement reconnaissable.</td>
                         </tr>
                         <tr>
-                          <td><strong>Pose</strong></td>
-                          <td>+1d apparence</td>
+                          <td><strong>Caméléon social</strong></td>
+                          <td>+1d pour se fondre visuellement dans un milieu dont il connaît les codes.</td>
                         </tr>
                         <tr>
-                          <td><strong>Beauté/laideur surnaturelle</strong></td>
-                          <td>Le joueur peut prendre une apparence complètement surnaturelle tant qu'elle reste globalement humaine. Cette apparence peut-être laide comme belle</td>
+                          <td><strong>Visage neutre</strong></td>
+                          <td>+1d lorsqu'il tente de cacher visuellement ses émotions ou intentions.</td>
                         </tr>
                         <tr>
-                          <td><strong>Sur mesure</strong></td>
-                          <td>Le joueur peut changer ses habits à volonté. Une armure créée de la sorte n'a pas de caractéristiques</td>
+                          <td><strong>Intimidation visuelle</strong></td>
+                          <td>+1d lorsqu'il utilise volontairement apparence, implants, équipement ou blessures pour impressionner.</td>
                         </tr>
                         <tr>
-                          <td><strong>Tout va bien</strong></td>
-                          <td>Même au bord de la mort le joueur n'aura jamais de marques de blessures ou de fatigue apparentes</td>
+                          <td>
+                            <strong>Transformation maîtrisée</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Caméléon social</span>
+                          </td>
+                          <td>Maquillage, vêtements et accessoires peuvent modifier fortement la perception générale de son apparence.</td>
                         </tr>
                         <tr>
-                          <td><strong>Tes yeux ne voient rien</strong></td>
-                          <td>Le joueur peut cacher sa divinité</td>
+                          <td><strong>Regard impossible à ignorer</strong></td>
+                          <td>Lorsque le personnage établit volontairement un contact visuel, sa cible comprend immédiatement qu'elle est au centre de son attention.</td>
                         </tr>
                         <tr>
-                          <td><strong>Visage aveuglant</strong></td>
-                          <td>Le joueur impose son visage dans les yeux d'un être (inférieur niveau) celui-ci ne voit plus rien d'autre que le visage du joueur gravé dans sa rétine pour la scène</td>
+                          <td>
+                            <strong>Beauté surnaturelle</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Apparence épique 2</span>
+                          </td>
+                          <td>Lorsque quelqu'un est naturellement sensible à l'apparence du personnage, celui-ci gagne +1d lors de la première interaction sociale avec cette personne.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Métamorphose éthérique</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Apparence épique 2</span>
+                          </td>
+                          <td>Permet d'altérer légèrement et temporairement certains détails visibles : couleur des yeux, peau, cheveux, traits subtils. Cela ne permet pas de copier exactement quelqu'un.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Masque parfait</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Apparence épique 2 + Transformation maîtrisée</span>
+                          </td>
+                          <td>Après préparation, le personnage peut profondément modifier son apparence générale au point de rendre son identification visuelle très difficile.</td>
                         </tr>
                       </tbody>
                     </table>
@@ -828,36 +962,56 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td><strong>Sens télescopiques</strong></td>
-                          <td>Le joueur peut voir, entendre, sentir beaucoup plus loin</td>
+                          <td><strong>Œil de lynx</strong></td>
+                          <td>+1d pour repérer un détail visuel difficile ou distant.</td>
                         </tr>
                         <tr>
-                          <td><strong>Avertissement subliminal</strong></td>
-                          <td>Le joueur peut sentir les guet-apens, embuscades. +1d sur jet d'initiative</td>
+                          <td><strong>Oreille fine</strong></td>
+                          <td>+1d pour isoler ou identifier un son.</td>
                         </tr>
                         <tr>
-                          <td><strong>Concentration prédatrice</strong></td>
-                          <td>Permet de retrouver une cible perdue de vue en suivant sa trace</td>
+                          <td><strong>Détecteur d'anomalie</strong></td>
+                          <td>+1d pour remarquer quelque chose qui ne correspond pas à son environnement.</td>
                         </tr>
                         <tr>
-                          <td><strong>Osmose spatiale</strong></td>
-                          <td>Le joueur n'a plus besoin de la vue pour "voir"</td>
+                          <td><strong>Mémoire sensorielle</strong></td>
+                          <td>Peut se souvenir avec une précision remarquable d'un élément sensoriel réellement remarqué.</td>
                         </tr>
                         <tr>
-                          <td><strong>Sentir le divin</strong></td>
-                          <td>Le joueur peut sentir le panthéon d'origine des pouvoirs d'un autre joueur ou titanide</td>
+                          <td><strong>Traqueur</strong></td>
+                          <td>+1d lorsqu'il suit physiquement les traces d'une personne, d'un véhicule ou d'une créature.</td>
                         </tr>
                         <tr>
-                          <td><strong>Vrai nature</strong></td>
-                          <td>Le joueur peut savoir si une créature a sa forme d'origine ou pas</td>
+                          <td>
+                            <strong>Vision de combat</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Détecteur d'anomalie</span>
+                          </td>
+                          <td>+1d pour identifier une menace immédiate au milieu d'une scène chaotique.</td>
                         </tr>
                         <tr>
-                          <td><strong>Oreille parfaite</strong></td>
-                          <td>Décuple l'ouïe du joueur et lui permet d'écouter les sons les plus faibles</td>
+                          <td>
+                            <strong>Lecture de trajectoire</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Perception épique 2</span>
+                          </td>
+                          <td>Peut estimer très rapidement la provenance ou la destination probable d'un mouvement ou projectile visible.</td>
                         </tr>
                         <tr>
-                          <td><strong>Clairvoyance</strong></td>
-                          <td>Le joueur peut entendre et voir ce qui se passe dans un endroit familier comme si il y était</td>
+                          <td><strong>Instinct éthérique</strong></td>
+                          <td>Peut ressentir la présence proche d'une manifestation éthérique notable sans nécessairement en comprendre la nature.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Sixième sens</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Perception épique 2</span>
+                          </td>
+                          <td>Une fois par scène, le MJ peut avertir le personnage lorsqu'un élément actuellement perceptible constitue un danger immédiat.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Perception transcendante</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Perception épique 2 + Détecteur d'anomalie</span>
+                          </td>
+                          <td>Une fois par scène, le personnage peut se concentrer quelques secondes et demander au MJ quel élément inhabituel ou dangereux de la scène lui échappe encore.</td>
                         </tr>
                       </tbody>
                     </table>
@@ -873,36 +1027,59 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td><strong>Raison plus forte que le cœur</strong></td>
-                          <td>Le joueur peut appliquer son intelligence épique face aux jets sociaux</td>
+                          <td><strong>Mémoire eidétique</strong></td>
+                          <td>Peut se rappeler avec une grande précision d'informations réellement observées ou étudiées.</td>
                         </tr>
                         <tr>
-                          <td><strong>Combattre avec sa tête</strong></td>
-                          <td>Le joueur peut appliquer son intelligence épique à ses jets de parade et d'esquive</td>
+                          <td><strong>Analyse rapide</strong></td>
+                          <td>+1d lorsqu'il cherche à comprendre le fonctionnement général d'un système ou phénomène inconnu.</td>
                         </tr>
                         <tr>
-                          <td><strong>Étudiant devant l'éternel</strong></td>
-                          <td>Au moment où vous prenez ce talent gagnez 10 points de compétences</td>
+                          <td><strong>Esprit scientifique</strong></td>
+                          <td>+1d lors de l'analyse méthodique de données scientifiques ou techniques.</td>
                         </tr>
                         <tr>
-                          <td><strong>Retrouve moi derrière</strong></td>
-                          <td>D'un regard sans parler le joueur peut transmettre une indication</td>
+                          <td><strong>Calculateur humain</strong></td>
+                          <td>Peut effectuer très rapidement calculs, estimations et raisonnements mathématiques courants.</td>
                         </tr>
                         <tr>
-                          <td><strong>Enseignant prodige</strong></td>
-                          <td>Permet de partager des domaines/ connaissances/ compétences avec des alliés (ne marche pas sur les joueurs)</td>
+                          <td><strong>Reconnaissance de motifs</strong></td>
+                          <td>+1d pour identifier répétitions, corrélations ou structures cachées dans des données.</td>
                         </tr>
                         <tr>
-                          <td><strong>Maîtrise linguistique</strong></td>
-                          <td>Le joueur maîtrise toutes les langues</td>
+                          <td>
+                            <strong>Déduction</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Analyse rapide</span>
+                          </td>
+                          <td>Lorsqu'il possède suffisamment d'indices, peut demander au MJ quelle conclusion logique importante peut raisonnablement être tirée.</td>
                         </tr>
                         <tr>
-                          <td><strong>Télépathie</strong></td>
-                          <td>Le joueur peut communiquer mentalement avec tous ses alliés proches</td>
+                          <td>
+                            <strong>Mémoire croisée</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Mémoire eidétique</span>
+                          </td>
+                          <td>Lorsqu'une situation correspond clairement à une information déjà apprise, le MJ peut rappeler au joueur cette connexion pertinente.</td>
                         </tr>
                         <tr>
-                          <td><strong>Lecteur rapide</strong></td>
-                          <td>Entrapercevoir un texte permet d'en connaître le contenu</td>
+                          <td>
+                            <strong>Planificateur</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Intelligence épique 2</span>
+                          </td>
+                          <td>Lorsqu'il prépare une opération avec suffisamment de temps, peut identifier une faiblesse évidente du plan avant son exécution.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Modélisation mentale</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Intelligence épique 2</span>
+                          </td>
+                          <td>Peut envisager rapidement plusieurs conséquences probables d'une décision complexe. Le MJ indique les risques immédiatement prévisibles.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Hypercognition</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Intelligence épique 2 + Déduction</span>
+                          </td>
+                          <td>Une fois par scène, le personnage peut analyser une situation complexe et demander au MJ une information importante qu'il pourrait raisonnablement déduire des éléments disponibles.</td>
                         </tr>
                       </tbody>
                     </table>
@@ -918,36 +1095,59 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td><strong>Concentration</strong></td>
-                          <td>+1d sur jet d'astuce</td>
+                          <td><strong>Improvisateur</strong></td>
+                          <td>+1d lorsqu'il invente une solution avec les moyens immédiatement disponibles.</td>
                         </tr>
                         <tr>
-                          <td><strong>Réflexes éclairs</strong></td>
-                          <td>+1d d'esquive en cas de surprise</td>
+                          <td><strong>Réaction éclair</strong></td>
+                          <td>+1d lorsqu'il doit réagir à un événement complètement inattendu.</td>
                         </tr>
                         <tr>
-                          <td><strong>Profiler</strong></td>
-                          <td>En un coup d'œil, le personnage peut saisir les grosses lignes de la personnalité d'une personne</td>
+                          <td><strong>Système D</strong></td>
+                          <td>Peut détourner rapidement l'usage d'un objet ordinaire pour résoudre temporairement un problème.</td>
                         </tr>
                         <tr>
-                          <td><strong>Combat adaptatif</strong></td>
-                          <td>Le joueur peut ajouter son astuce épique à ses jets d'attaque</td>
+                          <td><strong>Répartie fulgurante</strong></td>
+                          <td>Le personnage trouve presque toujours une réponse immédiate lors d'une confrontation verbale.</td>
                         </tr>
                         <tr>
-                          <td><strong>Réflexe du cobra</strong></td>
-                          <td>Lors d'une attaque surprise, le joueur a droit à une contre-attaque gratuite</td>
+                          <td><strong>Opportuniste</strong></td>
+                          <td>+1d lorsqu'il exploite immédiatement une erreur ou une ouverture soudaine.</td>
                         </tr>
                         <tr>
-                          <td><strong>Concentration méditative</strong></td>
-                          <td>Le joueur peut ignorer les effets d'un environnement difficile en méditant (ne peut pas faire d'autres action mentales en maintenant la méditation)</td>
+                          <td>
+                            <strong>Combat sale</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Improvisateur</span>
+                          </td>
+                          <td>Peut utiliser spontanément l'environnement pendant un combat : poussière, meuble, câble, lumière, porte, etc.</td>
                         </tr>
                         <tr>
-                          <td><strong>Manœuvre stratégique</strong></td>
-                          <td>Le joueur peut sacrifier son tour pour décaler (avancer ou reculer) l'action d'un joueur</td>
+                          <td>
+                            <strong>Plan B</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Astuce épique 2</span>
+                          </td>
+                          <td>Une fois par scène, le personnage peut révéler une petite précaution raisonnable qu'il avait prise auparavant.</td>
                         </tr>
                         <tr>
-                          <td><strong>Investigateur intuitif</strong></td>
-                          <td>Le joueur peut voir une scène et comprendre ce qu'il s'est passé</td>
+                          <td>
+                            <strong>Lecture de situation</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Réaction éclair</span>
+                          </td>
+                          <td>Lorsqu'une scène devient chaotique, peut identifier très rapidement quel élément constitue l'opportunité ou la menace la plus immédiate.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Éclair de génie</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Astuce épique 2 + Improvisateur</span>
+                          </td>
+                          <td>Une fois par scène, obtient +2d sur une action reposant directement sur une solution improvisée.</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Une longueur d'avance</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(247, 233, 239, 0.6);">Prérequis : Astuce épique 2 + Réaction éclair</span>
+                          </td>
+                          <td>Lorsqu'une situation bascule soudainement, le personnage peut déclarer immédiatement une action courte avant que les autres protagonistes aient complètement réagi.</td>
                         </tr>
                       </tbody>
                     </table>
@@ -993,52 +1193,7 @@
                       Les attributs épiques ne peuvent pas dépasser votre niveau actuel.
                     </p>
 
-                    <h3>Progression et montée de niveau</h3>
-                    <p style="margin-bottom: 16px;">Vous gagnez des points d'expérience à chaque fin de contrat. Ces points peuvent être dépensés immédiatement pour améliorer votre personnage.</p>
 
-                    <table class="system-table">
-                      <thead>
-                        <tr>
-                          <th>Niveau</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><strong>1</strong></td>
-                        </tr>
-                        <tr>
-                          <td><strong>2</strong></td>
-                        </tr>
-                        <tr>
-                          <td><strong>3</strong></td>
-                        </tr>
-                        <tr>
-                          <td><strong>4</strong></td>
-                        </tr>
-                        <tr>
-                          <td><strong>5</strong></td>
-                        </tr>
-                        <tr>
-                          <td><strong>6</strong></td>
-                        </tr>
-                        <tr>
-                          <td><strong>7</strong></td>
-                        </tr>
-                        <tr>
-                          <td><strong>8</strong></td>
-                        </tr>
-                        <tr>
-                          <td><strong>9</strong></td>
-                        </tr>
-                        <tr>
-                          <td><strong>10</strong></td>
-                        </tr>
-                      </tbody>
-                    </table>
-
-                    <p style="margin-top: 24px; font-size: 0.95rem; color: rgba(247, 233, 239, 0.7);">
-                      Les points d'XP sont consommés lorsque vous les dépensez pour acheter des améliorations. La montée de niveau se fait indépendamment de vos dépenses d'XP.
-                    </p>
                   </div>
                 </article>
               </div>

@@ -17,3 +17,9 @@ Thumbs.db
 
 # Dossier media/intra
 media/intra/
+
+# Scripts de scraping/téléchargement d'armes
+scripts/extract-weapons-list.js
+scripts/download-from-list.js
+scripts/convert-grenades.js
+scripts/weapons-list.json

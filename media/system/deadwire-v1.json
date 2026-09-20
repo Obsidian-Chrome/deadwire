@@ -41,17 +41,21 @@
       "ColorHex": "#2ecc71",
       "IsRequired": true,
       "Formula": "(Vigueur \u002B Vigueur.epic \u002B Athl\u00E9tisme \u002B lvl) *2",
-      "ResourceType": 0
+      "ResourceType": 0,
+      "IsRollable": true,
+      "ShowInGroup": true
     },
     {
       "Name": "Transcendance",
       "Description": "Transcendance",
       "DefaultMax": 3,
-      "DefaultCurrent": 3,
+      "DefaultCurrent": 0,
       "ColorHex": "#f1c40f",
       "IsRequired": true,
       "Formula": "",
-      "ResourceType": 1
+      "ResourceType": 1,
+      "IsRollable": true,
+      "ShowInGroup": true
     },
     {
       "Name": "M\u00EAl\u00E9e [FOR]",
@@ -61,7 +65,9 @@
       "ColorHex": "#e74c3c",
       "IsRequired": true,
       "Formula": "[Force] \u002B [M\u00EAl\u00E9e] \u002B lvl",
-      "ResourceType": 2
+      "ResourceType": 2,
+      "IsRollable": true,
+      "ShowInGroup": false
     },
     {
       "Name": "M\u00EAl\u00E9e [DEX]",
@@ -71,7 +77,9 @@
       "ColorHex": "#e74c3c",
       "IsRequired": true,
       "Formula": "[Dext\u00E9rit\u00E9] \u002B [M\u00EAl\u00E9e] \u002B lvl",
-      "ResourceType": 2
+      "ResourceType": 2,
+      "IsRollable": true,
+      "ShowInGroup": false
     },
     {
       "Name": "Distance [FOR]",
@@ -81,7 +89,9 @@
       "ColorHex": "#9b59b6",
       "IsRequired": true,
       "Formula": "[Dext\u00E9rit\u00E9] \u002B [Distance] \u002B lvl",
-      "ResourceType": 2
+      "ResourceType": 2,
+      "IsRollable": true,
+      "ShowInGroup": false
     },
     {
       "Name": "Distance [DEX]",
@@ -91,7 +101,9 @@
       "ColorHex": "#9b59b6",
       "IsRequired": true,
       "Formula": "[Dext\u00E9rit\u00E9] \u002B [Distance] \u002B lvl",
-      "ResourceType": 2
+      "ResourceType": 2,
+      "IsRollable": true,
+      "ShowInGroup": false
     },
     {
       "Name": "Armure",
@@ -101,7 +113,9 @@
       "ColorHex": "#7f8c8d",
       "IsRequired": true,
       "Formula": "[Vigueur] \u002B [R\u00E9sistance] \u002B lvl",
-      "ResourceType": 2
+      "ResourceType": 2,
+      "IsRollable": false,
+      "ShowInGroup": false
     },
     {
       "Name": "Parade",
@@ -111,7 +125,9 @@
       "ColorHex": "#7f8c8d",
       "IsRequired": true,
       "Formula": "max(Force, Dext\u00E9rit\u00E9) \u002B [M\u00EAl\u00E9e] \u002B lvl",
-      "ResourceType": 2
+      "ResourceType": 2,
+      "IsRollable": true,
+      "ShowInGroup": false
     },
     {
       "Name": "Volont\u00E9",
@@ -121,7 +137,9 @@
       "ColorHex": "#7f8c8d",
       "IsRequired": true,
       "Formula": "[Intelligence] \u002B [Conscience] \u002B lvl",
-      "ResourceType": 2
+      "ResourceType": 2,
+      "IsRollable": true,
+      "ShowInGroup": false
     },
     {
       "Name": "Esquive",
@@ -131,27 +149,9 @@
       "ColorHex": "#7f8c8d",
       "IsRequired": true,
       "Formula": "[Dext\u00E9rit\u00E9] \u002B [Athl\u00E9tisme] \u002B lvl",
-      "ResourceType": 2
-    },
-    {
-      "Name": "Health",
-      "Description": "",
-      "DefaultMax": 150,
-      "DefaultCurrent": 150,
-      "ColorHex": "#2ecc71",
-      "IsRequired": false,
-      "Formula": "",
-      "ResourceType": 0
-    },
-    {
-      "Name": "Mana",
-      "Description": "",
-      "DefaultMax": 100,
-      "DefaultCurrent": 100,
-      "ColorHex": "#2ecc71",
-      "IsRequired": false,
-      "Formula": "",
-      "ResourceType": 0
+      "ResourceType": 2,
+      "IsRollable": true,
+      "ShowInGroup": false
     }
   ],
   "CustomEquipmentSlots": [],

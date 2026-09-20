@@ -23,3 +23,7 @@ scripts/extract-weapons-list.js
 scripts/download-from-list.js
 scripts/convert-grenades.js
 scripts/weapons-list.json
+scripts/generate-weapons-json.js
+scripts/fix-missing-weapons.js
+scripts/fix-weapon-categories.js
+scripts/reorganize-weapons.js

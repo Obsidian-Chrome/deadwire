@@ -27,3 +27,4 @@ scripts/generate-weapons-json.js
 scripts/fix-missing-weapons.js
 scripts/fix-weapon-categories.js
 scripts/reorganize-weapons.js
+scripts/normalize-filenames.js

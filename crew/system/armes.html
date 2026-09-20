@@ -23,15 +23,8 @@
       border-radius: 8px;
       padding: 12px;
       text-align: center;
-      cursor: pointer;
       transition: all 0.2s;
       position: relative;
-    }
-
-    .weapon-card:hover {
-      border-color: rgba(255, 42, 61, 0.8);
-      background: rgba(255, 42, 61, 0.1);
-      transform: translateY(-2px);
     }
 
     .weapon-card img {
@@ -41,6 +34,14 @@
       margin: 0 auto;
       display: block;
       image-rendering: crisp-edges;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 4px;
+    }
+
+    .weapon-card img:hover {
+      filter: brightness(1.3);
+      transform: scale(1.05);
     }
 
     .weapon-name {
@@ -48,6 +49,15 @@
       font-size: 0.85rem;
       color: rgba(247, 233, 239, 0.9);
       word-break: break-word;
+      cursor: pointer;
+      transition: all 0.2s;
+      padding: 4px;
+      border-radius: 4px;
+    }
+
+    .weapon-name:hover {
+      background: rgba(255, 42, 61, 0.15);
+      color: rgba(255, 255, 255, 0.95);
     }
 
     .weapon-type-section {
@@ -281,7 +291,7 @@
         </p>
         <h1 style="font-size: 2.5rem; margin: 16px 0; color: rgba(255, 42, 61, 0.95);">Icônes d'armes</h1>
         <p style="color: rgba(247, 233, 239, 0.7); font-size: 1.1rem;">
-          Cliquez sur une arme pour copier son lien direct
+          Cliquez sur une arme pour copier l'image, cliquez sur son nom pour copier le nom et sa technologie.
         </p>
       </div>
       
@@ -442,35 +452,65 @@
           card.appendChild(img);
           card.appendChild(name);
 
-          card.addEventListener('click', () => {
-            // Copier directement le lien
+          // Fonction pour afficher la notification
+          function showNotification(message, color = 'rgba(0, 200, 0, 0.95)') {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+              position: fixed;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              background: ${color};
+              color: white;
+              padding: 16px 32px;
+              border-radius: 8px;
+              font-weight: bold;
+              font-size: 1.1rem;
+              z-index: 10000;
+              pointer-events: none;
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+              notification.remove();
+            }, 1500);
+          }
+
+          // Clic sur l'image : copier le lien
+          img.addEventListener('click', (e) => {
+            e.stopPropagation();
             navigator.clipboard.writeText(weapon.path).then(() => {
-              // Flash vert
               card.style.backgroundColor = 'rgba(0, 255, 0, 0.1)';
-              
-              // Afficher notification
-              const notification = document.createElement('div');
-              notification.textContent = '✓ Lien copié !';
-              notification.style.cssText = `
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: rgba(0, 200, 0, 0.95);
-                color: white;
-                padding: 16px 32px;
-                border-radius: 8px;
-                font-weight: bold;
-                font-size: 1.1rem;
-                z-index: 10000;
-                pointer-events: none;
-                animation: fadeInOut 1.5s ease-in-out;
-              `;
-              document.body.appendChild(notification);
-              
+              showNotification('✓ Lien copié !');
               setTimeout(() => {
                 card.style.backgroundColor = '';
-                notification.remove();
+              }, 1500);
+            });
+          });
+
+          // Clic sur le nom : copier le nom avec technologie
+          name.addEventListener('click', (e) => {
+            e.stopPropagation();
+            
+            // Abréviations de technologie
+            const techAbbr = {
+              'Cinétique': 'C',
+              'Technique': 'T',
+              'Intelligente': 'I',
+              'Lame': 'L',
+              'Contondant': 'Co',
+              'Lançable': 'La'
+            };
+            
+            const abbr = techAbbr[technology] || '?';
+            const formattedName = `[${abbr}] ${weapon.name}`;
+            
+            navigator.clipboard.writeText(formattedName).then(() => {
+              card.style.backgroundColor = 'rgba(0, 150, 255, 0.1)';
+              showNotification('✓ Nom copié !', 'rgba(0, 150, 255, 0.95)');
+              setTimeout(() => {
+                card.style.backgroundColor = '';
               }, 1500);
             });
           });

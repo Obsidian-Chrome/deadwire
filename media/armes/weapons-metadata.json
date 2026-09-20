@@ -1,1554 +1,1554 @@
 [
   {
     "name": "Ambition",
-    "filename": "Ambition.png",
+    "filename": "ambition.png",
     "type": "pistolets",
     "technology": "Technique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Ambition.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/ambition.png"
   },
   {
     "name": "Apparition",
-    "filename": "Apparition.png",
+    "filename": "apparition.png",
     "type": "pistolets",
     "technology": "Technique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Apparition.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/apparition.png"
   },
   {
     "name": "AR Raygun Supreme 9000",
-    "filename": "AR Raygun Supreme 9000.png",
+    "filename": "ar-raygun-supreme-9000.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/AR Raygun Supreme 9000.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/ar-raygun-supreme-9000.png"
   },
   {
     "name": "Arasaka HJKE-11 Yukimura",
-    "filename": "Arasaka HJKE-11 Yukimura.png",
+    "filename": "arasaka-hjke-11-yukimura.png",
     "type": "pistolets",
     "technology": "Intelligente",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Arasaka HJKE-11 Yukimura.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/arasaka-hjke-11-yukimura.png"
   },
   {
     "name": "Arasaka JKE-X2 Kenshin",
-    "filename": "Arasaka JKE-X2 Kenshin.png",
+    "filename": "arasaka-jke-x2-kenshin.png",
     "type": "pistolets",
     "technology": "Technique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Arasaka JKE-X2 Kenshin.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/arasaka-jke-x2-kenshin.png"
   },
   {
     "name": "Arasaka Tamayura",
-    "filename": "Arasaka Tamayura.png",
+    "filename": "arasaka-tamayura.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Arasaka Tamayura.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/arasaka-tamayura.png"
   },
   {
     "name": "Budget Arms Slaught-O-Matic",
-    "filename": "Budget Arms Slaught-O-Matic.png",
+    "filename": "budget-arms-slaught-o-matic.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Budget Arms Slaught-O-Matic.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/budget-arms-slaught-o-matic.png"
   },
   {
     "name": "Catahoula",
-    "filename": "Catahoula.png",
+    "filename": "catahoula.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Catahoula.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/catahoula.png"
   },
   {
     "name": "Chaos",
-    "filename": "Chaos.png",
+    "filename": "chaos.png",
     "type": "pistolets",
     "technology": "Technique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Chaos.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/chaos.png"
   },
   {
     "name": "Cheetah",
-    "filename": "Cheetah.png",
+    "filename": "cheetah.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Cheetah.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/cheetah.png"
   },
   {
     "name": "Constitutional Arms Liberty",
-    "filename": "Constitutional Arms Liberty.png",
+    "filename": "constitutional-arms-liberty.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Constitutional Arms Liberty.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/constitutional-arms-liberty.png"
   },
   {
     "name": "Constitutional Arms Unity",
-    "filename": "Constitutional Arms Unity.png",
+    "filename": "constitutional-arms-unity.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Constitutional Arms Unity.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/constitutional-arms-unity.png"
   },
   {
     "name": "Crimestopper",
-    "filename": "Crimestopper.png",
+    "filename": "crimestopper.png",
     "type": "pistolets",
     "technology": "Intelligente",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Crimestopper.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/crimestopper.png"
   },
   {
     "name": "Death and Taxes",
-    "filename": "Death and Taxes.png",
+    "filename": "death-and-taxes.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Death and Taxes.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/death-and-taxes.png"
   },
   {
     "name": "Dying Night",
-    "filename": "Dying Night.png",
+    "filename": "dying-night.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Dying Night.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/dying-night.png"
   },
   {
     "name": "Genjiroh",
-    "filename": "Genjiroh.png",
+    "filename": "genjiroh.png",
     "type": "pistolets",
     "technology": "Intelligente",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Genjiroh.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/genjiroh.png"
   },
   {
     "name": "HA-4 Grit",
-    "filename": "HA-4 Grit.png",
+    "filename": "ha-4-grit.png",
     "type": "pistolets",
     "technology": "Technique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/HA-4 Grit.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/ha-4-grit.png"
   },
   {
     "name": "Her Majesty",
-    "filename": "Her Majesty.png",
+    "filename": "her-majesty.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Her Majesty.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/her-majesty.png"
   },
   {
     "name": "Kappa x-MOD2",
-    "filename": "Kappa x-MOD2.png",
+    "filename": "kappa-x-mod2.png",
     "type": "pistolets",
     "technology": "Intelligente",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Kappa x-MOD2.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/kappa-x-mod2.png"
   },
   {
     "name": "Kongou",
-    "filename": "Kongou.png",
+    "filename": "kongou.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Kongou.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/kongou.png"
   },
   {
     "name": "La Chingona Dorada",
-    "filename": "La Chingona Dorada.png",
+    "filename": "la-chingona-dorada.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/La Chingona Dorada.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/la-chingona-dorada.png"
   },
   {
     "name": "Lexington x-MOD2",
-    "filename": "Lexington x-MOD2.png",
+    "filename": "lexington-x-mod2.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Lexington x-MOD2.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/lexington-x-mod2.png"
   },
   {
     "name": "Lizzie",
-    "filename": "Lizzie.png",
+    "filename": "lizzie.png",
     "type": "pistolets",
     "technology": "Technique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Lizzie.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/lizzie.png"
   },
   {
     "name": "Malorian Arms 3516 (2077)",
-    "filename": "Malorian Arms 3516 (2077).png",
+    "filename": "malorian-arms-3516-2077.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Malorian Arms 3516 (2077).png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/malorian-arms-3516-2077.png"
   },
   {
     "name": "Militech M-10AF Lexington",
-    "filename": "Militech M-10AF Lexington.png",
+    "filename": "militech-m-10af-lexington.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Militech M-10AF Lexington.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/militech-m-10af-lexington.png"
   },
   {
     "name": "Militech M-76e Omaha",
-    "filename": "Militech M-76e Omaha.png",
+    "filename": "militech-m-76e-omaha.png",
     "type": "pistolets",
     "technology": "Technique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Militech M-76e Omaha.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/militech-m-76e-omaha.png"
   },
   {
     "name": "Militech Ticon",
-    "filename": "Militech Ticon.png",
+    "filename": "militech-ticon.png",
     "type": "pistolets",
     "technology": "Technique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Militech Ticon.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/militech-ticon.png"
   },
   {
     "name": "Ogou",
-    "filename": "Ogou.png",
+    "filename": "ogou.png",
     "type": "pistolets",
     "technology": "Intelligente",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Ogou.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/ogou.png"
   },
   {
     "name": "Pariah",
-    "filename": "Pariah.png",
+    "filename": "pariah.png",
     "type": "pistolets",
     "technology": "Technique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Pariah.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/pariah.png"
   },
   {
     "name": "Plan B",
-    "filename": "Plan B.png",
+    "filename": "plan-b.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Plan B.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/plan-b.png"
   },
   {
     "name": "Pride",
-    "filename": "Pride.png",
+    "filename": "pride.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Pride.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/pride.png"
   },
   {
     "name": "Riskit",
-    "filename": "Riskit.png",
+    "filename": "riskit.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Riskit.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/riskit.png"
   },
   {
     "name": "Rook",
-    "filename": "Rook.png",
+    "filename": "rook.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Rook.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/rook.png"
   },
   {
     "name": "Scorch",
-    "filename": "Scorch.png",
+    "filename": "scorch.png",
     "type": "pistolets",
     "technology": "Technique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Scorch.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/scorch.png"
   },
   {
     "name": "Seraph",
-    "filename": "Seraph.png",
+    "filename": "seraph.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Seraph.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/seraph.png"
   },
   {
     "name": "Skippy",
-    "filename": "Skippy.png",
+    "filename": "skippy.png",
     "type": "pistolets",
     "technology": "Intelligente",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Skippy.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/skippy.png"
   },
   {
     "name": "Tsunami Kappa",
-    "filename": "Tsunami Kappa.png",
+    "filename": "tsunami-kappa.png",
     "type": "pistolets",
     "technology": "Intelligente",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Tsunami Kappa.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/tsunami-kappa.png"
   },
   {
     "name": "Tsunami Nue",
-    "filename": "Tsunami Nue.png",
+    "filename": "tsunami-nue.png",
     "type": "pistolets",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Tsunami Nue.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/tsunami-nue.png"
   },
   {
     "name": "Amnesty",
-    "filename": "Amnesty.png",
+    "filename": "amnesty.png",
     "type": "revolvers",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/revolvers/Amnesty.png"
+    "path": "https://www.deadwire.fr/media/armes/revolvers/amnesty.png"
   },
   {
     "name": "Archangel",
-    "filename": "Archangel.png",
+    "filename": "archangel.png",
     "type": "revolvers",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/revolvers/Archangel.png"
+    "path": "https://www.deadwire.fr/media/armes/revolvers/archangel.png"
   },
   {
     "name": "Bald Eagle",
-    "filename": "Bald Eagle.png",
+    "filename": "bald-eagle.png",
     "type": "revolvers",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/revolvers/Bald Eagle.png"
+    "path": "https://www.deadwire.fr/media/armes/revolvers/bald-eagle.png"
   },
   {
     "name": "Comrade's Hammer",
-    "filename": "Comrade's Hammer.png",
+    "filename": "comrades-hammer.png",
     "type": "revolvers",
     "technology": "Technique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/revolvers/Comrade's Hammer.png"
+    "path": "https://www.deadwire.fr/media/armes/revolvers/comrades-hammer.png"
   },
   {
     "name": "Crash",
-    "filename": "Crash.png",
+    "filename": "crash.png",
     "type": "revolvers",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/revolvers/Crash.png"
+    "path": "https://www.deadwire.fr/media/armes/revolvers/crash.png"
   },
   {
     "name": "Darra Polytechnic DR-12 Quasar",
-    "filename": "Darra Polytechnic DR-12 Quasar.png",
+    "filename": "darra-polytechnic-dr-12-quasar.png",
     "type": "revolvers",
     "technology": "Technique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/revolvers/Darra Polytechnic DR-12 Quasar.png"
+    "path": "https://www.deadwire.fr/media/armes/revolvers/darra-polytechnic-dr-12-quasar.png"
   },
   {
     "name": "Doom Doom",
-    "filename": "Doom Doom.png",
+    "filename": "doom-doom.png",
     "type": "revolvers",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/revolvers/Doom Doom.png"
+    "path": "https://www.deadwire.fr/media/armes/revolvers/doom-doom.png"
   },
   {
     "name": "Gris-Gris",
-    "filename": "Gris-Gris.png",
+    "filename": "gris-gris.png",
     "type": "revolvers",
     "technology": "Technique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/revolvers/Gris-Gris.png"
+    "path": "https://www.deadwire.fr/media/armes/revolvers/gris-gris.png"
   },
   {
     "name": "Laika",
-    "filename": "Laika.png",
+    "filename": "laika.png",
     "type": "revolvers",
     "technology": "Technique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/revolvers/Laika.png"
+    "path": "https://www.deadwire.fr/media/armes/revolvers/laika.png"
   },
   {
     "name": "Malorian Overture",
-    "filename": "Malorian Overture.png",
+    "filename": "malorian-overture.png",
     "type": "revolvers",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/revolvers/Malorian Overture.png"
+    "path": "https://www.deadwire.fr/media/armes/revolvers/malorian-overture.png"
   },
   {
     "name": "Mancinella",
-    "filename": "Mancinella.png",
+    "filename": "mancinella.png",
     "type": "revolvers",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/revolvers/Mancinella.png"
+    "path": "https://www.deadwire.fr/media/armes/revolvers/mancinella.png"
   },
   {
     "name": "Ol' Reliable",
-    "filename": "Ol' Reliable.png",
+    "filename": "ol-reliable.png",
     "type": "revolvers",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/revolvers/Ol' Reliable.png"
+    "path": "https://www.deadwire.fr/media/armes/revolvers/ol-reliable.png"
   },
   {
     "name": "Rosco",
-    "filename": "Rosco.png",
+    "filename": "rosco.png",
     "type": "revolvers",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/revolvers/Rosco.png"
+    "path": "https://www.deadwire.fr/media/armes/revolvers/rosco.png"
   },
   {
     "name": "Taigan",
-    "filename": "Taigan.png",
+    "filename": "taigan.png",
     "type": "revolvers",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/revolvers/Taigan.png"
+    "path": "https://www.deadwire.fr/media/armes/revolvers/taigan.png"
   },
   {
     "name": "Techtronika Metel",
-    "filename": "Techtronika Metel.png",
+    "filename": "techtronika-metel.png",
     "type": "revolvers",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/revolvers/Techtronika Metel.png"
+    "path": "https://www.deadwire.fr/media/armes/revolvers/techtronika-metel.png"
   },
   {
     "name": "Techtronika RT-46 Burya",
-    "filename": "Techtronika RT-46 Burya.png",
+    "filename": "techtronika-rt-46-burya.png",
     "type": "revolvers",
     "technology": "Technique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/revolvers/Techtronika RT-46 Burya.png"
+    "path": "https://www.deadwire.fr/media/armes/revolvers/techtronika-rt-46-burya.png"
   },
   {
     "name": "Arasaka Senkoh LX",
-    "filename": "Arasaka Senkoh LX.png",
+    "filename": "arasaka-senkoh-lx.png",
     "type": "mitraillettes",
     "technology": "Technique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/Arasaka Senkoh LX.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/arasaka-senkoh-lx.png"
   },
   {
     "name": "Arasaka Shigure",
-    "filename": "Arasaka Shigure.png",
+    "filename": "arasaka-shigure.png",
     "type": "mitraillettes",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/Arasaka Shigure.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/arasaka-shigure.png"
   },
   {
     "name": "Arasaka TKI-20 Shingen",
-    "filename": "Arasaka TKI-20 Shingen.png",
+    "filename": "arasaka-tki-20-shingen.png",
     "type": "mitraillettes",
     "technology": "Intelligente",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/Arasaka TKI-20 Shingen.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/arasaka-tki-20-shingen.png"
   },
   {
     "name": "Budget Arms Guillotine",
-    "filename": "Budget Arms Guillotine.png",
+    "filename": "budget-arms-guillotine.png",
     "type": "mitraillettes",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/Budget Arms Guillotine.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/budget-arms-guillotine.png"
   },
   {
     "name": "Buzzsaw",
-    "filename": "Buzzsaw.png",
+    "filename": "buzzsaw.png",
     "type": "mitraillettes",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/Buzzsaw.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/buzzsaw.png"
   },
   {
     "name": "Chesapeake",
-    "filename": "Chesapeake.png",
+    "filename": "chesapeake.png",
     "type": "mitraillettes",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/Chesapeake.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/chesapeake.png"
   },
   {
     "name": "Erebus",
-    "filename": "Erebus.png",
+    "filename": "erebus.png",
     "type": "mitraillettes",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/Erebus.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/erebus.png"
   },
   {
     "name": "Fenrir",
-    "filename": "Fenrir.png",
+    "filename": "fenrir.png",
     "type": "mitraillettes",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/Fenrir.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/fenrir.png"
   },
   {
     "name": "Guillotine x-MOD2",
-    "filename": "Guillotine x-MOD2.png",
+    "filename": "guillotine-x-mod2.png",
     "type": "mitraillettes",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/Guillotine x-MOD2.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/guillotine-x-mod2.png"
   },
   {
     "name": "HA-7 Warden",
-    "filename": "HA-7 Warden.png",
+    "filename": "ha-7-warden.png",
     "type": "mitraillettes",
     "technology": "Intelligente",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/HA-7 Warden.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/ha-7-warden.png"
   },
   {
     "name": "Kang Tao G-58 Dian",
-    "filename": "Kang Tao G-58 Dian.png",
+    "filename": "kang-tao-g-58-dian.png",
     "type": "mitraillettes",
     "technology": "Intelligente",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/Kang Tao G-58 Dian.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/kang-tao-g-58-dian.png"
   },
   {
     "name": "Militech M221 Saratoga",
-    "filename": "Militech M221 Saratoga.png",
+    "filename": "militech-m221-saratoga.png",
     "type": "mitraillettes",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/Militech M221 Saratoga.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/militech-m221-saratoga.png"
   },
   {
     "name": "Pizdets",
-    "filename": "Pizdets.png",
+    "filename": "pizdets.png",
     "type": "mitraillettes",
     "technology": "Intelligente",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/Pizdets.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/pizdets.png"
   },
   {
     "name": "Problem Solver",
-    "filename": "Problem Solver.png",
+    "filename": "problem-solver.png",
     "type": "mitraillettes",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/Problem Solver.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/problem-solver.png"
   },
   {
     "name": "Raiju",
-    "filename": "Raiju.png",
+    "filename": "raiju.png",
     "type": "mitraillettes",
     "technology": "Technique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/Raiju.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/raiju.png"
   },
   {
     "name": "Yinglong",
-    "filename": "Yinglong.png",
+    "filename": "yinglong.png",
     "type": "mitraillettes",
     "technology": "Intelligente",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/Yinglong.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/yinglong.png"
   },
   {
     "name": "Alabai",
-    "filename": "Alabai.png",
+    "filename": "alabai.png",
     "type": "fusils-a-pompe",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Alabai.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/alabai.png"
   },
   {
     "name": "Amstaff",
-    "filename": "Amstaff.png",
+    "filename": "amstaff.png",
     "type": "fusils-a-pompe",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Amstaff.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/amstaff.png"
   },
   {
     "name": "Ba Xing Chong",
-    "filename": "Ba Xing Chong.png",
+    "filename": "ba-xing-chong.png",
     "type": "fusils-a-pompe",
     "technology": "Intelligente",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Ba Xing Chong.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/ba-xing-chong.png"
   },
   {
     "name": "Bloody Maria",
-    "filename": "Bloody Maria.png",
+    "filename": "bloody-maria.png",
     "type": "fusils-a-pompe",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Bloody Maria.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/bloody-maria.png"
   },
   {
     "name": "Constitutional Arms M2038 Tactician",
-    "filename": "Constitutional Arms M2038 Tactician.png",
+    "filename": "constitutional-arms-m2038-tactician.png",
     "type": "fusils-a-pompe",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Constitutional Arms M2038 Tactician.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/constitutional-arms-m2038-tactician.png"
   },
   {
     "name": "Dezerter",
-    "filename": "Dezerter.png",
+    "filename": "dezerter.png",
     "type": "fusils-a-pompe",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Dezerter.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/dezerter.png"
   },
   {
     "name": "Guts",
-    "filename": "Guts.png",
+    "filename": "guts.png",
     "type": "fusils-a-pompe",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Guts.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/guts.png"
   },
   {
     "name": "Kang Tao L-69 Zhuo",
-    "filename": "Kang Tao L-69 Zhuo.png",
+    "filename": "kang-tao-l-69-zhuo.png",
     "type": "fusils-a-pompe",
     "technology": "Intelligente",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Kang Tao L-69 Zhuo.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/kang-tao-l-69-zhuo.png"
   },
   {
     "name": "Militech Crusher (2077)",
-    "filename": "Militech Crusher (2077).png",
+    "filename": "militech-crusher-2077.png",
     "type": "fusils-a-pompe",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Militech Crusher (2077).png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/militech-crusher-2077.png"
   },
   {
     "name": "Mox",
-    "filename": "Mox.png",
+    "filename": "mox.png",
     "type": "fusils-a-pompe",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Mox.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/mox.png"
   },
   {
     "name": "Order",
-    "filename": "Order.png",
+    "filename": "order.png",
     "type": "fusils-a-pompe",
     "technology": "Technique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Order.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/order.png"
   },
   {
     "name": "Pozhar x-MOD2",
-    "filename": "Pozhar x-MOD2.png",
+    "filename": "pozhar-x-mod2.png",
     "type": "fusils-a-pompe",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Pozhar x-MOD2.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/pozhar-x-mod2.png"
   },
   {
     "name": "Rostović DB-2 Satara",
-    "filename": "Rostović DB-2 Satara.png",
+    "filename": "rostović-db-2-satara.png",
     "type": "fusils-a-pompe",
     "technology": "Technique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Rostovic DB-2 Satara.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/rostović-db-2-satara.png"
   },
   {
     "name": "Rostović DB-2 Testera",
-    "filename": "Rostović DB-2 Testera.png",
+    "filename": "rostović-db-2-testera.png",
     "type": "fusils-a-pompe",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Rostovic DB-2 Testera.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/rostović-db-2-testera.png"
   },
   {
     "name": "Rostović DB-4 Igla",
-    "filename": "Rostović DB-4 Igla.png",
+    "filename": "rostović-db-4-igla.png",
     "type": "fusils-a-pompe",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Rostović DB-4 Igla.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/rostović-db-4-igla.png"
   },
   {
     "name": "Rostović DB-4 Palica",
-    "filename": "Rostović DB-4 Palica.png",
+    "filename": "rostović-db-4-palica.png",
     "type": "fusils-a-pompe",
     "technology": "Intelligente",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Rostović DB-4 Palica.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/rostović-db-4-palica.png"
   },
   {
     "name": "Sovereign",
-    "filename": "Sovereign.png",
+    "filename": "sovereign.png",
     "type": "fusils-a-pompe",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Sovereign.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/sovereign.png"
   },
   {
     "name": "Techtronika VST-37 Pozhar",
-    "filename": "Techtronika VST-37 Pozhar.png",
+    "filename": "techtronika-vst-37-pozhar.png",
     "type": "fusils-a-pompe",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Techtronika VST-37 Pozhar.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/techtronika-vst-37-pozhar.png"
   },
   {
     "name": "The Headsman",
-    "filename": "The Headsman.png",
+    "filename": "the-headsman.png",
     "type": "fusils-a-pompe",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/The Headsman.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/the-headsman.png"
   },
   {
     "name": "Arasaka HJSH-18 Masamune",
-    "filename": "Arasaka HJSH-18 Masamune.png",
+    "filename": "arasaka-hjsh-18-masamune.png",
     "type": "fusils",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Arasaka HJSH-18 Masamune.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/arasaka-hjsh-18-masamune.png"
   },
   {
     "name": "Arasaka Nowaki",
-    "filename": "Arasaka Nowaki.png",
+    "filename": "arasaka-nowaki.png",
     "type": "fusils",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Arasaka Nowaki.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/arasaka-nowaki.png"
   },
   {
     "name": "Carmen",
-    "filename": "Carmen.png",
+    "filename": "carmen.png",
     "type": "fusils",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Carmen.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/carmen.png"
   },
   {
     "name": "Chinook",
-    "filename": "Chinook.png",
+    "filename": "chinook.png",
     "type": "fusils",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Chinook.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/chinook.png"
   },
   {
     "name": "Darra Polytechnic DA8 Umbra",
-    "filename": "Darra Polytechnic DA8 Umbra.png",
+    "filename": "darra-polytechnic-da8-umbra.png",
     "type": "fusils",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Darra Polytechnic DA8 Umbra.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/darra-polytechnic-da8-umbra.png"
   },
   {
     "name": "Divided We Stand",
-    "filename": "Divided We Stand.png",
+    "filename": "divided-we-stand.png",
     "type": "fusils",
     "technology": "Intelligente",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Divided We Stand.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/divided-we-stand.png"
   },
   {
     "name": "Hawk",
-    "filename": "Hawk.png",
+    "filename": "hawk.png",
     "type": "fusils",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Hawk.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/hawk.png"
   },
   {
     "name": "Kyubi x-MOD2",
-    "filename": "Kyubi x-MOD2.png",
+    "filename": "kyubi-x-mod2.png",
     "type": "fusils",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Kyubi x-MOD2.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/kyubi-x-mod2.png"
   },
   {
     "name": "Militech Hercules 3AX",
-    "filename": "Militech Hercules 3AX.png",
+    "filename": "militech-hercules-3ax.png",
     "type": "fusils",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Militech Hercules 3AX.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/militech-hercules-3ax.png"
   },
   {
     "name": "Militech M251s Ajax",
-    "filename": "Militech M251s Ajax.png",
+    "filename": "militech-m251s-ajax.png",
     "type": "fusils",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Militech M251s Ajax.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/militech-m251s-ajax.png"
   },
   {
     "name": "Moron Labe",
-    "filename": "Moron Labe.png",
+    "filename": "moron-labe.png",
     "type": "fusils",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Moron Labe.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/moron-labe.png"
   },
   {
     "name": "Nokota D5 Sidewinder",
-    "filename": "Nokota D5 Sidewinder.png",
+    "filename": "nokota-d5-sidewinder.png",
     "type": "fusils",
     "technology": "Intelligente",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Nokota D5 Sidewinder.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/nokota-d5-sidewinder.png"
   },
   {
     "name": "Pit Bull",
-    "filename": "Pit Bull.png",
+    "filename": "pit-bull.png",
     "type": "fusils",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Pit Bull.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/pit-bull.png"
   },
   {
     "name": "Prejudice",
-    "filename": "Prejudice.png",
+    "filename": "prejudice.png",
     "type": "fusils",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Prejudice.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/prejudice.png"
   },
   {
     "name": "Tsunami Kyubi",
-    "filename": "Tsunami Kyubi.png",
+    "filename": "tsunami-kyubi.png",
     "type": "fusils",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Tsunami Kyubi.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/tsunami-kyubi.png"
   },
   {
     "name": "Umbra x-MOD2",
-    "filename": "Umbra x-MOD2.png",
+    "filename": "umbra-x-mod2.png",
     "type": "fusils",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Umbra x-MOD2.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/umbra-x-mod2.png"
   },
   {
     "name": "MA70 HB x-MOD2",
-    "filename": "MA70 HB x-MOD2.png",
+    "filename": "ma70-hb-x-mod2.png",
     "type": "mitrailleuses-legeres",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/mitrailleuses-legeres/MA70 HB x-MOD2.png"
+    "path": "https://www.deadwire.fr/media/armes/mitrailleuses-legeres/ma70-hb-x-mod2.png"
   },
   {
     "name": "Midnight Arms MA70 HB",
-    "filename": "Midnight Arms MA70 HB.png",
+    "filename": "midnight-arms-ma70-hb.png",
     "type": "mitrailleuses-legeres",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/mitrailleuses-legeres/Midnight Arms MA70 HB.png"
+    "path": "https://www.deadwire.fr/media/armes/mitrailleuses-legeres/midnight-arms-ma70-hb.png"
   },
   {
     "name": "Wild Dog",
-    "filename": "Wild Dog.png",
+    "filename": "wild-dog.png",
     "type": "mitrailleuses-legeres",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/mitrailleuses-legeres/Wild Dog.png"
+    "path": "https://www.deadwire.fr/media/armes/mitrailleuses-legeres/wild-dog.png"
   },
   {
     "name": "Militech Mk. 31 HMG",
-    "filename": "Militech Mk. 31 HMG.png",
+    "filename": "militech-mk.-31-hmg.png",
     "type": "mitrailleuses-lourdes",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/mitrailleuses-lourdes/Militech Mk. 31 HMG.png"
+    "path": "https://www.deadwire.fr/media/armes/mitrailleuses-lourdes/militech-mk.-31-hmg.png"
   },
   {
     "name": "Achilles x-MOD2",
-    "filename": "Achilles x-MOD2.png",
+    "filename": "achilles-x-mod2.png",
     "type": "fusils-precision",
     "technology": "Technique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils-precision/Achilles x-MOD2.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-precision/achilles-x-mod2.png"
   },
   {
     "name": "Hypercritical",
-    "filename": "Hypercritical.png",
+    "filename": "hypercritical.png",
     "type": "fusils-precision",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils-precision/Hypercritical.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-precision/hypercritical.png"
   },
   {
     "name": "Midnight Arms SOR-22",
-    "filename": "Midnight Arms SOR-22.png",
+    "filename": "midnight-arms-sor-22.png",
     "type": "fusils-precision",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/fusils-precision/Midnight Arms SOR-22.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-precision/midnight-arms-sor-22.png"
   },
   {
     "name": "Militech M-179 Achilles",
-    "filename": "Militech M-179 Achilles.png",
+    "filename": "militech-m-179-achilles.png",
     "type": "fusils-precision",
     "technology": "Technique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/fusils-precision/Militech M-179 Achilles.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-precision/militech-m-179-achilles.png"
   },
   {
     "name": "Widow Maker",
-    "filename": "Widow Maker.png",
+    "filename": "widow-maker.png",
     "type": "fusils-precision",
     "technology": "Technique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils-precision/Widow Maker.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-precision/widow-maker.png"
   },
   {
     "name": "Borzaya",
-    "filename": "Borzaya.png",
+    "filename": "borzaya.png",
     "type": "snipers",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/snipers/Borzaya.png"
+    "path": "https://www.deadwire.fr/media/armes/snipers/borzaya.png"
   },
   {
     "name": "Breakthrough",
-    "filename": "Breakthrough.png",
+    "filename": "breakthrough.png",
     "type": "snipers",
     "technology": "Technique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/snipers/Breakthrough.png"
+    "path": "https://www.deadwire.fr/media/armes/snipers/breakthrough.png"
   },
   {
     "name": "Foxhound",
-    "filename": "Foxhound.png",
+    "filename": "foxhound.png",
     "type": "snipers",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/snipers/Foxhound.png"
+    "path": "https://www.deadwire.fr/media/armes/snipers/foxhound.png"
   },
   {
     "name": "Nokota Osprey",
-    "filename": "Nokota Osprey.png",
+    "filename": "nokota-osprey.png",
     "type": "snipers",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/snipers/Nokota Osprey.png"
+    "path": "https://www.deadwire.fr/media/armes/snipers/nokota-osprey.png"
   },
   {
     "name": "O'Five",
-    "filename": "O'Five.png",
+    "filename": "ofive.png",
     "type": "snipers",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/snipers/O'Five.png"
+    "path": "https://www.deadwire.fr/media/armes/snipers/ofive.png"
   },
   {
     "name": "Overwatch",
-    "filename": "Overwatch.png",
+    "filename": "overwatch.png",
     "type": "snipers",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/snipers/Overwatch.png"
+    "path": "https://www.deadwire.fr/media/armes/snipers/overwatch.png"
   },
   {
     "name": "Sparky",
-    "filename": "Sparky.png",
+    "filename": "sparky.png",
     "type": "snipers",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/snipers/Sparky.png"
+    "path": "https://www.deadwire.fr/media/armes/snipers/sparky.png"
   },
   {
     "name": "Techtronika SPT32 Grad",
-    "filename": "Techtronika SPT32 Grad.png",
+    "filename": "techtronika-spt32-grad.png",
     "type": "snipers",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/snipers/Techtronika SPT32 Grad.png"
+    "path": "https://www.deadwire.fr/media/armes/snipers/techtronika-spt32-grad.png"
   },
   {
     "name": "Tsunami Nekomata",
-    "filename": "Tsunami Nekomata.png",
+    "filename": "tsunami-nekomata.png",
     "type": "snipers",
     "technology": "Technique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/snipers/Tsunami Nekomata.png"
+    "path": "https://www.deadwire.fr/media/armes/snipers/tsunami-nekomata.png"
   },
   {
     "name": "Tsunami Rasetsu",
-    "filename": "Tsunami Rasetsu.png",
+    "filename": "tsunami-rasetsu.png",
     "type": "snipers",
     "technology": "Technique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/snipers/Tsunami Rasetsu.png"
+    "path": "https://www.deadwire.fr/media/armes/snipers/tsunami-rasetsu.png"
   },
   {
     "name": "Yasha",
-    "filename": "Yasha.png",
+    "filename": "yasha.png",
     "type": "snipers",
     "technology": "Intelligente",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/snipers/Yasha.png"
+    "path": "https://www.deadwire.fr/media/armes/snipers/yasha.png"
   },
   {
     "name": "Black Unicorn",
-    "filename": "Black Unicorn.png",
+    "filename": "black-unicorn.png",
     "type": "lames",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lames/Black Unicorn.png"
+    "path": "https://www.deadwire.fr/media/armes/lames/black-unicorn.png"
   },
   {
     "name": "Butcher's Cleaver",
-    "filename": "Butcher's Cleaver.png",
+    "filename": "butchers-cleaver.png",
     "type": "lames",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lames/Butcher's Cleaver.png"
+    "path": "https://www.deadwire.fr/media/armes/lames/butchers-cleaver.png"
   },
   {
     "name": "Byakko",
-    "filename": "Byakko.png",
+    "filename": "byakko.png",
     "type": "lames",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lames/Byakko.png"
+    "path": "https://www.deadwire.fr/media/armes/lames/byakko.png"
   },
   {
     "name": "Cocktail Stick",
-    "filename": "Cocktail Stick.png",
+    "filename": "cocktail-stick.png",
     "type": "lames",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lames/Cocktail Stick.png"
+    "path": "https://www.deadwire.fr/media/armes/lames/cocktail-stick.png"
   },
   {
     "name": "Cut-o-Matic x-MOD2",
-    "filename": "Cut-o-Matic x-MOD2.png",
+    "filename": "cut-o-matic-x-mod2.png",
     "type": "lames",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lames/Cut-o-Matic x-MOD2.png"
+    "path": "https://www.deadwire.fr/media/armes/lames/cut-o-matic-x-mod2.png"
   },
   {
     "name": "Errata",
-    "filename": "Errata.png",
+    "filename": "errata.png",
     "type": "lames",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lames/Errata.png"
+    "path": "https://www.deadwire.fr/media/armes/lames/errata.png"
   },
   {
     "name": "Gwynbleidd",
-    "filename": "Gwynbleidd.png",
+    "filename": "gwynbleidd.png",
     "type": "lames",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lames/Gwynbleidd.png"
+    "path": "https://www.deadwire.fr/media/armes/lames/gwynbleidd.png"
   },
   {
     "name": "Jinchu-maru",
-    "filename": "Jinchu-maru.png",
+    "filename": "jinchu-maru.png",
     "type": "lames",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lames/Jinchu-maru.png"
+    "path": "https://www.deadwire.fr/media/armes/lames/jinchu-maru.png"
   },
   {
     "name": "Katana",
-    "filename": "Katana.png",
+    "filename": "katana.png",
     "type": "lames",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/lames/Katana.png"
+    "path": "https://www.deadwire.fr/media/armes/lames/katana.png"
   },
   {
     "name": "Kukri",
-    "filename": "Kukri.png",
+    "filename": "kukri.png",
     "type": "lames",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/lames/Kukri.png"
+    "path": "https://www.deadwire.fr/media/armes/lames/kukri.png"
   },
   {
     "name": "Machete",
-    "filename": "Machete.png",
+    "filename": "machete.png",
     "type": "lames",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/lames/Machete.png"
+    "path": "https://www.deadwire.fr/media/armes/lames/machete.png"
   },
   {
     "name": "Satori",
-    "filename": "Satori.png",
+    "filename": "satori.png",
     "type": "lames",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lames/Satori.png"
+    "path": "https://www.deadwire.fr/media/armes/lames/satori.png"
   },
   {
     "name": "Scalpel",
-    "filename": "Scalpel.png",
+    "filename": "scalpel.png",
     "type": "lames",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lames/Scalpel.png"
+    "path": "https://www.deadwire.fr/media/armes/lames/scalpel.png"
   },
   {
     "name": "Techtronika Razor",
-    "filename": "Techtronika Razor.png",
+    "filename": "techtronika-razor.png",
     "type": "lames",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/lames/Techtronika Razor.png"
+    "path": "https://www.deadwire.fr/media/armes/lames/techtronika-razor.png"
   },
   {
     "name": "Tsumetogi",
-    "filename": "Tsumetogi.png",
+    "filename": "tsumetogi.png",
     "type": "lames",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lames/Tsumetogi.png"
+    "path": "https://www.deadwire.fr/media/armes/lames/tsumetogi.png"
   },
   {
     "name": "Volkodav",
-    "filename": "Volkodav.png",
+    "filename": "volkodav.png",
     "type": "lames",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lames/Volkodav.png"
+    "path": "https://www.deadwire.fr/media/armes/lames/volkodav.png"
   },
   {
     "name": "Baby Boomer",
-    "filename": "Baby Boomer.png",
+    "filename": "baby-boomer.png",
     "type": "contondant",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Baby Boomer.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/baby-boomer.png"
   },
   {
     "name": "Baseball Bat",
-    "filename": "Baseball Bat.png",
+    "filename": "baseball-bat.png",
     "type": "contondant",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Baseball Bat.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/baseball-bat.png"
   },
   {
     "name": "Baseball Bat x-MOD2",
-    "filename": "Baseball Bat x-MOD2.png",
+    "filename": "baseball-bat-x-mod2.png",
     "type": "contondant",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Baseball Bat x-MOD2.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/baseball-bat-x-mod2.png"
   },
   {
     "name": "BFC 9000",
-    "filename": "BFC 9000.png",
+    "filename": "bfc-9000.png",
     "type": "contondant",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/contondant/BFC 9000.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/bfc-9000.png"
   },
   {
     "name": "Caretaker's Spade",
-    "filename": "Caretaker's Spade.png",
+    "filename": "caretakers-spade.png",
     "type": "contondant",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Caretaker's Spade.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/caretakers-spade.png"
   },
   {
     "name": "Cottonmouth",
-    "filename": "Cottonmouth.png",
+    "filename": "cottonmouth.png",
     "type": "contondant",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Cottonmouth.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/cottonmouth.png"
   },
   {
     "name": "Crowbar",
-    "filename": "Crowbar.png",
+    "filename": "crowbar.png",
     "type": "contondant",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Crowbar.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/crowbar.png"
   },
   {
     "name": "Crowbar (iconic)",
-    "filename": "Crowbar (iconic).png",
+    "filename": "crowbar-iconic.png",
     "type": "contondant",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Crowbar (iconic).png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/crowbar-iconic.png"
   },
   {
     "name": "Electric Baton Alpha",
-    "filename": "Electric Baton Alpha.png",
+    "filename": "electric-baton-alpha.png",
     "type": "contondant",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Electric Baton Alpha.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/electric-baton-alpha.png"
   },
   {
     "name": "Electric Baton Beta",
-    "filename": "Electric Baton Beta.png",
+    "filename": "electric-baton-beta.png",
     "type": "contondant",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Electric Baton Beta.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/electric-baton-beta.png"
   },
   {
     "name": "Electric Baton Gamma",
-    "filename": "Electric Baton Gamma.png",
+    "filename": "electric-baton-gamma.png",
     "type": "contondant",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Electric Baton Gamma.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/electric-baton-gamma.png"
   },
   {
     "name": "Gold-plated baseball bat",
-    "filename": "Gold-plated baseball bat.png",
+    "filename": "gold-plated-baseball-bat.png",
     "type": "contondant",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Gold-plated baseball bat.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/gold-plated-baseball-bat.png"
   },
   {
     "name": "Hammer",
-    "filename": "Hammer.png",
+    "filename": "hammer.png",
     "type": "contondant",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Hammer.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/hammer.png"
   },
   {
     "name": "Kanabo",
-    "filename": "Kanabo.png",
+    "filename": "kanabo.png",
     "type": "contondant",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Kanabo.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/kanabo.png"
   },
   {
     "name": "Murphy's Law",
-    "filename": "Murphy's Law.png",
+    "filename": "murphys-law.png",
     "type": "contondant",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Murphy's Law.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/murphys-law.png"
   },
   {
     "name": "Sasquatch's Hammer",
-    "filename": "Sasquatch's Hammer.png",
+    "filename": "sasquatchs-hammer.png",
     "type": "contondant",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Sasquatch's Hammer.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/sasquatchs-hammer.png"
   },
   {
     "name": "Sir John Phallustiff",
-    "filename": "Sir John Phallustiff.png",
+    "filename": "sir-john-phallustiff.png",
     "type": "contondant",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Sir John Phallustiff.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/sir-john-phallustiff.png"
   },
   {
     "name": "Steel Pipe",
-    "filename": "Steel Pipe.png",
+    "filename": "steel-pipe.png",
     "type": "contondant",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Steel Pipe.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/steel-pipe.png"
   },
   {
     "name": "Tinker Bell",
-    "filename": "Tinker Bell.png",
+    "filename": "tinker-bell.png",
     "type": "contondant",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Tinker Bell.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/tinker-bell.png"
   },
   {
     "name": "Tire Iron",
-    "filename": "Tire Iron.png",
+    "filename": "tire-iron.png",
     "type": "contondant",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/contondant/Tire Iron.png"
+    "path": "https://www.deadwire.fr/media/armes/contondant/tire-iron.png"
   },
   {
     "name": "Agaou",
-    "filename": "Agaou.png",
+    "filename": "agaou.png",
     "type": "lancable",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lancable/Agaou.png"
+    "path": "https://www.deadwire.fr/media/armes/lancable/agaou.png"
   },
   {
     "name": "Blue Fang",
-    "filename": "Blue Fang.png",
+    "filename": "blue-fang.png",
     "type": "lancable",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lancable/Blue Fang.png"
+    "path": "https://www.deadwire.fr/media/armes/lancable/blue-fang.png"
   },
   {
     "name": "Chef's Knife",
-    "filename": "Chef's Knife.png",
+    "filename": "chefs-knife.png",
     "type": "lancable",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/lancable/Chef's Knife.png"
+    "path": "https://www.deadwire.fr/media/armes/lancable/chefs-knife.png"
   },
   {
     "name": "Claw",
-    "filename": "Claw.png",
+    "filename": "claw.png",
     "type": "lancable",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/lancable/Claw.png"
+    "path": "https://www.deadwire.fr/media/armes/lancable/claw.png"
   },
   {
     "name": "Claw x-MOD2",
-    "filename": "Claw x-MOD2.png",
+    "filename": "claw-x-mod2.png",
     "type": "lancable",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lancable/Claw x-MOD2.png"
+    "path": "https://www.deadwire.fr/media/armes/lancable/claw-x-mod2.png"
   },
   {
     "name": "Fang",
-    "filename": "Fang.png",
+    "filename": "fang.png",
     "type": "lancable",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lancable/Fang.png"
+    "path": "https://www.deadwire.fr/media/armes/lancable/fang.png"
   },
   {
     "name": "Headhunter",
-    "filename": "Headhunter.png",
+    "filename": "headhunter.png",
     "type": "lancable",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lancable/Headhunter.png"
+    "path": "https://www.deadwire.fr/media/armes/lancable/headhunter.png"
   },
   {
     "name": "Kaiken",
-    "filename": "Kaiken.png",
+    "filename": "kaiken.png",
     "type": "lancable",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/lancable/Kaiken.png"
+    "path": "https://www.deadwire.fr/media/armes/lancable/kaiken.png"
   },
   {
     "name": "Knife",
-    "filename": "Knife.png",
+    "filename": "knife.png",
     "type": "lancable",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/lancable/Knife.png"
+    "path": "https://www.deadwire.fr/media/armes/lancable/knife.png"
   },
   {
     "name": "Nehan",
-    "filename": "Nehan.png",
+    "filename": "nehan.png",
     "type": "lancable",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lancable/Nehan.png"
+    "path": "https://www.deadwire.fr/media/armes/lancable/nehan.png"
   },
   {
     "name": "Neurotoxin Knife",
-    "filename": "Neurotoxin Knife.png",
+    "filename": "neurotoxin-knife.png",
     "type": "lancable",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/lancable/Neurotoxin Knife.png"
+    "path": "https://www.deadwire.fr/media/armes/lancable/neurotoxin-knife.png"
   },
   {
     "name": "Punknife",
-    "filename": "Punknife.png",
+    "filename": "punknife.png",
     "type": "lancable",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/lancable/Punknife.png"
+    "path": "https://www.deadwire.fr/media/armes/lancable/punknife.png"
   },
   {
     "name": "Stinger",
-    "filename": "Stinger.png",
+    "filename": "stinger.png",
     "type": "lancable",
     "technology": "",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/lancable/Stinger.png"
+    "path": "https://www.deadwire.fr/media/armes/lancable/stinger.png"
   },
   {
     "name": "Tomahawk",
-    "filename": "Tomahawk.png",
+    "filename": "tomahawk.png",
     "type": "lancable",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/lancable/Tomahawk.png"
+    "path": "https://www.deadwire.fr/media/armes/lancable/tomahawk.png"
   },
   {
     "name": "CHAR Incendiary Grenade",
-    "filename": "CHAR Incendiary Grenade.png",
+    "filename": "char-incendiary-grenade.png",
     "type": "grenades",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/grenades/CHAR Incendiary Grenade.png"
+    "path": "https://www.deadwire.fr/media/armes/grenades/char-incendiary-grenade.png"
   },
   {
     "name": "EMP Grenade",
-    "filename": "EMP Grenade.png",
+    "filename": "emp-grenade.png",
     "type": "grenades",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/grenades/EMP Grenade.png"
+    "path": "https://www.deadwire.fr/media/armes/grenades/emp-grenade.png"
   },
   {
     "name": "F-GX Frag Grenade",
-    "filename": "F-GX Frag Grenade.png",
+    "filename": "f-gx-frag-grenade.png",
     "type": "grenades",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/grenades/F-GX Frag Grenade.png"
+    "path": "https://www.deadwire.fr/media/armes/grenades/f-gx-frag-grenade.png"
   },
   {
     "name": "GASH Antipersonnel Grenade",
-    "filename": "GASH Antipersonnel Grenade.png",
+    "filename": "gash-antipersonnel-grenade.png",
     "type": "grenades",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/grenades/GASH Antipersonnel Grenade.png"
+    "path": "https://www.deadwire.fr/media/armes/grenades/gash-antipersonnel-grenade.png"
   },
   {
     "name": "MOLODETS BioHaz Grenade",
-    "filename": "MOLODETS BioHaz Grenade.png",
+    "filename": "molodets-biohaz-grenade.png",
     "type": "grenades",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/grenades/MOLODETS BioHaz Grenade.png"
+    "path": "https://www.deadwire.fr/media/armes/grenades/molodets-biohaz-grenade.png"
   },
   {
     "name": "Recon Grenade",
-    "filename": "Recon Grenade.png",
+    "filename": "recon-grenade.png",
     "type": "grenades",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/grenades/Recon Grenade.png"
+    "path": "https://www.deadwire.fr/media/armes/grenades/recon-grenade.png"
   },
   {
     "name": "Smoke Grenade",
-    "filename": "Smoke Grenade.png",
+    "filename": "smoke-grenade.png",
     "type": "grenades",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/grenades/Smoke Grenade.png"
+    "path": "https://www.deadwire.fr/media/armes/grenades/smoke-grenade.png"
   },
   {
     "name": "X-22 Flashbang Grenade",
-    "filename": "X-22 Flashbang Grenade.png",
+    "filename": "x-22-flashbang-grenade.png",
     "type": "grenades",
     "technology": "",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/grenades/X-22 Flashbang Grenade.png"
+    "path": "https://www.deadwire.fr/media/armes/grenades/x-22-flashbang-grenade.png"
   },
   {
     "name": "A-22B Chao",
-    "filename": "Kang Tao A-22B Chao.png",
+    "filename": "kang-tao-a-22b-chao.png",
     "type": "pistolets",
     "technology": "Intelligente",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/pistolets/Kang Tao A-22B Chao.png"
+    "path": "https://www.deadwire.fr/media/armes/pistolets/kang-tao-a-22b-chao.png"
   },
   {
     "name": "DR5 Nova",
-    "filename": "Darra Polytechnic DR-5 Nova.png",
+    "filename": "darra-polytechnic-dr-5-nova.png",
     "type": "revolvers",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/revolvers/Darra Polytechnic DR-5 Nova.png"
+    "path": "https://www.deadwire.fr/media/armes/revolvers/darra-polytechnic-dr-5-nova.png"
   },
   {
     "name": "DS1 Pulsar",
-    "filename": "Darra Polytechnic DS1 Pulsar.png",
+    "filename": "darra-polytechnic-ds1-pulsar.png",
     "type": "mitraillettes",
     "technology": "Technique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/Darra Polytechnic DS1 Pulsar.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/darra-polytechnic-ds1-pulsar.png"
   },
   {
     "name": "Prototype: Shingen Mark V",
-    "filename": "Prototype Shingen Mark V.png",
+    "filename": "prototype-shingen-mark-v.png",
     "type": "mitraillettes",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/mitraillettes/Prototype Shingen Mark V.png"
+    "path": "https://www.deadwire.fr/media/armes/mitraillettes/prototype-shingen-mark-v.png"
   },
   {
     "name": "Carnage",
-    "filename": "Budget Arms Carnage.png",
+    "filename": "budget-arms-carnage.png",
     "type": "fusils-a-pompe",
     "technology": "Cinétique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/Budget Arms Carnage.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-a-pompe/budget-arms-carnage.png"
   },
   {
     "name": "D5 Copperhead",
-    "filename": "Nokota D5 Copperhead.png",
+    "filename": "nokota-d5-copperhead.png",
     "type": "fusils",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Nokota D5 Copperhead.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/nokota-d5-copperhead.png"
   },
   {
     "name": "Psalm 11:6",
-    "filename": "Psalm 116.png",
+    "filename": "psalm-116.png",
     "type": "fusils",
     "technology": "Intelligente",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils/Psalm 116.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils/psalm-116.png"
   },
   {
     "name": "Defender",
-    "filename": "Constitutional Arms M2067 Defender.png",
+    "filename": "constitutional-arms-m2067-defender.png",
     "type": "mitrailleuses-legeres",
     "technology": "Cinétique",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/mitrailleuses-legeres/Constitutional Arms M2067 Defender.png"
+    "path": "https://www.deadwire.fr/media/armes/mitrailleuses-legeres/constitutional-arms-m2067-defender.png"
   },
   {
     "name": "Kolac",
-    "filename": "Rostovic Kolac.png",
+    "filename": "rostovic-kolac.png",
     "type": "fusils-precision",
     "technology": "Technique",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/fusils-precision/Rostovic Kolac.png"
+    "path": "https://www.deadwire.fr/media/armes/fusils-precision/rostovic-kolac.png"
   },
   {
     "name": "Ashura",
-    "filename": "Tsunami Ashura.png",
+    "filename": "tsunami-ashura.png",
     "type": "snipers",
     "technology": "Intelligente",
     "iconic": true,
-    "path": "https://www.deadwire.fr/media/armes/snipers/Tsunami Ashura.png"
+    "path": "https://www.deadwire.fr/media/armes/snipers/tsunami-ashura.png"
   },
   {
     "name": "Cut-o-Matic",
-    "filename": "Budget Arms Cut-o-Matic.png",
+    "filename": "budget-arms-cut-o-matic.png",
     "type": "lames",
     "technology": "Lame",
     "iconic": false,
-    "path": "https://www.deadwire.fr/media/armes/lames/Budget Arms Cut-o-Matic.png"
+    "path": "https://www.deadwire.fr/media/armes/lames/budget-arms-cut-o-matic.png"
   }
 ]

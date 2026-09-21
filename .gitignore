@@ -28,3 +28,5 @@ scripts/fix-missing-weapons.js
 scripts/fix-weapon-categories.js
 scripts/reorganize-weapons.js
 scripts/normalize-filenames.js
+scripts/git-rename-lowercase.js
+scripts/fix-git-case.sh

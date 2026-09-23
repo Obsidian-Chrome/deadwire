@@ -7,12 +7,11 @@
   <link rel="icon" href="/media/Deadwire_Logo_Neon.png" type="image/png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="/styles.css" />
-  <link rel="stylesheet" href="system.css" />
+  <link rel="stylesheet" href="../system/system.css" />
   
   <script defer src="/shared/loader.js"></script>
   <script defer src="/shared/crew-auth.js"></script>
   <script defer src="/app.js"></script>
-  <script defer src="gm-protection.js"></script>
   
   <style>
     .stats-section {
@@ -74,6 +73,31 @@
       font-family: inherit;
     }
   </style>
+  
+  <script>
+    // Vérifier si l'utilisateur est MJ
+    async function checkMJAccess() {
+      // Attendre que discordAuth soit chargé
+      while (!window.discordAuth) {
+        await new Promise(resolve => setTimeout(resolve, 50));
+      }
+      
+      // Restaurer la session
+      const isAuthenticated = await window.discordAuth.restoreSession();
+      
+      if (!isAuthenticated || !window.discordAuth.isGM) {
+        // Rediriger vers la page système v1 si pas MJ
+        window.location.href = '/crew/system-v1/';
+      }
+    }
+    
+    // Exécuter la vérification au chargement
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', checkMJAccess);
+    } else {
+      checkMJAccess();
+    }
+  </script>
 </head>
 <body>
   <main>
@@ -81,7 +105,7 @@
       
       <a href="/crew/system-v1/" style="display: inline-flex; align-items: center; gap: 8px; color: rgba(255, 42, 61, 0.9); text-decoration: none; font-weight: 600; margin-bottom: 24px; transition: all 0.2s;">
         <i class="fa-solid fa-arrow-left"></i>
-        Retour au système v1
+        Retour au système
       </a>
       
       <div style="margin-bottom: 32px;">

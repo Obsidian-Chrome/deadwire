@@ -18,6 +18,7 @@
   "SystemHasBonusTemp": true,
   "SystemHasBonusPerm": true,
   "SystemHasEpicAttributes": true,
+  "SystemHasFavoriteAttributes": true,
   "SystemHasInventoryLimit": false,
   "InventoryMaxSlots": 30,
   "SystemHasAugmentations": true,
@@ -115,7 +116,7 @@
       "Formula": "[Vigueur] \u002B [R\u00E9sistance] \u002B lvl",
       "ResourceType": 2,
       "IsRollable": false,
-      "ShowInGroup": false
+      "ShowInGroup": true
     },
     {
       "Name": "Parade",
@@ -154,17 +155,21 @@
       "ShowInGroup": false
     }
   ],
-  "CustomEquipmentSlots": [],
+  "CustomEquipmentSlots": [
+    "MainHand",
+    "OffHand",
+    "Head",
+    "Body",
+    "Hands",
+    "Legs",
+    "Feet",
+    "Earrings",
+    "Neck",
+    "Wrists",
+    "Ring1",
+    "Ring2"
+  ],
   "SystemAttributes": {
-    "Dext\u00E9rit\u00E9": {
-      "TotalValue": 1,
-      "Name": "Dext\u00E9rit\u00E9",
-      "Description": "[Physique] Repr\u00E9sente l\u0027agilit\u00E9, la coordination et la vitesse des mouvements.",
-      "Value": 1,
-      "TempBonus": 0,
-      "PermBonus": 0,
-      "EpicBonus": 0
-    },
     "Force": {
       "TotalValue": 1,
       "Name": "Force",
@@ -172,7 +177,18 @@
       "Value": 1,
       "TempBonus": 0,
       "PermBonus": 0,
-      "EpicBonus": 0
+      "EpicBonus": 0,
+      "IsFavorite": false
+    },
+    "Dext\u00E9rit\u00E9": {
+      "TotalValue": 1,
+      "Name": "Dext\u00E9rit\u00E9",
+      "Description": "[Physique] Repr\u00E9sente l\u0027agilit\u00E9, la coordination et la vitesse des mouvements.",
+      "Value": 1,
+      "TempBonus": 0,
+      "PermBonus": 0,
+      "EpicBonus": 0,
+      "IsFavorite": false
     },
     "Vigueur": {
       "TotalValue": 1,
@@ -181,7 +197,8 @@
       "Value": 1,
       "TempBonus": 0,
       "PermBonus": 0,
-      "EpicBonus": 0
+      "EpicBonus": 0,
+      "IsFavorite": false
     },
     "Charisme": {
       "TotalValue": 1,
@@ -190,7 +207,8 @@
       "Value": 1,
       "TempBonus": 0,
       "PermBonus": 0,
-      "EpicBonus": 0
+      "EpicBonus": 0,
+      "IsFavorite": false
     },
     "Manipulation": {
       "TotalValue": 1,
@@ -199,7 +217,8 @@
       "Value": 1,
       "TempBonus": 0,
       "PermBonus": 0,
-      "EpicBonus": 0
+      "EpicBonus": 0,
+      "IsFavorite": false
     },
     "Apparence": {
       "TotalValue": 1,
@@ -208,7 +227,8 @@
       "Value": 1,
       "TempBonus": 0,
       "PermBonus": 0,
-      "EpicBonus": 0
+      "EpicBonus": 0,
+      "IsFavorite": false
     },
     "Perception": {
       "TotalValue": 1,
@@ -217,7 +237,8 @@
       "Value": 1,
       "TempBonus": 0,
       "PermBonus": 0,
-      "EpicBonus": 0
+      "EpicBonus": 0,
+      "IsFavorite": false
     },
     "Intelligence": {
       "TotalValue": 1,
@@ -226,7 +247,8 @@
       "Value": 1,
       "TempBonus": 0,
       "PermBonus": 0,
-      "EpicBonus": 0
+      "EpicBonus": 0,
+      "IsFavorite": false
     },
     "Astuce": {
       "TotalValue": 1,
@@ -235,7 +257,8 @@
       "Value": 1,
       "TempBonus": 0,
       "PermBonus": 0,
-      "EpicBonus": 0
+      "EpicBonus": 0,
+      "IsFavorite": false
     }
   },
   "SystemSkills": {

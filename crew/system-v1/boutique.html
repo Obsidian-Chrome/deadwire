@@ -1,0 +1,1348 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boutique | Le Deadwire</title>
+  <link rel="icon" href="/media/Deadwire_Logo_Neon.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="../system/system.css" />
+  
+  <style>
+    .shop-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .shop-header {
+      margin-bottom: 32px;
+    }
+
+    .category-tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      border-bottom: 2px solid rgba(255, 42, 61, 0.3);
+      padding-bottom: 12px;
+    }
+
+    .category-tab {
+      padding: 12px 24px;
+      background: rgba(10, 0, 12, 0.6);
+      border: 1px solid rgba(255, 42, 61, 0.3);
+      border-radius: 8px 8px 0 0;
+      color: rgba(247, 233, 239, 0.9);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .category-tab:hover {
+      border-color: rgba(255, 42, 61, 0.6);
+      background: rgba(255, 42, 61, 0.1);
+    }
+
+    .category-tab.active {
+      background: rgba(255, 42, 61, 0.3);
+      border-color: rgba(255, 42, 61, 0.8);
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .category-tab.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      position: relative;
+    }
+
+    .category-tab.disabled::after {
+      content: " (Bientôt)";
+      font-size: 0.75rem;
+      opacity: 0.7;
+    }
+
+    /* Loader pour la boutique */
+    .shop-loader {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+      gap: 16px;
+    }
+
+    .shop-loader.hidden {
+      display: none;
+    }
+
+    .shop-loader__spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255, 42, 61, 0.2);
+      border-top-color: rgba(255, 42, 61, 0.8);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .shop-loader__text {
+      color: rgba(247, 233, 239, 0.7);
+      font-size: 1rem;
+    }
+
+    .filters-bar {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      align-items: center;
+      transition: opacity 0.2s, height 0.2s;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(10, 0, 12, 0.6);
+      border: 1px solid rgba(255, 42, 61, 0.3);
+      border-radius: 8px;
+      color: rgba(247, 233, 239, 0.95);
+      font-size: 1rem;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: rgba(255, 42, 61, 0.8);
+    }
+
+    .weapon-type-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .type-filter-btn {
+      padding: 8px 16px;
+      background: rgba(10, 0, 12, 0.6);
+      border: 1px solid rgba(255, 42, 61, 0.3);
+      border-radius: 6px;
+      color: rgba(247, 233, 239, 0.9);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+
+    .type-filter-btn:hover {
+      border-color: rgba(255, 42, 61, 0.6);
+      background: rgba(255, 42, 61, 0.1);
+    }
+
+    .type-filter-btn.active {
+      background: rgba(255, 42, 61, 0.3);
+      border-color: rgba(255, 42, 61, 0.8);
+      font-weight: bold;
+    }
+
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .item-card {
+      background: rgba(10, 0, 12, 0.8);
+      border: 2px solid rgba(255, 42, 61, 0.3);
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .item-card:hover {
+      border-color: rgba(255, 42, 61, 0.6);
+      box-shadow: 0 4px 12px rgba(255, 42, 61, 0.2);
+    }
+
+    .item-card.iconic {
+      border-color: rgba(255, 215, 0, 0.5);
+    }
+
+    .item-header {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      align-items: flex-start;
+    }
+
+    .item-icon {
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .item-icon img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      position: relative;
+      z-index: 2;
+    }
+
+    .item-icon::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 8px;
+      opacity: 0.4;
+      filter: blur(8px);
+      z-index: 1;
+      transition: all 0.3s;
+    }
+
+    .item-icon.rarity-common::before {
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+    }
+
+    .item-icon.rarity-uncommon::before {
+      background: radial-gradient(circle, rgba(0, 255, 100, 0.6) 0%, transparent 70%);
+    }
+
+    .item-icon.rarity-rare::before {
+      background: radial-gradient(circle, rgba(51, 187, 255, 0.6) 0%, transparent 70%);
+    }
+
+    .item-icon.rarity-epic::before {
+      background: radial-gradient(circle, rgba(200, 100, 255, 0.6) 0%, transparent 70%);
+    }
+
+    .item-icon.rarity-legendary::before {
+      background: radial-gradient(circle, rgba(255, 150, 50, 0.6) 0%, transparent 70%);
+    }
+
+    .item-icon.rarity-artifact::before {
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.6) 0%, transparent 70%);
+    }
+
+    .item-info {
+      flex: 1;
+    }
+
+    .item-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: rgba(255, 42, 61, 0.95);
+      margin-bottom: 4px;
+    }
+
+    .item-tech {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .item-tech.cinetique {
+      background: rgba(255, 87, 51, 0.2);
+      color: rgba(255, 87, 51, 0.95);
+      border: 1px solid rgba(255, 87, 51, 0.4);
+    }
+
+    .item-tech.technique {
+      background: rgba(51, 187, 255, 0.2);
+      color: rgba(51, 187, 255, 0.95);
+      border: 1px solid rgba(51, 187, 255, 0.4);
+    }
+
+    .item-tech.intelligente {
+      background: rgba(255, 215, 0, 0.2);
+      color: rgba(255, 215, 0, 0.95);
+      border: 1px solid rgba(255, 215, 0, 0.4);
+    }
+
+    .item-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(247, 233, 239, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-value {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: rgba(255, 42, 61, 0.95);
+    }
+
+    .item-description {
+      font-size: 0.9rem;
+      color: rgba(247, 233, 239, 0.8);
+      line-height: 1.5;
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    .item-effect {
+      font-size: 0.85rem;
+      color: rgba(51, 187, 255, 0.95);
+      padding: 8px;
+      background: rgba(51, 187, 255, 0.1);
+      border-left: 3px solid rgba(51, 187, 255, 0.5);
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+
+    .item-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 42, 61, 0.2);
+    }
+
+    .btn-copy-json {
+      flex: 1;
+      padding: 10px 16px;
+      background: rgba(255, 42, 61, 0.2);
+      border: 1px solid rgba(255, 42, 61, 0.5);
+      border-radius: 6px;
+      color: rgba(255, 255, 255, 0.95);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: bold;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-copy-json:hover {
+      background: rgba(255, 42, 61, 0.4);
+      border-color: rgba(255, 42, 61, 0.8);
+      transform: scale(1.05);
+    }
+
+    .item-price {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 215, 0, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 6px;
+      font-weight: bold;
+      color: rgba(255, 215, 0, 0.95);
+      white-space: nowrap;
+    }
+
+    .item-price img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+
+    .rarity-selector {
+      margin-bottom: 12px;
+    }
+
+    .rarity-selector label {
+      display: block;
+      font-size: 0.75rem;
+      color: rgba(247, 233, 239, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .rarity-selector select {
+      width: 100%;
+      padding: 8px 12px;
+      background: rgba(10, 0, 12, 0.6);
+      border: 1px solid rgba(255, 42, 61, 0.3);
+      border-radius: 6px;
+      color: rgba(247, 233, 239, 0.95);
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .rarity-selector select:focus {
+      outline: none;
+      border-color: rgba(255, 42, 61, 0.8);
+    }
+
+    .notification {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 200, 0, 0.95);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      z-index: 10000;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .notification.show {
+      opacity: 1;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 64px 24px;
+      color: rgba(247, 233, 239, 0.6);
+    }
+
+    .empty-state i {
+      font-size: 4rem;
+      margin-bottom: 16px;
+      opacity: 0.3;
+    }
+
+    .empty-state p {
+      font-size: 1.2rem;
+    }
+
+    /* Modal pour agrandir l'image */
+    .image-modal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .image-modal.show {
+      display: flex;
+    }
+
+    .image-modal img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .image-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .image-modal-close:hover {
+      color: rgba(255, 42, 61, 0.95);
+    }
+
+    .item-icon img {
+      cursor: pointer;
+    }
+
+    /* Icône d'ambidextrie */
+    .ambidextry-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: rgba(247, 233, 239, 0.6);
+      font-size: 0.85rem;
+      cursor: help;
+      margin-bottom: 4px;
+      margin-right: 8px;
+    }
+
+    .ambidextry-badge:hover {
+      color: rgba(255, 42, 61, 0.95);
+    }
+
+    .ambidextry-badge i {
+      font-size: 1rem;
+    }
+
+    .tooltip {
+      position: relative;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 140px;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1000;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -70px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 0.75rem;
+    }
+
+    .tooltip .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loader" class="loader"></div>
+
+  <nav id="navbar"></nav>
+
+  <main>
+    <section class="shop-container">
+      <a href="/crew/system-v1/" style="display: inline-flex; align-items: center; gap: 8px; color: rgba(255, 42, 61, 0.9); text-decoration: none; font-weight: 600; margin-bottom: 24px; transition: all 0.2s;">
+        <i class="fa-solid fa-arrow-left"></i>
+        Retour au système
+      </a>
+
+      <div class="shop-header">
+        <h1 style="font-size: 2.5rem; margin: 16px 0; color: rgba(255, 42, 61, 0.95);">Boutique</h1>
+        <p style="margin-bottom: 16px; padding: 12px; background: rgba(255, 42, 61, 0.1); border-left: 3px solid rgba(255, 42, 61, 0.8); border-radius: 4px; color: rgba(247, 233, 239, 0.9); font-size: 0.95rem;">
+          <i class="fa-solid fa-circle-info" style="margin-right: 8px;"></i>
+          Signalez vos achats dans votre canal Discord personnel. <strong>Attention :</strong> seuls les gils du boulot exercé au Deadwire et des contrats liés sont acceptés.
+        </p>
+        <p style="color: rgba(247, 233, 239, 0.7); font-size: 1.1rem;">
+          Parcourez la boutique et achetez le nécessaire, choom !
+        </p>
+      </div>
+
+      <!-- Onglets de catégories -->
+      <div class="category-tabs">
+        <button class="category-tab active" data-category="weapons">
+          <i class="fa-solid fa-gun"></i> Armes
+        </button>
+        <button class="category-tab disabled" data-category="armor">
+          <i class="fa-solid fa-shield"></i> Armures
+        </button>
+        <button class="category-tab disabled" data-category="cyberware">
+          <i class="fa-solid fa-microchip"></i> Cyberwares & Implants
+        </button>
+        <button class="category-tab" data-category="consumables">
+          <i class="fa-solid fa-flask"></i> Consommables
+        </button>
+      </div>
+
+      <!-- Barre de filtres (visible uniquement pour les armes) -->
+      <div class="filters-bar" id="weapons-filters">
+        <div class="search-box">
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="Rechercher..."
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="weapon-type-filters" id="type-filters">
+          <!-- Généré dynamiquement -->
+        </div>
+
+        <div id="iconic-filter" style="display: none;">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: rgba(247, 233, 239, 0.9);">
+            <input type="checkbox" id="show-iconic" style="cursor: pointer;">
+            <span>[MJ] Afficher les objets iconiques</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Loader -->
+      <div class="shop-loader" id="shop-loader">
+        <div class="shop-loader__spinner"></div>
+      </div>
+
+      <!-- Grille d'items -->
+      <div class="items-grid" id="items-grid" style="display: none;">
+        <!-- Généré dynamiquement -->
+      </div>
+
+      <div class="empty-state" id="empty-state" style="display: none;">
+        <i class="fa-solid fa-box-open"></i>
+        <p>Aucun équipement trouvé</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Notification -->
+  <div class="notification" id="notification"></div>
+
+  <!-- Modal pour agrandir l'image -->
+  <div class="image-modal" id="image-modal">
+    <span class="image-modal-close" id="image-modal-close">&times;</span>
+    <img id="image-modal-img" src="" alt="">
+  </div>
+
+  <footer id="footer"></footer>
+
+  <script defer src="/shared/loader.js"></script>
+  <script defer src="/shared/crew-auth.js"></script>
+  <script defer src="/app.js"></script>
+
+  <script>
+    // Configuration des types d'armes
+    const weaponTypes = {
+      'all': 'Toutes',
+      'pistolets': 'Pistolets',
+      'revolvers': 'Revolvers',
+      'mitraillettes': 'Mitraillettes',
+      'fusils-a-pompe': 'Fusils à pompe',
+      'fusils': 'Fusils d\'assaut',
+      'mitrailleuses-legeres': 'Mitrailleuses légères',
+      'mitrailleuses-lourdes': 'Mitrailleuses lourdes',
+      'fusils-precision': 'Fusils de précision',
+      'snipers': 'Fusils sniper',
+      'lames': 'Lames',
+      'contondant': 'Contondant',
+      'lancable': 'Lançable'
+    };
+
+    const consumableTypes = {
+      'all': 'Tous',
+      'grenades': 'Grenades'
+    };
+
+    // Poids par type d'arme (en kg)
+    const weaponWeights = {
+      'pistolets': 1,
+      'revolvers': 1.5,
+      'mitraillettes': 3,
+      'fusils-a-pompe': 4,
+      'fusils': 4.5,
+      'mitrailleuses-legeres': 7,
+      'mitrailleuses-lourdes': 12,
+      'fusils-precision': 5,
+      'snipers': 6,
+      'lames': 1,
+      'contondant': 2,
+      'lancable': 0.5,
+      'grenades': 0.5
+    };
+
+    // Armes compatibles avec l'ambidextrie (par nom spécifique)
+    const ambidextryWeapons = [
+      // Pistolets (tous)
+      'pistolets',
+      // Mitraillettes (toutes)
+      'mitraillettes',
+      // Lames spécifiques
+      'Couteau',
+      'Couteau de chef',
+      'Griffe',
+      'Couteau Neurotoxique',
+      'Couteau Punk',
+      'Kaiken',
+      'Machette',
+      'Kukri',
+      'Tomahawk',
+      // Contondantes spécifiques
+      'Matraque',
+      'Bâton Électrique Alpha',
+      'Bâton Électrique Beta',
+      'Bâton Électrique Gamma',
+      'Pied de biche',
+      'Tuyau en acier',
+      'Démonte Pneu'
+    ];
+
+    // Vérifier si une arme peut être utilisée en ambidextrie
+    function canUseAmbidextry(weapon) {
+      // Vérifier par type
+      if (ambidextryWeapons.includes(weapon.type)) {
+        return true;
+      }
+      // Vérifier par nom
+      return ambidextryWeapons.includes(weapon.name);
+    }
+
+    // Mapping des types vers les slots
+    const typeToSlot = {
+      'pistolets': 'MainHand',
+      'revolvers': 'MainHand',
+      'mitraillettes': 'MainHand',
+      'fusils-a-pompe': 'MainHand',
+      'fusils': 'MainHand',
+      'mitrailleuses-legeres': 'MainHand',
+      'mitrailleuses-lourdes': 'MainHand',
+      'fusils-precision': 'MainHand',
+      'snipers': 'MainHand',
+      'lames': 'MainHand',
+      'contondant': 'MainHand',
+      'lancable': 'MainHand',
+      'grenades': 'Consumable'
+    };
+
+    // Mapping des raretés
+    const rarityMapping = {
+      'common': 'Common',
+      'uncommon': 'Uncommon',
+      'rare': 'Rare',
+      'epic': 'Epic',
+      'legendary': 'Legendary',
+      'iconic': 'Iconic'
+    };
+
+    let weaponsData = [];
+    let currentCategory = 'weapons';
+    let currentTypeFilter = 'all';
+    let searchQuery = '';
+    let userRoles = [];
+    let showIconic = false;
+
+    // Charger les données d'armes
+    async function loadWeaponsData() {
+      const loader = document.getElementById('shop-loader');
+      const grid = document.getElementById('items-grid');
+      
+      try {
+        const response = await fetch('/media/armes/weapons-metadata.json');
+        weaponsData = await response.json();
+        
+        // Attendre que discordAuth soit chargé
+        await waitForAuth();
+        
+        // Restaurer la session
+        const isAuthenticated = await window.discordAuth.restoreSession();
+        
+        // Vérifier si MJ
+        const isGM = window.discordAuth.isGM;
+        
+        // Stocker le statut MJ pour les filtres
+        if (isGM) {
+          userRoles = ['MJ'];
+        }
+        
+        // Afficher le filtre iconique si MJ
+        const iconicFilter = document.getElementById('iconic-filter');
+        if (isGM && iconicFilter) {
+          iconicFilter.style.display = 'block';
+        }
+        
+        renderTypeFilters();
+        renderItems();
+        
+        // Cacher le loader et afficher la grille
+        loader.classList.add('hidden');
+        grid.style.display = 'grid';
+      } catch (error) {
+        console.error('Erreur de chargement:', error);
+        loader.innerHTML = `
+          <i class="fa-solid fa-triangle-exclamation" style="font-size: 2rem; color: rgba(255, 42, 61, 0.8);"></i>
+          <div class="shop-loader__text">Erreur de chargement des équipements</div>
+        `;
+      }
+    }
+
+    // Attendre que l'authentification soit chargée
+    function waitForAuth() {
+      return new Promise((resolve) => {
+        if (window.discordAuth) {
+          resolve();
+        } else {
+          const checkInterval = setInterval(() => {
+            if (window.discordAuth) {
+              clearInterval(checkInterval);
+              resolve();
+            }
+          }, 50);
+        }
+      });
+    }
+
+    // Générer les filtres de type
+    function renderTypeFilters() {
+      const container = document.getElementById('type-filters');
+      container.innerHTML = '';
+
+      const types = currentCategory === 'consumables' ? consumableTypes : weaponTypes;
+
+      Object.entries(types).forEach(([key, label]) => {
+        const btn = document.createElement('button');
+        btn.className = 'type-filter-btn' + (key === currentTypeFilter ? ' active' : '');
+        btn.textContent = label;
+        btn.dataset.type = key;
+        btn.addEventListener('click', () => {
+          currentTypeFilter = key;
+          renderTypeFilters();
+          renderItems();
+        });
+        container.appendChild(btn);
+      });
+    }
+
+    // Prix de base par type d'arme (T1/Common)
+    const basePrices = {
+      // Armes de mêlée
+      'couteau': 1500,
+      'matraque': 2000,
+      'machete': 2500,
+      'katana': 6000,
+      'hache': 6000,
+      'epee-tronconneuse': 10000,
+      
+      // Armes à feu
+      'pistolets': 3500,
+      'revolvers': 4000,
+      'mitraillettes': 5500,
+      'fusils-a-pompe': 7000,
+      'fusil-double-canon': 7500,
+      'fusils': 8000,
+      'fusils-precision': 10000,
+      'snipers': 12000,
+      'mitrailleuses-legeres': 15000,
+      'mitrailleuses-lourdes': 25000
+    };
+
+    // Prix spécifiques par grenade
+    const grenadePrices = {
+      'Grenade Incendiaire CHAR': 1200,
+      'Grenade IEM': 1500,
+      'Grenade à fragmentation F-GX': 800,
+      'Grenade Antipersonnelle GASH': 1500,
+      'Grenade BioHaz MOLODETS': 1000,
+      'Grenade Recon': 600,
+      'Grenade Fumigène': 500,
+      'Grenade Flashbang X-22': 700
+    };
+
+    // Descriptions spécifiques par grenade
+    const grenadeDescriptions = {
+      'Grenade Incendiaire CHAR': 'Grenade incendiaire qui applique Brûlure pendant 5 secondes.',
+      'Grenade IEM': 'Grenade EMP qui désactive les cyberwares et inflige des dégâts bonus aux drones, mechs et tourelles.',
+      'Grenade à fragmentation F-GX': 'Grenade à fragmentation qui inflige des dégâts explosifs et de shrapnel.',
+      'Grenade Antipersonnelle GASH': 'Grenade antipersonnel qui active 32 lasers et décapite les ennemis faibles.',
+      'Grenade BioHaz MOLODETS': 'Grenade biohazard qui crée un nuage toxique appliquant Poison.',
+      'Grenade Recon': 'Grenade de reconnaissance qui émet un son attirant les ennemis et améliore le verrouillage des armes intelligentes.',
+      'Grenade Fumigène': 'Grenade fumigène qui crée un écran de fumée pendant 5-15 secondes.',
+      'Grenade Flashbang X-22': 'Grenade aveuglante qui désoriente les ennemis.'
+    };
+
+    // Multiplicateurs de rareté
+    const rarityMultipliers = {
+      'Common': 1,
+      'Uncommon': 2,
+      'Rare': 4,
+      'Epic': 8,
+      'Legendary': 16,
+      'Artifact': 24
+    };
+
+    // Calculer le prix basé sur la rareté et le type
+    function calculatePrice(weapon, rarity) {
+      // Les grenades ont un prix fixe par unité
+      if (weapon.type === 'grenades') {
+        return grenadePrices[weapon.name] || 1000;
+      }
+      
+      const base = basePrices[weapon.type] || 3500;
+      const multiplier = rarityMultipliers[rarity] || 1;
+      return base * multiplier;
+    }
+
+    // Formules de dégâts basées sur armes-stats.html
+    const damageFormulas = {
+      // Armes à feu par rareté
+      'pistolets': { Common: '1d8', Uncommon: '1d10', Rare: '1d12', Epic: '2d8', Legendary: '2d10', Artifact: '2d10' },
+      'revolvers': { Common: '1d10', Uncommon: '1d12', Rare: '2d6', Epic: '2d10', Legendary: '3d8', Artifact: '3d8' },
+      'mitraillettes': { Common: '2d4', Uncommon: '2d6', Rare: '2d8', Epic: '3d6', Legendary: '3d8', Artifact: '3d8' },
+      'fusils': { Common: '2d6', Uncommon: '2d8', Rare: '3d6', Epic: '3d8', Legendary: '4d8', Artifact: '4d8' },
+      'fusils-precision': { Common: '2d8', Uncommon: '2d10', Rare: '3d8', Epic: '3d10', Legendary: '4d10', Artifact: '4d10' },
+      'snipers': { Common: '2d10', Uncommon: '3d8', Rare: '3d10', Epic: '4d10', Legendary: '5d10', Artifact: '5d10' },
+      'fusils-a-pompe': { Common: '2d6', Uncommon: '2d8', Rare: '3d6', Epic: '3d8', Legendary: '4d8', Artifact: '4d8' },
+      'fusil-double-canon': { Common: '2d8', Uncommon: '3d6', Rare: '3d8', Epic: '4d8', Legendary: '5d8', Artifact: '5d8' },
+      'mitrailleuses-legeres': { Common: '3d4', Uncommon: '3d6', Rare: '3d8', Epic: '4d8', Legendary: '5d8', Artifact: '5d8' },
+      'mitrailleuses-lourdes': { Common: '3d8', Uncommon: '4d8', Rare: '4d10', Epic: '5d10', Legendary: '6d10', Artifact: '6d10' },
+      
+      // Lames par rareté
+      'couteau': { Common: '1d4', Uncommon: '1d6', Rare: '1d8', Epic: '1d10', Legendary: '1d12', Artifact: '1d12' },
+      'machette': { Common: '1d6', Uncommon: '1d8', Rare: '1d10', Epic: '2d6', Legendary: '2d8', Artifact: '2d8' },
+      'kukri': { Common: '1d6', Uncommon: '1d8', Rare: '1d10', Epic: '2d6', Legendary: '2d8', Artifact: '2d8' },
+      'katana': { Common: '1d8', Uncommon: '1d10', Rare: '2d6', Epic: '2d8', Legendary: '3d8', Artifact: '3d8' },
+      'espadon': { Common: '1d12', Uncommon: '2d8', Rare: '2d10', Epic: '3d10', Legendary: '4d10', Artifact: '4d10' },
+      'hache': { Common: '1d10', Uncommon: '1d12', Rare: '2d8', Epic: '2d10', Legendary: '3d10', Artifact: '3d10' },
+      'epee-tronconneuse': { Common: '2d6', Uncommon: '2d8', Rare: '3d6', Epic: '3d8', Legendary: '4d8', Artifact: '4d8' },
+      'razor': { Common: '2d6', Uncommon: '2d8', Rare: '3d6', Epic: '3d8', Legendary: '4d8', Artifact: '4d8' },
+      'cut-o-matic': { Common: '2d6', Uncommon: '2d8', Rare: '3d6', Epic: '3d8', Legendary: '4d8', Artifact: '4d8' },
+      
+      // Contondant par rareté
+      'matraque': { Common: '1d6', Uncommon: '1d8', Rare: '1d10', Epic: '2d6', Legendary: '2d8', Artifact: '2d8' },
+      'batte-baseball': { Common: '1d8', Uncommon: '1d10', Rare: '1d12', Epic: '2d8', Legendary: '2d10', Artifact: '2d10' },
+      'marteau': { Common: '1d10', Uncommon: '2d6', Rare: '2d8', Epic: '3d8', Legendary: '4d8', Artifact: '4d8' },
+      'kanabo': { Common: '1d10', Uncommon: '2d6', Rare: '2d8', Epic: '3d8', Legendary: '4d8', Artifact: '4d8' },
+      
+      // Lançable (pas de tiers)
+      'couteau-lancer': { Common: '1d6' },
+      'hache-lancer': { Common: '1d8' },
+      
+      // Grenades (pas de tiers)
+      'grenades': { Common: '2d6' }
+    };
+
+    // Mapper les noms d'armes vers leurs catégories de stats
+    function getWeaponStatCategory(weapon) {
+      // Mapping par nom exact
+      const nameMapping = {
+        // Contondantes
+        'Batte de Baseball': 'batte-baseball',
+        'Baseball Bat x-MOD2': 'batte-baseball',
+        'Gold-plated baseball bat': 'batte-baseball',
+        'Marteau': 'marteau',
+        'Sasquatch\'s Hammer': 'marteau',
+        'Kanabo': 'kanabo',
+        
+        // Lames
+        'Kukri': 'kukri',
+        'Techtronika Razor': 'razor',
+        'Cut-o-Matic': 'cut-o-matic',
+        'Cut-o-Matic x-MOD2': 'cut-o-matic',
+        
+        // Tous les couteaux
+        'Couteau': 'couteau',
+        'Couteau de chef': 'couteau',
+        'Griffe': 'couteau',
+        'Claw x-MOD2': 'couteau',
+        'Couteau Neurotoxique': 'couteau',
+        'Couteau Punk': 'couteau',
+        'Kaiken': 'couteau',
+        
+        // Machettes et similaires
+        'Machette': 'machette',
+        'Tomahawk': 'machette'
+      };
+      
+      // Si mapping trouvé, l'utiliser
+      if (nameMapping[weapon.name]) {
+        return nameMapping[weapon.name];
+      }
+      
+      // Sinon utiliser le type
+      return weapon.type;
+    }
+
+    // Générer la formule de dégâts
+    function getDamageFormula(weapon, rarity) {
+      const category = getWeaponStatCategory(weapon);
+      const formulas = damageFormulas[category];
+      if (!formulas) return '1d6';
+      return formulas[rarity] || formulas['Common'] || '1d6';
+    }
+
+    // Générer une description
+    function getDescription(weapon, rarity) {
+      // Description spécifique pour les grenades
+      if (weapon.type === 'grenades') {
+        return grenadeDescriptions[weapon.name] || 'Grenade explosive.';
+      }
+      
+      // Mapping des raretés en français
+      const rarityNames = {
+        'Common': 'commune',
+        'Uncommon': 'peu commune',
+        'Rare': 'rare',
+        'Epic': 'épique',
+        'Legendary': 'légendaire',
+        'Artifact': 'iconique'
+      };
+      
+      const rarityText = rarityNames[rarity] || 'standard';
+      
+      return `Une arme ${weapon.technology.toLowerCase()} de qualité ${rarityText}.`;
+    }
+
+    // Générer un effet basé sur la technologie
+    function getEffect(weapon) {
+      const effects = {
+        'Cinétique': 'Peut être exploité par le talent permettant de faire des ricochets.',
+        'Technique': 'Peut être chargé un tour pour améliorer la pénétration de son projectile.',
+        'Intelligente': 'Ciblage assisté avec bonus pour toucher si implants compatibles installés.'
+      };
+      
+      let effect = effects[weapon.technology] || '';
+      
+      // Ajouter un effet spécial pour les armes iconiques
+      if (weapon.iconic) {
+        effect += ' [ICONIQUE : Effet spécial unique à définir]';
+      }
+      
+      return effect || 'Aucun effet spécial.';
+    }
+
+    // Générer le JSON de l'item
+    function generateItemJSON(weapon, rarity) {
+      const isConsumable = weapon.type === 'grenades';
+      const weight = weaponWeights[weapon.type] || 1;
+      const hasAmbidextry = canUseAmbidextry(weapon);
+      
+      // JSON pour consommables (grenades)
+      if (isConsumable) {
+        return {
+          "$type": "Item",
+          "Id": crypto.randomUUID(),
+          "Name": weapon.name,
+          "Description": getDescription(weapon, 'Common'),
+          "Effect": getEffect(weapon),
+          "ItemType": "Consumable",
+          "Quantity": 1,
+          "MaxStack": 10,
+          "ImageUrl": weapon.path,
+          "Weight": weight,
+          "Rarity": "Common",
+          "IsUsable": true,
+          "IsConsumable": true,
+          "UseFormula": getDamageFormula(weapon, 'Common'),
+          "CustomProperties": {
+            "GrenadeType": weapon.name
+          }
+        };
+      }
+      
+      // JSON pour équipements (armes)
+      const customProps = {
+        "Technology": weapon.technology,
+        "WeaponType": weapon.type,
+        "DualWielding": hasAmbidextry ? "True" : "False"
+      };
+      
+      return {
+        "$type": "GearItem",
+        "Slot": "MainHand",
+        "IsAugmentation": false,
+        "StatModifiers": {},
+        "Durability": 100,
+        "MaxDurability": 100,
+        "Id": crypto.randomUUID(),
+        "Name": weapon.name,
+        "Description": getDescription(weapon, rarity),
+        "Effect": getEffect(weapon),
+        "ItemType": "Weapon",
+        "Quantity": 1,
+        "MaxStack": 1,
+        "ImageUrl": weapon.path,
+        "Weight": weight,
+        "Rarity": rarity,
+        "IsUsable": true,
+        "IsConsumable": false,
+        "UseFormula": getDamageFormula(weapon, rarity),
+        "CustomProperties": customProps
+      };
+    }
+
+    // Afficher une notification
+    function showNotification(message) {
+      const notification = document.getElementById('notification');
+      notification.textContent = message;
+      notification.classList.add('show');
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 2000);
+    }
+
+    // Copier le JSON
+    function copyJSON(weapon, rarity) {
+      const json = generateItemJSON(weapon, rarity);
+      const jsonString = JSON.stringify(json, null, 2);
+      
+      navigator.clipboard.writeText(jsonString).then(() => {
+        showNotification('✓ JSON copié !');
+      });
+    }
+
+    // Rendre les items
+    function renderItems() {
+      const grid = document.getElementById('items-grid');
+      const emptyState = document.getElementById('empty-state');
+      grid.innerHTML = '';
+
+      // Vérifier si l'utilisateur est MJ
+      const isGM = userRoles.includes('MJ');
+
+      // Filtrer selon la catégorie
+      let filtered = weaponsData.filter(weapon => {
+        // Filtrer par catégorie (armes vs consommables)
+        if (currentCategory === 'weapons' && weapon.type === 'grenades') return false;
+        if (currentCategory === 'consumables' && weapon.type !== 'grenades') return false;
+        
+        const matchesType = currentTypeFilter === 'all' || weapon.type === currentTypeFilter;
+        const matchesSearch = weapon.name.toLowerCase().includes(searchQuery.toLowerCase());
+        // Masquer les armes iconiques si le filtre n'est pas activé
+        const canView = !weapon.iconic || (isGM && showIconic);
+        return matchesType && matchesSearch && canView;
+      });
+
+      if (filtered.length === 0) {
+        grid.style.display = 'none';
+        emptyState.style.display = 'block';
+        return;
+      }
+
+      grid.style.display = 'grid';
+      emptyState.style.display = 'none';
+
+      filtered.forEach(weapon => {
+        const card = document.createElement('div');
+        card.className = 'item-card' + (weapon.iconic ? ' iconic' : '');
+
+        const techClass = weapon.technology.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const isGrenade = weapon.type === 'grenades';
+        const isIconic = weapon.iconic;
+        
+        // Rareté par défaut
+        const defaultRarity = isIconic ? 'Artifact' : 'Common';
+        
+        const price = calculatePrice(weapon, defaultRarity);
+        const damage = getDamageFormula(weapon, defaultRarity);
+        const effect = getEffect(weapon);
+        const description = getDescription(weapon, defaultRarity);
+
+        // Sélecteur de rareté (sauf pour grenades et iconiques)
+        let raritySelector = '';
+        if (!isGrenade && !isIconic) {
+          raritySelector = `
+            <div class="rarity-selector">
+              <label>Rareté</label>
+              <select class="rarity-select">
+                <option value="Common">Commun</option>
+                <option value="Uncommon">Peu commun</option>
+                <option value="Rare">Rare</option>
+                <option value="Epic">Épique</option>
+                <option value="Legendary">Légendaire</option>
+              </select>
+            </div>
+          `;
+        } else if (isIconic) {
+          raritySelector = `
+            <div class="rarity-selector">
+              <label>Rareté</label>
+              <div style="padding: 8px 12px; background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 6px; color: rgba(255, 215, 0, 0.95); font-weight: bold; text-align: center;">
+                Iconique
+              </div>
+            </div>
+          `;
+        }
+
+        const rarityClass = `rarity-${defaultRarity.toLowerCase()}`;
+        const hasAmbidextry = canUseAmbidextry(weapon);
+        
+        card.innerHTML = `
+          <div class="item-header">
+            <div class="item-icon ${rarityClass}">
+              <img src="${weapon.path}" alt="${weapon.name}" />
+            </div>
+            <div class="item-info">
+              <div class="item-name">${weapon.name}</div>
+              ${hasAmbidextry ? `
+                <div class="ambidextry-badge tooltip">
+                  <i class="fas fa-sign-language"></i>
+                  <span class="tooltiptext">Ambidextrie possible</span>
+                </div>
+              ` : ''}
+              ${!isGrenade ? `<div class="item-tech ${techClass}">${weapon.technology}</div>` : ''}
+            </div>
+          </div>
+
+          ${raritySelector}
+
+          <div class="item-stats">
+            <div class="stat-item">
+              <div class="stat-label">Dégâts</div>
+              <div class="stat-value damage-value">${damage}</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Type</div>
+              <div class="stat-value">${isGrenade ? consumableTypes[weapon.type] || weaponTypes[weapon.type] : weaponTypes[weapon.type]}</div>
+            </div>
+          </div>
+
+          <div class="item-description">${description}</div>
+          ${effect ? `<div class="item-effect"><strong>Effet :</strong> ${effect}</div>` : ''}
+
+          <div class="item-actions">
+            <button class="btn-copy-json">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+            <div class="item-price">
+              <img src="/media/gil.webp" alt="Gil" />
+              <span class="price-value">${price.toLocaleString()}${isGrenade ? '/u' : ''}</span>
+            </div>
+          </div>
+        `;
+
+        // Ajouter l'événement click sur l'image pour l'agrandir
+        const itemIconImg = card.querySelector('.item-icon img');
+        itemIconImg.addEventListener('click', () => {
+          openImageModal(weapon.path, weapon.name);
+        });
+
+        // Gérer le changement de rareté (seulement pour les armes non-iconiques et non-grenades)
+        if (!isGrenade && !isIconic) {
+          const raritySelect = card.querySelector('.rarity-select');
+          const damageValue = card.querySelector('.damage-value');
+          const priceValue = card.querySelector('.price-value');
+          const itemIcon = card.querySelector('.item-icon');
+          const descriptionElement = card.querySelector('.item-description');
+          
+          raritySelect.addEventListener('change', (e) => {
+            const newRarity = e.target.value;
+            const newDamage = getDamageFormula(weapon, newRarity);
+            const newPrice = calculatePrice(weapon, newRarity);
+            const newDescription = getDescription(weapon, newRarity);
+            
+            // Mettre à jour les valeurs
+            damageValue.textContent = newDamage;
+            priceValue.textContent = newPrice.toLocaleString();
+            descriptionElement.textContent = newDescription;
+            
+            // Mettre à jour la lueur de l'icône
+            itemIcon.className = `item-icon rarity-${newRarity.toLowerCase()}`;
+          });
+
+          card.querySelector('.btn-copy-json').addEventListener('click', () => {
+            const currentRarity = raritySelect.value;
+            copyJSON(weapon, currentRarity);
+          });
+        } else {
+          // Pour les grenades et iconiques, pas de sélecteur
+          card.querySelector('.btn-copy-json').addEventListener('click', () => {
+            copyJSON(weapon, defaultRarity);
+          });
+        }
+        
+        grid.appendChild(card);
+      });
+    }
+
+    // Gestion des onglets de catégories
+    document.querySelectorAll('.category-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        if (tab.classList.contains('disabled')) return;
+        
+        document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentCategory = tab.dataset.category;
+        currentTypeFilter = 'all'; // Réinitialiser le filtre
+
+        // Afficher/masquer les filtres selon la catégorie
+        const showFilters = currentCategory === 'weapons' || currentCategory === 'consumables';
+        const filtersElement = document.getElementById('weapons-filters');
+        if (showFilters) {
+          filtersElement.style.visibility = 'visible';
+          filtersElement.style.opacity = '1';
+          filtersElement.style.height = 'auto';
+        } else {
+          filtersElement.style.visibility = 'hidden';
+          filtersElement.style.opacity = '0';
+          filtersElement.style.height = '0';
+          filtersElement.style.overflow = 'hidden';
+        }
+        
+        renderTypeFilters();
+        renderItems();
+      });
+    });
+
+    // Recherche
+    document.getElementById('search-input').addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderItems();
+    });
+
+    // Filtre iconique
+    document.getElementById('show-iconic').addEventListener('change', (e) => {
+      showIconic = e.target.checked;
+      renderItems();
+    });
+
+    // Modal pour agrandir l'image
+    const imageModal = document.getElementById('image-modal');
+    const imageModalImg = document.getElementById('image-modal-img');
+    const imageModalClose = document.getElementById('image-modal-close');
+
+    function openImageModal(src, alt) {
+      imageModalImg.src = src;
+      imageModalImg.alt = alt;
+      imageModal.classList.add('show');
+    }
+
+    function closeImageModal() {
+      imageModal.classList.remove('show');
+    }
+
+    imageModalClose.addEventListener('click', closeImageModal);
+    imageModal.addEventListener('click', (e) => {
+      if (e.target === imageModal) {
+        closeImageModal();
+      }
+    });
+
+    // Charger au démarrage quand le DOM et l'auth sont prêts
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadWeaponsData);
+    } else {
+      loadWeaponsData();
+    }
+  </script>
+</body>
+</html>

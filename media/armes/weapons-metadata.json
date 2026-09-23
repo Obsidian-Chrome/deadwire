@@ -1080,7 +1080,7 @@
     "path": "https://www.deadwire.fr/media/armes/lames/kukri.png"
   },
   {
-    "name": "Machete",
+    "name": "Machette",
     "filename": "machete.png",
     "type": "lames",
     "technology": "",
@@ -1136,7 +1136,7 @@
     "path": "https://www.deadwire.fr/media/armes/contondant/baby-boomer.png"
   },
   {
-    "name": "Baseball Bat",
+    "name": "Batte de Baseball",
     "filename": "baseball-bat.png",
     "type": "contondant",
     "technology": "",
@@ -1176,7 +1176,7 @@
     "path": "https://www.deadwire.fr/media/armes/contondant/cottonmouth.png"
   },
   {
-    "name": "Crowbar",
+    "name": "Pied de biche",
     "filename": "crowbar.png",
     "type": "contondant",
     "technology": "",
@@ -1192,7 +1192,7 @@
     "path": "https://www.deadwire.fr/media/armes/contondant/crowbar-iconic.png"
   },
   {
-    "name": "Electric Baton Alpha",
+    "name": "Bâton Électrique Alpha",
     "filename": "electric-baton-alpha.png",
     "type": "contondant",
     "technology": "",
@@ -1200,7 +1200,7 @@
     "path": "https://www.deadwire.fr/media/armes/contondant/electric-baton-alpha.png"
   },
   {
-    "name": "Electric Baton Beta",
+    "name": "Bâton Électrique Beta",
     "filename": "electric-baton-beta.png",
     "type": "contondant",
     "technology": "",
@@ -1208,7 +1208,7 @@
     "path": "https://www.deadwire.fr/media/armes/contondant/electric-baton-beta.png"
   },
   {
-    "name": "Electric Baton Gamma",
+    "name": "Bâton Électrique Gamma",
     "filename": "electric-baton-gamma.png",
     "type": "contondant",
     "technology": "",
@@ -1224,7 +1224,7 @@
     "path": "https://www.deadwire.fr/media/armes/contondant/gold-plated-baseball-bat.png"
   },
   {
-    "name": "Hammer",
+    "name": "Marteau",
     "filename": "hammer.png",
     "type": "contondant",
     "technology": "",
@@ -1264,7 +1264,7 @@
     "path": "https://www.deadwire.fr/media/armes/contondant/sir-john-phallustiff.png"
   },
   {
-    "name": "Steel Pipe",
+    "name": "Tuyau en acier",
     "filename": "steel-pipe.png",
     "type": "contondant",
     "technology": "",
@@ -1280,7 +1280,7 @@
     "path": "https://www.deadwire.fr/media/armes/contondant/tinker-bell.png"
   },
   {
-    "name": "Tire Iron",
+    "name": "Démonte Pneu",
     "filename": "tire-iron.png",
     "type": "contondant",
     "technology": "",
@@ -1304,7 +1304,7 @@
     "path": "https://www.deadwire.fr/media/armes/lancable/blue-fang.png"
   },
   {
-    "name": "Chef's Knife",
+    "name": "Couteau de chef",
     "filename": "chefs-knife.png",
     "type": "lancable",
     "technology": "",
@@ -1312,7 +1312,7 @@
     "path": "https://www.deadwire.fr/media/armes/lancable/chefs-knife.png"
   },
   {
-    "name": "Claw",
+    "name": "Griffe",
     "filename": "claw.png",
     "type": "lancable",
     "technology": "",
@@ -1352,7 +1352,7 @@
     "path": "https://www.deadwire.fr/media/armes/lancable/kaiken.png"
   },
   {
-    "name": "Knife",
+    "name": "Couteau",
     "filename": "knife.png",
     "type": "lancable",
     "technology": "",
@@ -1368,7 +1368,7 @@
     "path": "https://www.deadwire.fr/media/armes/lancable/nehan.png"
   },
   {
-    "name": "Neurotoxin Knife",
+    "name": "Couteau Neurotoxique",
     "filename": "neurotoxin-knife.png",
     "type": "lancable",
     "technology": "",
@@ -1376,7 +1376,7 @@
     "path": "https://www.deadwire.fr/media/armes/lancable/neurotoxin-knife.png"
   },
   {
-    "name": "Punknife",
+    "name": "Couteau Punk",
     "filename": "punknife.png",
     "type": "lancable",
     "technology": "",
@@ -1400,7 +1400,7 @@
     "path": "https://www.deadwire.fr/media/armes/lancable/tomahawk.png"
   },
   {
-    "name": "CHAR Incendiary Grenade",
+    "name": "Grenade Incendiaire CHAR",
     "filename": "char-incendiary-grenade.png",
     "type": "grenades",
     "technology": "",
@@ -1408,7 +1408,7 @@
     "path": "https://www.deadwire.fr/media/armes/grenades/char-incendiary-grenade.png"
   },
   {
-    "name": "EMP Grenade",
+    "name": "Grenade IEM",
     "filename": "emp-grenade.png",
     "type": "grenades",
     "technology": "",
@@ -1416,7 +1416,7 @@
     "path": "https://www.deadwire.fr/media/armes/grenades/emp-grenade.png"
   },
   {
-    "name": "F-GX Frag Grenade",
+    "name": "Grenade à fragmentation F-GX",
     "filename": "f-gx-frag-grenade.png",
     "type": "grenades",
     "technology": "",
@@ -1424,7 +1424,7 @@
     "path": "https://www.deadwire.fr/media/armes/grenades/f-gx-frag-grenade.png"
   },
   {
-    "name": "GASH Antipersonnel Grenade",
+    "name": "Grenade Antipersonnelle GASH",
     "filename": "gash-antipersonnel-grenade.png",
     "type": "grenades",
     "technology": "",
@@ -1432,7 +1432,7 @@
     "path": "https://www.deadwire.fr/media/armes/grenades/gash-antipersonnel-grenade.png"
   },
   {
-    "name": "MOLODETS BioHaz Grenade",
+    "name": "Grenade BioHaz MOLODETS",
     "filename": "molodets-biohaz-grenade.png",
     "type": "grenades",
     "technology": "",
@@ -1448,7 +1448,7 @@
     "path": "https://www.deadwire.fr/media/armes/grenades/recon-grenade.png"
   },
   {
-    "name": "Smoke Grenade",
+    "name": "Grenade Fumigène",
     "filename": "smoke-grenade.png",
     "type": "grenades",
     "technology": "",
@@ -1456,7 +1456,7 @@
     "path": "https://www.deadwire.fr/media/armes/grenades/smoke-grenade.png"
   },
   {
-    "name": "X-22 Flashbang Grenade",
+    "name": "Grenade Flashbang X-22",
     "filename": "x-22-flashbang-grenade.png",
     "type": "grenades",
     "technology": "",

@@ -488,6 +488,85 @@
       cursor: pointer;
     }
 
+    /* Modal pour choix main principale/secondaire */
+    .hand-choice-modal {
+      display: none;
+      position: fixed;
+      z-index: 10001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hand-choice-modal.show {
+      display: flex;
+    }
+
+    .hand-choice-content {
+      background: rgba(10, 0, 12, 0.95);
+      border: 2px solid rgba(255, 42, 61, 0.5);
+      border-radius: 12px;
+      padding: 32px;
+      max-width: 500px;
+      width: 90%;
+    }
+
+    .hand-choice-title {
+      font-size: 1.5rem;
+      color: rgba(255, 42, 61, 0.95);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .hand-choice-description {
+      color: rgba(247, 233, 239, 0.8);
+      margin-bottom: 24px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .hand-choice-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .hand-choice-btn {
+      padding: 12px 24px;
+      border: 2px solid rgba(255, 42, 61, 0.5);
+      border-radius: 8px;
+      background: rgba(255, 42, 61, 0.1);
+      color: rgba(247, 233, 239, 0.9);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .hand-choice-btn:hover {
+      background: rgba(255, 42, 61, 0.3);
+      border-color: rgba(255, 42, 61, 0.8);
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .hand-choice-btn.secondary {
+      border-color: rgba(255, 42, 61, 0.3);
+    }
+
+    .hand-choice-warning {
+      background: rgba(255, 42, 61, 0.15);
+      border-left: 3px solid rgba(255, 42, 61, 0.8);
+      padding: 12px;
+      margin-bottom: 16px;
+      border-radius: 4px;
+      color: rgba(247, 233, 239, 0.9);
+      font-size: 0.9rem;
+    }
+
     /* Icône d'ambidextrie */
     .ambidextry-badge {
       display: inline-flex;
@@ -634,6 +713,28 @@
   <div class="image-modal" id="image-modal">
     <span class="image-modal-close" id="image-modal-close">&times;</span>
     <img id="image-modal-img" src="" alt="">
+  </div>
+
+  <!-- Modal pour choix main principale/secondaire -->
+  <div class="hand-choice-modal" id="hand-choice-modal">
+    <div class="hand-choice-content">
+      <h2 class="hand-choice-title">Choix de la main</h2>
+      <p class="hand-choice-description">
+        Choisissez quelle version de l'arme vous copiez :
+      </p>
+      <div class="hand-choice-warning">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <strong>Attention :</strong> Une arme en main secondaire sans ambidextre vous donne un malus de -2 à la chance de toucher.
+      </div>
+      <div class="hand-choice-buttons">
+        <button class="hand-choice-btn" id="main-hand-btn">
+          <i class="fa-solid fa-hand-fist"></i> Main principale
+        </button>
+        <button class="hand-choice-btn secondary" id="off-hand-btn">
+          <i class="fa-solid fa-hand"></i> Main secondaire
+        </button>
+      </div>
+    </div>
   </div>
 
   <footer id="footer"></footer>
@@ -1031,7 +1132,7 @@
     }
 
     // Générer le JSON de l'item
-    function generateItemJSON(weapon, rarity) {
+    function generateItemJSON(weapon, rarity, slot = 'MainHand') {
       const isConsumable = weapon.type === 'grenades';
       const weight = weaponWeights[weapon.type] || 1;
       const hasAmbidextry = canUseAmbidextry(weapon);
@@ -1066,11 +1167,16 @@
         "DualWielding": hasAmbidextry ? "True" : "False"
       };
       
+      // StatModifiers pour main secondaire
+      const statModifiers = slot === 'OffHand' ? {
+        "Distance [DEX]": -2
+      } : {};
+      
       return {
         "$type": "GearItem",
-        "Slot": "MainHand",
+        "Slot": slot,
         "IsAugmentation": false,
-        "StatModifiers": {},
+        "StatModifiers": statModifiers,
         "Durability": 100,
         "MaxDurability": 100,
         "Id": crypto.randomUUID(),
@@ -1102,11 +1208,50 @@
 
     // Copier le JSON
     function copyJSON(weapon, rarity) {
-      const json = generateItemJSON(weapon, rarity);
+      const hasAmbidextry = canUseAmbidextry(weapon);
+      
+      // Si l'arme est compatible avec l'ambidextrie, ouvrir la modal
+      if (hasAmbidextry) {
+        openHandChoiceModal(weapon, rarity);
+      } else {
+        // Sinon, copier directement le JSON pour la main principale
+        const json = generateItemJSON(weapon, rarity, 'MainHand');
+        const jsonString = JSON.stringify(json, null, 2);
+        
+        navigator.clipboard.writeText(jsonString).then(() => {
+          showNotification('✓ JSON copié !');
+        });
+      }
+    }
+    
+    // Ouvrir la modal de choix de main
+    function openHandChoiceModal(weapon, rarity) {
+      const modal = document.getElementById('hand-choice-modal');
+      modal.classList.add('show');
+      
+      // Stocker les données pour les boutons
+      modal.dataset.weaponData = JSON.stringify({ weapon, rarity });
+    }
+    
+    // Fermer la modal de choix de main
+    function closeHandChoiceModal() {
+      const modal = document.getElementById('hand-choice-modal');
+      modal.classList.remove('show');
+    }
+    
+    // Copier le JSON avec le slot choisi
+    function copyJSONWithSlot(slot) {
+      const modal = document.getElementById('hand-choice-modal');
+      const data = JSON.parse(modal.dataset.weaponData);
+      const { weapon, rarity } = data;
+      
+      const json = generateItemJSON(weapon, rarity, slot);
       const jsonString = JSON.stringify(json, null, 2);
       
       navigator.clipboard.writeText(jsonString).then(() => {
-        showNotification('✓ JSON copié !');
+        const slotText = slot === 'MainHand' ? 'main principale' : 'main secondaire';
+        showNotification(`✓ JSON copié (${slotText}) !`);
+        closeHandChoiceModal();
       });
     }
 
@@ -1334,6 +1479,22 @@
     imageModal.addEventListener('click', (e) => {
       if (e.target === imageModal) {
         closeImageModal();
+      }
+    });
+
+    // Événements pour la modal de choix de main
+    document.getElementById('main-hand-btn').addEventListener('click', () => {
+      copyJSONWithSlot('MainHand');
+    });
+    
+    document.getElementById('off-hand-btn').addEventListener('click', () => {
+      copyJSONWithSlot('OffHand');
+    });
+    
+    // Fermer la modal en cliquant en dehors
+    document.getElementById('hand-choice-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'hand-choice-modal') {
+        closeHandChoiceModal();
       }
     });
 

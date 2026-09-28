@@ -1,20 +1,6 @@
 {
-  "lastUpdate": "2026-09-28T16:01:15.292Z",
+  "lastUpdate": "2026-09-28T21:51:20.311Z",
   "events": [
-    {
-      "id": "1549296883896426586",
-      "name": "Ouverture du Deadwire (Avec Twilight)",
-      "description": "Thème vestimentaire : Techwear",
-      "location": "La Coupe 2 - 6 | Ragnarok",
-      "coverUrl": "https://cdn.discordapp.com/guild-events/1549296883896426586/afb674322e75c5bee29725470ecc4777.png?size=1024",
-      "startTime": "2026-09-28T19:00:00.000Z",
-      "endTime": "2026-09-28T21:00:00.000Z",
-      "status": 1,
-      "entityType": 3,
-      "creatorId": "159360181476524032",
-      "channelId": null,
-      "interestedCount": 0
-    },
     {
       "id": "1554146909457748021",
       "name": "Ouverture du Deadwire",

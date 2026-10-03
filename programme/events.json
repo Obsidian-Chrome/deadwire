@@ -1,17 +1,17 @@
 {
-  "lastUpdate": "2026-10-03T14:51:40.159Z",
+  "lastUpdate": "2026-10-03T18:00:21.252Z",
   "events": [
     {
-      "id": "1554146909457748021",
-      "name": "Ouverture du Deadwire",
-      "description": "",
+      "id": "1555963117111091352",
+      "name": "Ouverture du Deadwire (Avec Funk Machine)",
+      "description": "Thème vestimentaire : Funk, Disco",
       "location": "La Coupe 2 - 6 | Ragnarok",
-      "coverUrl": "https://cdn.discordapp.com/guild-events/1554146909457748021/6bd5e7fd2a0c25173ea421fac59841fd.png?size=1024",
+      "coverUrl": "https://cdn.discordapp.com/guild-events/1555963117111091352/0ba786d26ad8316ac6c683ff86396534.png?size=1024",
       "startTime": "2026-10-05T19:00:00.000Z",
       "endTime": "2026-10-05T21:00:00.000Z",
       "status": 1,
       "entityType": 3,
-      "creatorId": "903380664336928798",
+      "creatorId": "159360181476524032",
       "channelId": null,
       "interestedCount": 0
     }

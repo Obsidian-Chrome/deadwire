@@ -119,6 +119,22 @@
       "endTime": "23:59",
       "visualizer": "visualizer_twilight.webm",
       "colorFilter": ""
+    },
+    {
+      "name": "Concert Funk Machine",
+      "date": "2026-10-05",
+      "startTime": "18:00",
+      "endTime": "23:59",
+      "visualizer": "visualizer_funkmachine.webm",
+      "colorFilter": ""
+    },
+    {
+      "name": "Concert Glitchtrap",
+      "date": "2026-10-12",
+      "startTime": "18:00",
+      "endTime": "23:59",
+      "visualizer": "visualizer_glitchtrap.webm",
+      "colorFilter": ""
     }
   ],
   "default": {

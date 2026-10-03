@@ -1,8 +1,5 @@
-# Images (déjà sur GitHub, pas besoin de re-pusher)
+# Images (rien du local n'est commité, tout vient de GitHub Actions)
 images/
-
-# Fichiers temporaires
-images/temp_*
 
 # Node modules
 node_modules/

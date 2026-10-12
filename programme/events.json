@@ -1,4 +1,19 @@
 {
-  "lastUpdate": "2026-10-12T08:04:41.993Z",
-  "events": []
+  "lastUpdate": "2026-10-12T17:48:03.313Z",
+  "events": [
+    {
+      "id": "1559220280918937741",
+      "name": "Ouverture du Deadwire",
+      "description": "",
+      "location": "La Coupe 2 - 6 | Ragnarok",
+      "coverUrl": "https://cdn.discordapp.com/guild-events/1559220280918937741/6bd5e7fd2a0c25173ea421fac59841fd.png?size=1024",
+      "startTime": "2026-10-19T19:00:00.000Z",
+      "endTime": "2026-10-19T21:00:00.000Z",
+      "status": 1,
+      "entityType": 3,
+      "creatorId": "903380664336928798",
+      "channelId": null,
+      "interestedCount": 0
+    }
+  ]
 }

@@ -135,6 +135,14 @@
       "endTime": "23:59",
       "visualizer": "visualizer_glitchtrap.webm",
       "colorFilter": ""
+    },
+    {
+      "name": "Concert HeX",
+      "date": "2026-10-19",
+      "startTime": "18:00",
+      "endTime": "23:59",
+      "visualizer": "visualizer_hex.webm",
+      "colorFilter": ""
     }
   ],
   "default": {

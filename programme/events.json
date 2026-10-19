@@ -1,20 +1,6 @@
 {
-  "lastUpdate": "2026-10-19T20:01:55.414Z",
+  "lastUpdate": "2026-10-19T23:32:57.926Z",
   "events": [
-    {
-      "id": "1559220280918937741",
-      "name": "Ouverture du Deadwire (Avec HeX)",
-      "description": "",
-      "location": "La Coupe 2 - 6 | Ragnarok",
-      "coverUrl": "https://cdn.discordapp.com/guild-events/1559220280918937741/39337ffbb5d00c76df32f91fcb552867.png?size=1024",
-      "startTime": "2026-10-19T19:00:00.000Z",
-      "endTime": "2026-10-19T21:00:00.000Z",
-      "status": 2,
-      "entityType": 3,
-      "creatorId": "903380664336928798",
-      "channelId": null,
-      "interestedCount": 0
-    },
     {
       "id": "1561756971072233582",
       "name": "Ouverture du Deadwire",
